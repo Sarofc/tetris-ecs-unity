@@ -3,19 +3,6 @@ using System.Collections;
 
 public class BlockI : Block
 {
-    //public override bool AntiClockwiseRotation()
-    //{
-    //    return base.AntiClockwiseRotation();
-    //    transform.position = new Vector2(Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.y));
-
-    //}
-
-    //public override bool ClockwiseRotation()
-    //{
-    //    return  base.ClockwiseRotation();
-    //    transform.position = new Vector2(Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.y));
-    //}
-
 
     protected override Vector2Int[] GetWallKickData(int next)
     {

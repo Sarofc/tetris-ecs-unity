@@ -12,8 +12,7 @@ public class WallKickData
         // 0 >> 1
         new Vector2Int[]
         {
-            // - : down / left
-            // + : right / up
+            // (-2,1) : move left 2 grid, move up 1 grid
             new Vector2Int(0,0),
             new Vector2Int(-2,0),
             new Vector2Int(1,0),

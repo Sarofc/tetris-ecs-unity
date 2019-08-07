@@ -6,6 +6,7 @@ using System.Collections.Generic;
 /// </summary>
 public class BlockSpawner
 {
+    //private BlockType[] m_bag=new BlockType[] { BlockType.I, BlockType.J, BlockType.L, BlockType.O, BlockType.S, BlockType.T, BlockType.Z };
     private Block[] m_bag;
     private LinkedList<Block> m_next = new LinkedList<Block>();
     private LinkedList<Block> m_next_view = new LinkedList<Block>();
@@ -21,9 +22,11 @@ public class BlockSpawner
     public Block NextBlock()
     {
         if (m_next.Count <= 7) RandomGenerator();
+
         var block = GameObject.Instantiate(m_next.First.Value);
+        //var block = m_next.First.Value;
         m_next.RemoveFirst();
-        block.transform.position = new Vector3(5, 21);
+        block.transform.position = new Vector3(Tetris.Width / 2, Tetris.Height);
         return block;
     }
 
@@ -32,19 +35,34 @@ public class BlockSpawner
         Shuffle();
         for (int i = 0; i < m_bag.Length; i++)
         {
+            //var block = BlockPool.Instance.TryGetBlock(m_bag[i]);
             m_next.AddLast(m_bag[i]);
         }
     }
 
     #region Next Preview
-    private int distance = 4;
+
+    private float startPosX = 11.3f;
+    private float startPosY = 16.5f;
+    private float leftOffset = -.25f;
+    private int distance = 2;
+    private float sizeScale = .5f;
+
     public void InitNextChainSlot(int count = 5)
     {
         LinkedListNode<Block> head = m_next.First;
         for (int i = 0; i < count; i++)
         {
             var viewGO = GameObject.Instantiate(head.Value);
-            viewGO.transform.position = new Vector3(13, 18 - distance * i);
+            if (viewGO is BlockO || viewGO is BlockI)
+            {
+                viewGO.transform.position = new Vector3(startPosX + leftOffset, startPosY - distance * i);
+            }
+            else
+            {
+                viewGO.transform.position = new Vector3(startPosX, startPosY - distance * i);
+            }
+            viewGO.transform.localScale = new Vector3(sizeScale, sizeScale);
             m_next_view.AddLast(viewGO);
 
             head = head.Next;
@@ -72,7 +90,16 @@ public class BlockSpawner
 
         // add new block to end
         var viewGO = GameObject.Instantiate(head.Value);
-        viewGO.transform.position = new Vector3(13, 18 - distance * (count - 1));
+        if (viewGO is BlockO || viewGO is BlockI)
+        {
+            viewGO.transform.position = new Vector3(startPosX + leftOffset, startPosY - distance * (count - 1));
+        }
+        else
+        {
+            viewGO.transform.position = new Vector3(startPosX, startPosY - distance * (count - 1));
+        }
+
+        viewGO.transform.localScale = new Vector3(sizeScale, sizeScale);
         m_next_view.AddLast(viewGO);
     }
     #endregion
@@ -81,7 +108,7 @@ public class BlockSpawner
     {
         for (int i = 0; i < m_bag.Length - 1; i++)
         {
-            Swap(ref m_bag[i],ref m_bag[RandomInRange(i, m_bag.Length)]);
+            Swap(ref m_bag[i], ref m_bag[RandomInRange(i, m_bag.Length)]);
         }
     }
 
@@ -91,7 +118,7 @@ public class BlockSpawner
         return rnd.Next(min, max);
     }
 
-    private void Swap(ref Block a,ref Block b)
+    private void Swap<T>(ref T a, ref T b)
     {
         var tmp = a;
         a = b;

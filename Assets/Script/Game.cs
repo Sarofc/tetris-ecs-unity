@@ -8,42 +8,45 @@ public class Game : MonoBehaviour
 {
     public float DAS { get { return startTime; } set { startTime = value; } }
 
-    public  UnityEvent OnPauseCallback;
-    public  UnityEvent OnGammingCallback;
-
+    [SerializeField] private GameState state = GameState.Gamming;
     [SerializeField] private Block[] blocks;
     [SerializeField] LineRenderer linePrefab;
 
+    public UnityEvent OnPauseCallback;
+    public UnityEvent OnGammingCallback;
+
     private Tetris m_tetris;
+    private VFX vfx;
 
     private const float offset = .5f;
-    Block preview;
 
     private bool left_pressed;
     private bool right_pressed;
+    private bool up_pressed;
 
-    private float startTime = .3f;
+    private float startTime = .2f;
     private float lastStartTime;
     private bool firstStart;
 
-    private float inputDelta = .05f;
+    private float inputDelta = .02f;
     private float lastInputTime;
 
-    enum GameState
+
+    private enum GameState
     {
         Pause,
         Gamming
     }
 
-    private GameState state = GameState.Gamming;
-
     void Start()
     {
+        vfx = GameObject.Find("VFX").GetComponent<VFX>();
         // Tetirs Constructor
-        m_tetris = new Tetris(new BlockSpawner(blocks));
+        if (vfx) m_tetris = new Tetris(new BlockSpawner(blocks), vfx);
+        else m_tetris = new Tetris(new BlockSpawner(blocks));
 
         // draw row line
-        for (int i = 0; i <= Tetris.Height; i++)
+        for (int i = 0; i <= Tetris.Height + Tetris.ExtraHeight - 1; i++)
         {
             var row = Instantiate(linePrefab, this.transform);
             row.positionCount = 2;
@@ -57,13 +60,14 @@ public class Game : MonoBehaviour
             var col = Instantiate(linePrefab, this.transform);
             col.positionCount = 2;
             col.SetPosition(0, new Vector3(i - offset, -offset));
-            col.SetPosition(1, new Vector3(i - offset, Tetris.Height - offset));
+            col.SetPosition(1, new Vector3(i - offset, Tetris.Height + Tetris.ExtraHeight - 1 - offset));
         }
 
         state = GameState.Pause;
 
         StartCoroutine(Gamming());
     }
+
 
     void Update()
     {
@@ -172,9 +176,15 @@ public class Game : MonoBehaviour
         }
 
         // hard & soft drop
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        if (!up_pressed && Input.GetKeyDown(KeyCode.DownArrow))
         {
+            up_pressed = true;
             m_tetris.SoftDrop();
+        }
+        else if (up_pressed && Input.GetKeyUp(KeyCode.DownArrow))
+        {
+            up_pressed = false;
+            m_tetris.NormalDrop();
         }
         else if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -195,13 +205,26 @@ public class Game : MonoBehaviour
         OnPauseCallback?.Invoke();
     }
 
+    
     private IEnumerator Gamming()
     {
+        WaitForSeconds waitForSeconds = new WaitForSeconds(1f);
+
         OnGammingCallback?.Invoke();
-        yield return new WaitForSeconds(4f);
+
+        vfx.TextVFX_Start();
+
+        yield return waitForSeconds;
+        yield return waitForSeconds;
+        yield return waitForSeconds;
+        yield return waitForSeconds;
+        yield return waitForSeconds;
+
         state = GameState.Gamming;
         m_tetris.NextBlock();
+        vfx.PlayBG(SV.MainThemeClip);
     }
+
 
 
 #if UNITY_EDITOR
