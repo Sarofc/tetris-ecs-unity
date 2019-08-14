@@ -5,9 +5,9 @@ public class WallKickData
 {
     // 0 - spawn state
     // 1 - rotate right
-    // 2 - 2 successive rotations in either direction form spawn
+    // 2 - 2 successive rotations in either direction form spawn(rotate left/right twice)
     // 3 - rotate left
-    public static readonly List<Vector2Int[]> I = new List<Vector2Int[]>()
+    public static readonly List<Vector2Int[]> I = new List<Vector2Int[]>(8)
     {
         // 0 >> 1
         new Vector2Int[]
@@ -84,7 +84,7 @@ public class WallKickData
         }
     };
 
-    public static readonly List<Vector2Int[]> Other = new List<Vector2Int[]>()
+    public static readonly List<Vector2Int[]> Other = new List<Vector2Int[]>(8)
     {
         // 0 >> 1
         new Vector2Int[]

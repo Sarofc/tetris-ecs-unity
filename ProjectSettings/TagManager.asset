@@ -13,6 +13,7 @@ TagManager:
   - UI
   - 
   - 
+  - PostProcessing
   - 
   - 
   - 
@@ -35,8 +36,7 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - SceneTansition
   m_SortingLayers:
   - name: Default
     uniqueID: 0

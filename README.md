@@ -1,11 +1,10 @@
-# [Tetris](https://tetris.fandom.com/wiki/Tetris_Wiki)
+# [Tetris](http://harddrop.com/wiki/Tetris_Wiki)
 
 现代俄罗斯方块
 
 Unity 2018.4
 
-## 超级旋转系统(Super Rotation System, SRS) [WIKI](https://tetris.fandom.com/wiki/SRS)
-
+## 超级旋转系统(Super Rotation System, SRS)
 
 - 7种方块。
 
@@ -27,7 +26,7 @@ Unity 2018.4
 
 一个包装7种方块，在这7个方块中进行随机。这样一来，每一轮（7次），都会获取到这7种方块，只是顺序不同罢了。
 
-## Spin操作
+## Twist操作
 
 有了SRS系统为支撑，可以有很多新奇的玩法。
 
@@ -42,6 +41,14 @@ Unity 2018.4
 - S-Spin
 - Z-Spin
 
-## Scoring [WIKI](http://harddrop.com/wiki/Scoring)
+## Scoring
 
 根据每个操作/消除动作，来打分。
+
+## 参考
+
+- [SRS](http://harddrop.com/wiki/SRS)
+- [Random Generator](http://harddrop.com/wiki/Random_Generator)
+- [Twist](http://harddrop.com/wiki/List_of_twists)
+- [TSpin](http://harddrop.com/wiki/T-Spin)
+- [Scoring](http://harddrop.com/wiki/Scoring)

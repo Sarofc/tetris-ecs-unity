@@ -28,7 +28,7 @@ public class Game : MonoBehaviour
     private float lastStartTime;
     private bool firstStart;
 
-    private float inputDelta = .02f;
+    private float inputDelta = .04f;
     private float lastInputTime;
 
 
@@ -40,7 +40,7 @@ public class Game : MonoBehaviour
 
     void Start()
     {
-        vfx = GameObject.Find("VFX").GetComponent<VFX>();
+        vfx = GameObject.Find("VFX & SFX").GetComponent<VFX>();
         // Tetirs Constructor
         if (vfx) m_tetris = new Tetris(new BlockSpawner(blocks), vfx);
         else m_tetris = new Tetris(new BlockSpawner(blocks));
@@ -65,7 +65,7 @@ public class Game : MonoBehaviour
 
         state = GameState.Pause;
 
-        StartCoroutine(Gamming());
+        StartGame();
     }
 
 
@@ -170,7 +170,7 @@ public class Game : MonoBehaviour
         {
             m_tetris.AntiClockwiseRotation();
         }
-        else if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.X))
         {
             m_tetris.ClockwiseRotation();
         }
@@ -196,36 +196,45 @@ public class Game : MonoBehaviour
         {
             m_tetris.HoldBlock();
         }
+
+        // logger
+        //if (Input.GetKeyDown(KeyCode.Return))
+        //{
+        //    Tetris.logger.Print();
+        //}
     }
 
 
-    private void Pause()
+    public void PauseGame()
     {
         state = GameState.Pause;
         OnPauseCallback?.Invoke();
     }
 
-    
+    public void StartGame()
+    {
+        StartCoroutine(Gamming());
+    }
+
     private IEnumerator Gamming()
     {
-        WaitForSeconds waitForSeconds = new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1f);
 
         OnGammingCallback?.Invoke();
 
         vfx.TextVFX_Start();
 
-        yield return waitForSeconds;
-        yield return waitForSeconds;
-        yield return waitForSeconds;
-        yield return waitForSeconds;
-        yield return waitForSeconds;
+        yield return new WaitForSeconds(5f);
 
         state = GameState.Gamming;
         m_tetris.NextBlock();
-        vfx.PlayBG(SV.MainThemeClip);
+        vfx.PlayBG(SV.BGMainTheme);
     }
 
-
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 
 #if UNITY_EDITOR
     private void OnDrawGizmos()

@@ -7,11 +7,6 @@ public class RenText : MonoBehaviour
     private Saro.Tween tween;
     private TMP_Text text;
 
-    void Start()
-    {
-
-    }
-
     public void RestartTween(int count)
     {
         if (!tween) tween = GetComponent<Saro.Tween>();

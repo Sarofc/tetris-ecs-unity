@@ -6,7 +6,6 @@ using System.Collections.Generic;
 /// </summary>
 public class BlockSpawner
 {
-    //private BlockType[] m_bag=new BlockType[] { BlockType.I, BlockType.J, BlockType.L, BlockType.O, BlockType.S, BlockType.T, BlockType.Z };
     private Block[] m_bag;
     private LinkedList<Block> m_next = new LinkedList<Block>();
     private LinkedList<Block> m_next_view = new LinkedList<Block>();

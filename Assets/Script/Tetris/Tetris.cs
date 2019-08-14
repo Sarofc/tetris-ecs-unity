@@ -13,6 +13,8 @@ public class Tetris
 
     public static Transform[,] Grid;
 
+    //public static Logger logger = new Logger();
+
     public int level = 1;
     public int score = 0;
     public int line = 0;
@@ -79,6 +81,7 @@ public class Tetris
         HardDrop
     }
 
+
     public Tetris(BlockSpawner spawner)
     {
         Grid = new Transform[Width, Height + ExtraHeight];
@@ -127,6 +130,8 @@ public class Tetris
         landedWithRotate = false;
 
         isTSpin = false;
+
+        //logger.Log("New Block");
     }
 
 
@@ -167,7 +172,7 @@ public class Tetris
             NextBlock();
         }
 
-        vfx?.PlayClip(SV.HoldClip);
+        vfx?.PlayClip(SV.ClipHold);
 
         // reset block state
         moveDelta = MoveDelda.Normal;
@@ -183,6 +188,7 @@ public class Tetris
         }
         holded.transform.localScale = new Vector3(sizeScale, sizeScale);
         holded.transform.rotation = Quaternion.Euler(0, 0, 0);
+        holded.ResetState();
     }
 
     public void MoveRight()
@@ -192,7 +198,7 @@ public class Tetris
         {
             landedWithRotate = false;
             lastWaitTime = 0;
-            vfx?.PlayClip(SV.MoveClip);
+            vfx?.PlayClip(SV.ClipMove);
             UpdatePreview();
         }
     }
@@ -204,7 +210,7 @@ public class Tetris
         {
             landedWithRotate = false;
             lastWaitTime = 0;
-            vfx?.PlayClip(SV.MoveClip);
+            vfx?.PlayClip(SV.ClipMove);
             UpdatePreview();
         }
     }
@@ -216,7 +222,7 @@ public class Tetris
         {
             landedWithRotate = true;
             lastWaitTime = 0;
-            vfx?.PlayClip(SV.RotateClip);
+            vfx?.PlayClip(SV.ClipRotate);
             UpdatePreview();
         }
     }
@@ -228,26 +234,31 @@ public class Tetris
         {
             landedWithRotate = true;
             lastWaitTime = 0;
-            vfx?.PlayClip(SV.RotateClip);
+            vfx?.PlayClip(SV.ClipRotate);
             UpdatePreview();
         }
     }
 
     public void SoftDrop()
     {
+        if (currentBlock == null) return;
         //landedWithRotate = false;
         moveDelta = MoveDelda.SoftDrop;
     }
 
     public void NormalDrop()
     {
+        if (currentBlock == null) return;
         moveDelta = MoveDelda.Normal;
     }
 
     public void HardDrop()
     {
+        if (currentBlock == null) return;
         landedWithRotate = false;
         moveDelta = MoveDelda.HardDrop;
+
+        //logger.Log("Hard Drop, current height : " + currentBlock.transform.position.y);
     }
 
     public void Fall(float deltaTime)
@@ -263,14 +274,13 @@ public class Tetris
         {
             if (moveDelta == MoveDelda.HardDrop)
             {
-                LandingPoint(currentBlock);
-                //OnHardDrop?.Invoke(currentBlock.transform.position);
+                while (currentBlock.MoveDown()) ;
                 landed = true;
 
                 if (vfx)
                 {
                     vfx.VFX_HardDrop(currentBlock.transform.position);
-                    vfx.PlayClip(SV.HardDropClip);
+                    vfx.PlayClip(SV.ClipHardDrop);
                 }
             }
             else
@@ -293,7 +303,7 @@ public class Tetris
                     {
                         landed = true;
                         lastWaitTime = 0;
-                        vfx?.PlayClip(SV.SoftDropClip);
+                        vfx?.PlayClip(SV.ClipSoftDrop);
                     }
                     else
                     {
@@ -306,7 +316,7 @@ public class Tetris
         else
         {
             // trigger vfx before check(), because the currentBlock reference has been cleared after check() method.
-            vfx?.PlayClip(SV.LandingClip);
+            vfx?.PlayClip(SV.ClipLanding);
 
             DestroyPreview();
 
@@ -475,7 +485,11 @@ public class Tetris
         foreach (Transform child in m_preview.transform)
         {
             var sr = child.GetComponent<SpriteRenderer>();
-            if (sr) sr.color = new Color(1, 1, 1, .3f);
+            if (sr)
+            {
+                sr.color = new Color(1, 1, 1, .3f);
+                sr.sortingOrder = 15;
+            }
         }
     }
 
@@ -554,7 +568,7 @@ public class Tetris
             }
 
 
-            vfx.PlayClip(SV.SpecialClip);
+            vfx.PlayClip(SV.ClipSpecial);
         }
         else
         {
@@ -562,19 +576,19 @@ public class Tetris
             {
                 case 1:
                     points = 100 * level;
-                    vfx.PlayClip(SV.SingleClip);
+                    vfx.PlayClip(SV.ClipSingle);
                     break;
                 case 2:
                     points = 300 * level;
-                    vfx.PlayClip(SV.DoubleClip);
+                    vfx.PlayClip(SV.ClipDouble);
                     break;
                 case 3:
                     points = 500 * level;
-                    vfx.PlayClip(SV.TripleClip);
+                    vfx.PlayClip(SV.ClipTriple);
                     break;
                 case 4:
                     points = 800 * level;
-                    vfx.PlayClip(SV.TetrisClip);
+                    vfx.PlayClip(SV.ClipTetris);
                     vfx.TextVFX_Tetris();
                     break;
                 default:

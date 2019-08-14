@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class View : MonoBehaviour
@@ -42,7 +43,7 @@ public class View : MonoBehaviour
         s = (int)val % 60;
         ms = ((int)(val * 1000) % 1000) / 10;
 
-        time.text = string.Format("{0:00}:{1:00}:{2:00}", m, s, ms);
+        time.text = string.Format("{0:00}:{1:00}.{2:00}", m, s, ms);
     }
 
     private void UpdateGoal(int val)

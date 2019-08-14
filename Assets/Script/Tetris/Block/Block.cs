@@ -20,16 +20,16 @@ public class Block : MonoBehaviour/*,Saro.IPoolable<Block>*/
     [SerializeField] protected Vector3 rotatePoint;
     private Vector3 axis = new Vector3(0, 0, 1);
 
-    private Vector2[] m_direction = new Vector2[]
+    private Vector2Int[] m_direction = new Vector2Int[]
     {
         // left
-        new Vector2(-1,0),
+        new Vector2Int(-1,0),
         // right
-        new Vector2(1,0),
+        new Vector2Int(1,0),
         // down
-        new Vector2(0,-1),
+        new Vector2Int(0,-1),
         // up
-        new Vector2(0,1)
+        new Vector2Int(0,1)
     };
 
 
@@ -68,7 +68,7 @@ public class Block : MonoBehaviour/*,Saro.IPoolable<Block>*/
             }
         }
 
-        //Debug.LogFormat("{0} , {1}", state, _state);
+        Debug.LogFormat("{0} , {1}", state, _state);
         state = _state;
         return true;
     }
@@ -97,18 +97,18 @@ public class Block : MonoBehaviour/*,Saro.IPoolable<Block>*/
             }
         }
 
-        //Debug.LogFormat("{0} , {1}", state, _state);
+        Debug.LogFormat("{0} , {1}", state, _state);
         state = _state;
         return true;
     }
 
     public bool MoveLeft(int amount = 1)
     {
-        transform.position += (Vector3)m_direction[0] * amount;
+        transform.position += (Vector3Int)m_direction[0] * amount;
 
         if (!ValidChild())
         {
-            transform.position -= (Vector3)m_direction[0] * amount;
+            transform.position -= (Vector3Int)m_direction[0] * amount;
             return false;
         }
 
@@ -117,11 +117,11 @@ public class Block : MonoBehaviour/*,Saro.IPoolable<Block>*/
 
     public bool MoveRight(int amount = 1)
     {
-        transform.position += (Vector3)m_direction[1] * amount;
+        transform.position += (Vector3Int)m_direction[1] * amount;
 
         if (!ValidChild())
         {
-            transform.position -= (Vector3)m_direction[1] * amount;
+            transform.position -= (Vector3Int)m_direction[1] * amount;
             return false;
         }
 
@@ -130,11 +130,11 @@ public class Block : MonoBehaviour/*,Saro.IPoolable<Block>*/
 
     public bool MoveDown(int amount = 1)
     {
-        transform.position += (Vector3)m_direction[2] * amount;
+        transform.position += (Vector3Int)m_direction[2] * amount;
 
         if (!ValidChild())
         {
-            transform.position -= (Vector3)m_direction[2] * amount;
+            transform.position -= (Vector3Int)m_direction[2] * amount;
             return false;
         }
 
@@ -148,21 +148,17 @@ public class Block : MonoBehaviour/*,Saro.IPoolable<Block>*/
 
     public void SingleUp(int amount = 1)
     {
-        transform.position += (Vector3)m_direction[3] * amount;
+        transform.position += (Vector3Int)m_direction[3] * amount;
+    }
+
+    public void ResetState()
+    {
+        state = 0;
     }
 
     public bool DisableBlock()
     {
         bool res = transform.childCount > 0 ? false : true;
-        //foreach (Transform child in transform)
-        //{
-        //    if (child.gameObject.activeSelf)
-        //    {
-        //        res = false;
-        //        break;
-        //    }
-        //}
-
         if (res) Destroy(this.gameObject);
 
         return res;
