@@ -248,11 +248,6 @@ public class Block : MonoBehaviour/*,Saro.IPoolable<Block>*/
         return Valid(position.x, position.y);
     }
 
-    //private void Update()
-    //{
-    //    DisableBlock();
-    //}
-
 
 #if UNITY_EDITOR
     public virtual void DrawGizmos()

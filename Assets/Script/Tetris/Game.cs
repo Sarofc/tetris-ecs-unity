@@ -24,11 +24,10 @@ public class Game : MonoBehaviour
     private bool right_pressed;
     private bool up_pressed;
 
-    private float startTime = .2f;
+    private float startTime = .15f;
     private float lastStartTime;
-    private bool firstStart;
 
-    private float inputDelta = .04f;
+    private float inputDelta = .03f;
     private float lastInputTime;
 
 
@@ -74,6 +73,7 @@ public class Game : MonoBehaviour
         if (state == GameState.Gamming)
         {
             ProcessBlockInput();
+
             // auto drop
             m_tetris.Fall(Time.deltaTime);
         }
@@ -81,28 +81,36 @@ public class Game : MonoBehaviour
 
     private void ProcessBlockInput()
     {
+        // hard & soft drop
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            m_tetris.HardDrop(); // execute in one frame
+        }
+        else if (!up_pressed && Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            up_pressed = true;
+            m_tetris.SoftDrop();
+        }
+        else if (up_pressed && Input.GetKeyUp(KeyCode.DownArrow))
+        {
+            up_pressed = false;
+            m_tetris.NormalDrop();
+        }
+
+
         // move left
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             m_tetris.MoveLeft();
-
             left_pressed = true;
         }
         if (!right_pressed && left_pressed && Input.GetKey(KeyCode.LeftArrow))
         {
             if (lastStartTime >= startTime)
             {
-                if (!firstStart)
-                {
-                    m_tetris.MoveLeft();
-
-                    firstStart = true;
-                }
-
                 if (lastInputTime >= inputDelta)
                 {
                     m_tetris.MoveLeft();
-
                     lastInputTime = 0;
                 }
                 else
@@ -118,7 +126,6 @@ public class Game : MonoBehaviour
         if (left_pressed && Input.GetKeyUp(KeyCode.LeftArrow))
         {
             left_pressed = false;
-            firstStart = false;
             lastStartTime = 0;
             lastInputTime = 0;
         }
@@ -127,20 +134,12 @@ public class Game : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             m_tetris.MoveRight();
-
             right_pressed = true;
         }
         if (!left_pressed && right_pressed && Input.GetKey(KeyCode.RightArrow))
         {
             if (lastStartTime >= startTime)
             {
-                if (!firstStart)
-                {
-                    m_tetris.MoveRight();
-
-                    firstStart = true;
-                }
-
                 if (lastInputTime >= inputDelta)
                 {
                     m_tetris.MoveRight();
@@ -160,7 +159,6 @@ public class Game : MonoBehaviour
         if (right_pressed && Input.GetKeyUp(KeyCode.RightArrow))
         {
             right_pressed = false;
-            firstStart = false;
             lastStartTime = 0;
             lastInputTime = 0;
         }
@@ -175,22 +173,8 @@ public class Game : MonoBehaviour
             m_tetris.ClockwiseRotation();
         }
 
-        // hard & soft drop
-        if (!up_pressed && Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            up_pressed = true;
-            m_tetris.SoftDrop();
-        }
-        else if (up_pressed && Input.GetKeyUp(KeyCode.DownArrow))
-        {
-            up_pressed = false;
-            m_tetris.NormalDrop();
-        }
-        else if (Input.GetKeyDown(KeyCode.Space))
-        {
-            m_tetris.HardDrop();
-        }
-
+       
+        
         // hold
         if (Input.GetKeyDown(KeyCode.C))
         {

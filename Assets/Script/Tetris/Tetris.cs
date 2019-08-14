@@ -48,7 +48,7 @@ public class Tetris
     private float lastFallTime;
 
     // check landed
-    private float waitLandTime = .5f;
+    private float waitLandTime = .4f;
     private float lastWaitTime;
     private bool isLanding = false;
     private bool landed = false;
@@ -130,8 +130,6 @@ public class Tetris
         landedWithRotate = false;
 
         isTSpin = false;
-
-        //logger.Log("New Block");
     }
 
 
@@ -193,7 +191,7 @@ public class Tetris
 
     public void MoveRight()
     {
-        if (currentBlock == null) return;
+        if (currentBlock == null || landed) return;
         if (currentBlock.MoveRight())
         {
             landedWithRotate = false;
@@ -205,7 +203,7 @@ public class Tetris
 
     public void MoveLeft()
     {
-        if (currentBlock == null) return;
+        if (currentBlock == null || landed) return;
         if (currentBlock.MoveLeft())
         {
             landedWithRotate = false;
@@ -217,7 +215,7 @@ public class Tetris
 
     public void ClockwiseRotation()
     {
-        if (currentBlock == null) return;
+        if (currentBlock == null || landed) return;
         if (currentBlock.ClockwiseRotation())
         {
             landedWithRotate = true;
@@ -229,7 +227,7 @@ public class Tetris
 
     public void AntiClockwiseRotation()
     {
-        if (currentBlock == null) return;
+        if (currentBlock == null || landed) return;
         if (currentBlock.AntiClockwiseRotation())
         {
             landedWithRotate = true;
@@ -241,24 +239,29 @@ public class Tetris
 
     public void SoftDrop()
     {
-        if (currentBlock == null) return;
-        //landedWithRotate = false;
+        if (currentBlock == null || landed) return;
         moveDelta = MoveDelda.SoftDrop;
     }
 
     public void NormalDrop()
     {
-        if (currentBlock == null) return;
+        if (currentBlock == null || landed) return;
         moveDelta = MoveDelda.Normal;
     }
 
     public void HardDrop()
     {
-        if (currentBlock == null) return;
+        if (currentBlock == null || landed) return;
         landedWithRotate = false;
-        moveDelta = MoveDelda.HardDrop;
 
-        //logger.Log("Hard Drop, current height : " + currentBlock.transform.position.y);
+        while (currentBlock.MoveDown()) ;
+        landed = true;
+
+        if (vfx)
+        {
+            vfx.VFX_HardDrop(currentBlock.transform.position);
+            vfx.PlayClip(SV.ClipHardDrop);
+        }
     }
 
     public void Fall(float deltaTime)
@@ -272,46 +275,33 @@ public class Tetris
 
         if (!landed)
         {
-            if (moveDelta == MoveDelda.HardDrop)
+            if (!isLanding)
             {
-                while (currentBlock.MoveDown()) ;
-                landed = true;
-
-                if (vfx)
+                if (lastFallTime >= FallDeltaTime)
                 {
-                    vfx.VFX_HardDrop(currentBlock.transform.position);
-                    vfx.PlayClip(SV.ClipHardDrop);
+                    isLanding = !currentBlock.MoveDown();
+                    lastFallTime = 0;
+                }
+                else
+                {
+                    lastFallTime += deltaTime;
                 }
             }
             else
             {
-                if (!isLanding)
+                if (lastWaitTime >= waitLandTime)
                 {
-                    if (lastFallTime >= FallDeltaTime)
-                    {
-                        isLanding = !currentBlock.MoveDown();
-                        lastFallTime = 0;
-                    }
-                    else
-                    {
-                        lastFallTime += deltaTime;
-                    }
+                    landed = true;
+                    lastWaitTime = 0;
+                    vfx?.PlayClip(SV.ClipSoftDrop);
                 }
                 else
                 {
-                    if (lastWaitTime >= waitLandTime)
-                    {
-                        landed = true;
-                        lastWaitTime = 0;
-                        vfx?.PlayClip(SV.ClipSoftDrop);
-                    }
-                    else
-                    {
-                        isLanding = !currentBlock.MoveDown();
-                        lastWaitTime += Time.deltaTime;
-                    }
+                    isLanding = !currentBlock.MoveDown();
+                    lastWaitTime += Time.deltaTime;
                 }
             }
+
         }
         else
         {
