@@ -52,3 +52,5 @@ Unity 2018.4
 - [Twist](http://harddrop.com/wiki/List_of_twists)
 - [TSpin](http://harddrop.com/wiki/T-Spin)
 - [Scoring](http://harddrop.com/wiki/Scoring)
+
+## ！音乐/音效仅供学习使用
