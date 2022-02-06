@@ -5,6 +5,8 @@ namespace Saro
     public sealed class LuaComponent : FEntity
     {
         public static LuaComponent Current => FGame.Resolve<LuaComponent>();
+
+        [System.Obsolete("Use 'LuaComponent.Current.LuaEnv.Global' instead")]
         public LuaTable Global => LuaEnv.Global;
 
         public LuaEnv LuaEnv { get; private set; }
@@ -22,6 +24,7 @@ namespace Saro
 
         internal void Update()
         {
+            // TODO 不要每帧调用，间隔一会儿
             LuaEnv.Tick();
         }
 

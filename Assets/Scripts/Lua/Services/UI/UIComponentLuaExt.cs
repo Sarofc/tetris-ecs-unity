@@ -30,7 +30,6 @@ namespace Saro.Lua.UI
             self.CloseUI(uiName);
         }
 
-
         public static void Listen(this UIBase self, UnityEvent src, UnityAction dst)
         {
             self.Listen(src, dst);

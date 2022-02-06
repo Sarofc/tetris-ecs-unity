@@ -21,7 +21,7 @@ MonoBehaviour:
   searchPatternScene: '*.unity'
   searchPatternText: '*.txt,*.bytes,*.json,*.csv,*.xml,*htm,*.html,*.yaml,*.fnt'
   nameBundleByHash: 1
-  resVersion: 41
+  resVersion: 44
   scenesInBuild:
   - {fileID: 102900000, guid: 8943688c1103d8c46b982d0a1a9e2310, type: 3}
   groups:
@@ -38,10 +38,16 @@ MonoBehaviour:
     bundle: 9fee933a12e8f2b4e387565289c59e95.assets
   - asset: Assets/Arts/Textures/VFX/fire_spark.psd
     bundle: 368283101e9413accfd057adb2306563.assets
-  - asset: Assets/Res/Aniamtor/countdown.anim
-    bundle: 0bec5af6b467ae1fde2a31690193fc54.assets
-  - asset: Assets/Res/Aniamtor/ctrl_countdown.controller
-    bundle: 0bec5af6b467ae1fde2a31690193fc54.assets
+  - asset: Assets/Res/Aniamtor/UI/Common/UIClose.anim
+    bundle: a9172f71c292876738197a656f8b6ae9.assets
+  - asset: Assets/Res/Aniamtor/UI/Common/UIOpen.anim
+    bundle: a9172f71c292876738197a656f8b6ae9.assets
+  - asset: Assets/Res/Aniamtor/UI/Common/ctrl_ui_animation_common.controller
+    bundle: a9172f71c292876738197a656f8b6ae9.assets
+  - asset: Assets/Res/Aniamtor/UI/countdown.anim
+    bundle: 50cc3f554ebfb486487f25a93ab4b7f2.assets
+  - asset: Assets/Res/Aniamtor/UI/ctrl_countdown.controller
+    bundle: 50cc3f554ebfb486487f25a93ab4b7f2.assets
   - asset: Assets/Res/Audios/BGM/bgm_t02_swap_t.wav
     bundle: cddc8477b1d989b4eb4784cacc57264c.assets
   - asset: Assets/Res/Audios/GameMixer.mixer
@@ -263,10 +269,15 @@ MonoBehaviour:
       Icon.psd
     bundle: 562974cbc3f8790107f6a4300830ae87.assets
   ruleBundles:
-  - bundle: 0bec5af6b467ae1fde2a31690193fc54.assets
+  - bundle: 50cc3f554ebfb486487f25a93ab4b7f2.assets
     assets:
-    - Assets/Res/Aniamtor/countdown.anim
-    - Assets/Res/Aniamtor/ctrl_countdown.controller
+    - Assets/Res/Aniamtor/UI/countdown.anim
+    - Assets/Res/Aniamtor/UI/ctrl_countdown.controller
+  - bundle: a9172f71c292876738197a656f8b6ae9.assets
+    assets:
+    - Assets/Res/Aniamtor/UI/Common/ctrl_ui_animation_common.controller
+    - Assets/Res/Aniamtor/UI/Common/UIClose.anim
+    - Assets/Res/Aniamtor/UI/Common/UIOpen.anim
   - bundle: 2e11701263376d820f7da064334a31fc.assets
     assets:
     - Assets/Res/Audios/GameMixer.mixer

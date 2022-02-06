@@ -13,6 +13,13 @@ namespace Saro.Lua.UI
         private LuaTable m_ScriptEnv;
         private LuaTable m_Metatable;
 
+        protected override void InternalAwake()
+        {
+            InitLua();
+
+            m_OnAwake?.Invoke(this);
+        }
+
         protected override void InternalStart()
         {
             m_OnStart?.Invoke(this);
@@ -26,13 +33,6 @@ namespace Saro.Lua.UI
         protected override void InternalClose()
         {
             m_OnClose?.Invoke(this);
-        }
-
-        protected override void InternalAwake()
-        {
-            InitLua();
-
-            m_OnAwake?.Invoke(this);
         }
 
         protected override void DoDestroy()

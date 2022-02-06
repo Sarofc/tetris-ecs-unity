@@ -13,14 +13,15 @@ MonoBehaviour:
   m_Name: Manifest
   m_EditorClassIdentifier: 
   appVersion: 0.1
-  resVersion: 41
+  resVersion: 43
   remoteVersionUrl: 
   remoteAssetUrl: http://localhost:8080
   dirs:
   - Assets/Arts/Materials
   - Assets/Arts/Textures/UI
   - Assets/Arts/Textures/VFX
-  - Assets/Res/Aniamtor
+  - Assets/Res/Aniamtor/UI/Common
+  - Assets/Res/Aniamtor/UI
   - Assets/Res/Audios/BGM
   - Assets/Res/Audios
   - Assets/Res/Audios/SE
@@ -39,363 +40,376 @@ MonoBehaviour:
   - Packages/com.unity.textmeshpro/Editor Resources/Gizmos
   assets:
   - name: Block.mat
-    bundle: 20
+    bundle: 21
     dir: 0
   - name: Mat_VFX_FireSpark.mat
-    bundle: 19
+    bundle: 20
     dir: 0
   - name: Square.png
-    bundle: 15
+    bundle: 16
     dir: 1
   - name: fire_spark.psd
-    bundle: 18
+    bundle: 19
     dir: 2
+  - name: UIClose.anim
+    bundle: 1
+    dir: 3
+  - name: UIOpen.anim
+    bundle: 1
+    dir: 3
+  - name: ctrl_ui_animation_common.controller
+    bundle: 1
+    dir: 3
   - name: countdown.anim
     bundle: 0
-    dir: 3
+    dir: 4
   - name: ctrl_countdown.controller
     bundle: 0
-    dir: 3
-  - name: bgm_t02_swap_t.wav
-    bundle: 2
     dir: 4
-  - name: GameMixer.mixer
-    bundle: 1
+  - name: bgm_t02_swap_t.wav
+    bundle: 3
     dir: 5
+  - name: GameMixer.mixer
+    bundle: 2
+    dir: 6
   - name: me_game_clear.wav
-    bundle: 3
-    dir: 6
+    bundle: 4
+    dir: 7
   - name: me_game_gameover.wav
-    bundle: 3
-    dir: 6
+    bundle: 4
+    dir: 7
   - name: me_game_iget.wav
-    bundle: 3
-    dir: 6
+    bundle: 4
+    dir: 7
   - name: me_game_ko_gong.wav
-    bundle: 3
-    dir: 6
+    bundle: 4
+    dir: 7
   - name: me_game_ko_vo.wav
-    bundle: 3
-    dir: 6
+    bundle: 4
+    dir: 7
   - name: me_game_ko_vo_de.wav
-    bundle: 3
-    dir: 6
+    bundle: 4
+    dir: 7
   - name: me_game_ko_vo_es.wav
-    bundle: 3
-    dir: 6
+    bundle: 4
+    dir: 7
   - name: me_game_ko_vo_fr.wav
-    bundle: 3
-    dir: 6
+    bundle: 4
+    dir: 7
   - name: me_game_ko_vo_it.wav
-    bundle: 3
-    dir: 6
+    bundle: 4
+    dir: 7
   - name: me_game_ko_vo_nl.wav
-    bundle: 3
-    dir: 6
+    bundle: 4
+    dir: 7
   - name: me_game_ko_vo_ru.wav
-    bundle: 3
-    dir: 6
+    bundle: 4
+    dir: 7
   - name: me_game_plvup.wav
-    bundle: 3
-    dir: 6
+    bundle: 4
+    dir: 7
   - name: me_game_remain_1.wav
-    bundle: 3
-    dir: 6
+    bundle: 4
+    dir: 7
   - name: me_game_remain_2.wav
-    bundle: 3
-    dir: 6
+    bundle: 4
+    dir: 7
   - name: me_game_start1.wav
-    bundle: 3
-    dir: 6
+    bundle: 4
+    dir: 7
   - name: me_game_start1_de.wav
-    bundle: 3
-    dir: 6
+    bundle: 4
+    dir: 7
   - name: me_game_start1_es.wav
-    bundle: 3
-    dir: 6
+    bundle: 4
+    dir: 7
   - name: me_game_start1_fr.wav
-    bundle: 3
-    dir: 6
+    bundle: 4
+    dir: 7
   - name: me_game_start1_it.wav
-    bundle: 3
-    dir: 6
+    bundle: 4
+    dir: 7
   - name: me_game_start1_nl.wav
-    bundle: 3
-    dir: 6
+    bundle: 4
+    dir: 7
   - name: me_game_start1_ru.wav
-    bundle: 3
-    dir: 6
+    bundle: 4
+    dir: 7
   - name: me_game_start2.wav
-    bundle: 3
-    dir: 6
+    bundle: 4
+    dir: 7
   - name: me_game_start2_vo.wav
-    bundle: 3
-    dir: 6
+    bundle: 4
+    dir: 7
   - name: me_game_start2_vo_de.wav
-    bundle: 3
-    dir: 6
+    bundle: 4
+    dir: 7
   - name: me_game_start2_vo_es.wav
-    bundle: 3
-    dir: 6
+    bundle: 4
+    dir: 7
   - name: me_game_start2_vo_fr.wav
-    bundle: 3
-    dir: 6
+    bundle: 4
+    dir: 7
   - name: me_game_start2_vo_it.wav
-    bundle: 3
-    dir: 6
+    bundle: 4
+    dir: 7
   - name: me_game_start2_vo_nl.wav
-    bundle: 3
-    dir: 6
+    bundle: 4
+    dir: 7
   - name: me_game_start2_vo_ru.wav
-    bundle: 3
-    dir: 6
+    bundle: 4
+    dir: 7
   - name: se_game_attack1.wav
-    bundle: 3
-    dir: 6
+    bundle: 4
+    dir: 7
   - name: se_game_attack2.wav
-    bundle: 3
-    dir: 6
+    bundle: 4
+    dir: 7
   - name: se_game_bfall.wav
-    bundle: 3
-    dir: 6
+    bundle: 4
+    dir: 7
   - name: se_game_caution.wav
-    bundle: 3
-    dir: 6
+    bundle: 4
+    dir: 7
   - name: se_game_change1.wav
-    bundle: 3
-    dir: 6
+    bundle: 4
+    dir: 7
   - name: se_game_change2.wav
-    bundle: 3
-    dir: 6
+    bundle: 4
+    dir: 7
   - name: se_game_count.wav
-    bundle: 3
-    dir: 6
+    bundle: 4
+    dir: 7
   - name: se_game_double.wav
-    bundle: 3
-    dir: 6
+    bundle: 4
+    dir: 7
   - name: se_game_emblemget.wav
-    bundle: 3
-    dir: 6
+    bundle: 4
+    dir: 7
   - name: se_game_fixa.wav
-    bundle: 3
-    dir: 6
+    bundle: 4
+    dir: 7
   - name: se_game_harddrop.wav
-    bundle: 3
-    dir: 6
+    bundle: 4
+    dir: 7
   - name: se_game_hold.wav
-    bundle: 3
-    dir: 6
+    bundle: 4
+    dir: 7
   - name: se_game_kbcomp.wav
-    bundle: 3
-    dir: 6
+    bundle: 4
+    dir: 7
   - name: se_game_kbget.wav
-    bundle: 3
-    dir: 6
+    bundle: 4
+    dir: 7
   - name: se_game_ko2.wav
-    bundle: 3
-    dir: 6
+    bundle: 4
+    dir: 7
   - name: se_game_landing.wav
-    bundle: 3
-    dir: 6
+    bundle: 4
+    dir: 7
   - name: se_game_match.wav
-    bundle: 3
-    dir: 6
+    bundle: 4
+    dir: 7
   - name: se_game_move.wav
-    bundle: 3
-    dir: 6
+    bundle: 4
+    dir: 7
   - name: se_game_msg.wav
-    bundle: 3
-    dir: 6
+    bundle: 4
+    dir: 7
   - name: se_game_offset1.wav
-    bundle: 3
-    dir: 6
+    bundle: 4
+    dir: 7
   - name: se_game_offset2.wav
-    bundle: 3
-    dir: 6
+    bundle: 4
+    dir: 7
   - name: se_game_pause.wav
-    bundle: 3
-    dir: 6
+    bundle: 4
+    dir: 7
   - name: se_game_perfect.wav
-    bundle: 3
-    dir: 6
+    bundle: 4
+    dir: 7
   - name: se_game_pinch.wav
-    bundle: 3
-    dir: 6
+    bundle: 4
+    dir: 7
   - name: se_game_pinput.wav
-    bundle: 3
-    dir: 6
+    bundle: 4
+    dir: 7
   - name: se_game_rotate.wav
-    bundle: 3
-    dir: 6
+    bundle: 4
+    dir: 7
   - name: se_game_single.wav
-    bundle: 3
-    dir: 6
+    bundle: 4
+    dir: 7
   - name: se_game_softdrop.wav
-    bundle: 3
-    dir: 6
+    bundle: 4
+    dir: 7
   - name: se_game_special.wav
-    bundle: 3
-    dir: 6
+    bundle: 4
+    dir: 7
   - name: se_game_tactics.wav
-    bundle: 3
-    dir: 6
+    bundle: 4
+    dir: 7
   - name: se_game_target.wav
-    bundle: 3
-    dir: 6
+    bundle: 4
+    dir: 7
   - name: se_game_tetris.wav
-    bundle: 3
-    dir: 6
+    bundle: 4
+    dir: 7
   - name: se_game_triple.wav
-    bundle: 3
-    dir: 6
+    bundle: 4
+    dir: 7
   - name: se_sys_alert.wav
-    bundle: 4
-    dir: 7
+    bundle: 5
+    dir: 8
   - name: se_sys_cancel.wav
-    bundle: 4
-    dir: 7
+    bundle: 5
+    dir: 8
   - name: se_sys_cursor1.wav
-    bundle: 4
-    dir: 7
+    bundle: 5
+    dir: 8
   - name: se_sys_cursor2.wav
-    bundle: 4
-    dir: 7
+    bundle: 5
+    dir: 8
   - name: se_sys_dialog.wav
-    bundle: 4
-    dir: 7
+    bundle: 5
+    dir: 8
   - name: se_sys_ok.wav
-    bundle: 4
-    dir: 7
+    bundle: 5
+    dir: 8
   - name: se_sys_select.wav
-    bundle: 4
-    dir: 7
+    bundle: 5
+    dir: 8
   - name: ses_sys_save.wav
-    bundle: 4
-    dir: 7
+    bundle: 5
+    dir: 8
   - name: I.prefab
-    bundle: 6
-    dir: 8
+    bundle: 7
+    dir: 9
   - name: J.prefab
-    bundle: 6
-    dir: 8
+    bundle: 7
+    dir: 9
   - name: L.prefab
-    bundle: 6
-    dir: 8
+    bundle: 7
+    dir: 9
   - name: O.prefab
-    bundle: 6
-    dir: 8
+    bundle: 7
+    dir: 9
   - name: S.prefab
-    bundle: 6
-    dir: 8
+    bundle: 7
+    dir: 9
   - name: T.prefab
-    bundle: 6
-    dir: 8
+    bundle: 7
+    dir: 9
   - name: Z.prefab
-    bundle: 6
-    dir: 8
+    bundle: 7
+    dir: 9
   - name: Line.prefab
-    bundle: 5
-    dir: 9
+    bundle: 6
+    dir: 10
   - name: HUD.prefab
-    bundle: 7
-    dir: 10
+    bundle: 8
+    dir: 11
   - name: Toast.prefab
-    bundle: 7
-    dir: 10
+    bundle: 8
+    dir: 11
   - name: UIAboutPanel.prefab
-    bundle: 7
-    dir: 10
+    bundle: 8
+    dir: 11
   - name: UICountdown.prefab
-    bundle: 7
-    dir: 10
+    bundle: 8
+    dir: 11
   - name: UIGameOverPanel.prefab
-    bundle: 7
-    dir: 10
+    bundle: 8
+    dir: 11
   - name: UIMessageBox.prefab
-    bundle: 7
-    dir: 10
+    bundle: 8
+    dir: 11
   - name: UINetworkWaiting.prefab
-    bundle: 7
-    dir: 10
+    bundle: 8
+    dir: 11
   - name: UISetting.prefab
-    bundle: 7
-    dir: 10
+    bundle: 8
+    dir: 11
   - name: UIStartPanel.prefab
-    bundle: 7
-    dir: 10
+    bundle: 8
+    dir: 11
   - name: '[Mask].prefab'
-    bundle: 7
-    dir: 10
+    bundle: 8
+    dir: 11
   - name: '[UIRoot].prefab'
-    bundle: 7
-    dir: 10
+    bundle: 8
+    dir: 11
   - name: vfx_board.prefab
-    bundle: 8
-    dir: 11
+    bundle: 9
+    dir: 12
   - name: vfx_clear_line.prefab
-    bundle: 8
-    dir: 11
+    bundle: 9
+    dir: 12
   - name: vfx_hard_drop.prefab
-    bundle: 8
-    dir: 11
+    bundle: 9
+    dir: 12
   - name: button.prefab
-    bundle: 5
-    dir: 9
+    bundle: 6
+    dir: 10
   - name: Gaming.unity
-    bundle: 9
-    dir: 12
-  - name: GamingSettings.lighting
     bundle: 10
-    dir: 12
-  - name: Start.unity
-    bundle: 9
-    dir: 12
-  - name: StartSettings.lighting
+    dir: 13
+  - name: GamingSettings.lighting
     bundle: 11
-    dir: 12
-  - name: NewShaderVariants.shadervariants
+    dir: 13
+  - name: Start.unity
+    bundle: 10
+    dir: 13
+  - name: StartSettings.lighting
     bundle: 12
     dir: 13
-  - name: GameScene.asset
+  - name: NewShaderVariants.shadervariants
     bundle: 13
     dir: 14
-  - name: LiberationSans SDF.asset
-    bundle: 17
-    dir: 15
-  - name: TMP_SDF-Mobile.shader
-    bundle: 12
-    dir: 16
-  - name: PostProcessLayer.png
-    bundle: 21
-    dir: 17
-  - name: Bloom.shader
-    bundle: 12
-    dir: 18
-  - name: CopyStd.shader
-    bundle: 12
-    dir: 18
-  - name: Uber.shader
-    bundle: 12
-    dir: 18
-  - name: TMP - Font Asset Icon.psd
-    bundle: 16
-    dir: 19
-  - name: TMP - Text Component Icon.psd
+  - name: GameScene.asset
     bundle: 14
+    dir: 15
+  - name: LiberationSans SDF.asset
+    bundle: 18
+    dir: 16
+  - name: TMP_SDF-Mobile.shader
+    bundle: 13
+    dir: 17
+  - name: PostProcessLayer.png
+    bundle: 22
+    dir: 18
+  - name: Bloom.shader
+    bundle: 13
     dir: 19
+  - name: CopyStd.shader
+    bundle: 13
+    dir: 19
+  - name: Uber.shader
+    bundle: 13
+    dir: 19
+  - name: TMP - Font Asset Icon.psd
+    bundle: 17
+    dir: 20
+  - name: TMP - Text Component Icon.psd
+    bundle: 15
+    dir: 20
   bundles:
-  - name: Bundle/0bec5af6b467ae1fde2a31690193fc54.assets
+  - name: Bundle/50cc3f554ebfb486487f25a93ab4b7f2.assets
     deps: 
-    size: 9360
-    hash: 498a63bb413066442e98633a071d9925
+    size: 9361
+    hash: c35cece3209083fe48dfda26b6075a55
+  - name: Bundle/a9172f71c292876738197a656f8b6ae9.assets
+    deps: 
+    size: 9611
+    hash: fe2560aed1863a7cc121f3a4e795eefb
   - name: Bundle/2e11701263376d820f7da064334a31fc.assets
     deps: 
     size: 2998
     hash: a8101ad5e44674ee289cdab6baded9d1
   - name: Bundle/cddc8477b1d989b4eb4784cacc57264c.assets
     deps: 
-    size: 5717396
-    hash: 71139c4c90e14f6aad8ea3a24090b467
+    size: 4903769
+    hash: 6e655ef04b7c566ffed7b5e8cd4b7e3c
   - name: Bundle/e45301e07b58b2711bbb3950bd8fe7f6.assets
     deps: 
     size: 5138403
@@ -405,23 +419,23 @@ MonoBehaviour:
     size: 322523
     hash: 87eb3822a96f20553d89405b837dc515
   - name: Bundle/018dffd74e0cf1290fccfbf10206bb8f.assets
-    deps: 0c000000110000001700000016000000
+    deps: 0d000000120000001800000017000000
     size: 9887
     hash: 9c1bb37f9ba6c4f2e26de16db927da89
   - name: Bundle/a9dede716630fcb869a95f528d5a9fc5.assets
-    deps: 140000000f00000016000000
+    deps: 150000001000000017000000
     size: 6762
     hash: 508f9cd85c20d039b9963b0e4e60b7ad
   - name: Bundle/1350de96287ba86488ba98bc1d3346d7.assets
-    deps: 000000000c0000000f000000040000001100000017000000
-    size: 34799
-    hash: 2c9d953ec11a8974f8f3f717b8aa74e9
+    deps: 0d000000000000001000000001000000050000001200000018000000
+    size: 35449
+    hash: 12e868825dce48d64dbc41ed3de264f3
   - name: Bundle/75435274083ab3189950bf2eb5a14f7e.assets
-    deps: 13000000120000001700000016000000
+    deps: 14000000130000001800000017000000
     size: 30942
     hash: 6b0f6ea54048f85a76062bd84a1d5487
   - name: Bundle/b1da4339b903c769f6923f995e119060.assets
-    deps: 0500000014000000130000000c0000000a000000120000000f0000000600000002000000030000000b000000110000001700000016000000
+    deps: 0600000015000000140000000d0000000b00000013000000100000000700000003000000040000000c000000120000001800000017000000
     size: 46551
     hash: bff414790e150d2599a5d6fdf8e859de
   - name: Bundle/1f140a47847e1300999e6c9719d000ed.assets
@@ -433,7 +447,7 @@ MonoBehaviour:
     size: 1383
     hash: 6f49020df67160138f1415a628a7d21d
   - name: Bundle/1aa355706e1767666124331a716c7890.assets
-    deps: 16000000
+    deps: 17000000
     size: 304726
     hash: f281c5a2edd840c8b53aeb3cc0e98b45
   - name: Bundle/57c09ce22098becd0cd9b1eca4b395da.assets
@@ -453,7 +467,7 @@ MonoBehaviour:
     size: 3628
     hash: 2950037498298f93508ac0a47e7cafc6
   - name: Bundle/f16de81a2946d9fc789b5cc6833b5a2c.assets
-    deps: 0c000000
+    deps: 0d000000
     size: 413777
     hash: 3c4d613a2abbd43c555a861a82bca0a3
   - name: Bundle/368283101e9413accfd057adb2306563.assets
@@ -461,11 +475,11 @@ MonoBehaviour:
     size: 2985
     hash: dd7b58650ce235dc212f31e60981764a
   - name: Bundle/0f7769ef57b03b2f80c59a226b37a932.assets
-    deps: 1200000016000000
+    deps: 1300000017000000
     size: 2954
     hash: f81edf72d6a27c7e1483eaeb34c43153
   - name: Bundle/0e06f2ffd888ec169573b134a1c61a4e.assets
-    deps: 16000000
+    deps: 17000000
     size: 2514
     hash: c3caa892c6b061bf7dfb8c3ef17ff0f4
   - name: Bundle/a26f4e2f7d4dcb84b87c17d97a552c5e.assets
@@ -483,4 +497,4 @@ MonoBehaviour:
   customAssets:
   - name: Custom/scripts.dat
     size: 36864
-    hash: fa3b21bca6333e457529f8d2bf1f3c6b
+    hash: af4ccace85e8e71c43c1df8146d26b4e
