@@ -21,7 +21,7 @@ MonoBehaviour:
   searchPatternScene: '*.unity'
   searchPatternText: '*.txt,*.bytes,*.json,*.csv,*.xml,*htm,*.html,*.yaml,*.fnt'
   nameBundleByHash: 1
-  resVersion: 37
+  resVersion: 41
   scenesInBuild:
   - {fileID: 102900000, guid: 8943688c1103d8c46b982d0a1a9e2310, type: 3}
   groups:

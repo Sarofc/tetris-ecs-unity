@@ -9,26 +9,15 @@ namespace Tetris.UI
 {
     public sealed partial class UIAboutPanel : SingletonUI<UIAboutPanel, UIBinder>
     {
-        public UIAboutPanel()
-        {
-            m_AssetName = "UIAboutPanel";
-        }
-
         #region Impl
 
         protected override void InternalStart()
         {
-            Binder = GetUIBinder<UIBinder>();
-            if (Binder == null)
-            {
-                return;
-            }
-
-            GetComps();
         }
 
-        protected override void ListenEvents()
+        protected override void InternalAwake()
         {
+            GetComps();
             Listen(btn_close.onClick, Close);
         }
 

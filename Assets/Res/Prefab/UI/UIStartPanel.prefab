@@ -1138,6 +1138,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8132250944857447957}
   - component: {fileID: 436692039824089589}
+  - component: {fileID: 8959100126759660160}
   m_Layer: 5
   m_Name: UIStartPanel
   m_TagString: Untagged
@@ -1190,6 +1191,24 @@ MonoBehaviour:
   - key: btn_quit
     obj: {fileID: 436692040907051036}
   m_UIScript: {fileID: 11500000, guid: 1e113646d15bbb8439cc87996c0ce540, type: 3}
+--- !u!114 &8959100126759660160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8132250944857447962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cb46a2d99f42b64e804675ac66b70db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  script:
+    cachedAsset: {fileID: 1042094116111776886, guid: 872e1cb0fd2a47b45872c8133b476ccc,
+      type: 3}
+    text: {fileID: 0}
+    filename: UI.UIStartPanel
+    type: 1
 --- !u!1 &8152314301676503764
 GameObject:
   m_ObjectHideFlags: 0

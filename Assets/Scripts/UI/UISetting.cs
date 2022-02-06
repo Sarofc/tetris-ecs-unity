@@ -9,22 +9,10 @@ namespace Tetris.UI
 {
     public sealed partial class UISetting : SingletonUI<UISetting, UIBinder>
     {
-        public UISetting()
-        {
-            m_AssetName = "UISetting";
-        }
-
         #region Impl
 
         protected override void InternalStart()
         {
-            Binder = GetUIBinder<UIBinder>();
-            if (Binder == null)
-            {
-                return;
-            }
-
-            GetComps();
         }
 
         protected override void InternalUpdate(float deltaTime)
@@ -35,8 +23,10 @@ namespace Tetris.UI
         {
         }
 
-        protected override void ListenEvents()
+        protected override void InternalAwake()
         {
+            GetComps();
+
             Listen(slider_bgm.onValueChanged, OnBGMChanged);
             Listen(slider_se.onValueChanged, OnSEChanged);
 

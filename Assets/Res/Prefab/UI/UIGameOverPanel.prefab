@@ -210,6 +210,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1889421624848191591}
   - component: {fileID: 1889421624848191590}
+  - component: {fileID: -5556206720928174194}
   m_Layer: 5
   m_Name: UIGameOverPanel
   m_TagString: Untagged
@@ -259,6 +260,24 @@ MonoBehaviour:
   - key: btn_quit
     obj: {fileID: 1889421626207984759}
   m_UIScript: {fileID: 11500000, guid: 152c98fce2db0fe4a88fe8512a413228, type: 3}
+--- !u!114 &-5556206720928174194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1889421624848191592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cb46a2d99f42b64e804675ac66b70db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  script:
+    cachedAsset: {fileID: 1042094116111776886, guid: 254f4672af8c49e4b8b1252e1b94c795,
+      type: 3}
+    text: {fileID: 0}
+    filename: UI.UIGameOverPanel
+    type: 1
 --- !u!1 &1889421625211366358
 GameObject:
   m_ObjectHideFlags: 0

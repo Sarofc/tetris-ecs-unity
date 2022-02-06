@@ -10,22 +10,10 @@ namespace Tetris.UI
 {
     public sealed partial class UIGameOverPanel : SingletonUI<UIGameOverPanel, UIBinder>
     {
-        public UIGameOverPanel()
-        {
-            m_AssetName = "UIGameOverPanel";
-        }
-
         #region Impl
 
         protected override void InternalStart()
         {
-            Binder = GetUIBinder<UIBinder>();
-            if (Binder == null)
-            {
-                return;
-            }
-
-            GetComps();
         }
 
         protected override void InternalUpdate(float deltaTime)
@@ -36,8 +24,10 @@ namespace Tetris.UI
         {
         }
 
-        protected override void ListenEvents()
+        protected override void InternalAwake()
         {
+            GetComps();
+
             Listen(btn_replay.onClick, OnClick_Replay);
             Listen(btn_setting.onClick, OnClick_Setting);
             Listen(btn_about.onClick, OnClick_About);

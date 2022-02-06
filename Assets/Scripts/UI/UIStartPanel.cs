@@ -11,26 +11,16 @@ namespace Tetris.UI
 {
     public sealed partial class UIStartPanel : SingletonUI<UIStartPanel, UIBinder>
     {
-        public UIStartPanel()
-        {
-            m_AssetName = "UIStartPanel";
-        }
-
         #region Impl
 
         protected override void InternalStart()
         {
-            Binder = GetUIBinder<UIBinder>();
-            if (Binder == null)
-            {
-                return;
-            }
-
-            GetComps();
         }
 
-        protected override void ListenEvents()
+        protected override void InternalAwake()
         {
+            GetComps();
+
             Listen(btn_start.onClick, () =>
             {
                 OnClick_Start().Forget();

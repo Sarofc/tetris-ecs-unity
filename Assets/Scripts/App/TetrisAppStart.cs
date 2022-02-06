@@ -11,10 +11,15 @@ using Saro.XAsset.Update;
 using UnityEngine;
 using Tetris.UI;
 using Saro.Audio;
+using Saro.Lua.UI;
+using Saro.Lua;
+using System.IO;
+using System.Threading.Tasks;
+using Saro.Utility;
 
 namespace Tetris
 {
-    public class TetrisAppStart : AEvent<AppStart>
+    public sealed class TetrisAppStart : AEvent<AppStart>
     {
         protected override async UniTask Run(AppStart args)
         {
@@ -31,21 +36,14 @@ namespace Tetris
             await FGame.Register<SoundComponent>().InitializeAsync(FGame.Resolve<XAssetComponent>(), "Assets/Res/Audios/");
             await FGame.Register<UIComponent>().InitializeAsync(FGame.Resolve<XAssetComponent>(), "Assets/Res/Prefab/UI/");
 
-            {
-                //var assetUpdaterComponent = FGame.Register<AssetUpdaterComponent>();
-                //assetUpdaterComponent.RequestDownloadOperationFunc = RequestDownloadOperation;
-
-                //var uiloading = await UIComponent.Instance.OpenUIAsync<UILoading>();
-
-                //await assetUpdaterComponent.StartUpdate();
-
-                //uiloading.Close();
-            }
+            await UpdateAssetsAsync();
 
             // incase
             if (FGame.Scene.IsDisposed) return;
 
-            await UIComponent.Current.OpenUIAsync<UIStartPanel>();
+            //await UIComponent.Current.OpenUIAsync<UIStartPanel>();
+
+            SetupLuaEnv();
         }
 
         private void SetupDownloader()
@@ -82,6 +80,67 @@ namespace Tetris
             Main.Instance.gameObject.AddComponent<Tests.TestIFix>();
         }
 
+        private void SetupLuaEnv()
+        {
+            FGame.Register<LuaComponent>();
+
+            var luaEnv = LuaComponent.Current.LuaEnv;
+
+#if UNITY_EDITOR && true
+            if (XAssetComponent.s_Mode == XAssetComponent.EMode.Editor)
+            {
+                var dirs = Directory.GetDirectories(Application.dataPath, "LuaScripts", SearchOption.AllDirectories);
+                foreach (var dir in dirs)
+                {
+                    luaEnv.AddLoader(new FileLuaLoader(dir, ".lua.txt"));
+                    luaEnv.AddLoader(new FileLuaLoader(dir, ".lua"));
+                }
+            }
+            else
+            {
+                luaEnv.AddLoader(new VFSLuaLoader(XAssetPath.k_Editor_DlcOutputPath + "/" + XAssetPath.k_CustomFolder));
+            }
+#else
+            // 先加载dlc目录，在加载streamming目录 
+            luaEnv.AddLoader(new VFSLuaLoader(XAssetPath.k_DlcPath + "/" + XAssetPath.k_CustomFolder));
+            luaEnv.AddLoader(new VFSLuaLoader(XAssetPath.k_BasePath + "/" + XAssetPath.k_CustomFolder));
+#endif
+
+            try
+            {
+                luaEnv.DoString("require (\"Main\")");
+                //await UIComponent.Current.OpenUIAsync("UIStartPanel");
+                //await UIComponent.Current.OpenLuaUIAsync("UISetting");
+            }
+            catch (Exception e)
+            {
+                Log.ERROR(e);
+            }
+        }
+
+        /// <summary>
+        /// 更新资源
+        /// </summary>
+        /// <returns></returns>
+        private async UniTask UpdateAssetsAsync()
+        {
+            var assetUpdaterComponent = FGame.Register<AssetUpdaterComponent>();
+            assetUpdaterComponent.RequestDownloadOperationFunc = RequestDownloadOperation;
+
+            //var uiloading = await UIComponent.Current.OpenUIAsync("UILoading");
+
+            assetUpdaterComponent.StartUpdate().Forget();
+
+            while (!assetUpdaterComponent.IsComplete)
+            {
+                await UniTask.Yield();
+            }
+
+            await PrepareAssets();
+
+            //uiloading.Close();
+        }
+
         private UniTask<bool> RequestDownloadOperation(List<DownloadInfo> infos)
         {
             var cts = new UniTaskCompletionSource<bool>();
@@ -93,11 +152,7 @@ namespace Tetris
                 totalDownloadSize += info.Size;
             }
 
-            if (totalDownloadSize <= 0) // 没有下载就直接跳过下载步骤，直接进游戏
-            {
-                cts.TrySetResult(false);
-            }
-            else if (totalDownloadSize <= 1024 * 1024 * 5) //小于5m也静默下载
+            if (totalDownloadSize <= 1024 * 1024 * 10) //小于10m也静默下载
             {
                 cts.TrySetResult(true);
             }
@@ -124,6 +179,15 @@ namespace Tetris
             }
 
             return cts.Task;
+        }
+
+        /// <summary>
+        /// 准备必要的资源，确保本地存在
+        /// </summary>
+        /// <returns></returns>
+        private async UniTask PrepareAssets()
+        {
+            await XAssetComponent.Current.CheckCustomAssets(XAssetPath.k_CustomFolder + "/" + VFSLuaLoader.s_ScriptsFileName);
         }
     }
 }

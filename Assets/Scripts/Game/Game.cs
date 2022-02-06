@@ -10,11 +10,10 @@ using Saro.Audio;
 using Saro.UI;
 using Tetris.UI;
 using Cysharp.Threading.Tasks;
+using Saro.Lua.UI;
 
 namespace Tetris
 {
-
-
     public class Game : MonoBehaviour
     {
         //public float DAS { get { return startTime; } set { startTime = value; } }
@@ -56,7 +55,8 @@ namespace Tetris
 
         private void OnGameOver()
         {
-            UIComponent.Current.OpenUIAsync<UIGameOverPanel>().Forget();
+            //UIComponent.Current.OpenUIAsync<UIGameOverPanel>().Forget();
+            UIComponent.Current.OpenUIAsync("UIGameOverPanel").Forget();
         }
 
 
