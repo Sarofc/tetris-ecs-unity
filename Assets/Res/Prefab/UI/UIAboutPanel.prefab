@@ -280,7 +280,7 @@ MonoBehaviour:
     cachedAsset: {fileID: 1042094116111776886, guid: 977196c49e729ca4b88b028006b1cbf0,
       type: 3}
     text: {fileID: 0}
-    filename: UI.UIAboutPanel
+    filename: UI/UIAboutPanel
     type: 1
 --- !u!114 &-6054939565374759811
 MonoBehaviour:

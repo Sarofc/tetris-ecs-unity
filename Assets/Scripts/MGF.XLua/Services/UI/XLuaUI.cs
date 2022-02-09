@@ -75,7 +75,7 @@ namespace Saro.Lua.UI
             m_ScriptEnv.Set("target", this);
 
             var script = Binder.GetComponent<LuaScript>().script;
-            string scriptText = (script.Type == EScriptReferenceType.TextAsset) ? script.Text.text : string.Format("require(\"Core.System\");local cls=require(\"{0}\");return extends(target,cls);", script.Filename);
+            string scriptText = (script.Type == EScriptReferenceType.TextAsset) ? script.Text.text : string.Format("require(\"Core/System\");local cls=require(\"{0}\");return extends(target,cls);", script.Filename);
 
             object[] result = luaEnv.DoString(scriptText, string.Format("{0}({1})", "XLuaUI", UIName), m_ScriptEnv);
 

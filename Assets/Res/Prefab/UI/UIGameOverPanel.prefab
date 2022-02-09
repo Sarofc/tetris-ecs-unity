@@ -276,7 +276,7 @@ MonoBehaviour:
     cachedAsset: {fileID: 1042094116111776886, guid: 254f4672af8c49e4b8b1252e1b94c795,
       type: 3}
     text: {fileID: 0}
-    filename: UI.UIGameOverPanel
+    filename: UI/UIGameOverPanel
     type: 1
 --- !u!1 &1889421625211366358
 GameObject:

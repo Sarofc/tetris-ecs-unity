@@ -452,7 +452,7 @@ MonoBehaviour:
     cachedAsset: {fileID: 1042094116111776886, guid: 6b3e7fd86b7f1f6499f1dcb564cde5ca,
       type: 3}
     text: {fileID: 0}
-    filename: UI.UISetting
+    filename: UI/UISetting
     type: 1
 --- !u!114 &2265171165059237068
 MonoBehaviour:

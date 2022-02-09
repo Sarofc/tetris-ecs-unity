@@ -1,4 +1,4 @@
-require("Core.System")
+require("Core/System")
 
 local UIComponent = CS.Saro.UI.UIComponent.Current
 

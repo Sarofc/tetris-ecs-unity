@@ -98,12 +98,13 @@ namespace Tetris
             }
             else
             {
-                luaEnv.AddLoader(new VFSLuaLoader(XAssetPath.k_Editor_DlcOutputPath + "/" + XAssetPath.k_CustomFolder));
+                luaEnv.AddLoader(new FileLuaLoader(XAssetPath.k_Editor_DlcOutputPath + "/" + XAssetPath.k_CustomFolder + "/luascripts", ".lua"));
+                luaEnv.AddLoader(new VFSLuaLoader(XAssetPath.k_Editor_DlcOutputPath + "/" + XAssetPath.k_CustomFolder + "/luascripts"));
             }
 #else
             // 先加载dlc目录，在加载streamming目录 
-            luaEnv.AddLoader(new VFSLuaLoader(XAssetPath.k_DlcPath + "/" + XAssetPath.k_CustomFolder));
-            luaEnv.AddLoader(new VFSLuaLoader(XAssetPath.k_BasePath + "/" + XAssetPath.k_CustomFolder));
+            luaEnv.AddLoader(new VFSLuaLoader(XAssetPath.k_DlcPath + "/" + XAssetPath.k_CustomFolder + "/luascripts"));
+            luaEnv.AddLoader(new VFSLuaLoader(XAssetPath.k_BasePath + "/" + XAssetPath.k_CustomFolder + "/luascripts"));
 #endif
 
             try
@@ -187,7 +188,7 @@ namespace Tetris
         /// <returns></returns>
         private async UniTask PrepareAssets()
         {
-            await XAssetComponent.Current.CheckCustomAssets(XAssetPath.k_CustomFolder + "/" + VFSLuaLoader.s_ScriptsFileName);
+            await XAssetComponent.Current.CheckCustomAssets(XAssetPath.k_CustomFolder + "/luascripts");
         }
     }
 }

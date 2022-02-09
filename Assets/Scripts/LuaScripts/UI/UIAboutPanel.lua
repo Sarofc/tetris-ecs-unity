@@ -1,4 +1,4 @@
-require("Core.System")
+require("Core/System")
 
 local M = class("UIAboutPanel", target)
 

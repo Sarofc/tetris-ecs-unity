@@ -21,14 +21,121 @@ MonoBehaviour:
   searchPatternScene: '*.unity'
   searchPatternText: '*.txt,*.bytes,*.json,*.csv,*.xml,*htm,*.html,*.yaml,*.fnt'
   nameBundleByHash: 1
-  resVersion: 44
+  resVersion: 76
   scenesInBuild:
   - {fileID: 102900000, guid: 8943688c1103d8c46b982d0a1a9e2310, type: 3}
-  groups:
+  bundleGroups:
   - searchPath: Assets/Res
     searchPattern: '*'
     nameBy: 2
-    assetBundleName: 
+    builtIn: 1
+    assets:
+    - Assets/Res/Aniamtor/UI/countdown.anim
+    - Assets/Res/Aniamtor/UI/ctrl_countdown.controller
+    - Assets/Res/Aniamtor/UI/Common/ctrl_ui_animation_common.controller
+    - Assets/Res/Aniamtor/UI/Common/UIClose.anim
+    - Assets/Res/Aniamtor/UI/Common/UIOpen.anim
+    - Assets/Res/Audios/GameMixer.mixer
+    - Assets/Res/Audios/BGM/bgm_t02_swap_t.wav
+    - Assets/Res/Audios/SE/me_game_clear.wav
+    - Assets/Res/Audios/SE/me_game_gameover.wav
+    - Assets/Res/Audios/SE/me_game_iget.wav
+    - Assets/Res/Audios/SE/me_game_ko_gong.wav
+    - Assets/Res/Audios/SE/me_game_ko_vo.wav
+    - Assets/Res/Audios/SE/me_game_ko_vo_de.wav
+    - Assets/Res/Audios/SE/me_game_ko_vo_es.wav
+    - Assets/Res/Audios/SE/me_game_ko_vo_fr.wav
+    - Assets/Res/Audios/SE/me_game_ko_vo_it.wav
+    - Assets/Res/Audios/SE/me_game_ko_vo_nl.wav
+    - Assets/Res/Audios/SE/me_game_ko_vo_ru.wav
+    - Assets/Res/Audios/SE/me_game_plvup.wav
+    - Assets/Res/Audios/SE/me_game_remain_1.wav
+    - Assets/Res/Audios/SE/me_game_remain_2.wav
+    - Assets/Res/Audios/SE/me_game_start1.wav
+    - Assets/Res/Audios/SE/me_game_start1_de.wav
+    - Assets/Res/Audios/SE/me_game_start1_es.wav
+    - Assets/Res/Audios/SE/me_game_start1_fr.wav
+    - Assets/Res/Audios/SE/me_game_start1_it.wav
+    - Assets/Res/Audios/SE/me_game_start1_nl.wav
+    - Assets/Res/Audios/SE/me_game_start1_ru.wav
+    - Assets/Res/Audios/SE/me_game_start2.wav
+    - Assets/Res/Audios/SE/me_game_start2_vo.wav
+    - Assets/Res/Audios/SE/me_game_start2_vo_de.wav
+    - Assets/Res/Audios/SE/me_game_start2_vo_es.wav
+    - Assets/Res/Audios/SE/me_game_start2_vo_fr.wav
+    - Assets/Res/Audios/SE/me_game_start2_vo_it.wav
+    - Assets/Res/Audios/SE/me_game_start2_vo_nl.wav
+    - Assets/Res/Audios/SE/me_game_start2_vo_ru.wav
+    - Assets/Res/Audios/SE/se_game_attack1.wav
+    - Assets/Res/Audios/SE/se_game_attack2.wav
+    - Assets/Res/Audios/SE/se_game_bfall.wav
+    - Assets/Res/Audios/SE/se_game_caution.wav
+    - Assets/Res/Audios/SE/se_game_change1.wav
+    - Assets/Res/Audios/SE/se_game_change2.wav
+    - Assets/Res/Audios/SE/se_game_count.wav
+    - Assets/Res/Audios/SE/se_game_double.wav
+    - Assets/Res/Audios/SE/se_game_emblemget.wav
+    - Assets/Res/Audios/SE/se_game_fixa.wav
+    - Assets/Res/Audios/SE/se_game_harddrop.wav
+    - Assets/Res/Audios/SE/se_game_hold.wav
+    - Assets/Res/Audios/SE/se_game_kbcomp.wav
+    - Assets/Res/Audios/SE/se_game_kbget.wav
+    - Assets/Res/Audios/SE/se_game_ko2.wav
+    - Assets/Res/Audios/SE/se_game_landing.wav
+    - Assets/Res/Audios/SE/se_game_match.wav
+    - Assets/Res/Audios/SE/se_game_move.wav
+    - Assets/Res/Audios/SE/se_game_msg.wav
+    - Assets/Res/Audios/SE/se_game_offset1.wav
+    - Assets/Res/Audios/SE/se_game_offset2.wav
+    - Assets/Res/Audios/SE/se_game_pause.wav
+    - Assets/Res/Audios/SE/se_game_perfect.wav
+    - Assets/Res/Audios/SE/se_game_pinch.wav
+    - Assets/Res/Audios/SE/se_game_pinput.wav
+    - Assets/Res/Audios/SE/se_game_rotate.wav
+    - Assets/Res/Audios/SE/se_game_single.wav
+    - Assets/Res/Audios/SE/se_game_softdrop.wav
+    - Assets/Res/Audios/SE/se_game_special.wav
+    - Assets/Res/Audios/SE/se_game_tactics.wav
+    - Assets/Res/Audios/SE/se_game_target.wav
+    - Assets/Res/Audios/SE/se_game_tetris.wav
+    - Assets/Res/Audios/SE/se_game_triple.wav
+    - Assets/Res/Audios/UI/ses_sys_save.wav
+    - Assets/Res/Audios/UI/se_sys_alert.wav
+    - Assets/Res/Audios/UI/se_sys_cancel.wav
+    - Assets/Res/Audios/UI/se_sys_cursor1.wav
+    - Assets/Res/Audios/UI/se_sys_cursor2.wav
+    - Assets/Res/Audios/UI/se_sys_dialog.wav
+    - Assets/Res/Audios/UI/se_sys_ok.wav
+    - Assets/Res/Audios/UI/se_sys_select.wav
+    - Assets/Res/Prefab/button.prefab
+    - Assets/Res/Prefab/Line.prefab
+    - Assets/Res/Prefab/Block/I.prefab
+    - Assets/Res/Prefab/Block/J.prefab
+    - Assets/Res/Prefab/Block/L.prefab
+    - Assets/Res/Prefab/Block/O.prefab
+    - Assets/Res/Prefab/Block/S.prefab
+    - Assets/Res/Prefab/Block/T.prefab
+    - Assets/Res/Prefab/Block/Z.prefab
+    - Assets/Res/Prefab/UI/HUD.prefab
+    - Assets/Res/Prefab/UI/Toast.prefab
+    - Assets/Res/Prefab/UI/UIAboutPanel.prefab
+    - Assets/Res/Prefab/UI/UICountdown.prefab
+    - Assets/Res/Prefab/UI/UIGameOverPanel.prefab
+    - Assets/Res/Prefab/UI/UIMessageBox.prefab
+    - Assets/Res/Prefab/UI/UINetworkWaiting.prefab
+    - Assets/Res/Prefab/UI/UISetting.prefab
+    - Assets/Res/Prefab/UI/UIStartPanel.prefab
+    - Assets/Res/Prefab/UI/[Mask].prefab
+    - Assets/Res/Prefab/UI/[UIRoot].prefab
+    - Assets/Res/Prefab/Vfx/vfx_board.prefab
+    - Assets/Res/Prefab/Vfx/vfx_clear_line.prefab
+    - Assets/Res/Prefab/Vfx/vfx_hard_drop.prefab
+    - Assets/Res/Scenes/Gaming.unity
+    - Assets/Res/Scenes/GamingSettings.lighting
+    - Assets/Res/Scenes/Start.unity
+    - Assets/Res/Scenes/StartSettings.lighting
+    - Assets/Res/Shaders/NewShaderVariants.shadervariants
+    - Assets/Res/Volumes/GameScene.asset
   ruleAssets:
   - asset: Assets/Arts/Materials/Block.mat
     bundle: 0e06f2ffd888ec169573b134a1c61a4e.assets
@@ -434,3 +541,25 @@ MonoBehaviour:
   - bundle: a26f4e2f7d4dcb84b87c17d97a552c5e.assets
     assets:
     - Packages/com.unity.postprocessing/PostProcessing/Gizmos/PostProcessLayer.png
+  customGroups:
+  - groupName: luascripts
+    packPolicy: -1
+    searchPattern: '*.lua'
+    searchPaths:
+    - Assets/Scripts/LuaScripts
+    - Assets/Scripts/MGF.XLua/LuaScripts
+    packAsVFS: 1
+    builtIn: 1
+    assets:
+    - asset: Main.lua
+      dir: 0
+    - asset: UI/UIAboutPanel.lua
+      dir: 0
+    - asset: UI/UIGameOverPanel.lua
+      dir: 0
+    - asset: UI/UISetting.lua
+      dir: 0
+    - asset: UI/UIStartPanel.lua
+      dir: 0
+    - asset: Core/System.lua
+      dir: 1

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Manifest
   m_EditorClassIdentifier: 
   appVersion: 0.1
-  resVersion: 43
+  resVersion: 75
   remoteVersionUrl: 
   remoteAssetUrl: http://localhost:8080
   dirs:
@@ -428,8 +428,8 @@ MonoBehaviour:
     hash: 508f9cd85c20d039b9963b0e4e60b7ad
   - name: Bundle/1350de96287ba86488ba98bc1d3346d7.assets
     deps: 0d000000000000001000000001000000050000001200000018000000
-    size: 35449
-    hash: 12e868825dce48d64dbc41ed3de264f3
+    size: 35448
+    hash: 6eb5092b99daba446018cc1480bb0490
   - name: Bundle/75435274083ab3189950bf2eb5a14f7e.assets
     deps: 14000000130000001800000017000000
     size: 30942
@@ -495,6 +495,6 @@ MonoBehaviour:
     size: 15030
     hash: 6776840353b29058cc04bcd368387dab
   customAssets:
-  - name: Custom/scripts.dat
+  - name: Custom/luascripts
     size: 36864
-    hash: af4ccace85e8e71c43c1df8146d26b4e
+    hash: c372d03421b56627a1780221b148bb1e

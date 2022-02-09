@@ -10,15 +10,13 @@ namespace Saro.Lua
 {
     public sealed class VFSLuaLoader : LuaLoaderBase
     {
-        public readonly static string s_ScriptsFileName = "scripts.dat";
-
         public VFSLuaLoader(string path) : base(path, string.Empty)
         {
         }
 
         protected override byte[] Load(ref string fileName)
         {
-            var path = m_Path + "/" + s_ScriptsFileName;
+            var path = m_Path;
 
             // incase
             if (!FileUtility.Exists(path)) return null;

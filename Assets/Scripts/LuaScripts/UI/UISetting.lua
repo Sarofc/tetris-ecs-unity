@@ -1,4 +1,4 @@
-require("Core.System")
+require("Core/System")
 
 local SoundComponent = CS.Saro.Audio.SoundComponent.Current
 

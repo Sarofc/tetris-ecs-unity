@@ -43,7 +43,8 @@ namespace Saro.Lua
             {
                 if (path.StartsWith(root))
                 {
-                    path = path.Replace(root + "/", "").Replace("/", ".");
+                    //path = path.Replace(root + "/", "").Replace("/", ".");
+                    path = path.Replace(root + "/", "");
                     return path;
                 }
             }
@@ -52,7 +53,7 @@ namespace Saro.Lua
             if (index >= 0)
                 path = path.Substring(index + 10);
 
-            path = path.Replace("/", ".");
+            //path = path.Replace("/", ".");
             return path;
         }
 
