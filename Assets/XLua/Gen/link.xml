@@ -3,9 +3,11 @@
 <linker>
 
 	<assembly fullname="Assembly-CSharp">
-	    <type fullname="Saro.SceneManagerLuaExt" preserve="all"/>
+	    <type fullname="Saro.SceneManagerLuaEx" preserve="all"/>
+		<type fullname="Saro.Lua.SoundComponentEx" preserve="all"/>
 		<type fullname="Saro.Lua.UI.UIComponentLuaExt" preserve="all"/>
 		<type fullname="Saro.Lua.UI.XLuaUI" preserve="all"/>
+		<type fullname="Tetris.SoundComponentEx" preserve="all"/>
 		
 	</assembly>
 

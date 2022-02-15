@@ -16,7 +16,7 @@ end
 
 function M.OnClick_start()
     print("click start")
-    CS.Saro.SceneManagerLuaExt.LoadSceneAsync("Assets/Res/Scenes/Gaming.unity")
+    CS.Saro.SceneManagerLuaEx.LoadSceneAsync("Assets/Res/Scenes/Gaming.unity")
 end
 
 function M.OnClick_setting()

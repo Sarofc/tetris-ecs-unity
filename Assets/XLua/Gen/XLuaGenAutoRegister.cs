@@ -22,13 +22,19 @@ namespace XLua.CSObjectWrap
         static void wrapInit0(LuaEnv luaenv, ObjectTranslator translator)
         {
         
-            translator.DelayWrapLoader(typeof(Saro.SceneManagerLuaExt), SaroSceneManagerLuaExtWrap.__Register);
+            translator.DelayWrapLoader(typeof(Saro.SceneManagerLuaEx), SaroSceneManagerLuaExWrap.__Register);
+        
+        
+            translator.DelayWrapLoader(typeof(Saro.Lua.SoundComponentEx), SaroLuaSoundComponentExWrap.__Register);
         
         
             translator.DelayWrapLoader(typeof(Saro.Lua.UI.UIComponentLuaExt), SaroLuaUIUIComponentLuaExtWrap.__Register);
         
         
             translator.DelayWrapLoader(typeof(Saro.Lua.UI.XLuaUI), SaroLuaUIXLuaUIWrap.__Register);
+        
+        
+            translator.DelayWrapLoader(typeof(Tetris.SoundComponentEx), TetrisSoundComponentExWrap.__Register);
         
         
             translator.DelayWrapLoader(typeof(object), SystemObjectWrap.__Register);
@@ -154,40 +160,116 @@ namespace XLua
 	internal partial class InternalGlobals
     {
 	    
-		delegate Cysharp.Threading.Tasks.UniTask<Saro.UI.UIBase> __GEN_DELEGATE0( Saro.UI.UIComponent self,  string uiName);
+		delegate void __GEN_DELEGATE0( Saro.Audio.SoundComponent self,  float val);
 		
-		delegate Cysharp.Threading.Tasks.UniTask<Saro.UI.UIBase> __GEN_DELEGATE1( Saro.UI.UIComponent self,  System.Type uiType,  string uiName);
+		delegate float __GEN_DELEGATE1( Saro.Audio.SoundComponent self);
 		
-		delegate void __GEN_DELEGATE2( Saro.UI.UIComponent self,  string uiName);
+		delegate void __GEN_DELEGATE2( Saro.Audio.SoundComponent self,  float val);
 		
-		delegate void __GEN_DELEGATE3( Saro.UI.UIBase self,  UnityEngine.Events.UnityEvent src,  UnityEngine.Events.UnityAction dst);
+		delegate float __GEN_DELEGATE3( Saro.Audio.SoundComponent self);
 		
-		delegate void __GEN_DELEGATE4( Saro.UI.UIBase self,  UnityEngine.Events.UnityEvent<float> src,  UnityEngine.Events.UnityAction<float> dst);
+		delegate Cysharp.Threading.Tasks.UniTask __GEN_DELEGATE4( Saro.Audio.SoundComponent self,  string assetName);
 		
-		delegate void __GEN_DELEGATE5( Saro.UI.UIBase self);
+		delegate Cysharp.Threading.Tasks.UniTask __GEN_DELEGATE5( Saro.Audio.SoundComponent self,  string assetName);
+		
+		delegate Cysharp.Threading.Tasks.UniTask<Saro.UI.UIBase> __GEN_DELEGATE6( Saro.UI.UIComponent self,  string uiName);
+		
+		delegate Cysharp.Threading.Tasks.UniTask<Saro.UI.UIBase> __GEN_DELEGATE7( Saro.UI.UIComponent self,  System.Type uiType,  string uiName);
+		
+		delegate void __GEN_DELEGATE8( Saro.UI.UIComponent self,  string uiName);
+		
+		delegate void __GEN_DELEGATE9( Saro.UI.UIBase self,  UnityEngine.Events.UnityEvent src,  UnityEngine.Events.UnityAction dst);
+		
+		delegate void __GEN_DELEGATE10( Saro.UI.UIBase self,  UnityEngine.Events.UnityEvent<float> src,  UnityEngine.Events.UnityAction<float> dst);
+		
+		delegate void __GEN_DELEGATE11( Saro.UI.UIBase self);
+		
+		delegate void __GEN_DELEGATE12( Saro.Audio.SoundComponent self);
+		
+		delegate void __GEN_DELEGATE13( Saro.Audio.SoundComponent self);
 		
 	    static InternalGlobals()
 		{
 		    extensionMethodMap = new Dictionary<Type, IEnumerable<MethodInfo>>()
 			{
 			    
+				{typeof(Saro.Audio.SoundComponent), new List<MethodInfo>(){
+				
+				  new __GEN_DELEGATE0(Saro.Lua.SoundComponentEx.SetVolumeBGM)
+#if UNITY_WSA && !UNITY_EDITOR
+                                      .GetMethodInfo(),
+#else
+                                      .Method,
+#endif
+				
+				  new __GEN_DELEGATE1(Saro.Lua.SoundComponentEx.GetVolumeBGM)
+#if UNITY_WSA && !UNITY_EDITOR
+                                      .GetMethodInfo(),
+#else
+                                      .Method,
+#endif
+				
+				  new __GEN_DELEGATE2(Saro.Lua.SoundComponentEx.SetVolumeSE)
+#if UNITY_WSA && !UNITY_EDITOR
+                                      .GetMethodInfo(),
+#else
+                                      .Method,
+#endif
+				
+				  new __GEN_DELEGATE3(Saro.Lua.SoundComponentEx.GetVolumeSE)
+#if UNITY_WSA && !UNITY_EDITOR
+                                      .GetMethodInfo(),
+#else
+                                      .Method,
+#endif
+				
+				  new __GEN_DELEGATE4(Saro.Lua.SoundComponentEx.PlayBGMAsync)
+#if UNITY_WSA && !UNITY_EDITOR
+                                      .GetMethodInfo(),
+#else
+                                      .Method,
+#endif
+				
+				  new __GEN_DELEGATE5(Saro.Lua.SoundComponentEx.PlaySEAsync)
+#if UNITY_WSA && !UNITY_EDITOR
+                                      .GetMethodInfo(),
+#else
+                                      .Method,
+#endif
+				
+				  new __GEN_DELEGATE12(Tetris.SoundComponentEx.ApplySettings)
+#if UNITY_WSA && !UNITY_EDITOR
+                                      .GetMethodInfo(),
+#else
+                                      .Method,
+#endif
+				
+				  new __GEN_DELEGATE13(Tetris.SoundComponentEx.StoreSettings)
+#if UNITY_WSA && !UNITY_EDITOR
+                                      .GetMethodInfo(),
+#else
+                                      .Method,
+#endif
+				
+				}},
+				
 				{typeof(Saro.UI.UIComponent), new List<MethodInfo>(){
 				
-				  new __GEN_DELEGATE0(Saro.Lua.UI.UIComponentLuaExt.OpenUIAsync)
+				  new __GEN_DELEGATE6(Saro.Lua.UI.UIComponentLuaExt.OpenUIAsync)
 #if UNITY_WSA && !UNITY_EDITOR
                                       .GetMethodInfo(),
 #else
                                       .Method,
 #endif
 				
-				  new __GEN_DELEGATE1(Saro.Lua.UI.UIComponentLuaExt.OpenUIAsync)
+				  new __GEN_DELEGATE7(Saro.Lua.UI.UIComponentLuaExt.OpenUIAsync)
 #if UNITY_WSA && !UNITY_EDITOR
                                       .GetMethodInfo(),
 #else
                                       .Method,
 #endif
 				
-				  new __GEN_DELEGATE2(Saro.Lua.UI.UIComponentLuaExt.CloseUI)
+				  new __GEN_DELEGATE8(Saro.Lua.UI.UIComponentLuaExt.CloseUI)
 #if UNITY_WSA && !UNITY_EDITOR
                                       .GetMethodInfo(),
 #else
@@ -198,21 +280,21 @@ namespace XLua
 				
 				{typeof(Saro.UI.UIBase), new List<MethodInfo>(){
 				
-				  new __GEN_DELEGATE3(Saro.Lua.UI.UIComponentLuaExt.Listen)
+				  new __GEN_DELEGATE9(Saro.Lua.UI.UIComponentLuaExt.Listen)
 #if UNITY_WSA && !UNITY_EDITOR
                                       .GetMethodInfo(),
 #else
                                       .Method,
 #endif
 				
-				  new __GEN_DELEGATE4(Saro.Lua.UI.UIComponentLuaExt.Listen)
+				  new __GEN_DELEGATE10(Saro.Lua.UI.UIComponentLuaExt.Listen)
 #if UNITY_WSA && !UNITY_EDITOR
                                       .GetMethodInfo(),
 #else
                                       .Method,
 #endif
 				
-				  new __GEN_DELEGATE5(Saro.Lua.UI.UIComponentLuaExt.Close)
+				  new __GEN_DELEGATE11(Saro.Lua.UI.UIComponentLuaExt.Close)
 #if UNITY_WSA && !UNITY_EDITOR
                                       .GetMethodInfo(),
 #else

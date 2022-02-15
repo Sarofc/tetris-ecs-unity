@@ -3,14 +3,14 @@ using System.IO;
 
 namespace Saro.Lua
 {
-    internal sealed class FileLuaLoader : LuaLoaderBase
+    internal sealed class FileLuaLoader : BaseLuaLoader
     {
-        public FileLuaLoader(string path, string suffix) : base(path, suffix)
+        public FileLuaLoader(string directory, string suffix) : base(directory, suffix)
         { }
 
         protected override byte[] Load(ref string fileName)
         {
-            var path = $"{m_Path}/{fileName.Replace(".", "/")}{m_Suffix}";
+            var path = $"{m_Directory}/{fileName.Replace(".", "/")}{m_Suffix}";
 
             if (!FileUtility.Exists(path)) return null;
 

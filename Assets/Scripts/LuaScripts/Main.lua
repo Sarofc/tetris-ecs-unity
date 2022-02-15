@@ -1,4 +1,4 @@
-print("lua main start!")
+-- print("lua main start!")
 
 local UIComponent = CS.Saro.UI.UIComponent.Current
 

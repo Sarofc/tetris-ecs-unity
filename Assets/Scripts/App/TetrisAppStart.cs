@@ -1,25 +1,25 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using Saro;
+using Saro.Audio;
 using Saro.EventDef;
 using Saro.Events;
 using Saro.Net;
 using Saro.UI;
+using Saro.Lua;
+using Saro.Lua.UI;
+using Saro.Utility;
 using Saro.XAsset;
 using Saro.XAsset.Update;
 using UnityEngine;
 using Tetris.UI;
-using Saro.Audio;
-using Saro.Lua.UI;
-using Saro.Lua;
-using System.IO;
-using System.Threading.Tasks;
-using Saro.Utility;
+using Tetris.Save;
 
 namespace Tetris
 {
-    public sealed class TetrisAppStart : AEvent<AppStart>
+    public sealed class TetrisAppStart : FEvent<AppStart>
     {
         protected override async UniTask Run(AppStart args)
         {
@@ -29,7 +29,7 @@ namespace Tetris
 
             SetupDownloader();
 
-            FGame.Register<XAssetComponent>().Initialize();
+            SetupAssetManager();
 
             //LoadIFixPatch();
 
@@ -43,7 +43,27 @@ namespace Tetris
 
             //await UIComponent.Current.OpenUIAsync<UIStartPanel>();
 
+            LoadGameSave();
+
             SetupLuaEnv();
+        }
+
+        private void LoadGameSave()
+        {
+            FGame.Register<SaveComponent>();
+
+            SaveComponent.Current.Load();
+
+            SoundComponent.Current.ApplySettings();
+        }
+
+        private void SetupAssetManager()
+        {
+            var xassetComponent = FGame.Register<XAssetComponent>();
+
+            xassetComponent.SetDefaultLocator();
+
+            xassetComponent.Initialize();
         }
 
         private void SetupDownloader()
@@ -99,12 +119,11 @@ namespace Tetris
             else
             {
                 luaEnv.AddLoader(new FileLuaLoader(XAssetPath.k_Editor_DlcOutputPath + "/" + XAssetPath.k_CustomFolder + "/luascripts", ".lua"));
-                luaEnv.AddLoader(new VFSLuaLoader(XAssetPath.k_Editor_DlcOutputPath + "/" + XAssetPath.k_CustomFolder + "/luascripts"));
+                luaEnv.AddLoader(new CustomBundleLuaLoader("luascripts", ".lua"));
             }
 #else
             // 先加载dlc目录，在加载streamming目录 
-            luaEnv.AddLoader(new VFSLuaLoader(XAssetPath.k_DlcPath + "/" + XAssetPath.k_CustomFolder + "/luascripts"));
-            luaEnv.AddLoader(new VFSLuaLoader(XAssetPath.k_BasePath + "/" + XAssetPath.k_CustomFolder + "/luascripts"));
+            luaEnv.AddLoader(new CustomBundleLuaLoader("luascripts", ".lua"));
 #endif
 
             try
@@ -137,7 +156,11 @@ namespace Tetris
                 await UniTask.Yield();
             }
 
-            await PrepareAssets();
+            bool result = await XAssetComponent.Current.PreloadRemoteAssets();
+            if (!result)
+            {
+                Log.ERROR("PreloadRemoteAssets failed");
+            }
 
             //uiloading.Close();
         }
@@ -180,15 +203,6 @@ namespace Tetris
             }
 
             return cts.Task;
-        }
-
-        /// <summary>
-        /// 准备必要的资源，确保本地存在
-        /// </summary>
-        /// <returns></returns>
-        private async UniTask PrepareAssets()
-        {
-            await XAssetComponent.Current.CheckCustomAssets(XAssetPath.k_CustomFolder + "/luascripts");
         }
     }
 }

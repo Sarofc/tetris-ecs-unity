@@ -3,20 +3,20 @@ using XLua;
 
 namespace Saro.Lua
 {
-    public abstract class LuaLoaderBase
+    public abstract class BaseLuaLoader
     {
-        protected string m_Path;
+        protected string m_Directory;
         protected string m_Suffix;
 
-        public LuaLoaderBase(string path, string suffix)
+        public BaseLuaLoader(string directory, string suffix)
         {
-            m_Path = path;
+            m_Directory = directory;
             m_Suffix = suffix;
         }
 
         protected abstract byte[] Load(ref string fileName);
 
-        public static implicit operator LuaEnv.CustomLoader(LuaLoaderBase luaLoader)
+        public static implicit operator LuaEnv.CustomLoader(BaseLuaLoader luaLoader)
         {
             return luaLoader.Load;
         }

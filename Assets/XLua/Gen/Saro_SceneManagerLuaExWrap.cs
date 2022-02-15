@@ -15,12 +15,12 @@ using System.Collections.Generic;
 namespace XLua.CSObjectWrap
 {
     using Utils = XLua.Utils;
-    public class SaroSceneManagerLuaExtWrap 
+    public class SaroSceneManagerLuaExWrap 
     {
         public static void __Register(RealStatePtr L)
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			System.Type type = typeof(Saro.SceneManagerLuaExt);
+			System.Type type = typeof(Saro.SceneManagerLuaEx);
 			Utils.BeginObjectRegister(type, L, translator, 0, 0, 0, 0);
 			
 			
@@ -45,7 +45,7 @@ namespace XLua.CSObjectWrap
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int __CreateInstance(RealStatePtr L)
         {
-            return LuaAPI.luaL_error(L, "Saro.SceneManagerLuaExt does not have a constructor!");
+            return LuaAPI.luaL_error(L, "Saro.SceneManagerLuaEx does not have a constructor!");
         }
         
 		
@@ -68,7 +68,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _sceneName = LuaAPI.lua_tostring(L, 1);
                     
-                        var gen_ret = Saro.SceneManagerLuaExt.LoadSceneAsync( _sceneName );
+                        var gen_ret = Saro.SceneManagerLuaEx.LoadSceneAsync( _sceneName );
                         translator.Push(L, gen_ret);
                     
                     

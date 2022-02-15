@@ -9,7 +9,7 @@ using Cysharp.Threading.Tasks;
 namespace Saro
 {
     [LuaCallCSharp]
-    public static class SceneManagerLuaExt
+    public static class SceneManagerLuaEx
     {
         public static async UniTaskVoid LoadSceneAsync(string sceneName)
         {
