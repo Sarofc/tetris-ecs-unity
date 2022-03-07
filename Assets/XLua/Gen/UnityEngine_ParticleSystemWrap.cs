@@ -435,7 +435,9 @@ namespace XLua.CSObjectWrap
                 UnityEngine.ParticleSystem gen_to_be_invoked = (UnityEngine.ParticleSystem)translator.FastGetCSObj(L, 1);
             
             
-                
+			    int gen_param_count = LuaAPI.lua_gettop(L);
+            
+                if(gen_param_count == 1) 
                 {
                     
                         var gen_ret = gen_to_be_invoked.GetTrails(  );
@@ -445,10 +447,26 @@ namespace XLua.CSObjectWrap
                     
                     return 1;
                 }
+                if(gen_param_count == 2&& translator.Assignable<UnityEngine.ParticleSystem.Trails>(L, 2)) 
+                {
+                    UnityEngine.ParticleSystem.Trails _trailData;translator.Get(L, 2, out _trailData);
+                    
+                        var gen_ret = gen_to_be_invoked.GetTrails( ref _trailData );
+                        LuaAPI.xlua_pushinteger(L, gen_ret);
+                    translator.Push(L, _trailData);
+                        translator.Update(L, 2, _trailData);
+                        
+                    
+                    
+                    
+                    return 2;
+                }
                 
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }
+            
+            return LuaAPI.luaL_error(L, "invalid arguments to UnityEngine.ParticleSystem.GetTrails!");
             
         }
         

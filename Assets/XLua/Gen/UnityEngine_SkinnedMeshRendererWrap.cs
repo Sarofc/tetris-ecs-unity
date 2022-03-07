@@ -21,11 +21,13 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(UnityEngine.SkinnedMeshRenderer);
-			Utils.BeginObjectRegister(type, L, translator, 0, 3, 8, 8);
+			Utils.BeginObjectRegister(type, L, translator, 0, 5, 8, 8);
 			
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "GetBlendShapeWeight", _m_GetBlendShapeWeight);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "SetBlendShapeWeight", _m_SetBlendShapeWeight);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "BakeMesh", _m_BakeMesh);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "GetVertexBuffer", _m_GetVertexBuffer);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "GetPreviousVertexBuffer", _m_GetPreviousVertexBuffer);
 			
 			
 			Utils.RegisterFunc(L, Utils.GETTER_IDX, "quality", _g_get_quality);
@@ -35,7 +37,7 @@ namespace XLua.CSObjectWrap
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "bones", _g_get_bones);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "sharedMesh", _g_get_sharedMesh);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "skinnedMotionVectors", _g_get_skinnedMotionVectors);
-            Utils.RegisterFunc(L, Utils.GETTER_IDX, "localBounds", _g_get_localBounds);
+            Utils.RegisterFunc(L, Utils.GETTER_IDX, "vertexBufferTarget", _g_get_vertexBufferTarget);
             
 			Utils.RegisterFunc(L, Utils.SETTER_IDX, "quality", _s_set_quality);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "updateWhenOffscreen", _s_set_updateWhenOffscreen);
@@ -44,7 +46,7 @@ namespace XLua.CSObjectWrap
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "bones", _s_set_bones);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "sharedMesh", _s_set_sharedMesh);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "skinnedMotionVectors", _s_set_skinnedMotionVectors);
-            Utils.RegisterFunc(L, Utils.SETTER_IDX, "localBounds", _s_set_localBounds);
+            Utils.RegisterFunc(L, Utils.SETTER_IDX, "vertexBufferTarget", _s_set_vertexBufferTarget);
             
 			
 			Utils.EndObjectRegister(type, L, translator, null, null,
@@ -191,6 +193,62 @@ namespace XLua.CSObjectWrap
             
         }
         
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_GetVertexBuffer(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                UnityEngine.SkinnedMeshRenderer gen_to_be_invoked = (UnityEngine.SkinnedMeshRenderer)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    
+                        var gen_ret = gen_to_be_invoked.GetVertexBuffer(  );
+                        translator.Push(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_GetPreviousVertexBuffer(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                UnityEngine.SkinnedMeshRenderer gen_to_be_invoked = (UnityEngine.SkinnedMeshRenderer)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    
+                        var gen_ret = gen_to_be_invoked.GetPreviousVertexBuffer(  );
+                        translator.Push(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
         
         
         
@@ -293,13 +351,13 @@ namespace XLua.CSObjectWrap
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _g_get_localBounds(RealStatePtr L)
+        static int _g_get_vertexBufferTarget(RealStatePtr L)
         {
 		    try {
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			
                 UnityEngine.SkinnedMeshRenderer gen_to_be_invoked = (UnityEngine.SkinnedMeshRenderer)translator.FastGetCSObj(L, 1);
-                translator.PushUnityEngineBounds(L, gen_to_be_invoked.localBounds);
+                translator.Push(L, gen_to_be_invoked.vertexBufferTarget);
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }
@@ -415,14 +473,14 @@ namespace XLua.CSObjectWrap
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _s_set_localBounds(RealStatePtr L)
+        static int _s_set_vertexBufferTarget(RealStatePtr L)
         {
 		    try {
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			
                 UnityEngine.SkinnedMeshRenderer gen_to_be_invoked = (UnityEngine.SkinnedMeshRenderer)translator.FastGetCSObj(L, 1);
-                UnityEngine.Bounds gen_value;translator.Get(L, 2, out gen_value);
-				gen_to_be_invoked.localBounds = gen_value;
+                UnityEngine.GraphicsBuffer.Target gen_value;translator.Get(L, 2, out gen_value);
+				gen_to_be_invoked.vertexBufferTarget = gen_value;
             
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
