@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 436692039416454973}
   - component: {fileID: 436692039416454975}
   - component: {fileID: 436692039416454974}
+  - component: {fileID: 8402608697420480050}
   m_Layer: 5
   m_Name: TextMeshPro Text
   m_TagString: Untagged
@@ -28,6 +29,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: 0.08754499, z: 9.313226e-10, w: 0.9961606}
   m_LocalPosition: {x: 0, y: 0, z: -0.78}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2861522184000156084}
   m_RootOrder: 1
@@ -134,6 +136,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &8402608697420480050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 436692039416454972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9af591b8e46be594b9868dcb4e45464a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Key: 10001
 --- !u!1 &436692039836405651
 GameObject:
   m_ObjectHideFlags: 0
@@ -147,7 +162,7 @@ GameObject:
   - component: {fileID: 436692039836405646}
   - component: {fileID: 436692039836405645}
   - component: {fileID: 436692039836405640}
-  - component: {fileID: 8587704451190211405}
+  - component: {fileID: 3299070128512846417}
   m_Layer: 5
   m_Name: btn_about
   m_TagString: Untagged
@@ -165,6 +180,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8587704449891534708}
   - {fileID: 8587704450486605247}
@@ -335,7 +351,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!114 &8587704451190211405
+--- !u!114 &3299070128512846417
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -376,6 +392,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8132250944857447957}
   m_RootOrder: 1
@@ -511,6 +528,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: -0.30070576, z: 0, w: 0.953717}
   m_LocalPosition: {x: 0, y: 0, z: -45}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2861522184000156084}
   - {fileID: 8152314302894206594}
@@ -563,7 +581,7 @@ GameObject:
   - component: {fileID: 436692040907051037}
   - component: {fileID: 436692040907051036}
   - component: {fileID: 436692040907051043}
-  - component: {fileID: 8587704451190211404}
+  - component: {fileID: 3965658483349591874}
   m_Layer: 5
   m_Name: btn_quit
   m_TagString: Untagged
@@ -581,6 +599,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8152314301676503765}
   - {fileID: 8152314302955696708}
@@ -751,7 +770,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!114 &8587704451190211404
+--- !u!114 &3965658483349591874
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -795,6 +814,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5864484404487793526}
   - {fileID: 436692039416454973}
@@ -1006,6 +1026,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8132250944857447957}
   m_RootOrder: 0
@@ -1081,6 +1102,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2861522184000156084}
   m_RootOrder: 0
@@ -1156,6 +1178,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4743638549341028047}
   - {fileID: 436692039943081658}
@@ -1237,6 +1260,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 436692040907051042}
   m_RootOrder: 0
@@ -1312,6 +1336,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8152314302894206594}
   m_RootOrder: 0
@@ -1370,6 +1395,7 @@ GameObject:
   - component: {fileID: 8152314302238326323}
   - component: {fileID: 8152314302238326321}
   - component: {fileID: 8152314302238326320}
+  - component: {fileID: 8587704451190211405}
   m_Layer: 5
   m_Name: TextMeshPro Text
   m_TagString: Untagged
@@ -1387,6 +1413,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: 0.08754499, z: 9.313226e-10, w: 0.9961606}
   m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8152314302894206594}
   m_RootOrder: 1
@@ -1493,6 +1520,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &8587704451190211405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8152314302238326322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9af591b8e46be594b9868dcb4e45464a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Key: 10002
 --- !u!1 &8152314302894206621
 GameObject:
   m_ObjectHideFlags: 0
@@ -1524,6 +1564,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8152314302012074985}
   - {fileID: 8152314302238326323}
@@ -1718,6 +1759,7 @@ GameObject:
   - component: {fileID: 8152314302955696708}
   - component: {fileID: 8152314302955696714}
   - component: {fileID: 8152314302955696709}
+  - component: {fileID: 8587704451190211403}
   m_Layer: 5
   m_Name: TextMeshPro Text
   m_TagString: Untagged
@@ -1735,6 +1777,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: 0.08754499, z: 9.313226e-10, w: 0.9961606}
   m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 436692040907051042}
   m_RootOrder: 1
@@ -1841,6 +1884,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &8587704451190211403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8152314302955696711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9af591b8e46be594b9868dcb4e45464a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Key: 10004
 --- !u!1 &8587704449891534709
 GameObject:
   m_ObjectHideFlags: 0
@@ -1869,6 +1925,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 436692039836405644}
   m_RootOrder: 0
@@ -1927,6 +1984,7 @@ GameObject:
   - component: {fileID: 8587704450486605247}
   - component: {fileID: 8587704450486605245}
   - component: {fileID: 8587704450486605246}
+  - component: {fileID: 8587704451190211404}
   m_Layer: 5
   m_Name: TextMeshPro Text
   m_TagString: Untagged
@@ -1944,6 +2002,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: 0.08754499, z: 9.313226e-10, w: 0.9961606}
   m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 436692039836405644}
   m_RootOrder: 1
@@ -2050,6 +2109,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &8587704451190211404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8587704450486605232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9af591b8e46be594b9868dcb4e45464a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Key: 10003
 --- !u!1 &8587704451443791956
 GameObject:
   m_ObjectHideFlags: 0
@@ -2078,6 +2150,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8132250944857447957}
   m_RootOrder: 3

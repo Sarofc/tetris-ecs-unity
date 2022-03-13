@@ -14,15 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameBundleByHash: 1
   appendAssetHash: 1
-  resVersion: 106
-  resVersionBuildAsset: 105
+  resVersion: 108
+  resVersionBuildAsset: 106
   scenesInBuild:
   - {fileID: 102900000, guid: 8943688c1103d8c46b982d0a1a9e2310, type: 3}
   bundleGroups:
   - searchPath: Assets/Res
     searchPattern: '*'
     nameBy: 2
-    builtIn: 1
+    builtIn: 0
     assets:
     - Assets/Res/Audios/GameMixer.mixer
     - Assets/Res/Prefab/button.prefab
@@ -558,3 +558,16 @@ MonoBehaviour:
       dir: 0
     - name: Core/System.lua
       dir: 1
+  - groupName: tables
+    tip: "\u52A0\u8F7D\u8DEF\u5F84\u4E3A {groupName}/{assets[0]}"
+    packPolicy: -1
+    searchPattern: '*.txt'
+    searchPaths:
+    - GameTools/tables/data/config
+    builtIn: 1
+    preloadRemote: 1
+    assets:
+    - name: Language_EN.txt
+      dir: 0
+    - name: Language_ZH.txt
+      dir: 0

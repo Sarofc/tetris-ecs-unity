@@ -13,6 +13,7 @@ namespace Tetris.UI
 
         protected override void InternalStart()
         {
+            var lan = Saro.Localization.LocalizationComponent.Current.CurrentLanguage;
         }
 
         protected override void InternalUpdate(float deltaTime)
@@ -30,7 +31,14 @@ namespace Tetris.UI
             Listen(slider_bgm.onValueChanged, OnBGMChanged);
             Listen(slider_se.onValueChanged, OnSEChanged);
 
+            Listen(tmpdrop_language.onValueChanged, OnLanguageChanged);
+
             //Listen(Binder.Get<Button>("btn_close").onClick, Close);
+        }
+
+        private void OnLanguageChanged(int val)
+        {
+
         }
 
         private void OnBGMChanged(float val)
@@ -46,25 +54,25 @@ namespace Tetris.UI
         #endregion
     }
 
-    // =============================================
-    // code generate between >>begin and <<end
-    // don't modify this scope
-
-    //>>begin
-
     public partial class UISetting
     {
-		private UnityEngine.UI.Slider slider_bgm;
-		private UnityEngine.UI.Slider slider_se;
+        // =============================================
+        // code generate between >>begin and <<end
+        // don't modify this scope
 
-		void GetComps()
-		{
-			slider_bgm = Binder.Get<UnityEngine.UI.Slider>("slider_bgm");
-			slider_se = Binder.Get<UnityEngine.UI.Slider>("slider_se");
-		}
-	}
+        //>>begin
+        private UnityEngine.UI.Slider slider_bgm;
+        private UnityEngine.UI.Slider slider_se;
+        private TMPro.TMP_Dropdown tmpdrop_language;
 
-	//<<end
+        void GetComps()
+        {
+            slider_bgm = Binder.Get<UnityEngine.UI.Slider>("slider_bgm");
+            slider_se = Binder.Get<UnityEngine.UI.Slider>("slider_se");
+            tmpdrop_language = Binder.Get<TMPro.TMP_Dropdown>("tmpdrop_language");
+        }
+        //<<end
 
-    // =============================================
+        // =============================================
+    }
 }

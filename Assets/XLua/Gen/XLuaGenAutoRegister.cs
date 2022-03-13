@@ -182,11 +182,13 @@ namespace XLua
 		
 		delegate void __GEN_DELEGATE10( Saro.UI.UIBase self,  UnityEngine.Events.UnityEvent<float> src,  UnityEngine.Events.UnityAction<float> dst);
 		
-		delegate void __GEN_DELEGATE11( Saro.UI.UIBase self);
+		delegate void __GEN_DELEGATE11( Saro.UI.UIBase self,  UnityEngine.Events.UnityEvent<int> src,  UnityEngine.Events.UnityAction<int> dst);
 		
-		delegate void __GEN_DELEGATE12( Saro.Audio.SoundComponent self);
+		delegate void __GEN_DELEGATE12( Saro.UI.UIBase self);
 		
 		delegate void __GEN_DELEGATE13( Saro.Audio.SoundComponent self);
+		
+		delegate void __GEN_DELEGATE14( Saro.Audio.SoundComponent self);
 		
 	    static InternalGlobals()
 		{
@@ -237,14 +239,14 @@ namespace XLua
                                       .Method,
 #endif
 				
-				  new __GEN_DELEGATE12(Tetris.SoundComponentEx.ApplySettings)
+				  new __GEN_DELEGATE13(Tetris.SoundComponentEx.ApplySettings)
 #if UNITY_WSA && !UNITY_EDITOR
                                       .GetMethodInfo(),
 #else
                                       .Method,
 #endif
 				
-				  new __GEN_DELEGATE13(Tetris.SoundComponentEx.StoreSettings)
+				  new __GEN_DELEGATE14(Tetris.SoundComponentEx.StoreSettings)
 #if UNITY_WSA && !UNITY_EDITOR
                                       .GetMethodInfo(),
 #else
@@ -294,7 +296,14 @@ namespace XLua
                                       .Method,
 #endif
 				
-				  new __GEN_DELEGATE11(Saro.Lua.UI.UIComponentLuaExt.Close)
+				  new __GEN_DELEGATE11(Saro.Lua.UI.UIComponentLuaExt.Listen)
+#if UNITY_WSA && !UNITY_EDITOR
+                                      .GetMethodInfo(),
+#else
+                                      .Method,
+#endif
+				
+				  new __GEN_DELEGATE12(Saro.Lua.UI.UIComponentLuaExt.Close)
 #if UNITY_WSA && !UNITY_EDITOR
                                       .GetMethodInfo(),
 #else

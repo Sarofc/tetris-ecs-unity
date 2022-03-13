@@ -64,9 +64,12 @@ public static class XLuaGenConfig
                 typeof(Action<double>),
                 typeof(UnityEngine.Events.UnityAction),
                 typeof(UnityEngine.Events.UnityAction<float>),
+                typeof(UnityEngine.Events.UnityAction<int>),
                 typeof(UnityEngine.Events.UnityAction<bool>),
                 typeof(UnityEngine.Events.UnityEvent),
                 typeof(UnityEngine.Events.UnityEvent<float>),
+                typeof(UnityEngine.Events.UnityEvent<int>),
+                typeof(UnityEngine.Events.UnityEvent<bool>),
                 typeof(System.Collections.IEnumerator),
             };
 

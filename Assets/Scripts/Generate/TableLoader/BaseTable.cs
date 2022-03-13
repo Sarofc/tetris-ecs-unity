@@ -39,8 +39,8 @@ namespace Saro.Table
         {
             if (TableCfg.s_BytesLoader != null)
             {
-                var path = Path.Combine(TableCfg.s_TableSrc, tableName);
-                return TableCfg.s_BytesLoader(path);
+                //var path = Path.Combine(TableCfg.s_TableSrc, tableName);
+                return TableCfg.s_BytesLoader(tableName);
             }
             return null;
         }

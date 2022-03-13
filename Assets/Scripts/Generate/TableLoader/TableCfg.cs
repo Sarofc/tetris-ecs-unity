@@ -4,15 +4,15 @@ namespace Saro.Table
 {
     public sealed class TableCfg
     {
-        public const int k_DataVersion = 2;
-
         /// <summary>
-        /// 数据表加载路径
+        /// 数据表版本
         /// </summary>
-        public static string s_TableSrc;
+        public const int k_DataVersion = 3;
 
         /// <summary>
         /// 数据表加载委托
+        /// <code>string: 表名</code>
+        /// <code>byte[]: 表二进制数据</code>
         /// </summary>
         public static Func<string, byte[]> s_BytesLoader;
     }

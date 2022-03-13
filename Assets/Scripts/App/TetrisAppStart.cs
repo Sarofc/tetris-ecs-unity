@@ -16,6 +16,8 @@ using Saro.XAsset.Update;
 using UnityEngine;
 using Tetris.UI;
 using Tetris.Save;
+using Saro.Localization;
+using Saro.Table;
 
 namespace Tetris
 {
@@ -23,8 +25,6 @@ namespace Tetris
     {
         protected override async UniTask Run(AppStart args)
         {
-            Main.Instance.gameObject.AddComponent<Saro.Profiler.ProfilerDisplay>();
-
             FGame.Register<EventComponent>();
 
             SetupDownloader();
@@ -32,6 +32,10 @@ namespace Tetris
             SetupAssetManager();
 
             //LoadIFixPatch();
+
+            SetupDataTable();
+
+            SetupLocalization();
 
             await FGame.Register<SoundComponent>().InitializeAsync(FGame.Resolve<XAssetComponent>(), "Assets/Res/Audios/");
             await FGame.Register<UIComponent>().InitializeAsync(FGame.Resolve<XAssetComponent>(), "Assets/Res/Prefab/UI/");
@@ -41,11 +45,13 @@ namespace Tetris
             // incase
             if (FGame.Scene.IsDisposed) return;
 
-            //await UIComponent.Current.OpenUIAsync<UIStartPanel>();
-
             LoadGameSave();
 
             SetupLuaEnv();
+
+            Main.Instance.gameObject.AddComponent<Saro.Profiler.ProfilerDisplay>();
+
+            //await UIComponent.Current.OpenUIAsync<UIStartPanel>();
         }
 
         private void LoadGameSave()
@@ -98,6 +104,34 @@ namespace Tetris
 
             // Test
             Main.Instance.gameObject.AddComponent<Tests.TestIFix>();
+        }
+
+        private void SetupDataTable()
+        {
+            TableCfg.s_BytesLoader = tableName =>
+            {
+#if UNITY_EDITOR
+                var mode = XAssetComponent.s_Mode;
+                if (mode == XAssetComponent.EMode.Editor)
+                {
+                    using (var fs = new FileStream($"GameTools/tables/data/config/{tableName}", FileMode.Open, FileAccess.Read))
+                    {
+                        var buffer = new byte[fs.Length];
+                        fs.Read(buffer, 0, buffer.Length);
+                        return buffer;
+                    }
+                }
+#endif
+
+                return XAssetComponent.Current.LoadCustomAsset("tables/" + tableName);
+            };
+        }
+
+        private void SetupLocalization()
+        {
+            FGame.Register<LocalizationComponent>()
+                .SetProvider(new LocalizationDataProvider_Excel())
+                .SetLanguage(ELanguage.ZH);
         }
 
         private void SetupLuaEnv()

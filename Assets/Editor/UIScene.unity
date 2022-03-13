@@ -404,6 +404,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -418,22 +419,27 @@ PrefabInstance:
     - target: {fileID: 543664847293941542, guid: 513b8b1501d9dca4c8160b2076e21085,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 903441253033711547, guid: 513b8b1501d9dca4c8160b2076e21085,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1015287255039559000, guid: 513b8b1501d9dca4c8160b2076e21085,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2200545109320562580, guid: 513b8b1501d9dca4c8160b2076e21085,
         type: 3}
       propertyPath: m_Name
       value: UISetting
+      objectReference: {fileID: 0}
+    - target: {fileID: 2200545109320562580, guid: 513b8b1501d9dca4c8160b2076e21085,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2200545109320562581, guid: 513b8b1501d9dca4c8160b2076e21085,
         type: 3}
@@ -543,7 +549,7 @@ PrefabInstance:
     - target: {fileID: 8911424634047509888, guid: 513b8b1501d9dca4c8160b2076e21085,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 513b8b1501d9dca4c8160b2076e21085, type: 3}

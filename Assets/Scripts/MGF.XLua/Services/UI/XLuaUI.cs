@@ -17,22 +17,50 @@ namespace Saro.Lua.UI
         {
             InitLua();
 
-            m_OnAwake?.Invoke(this);
+            try
+            {
+                m_OnAwake?.Invoke(this);
+            }
+            catch (Exception e)
+            {
+                Log.ERROR(e);
+            }
         }
 
         protected override void InternalStart()
         {
-            m_OnStart?.Invoke(this);
+            try
+            {
+                m_OnStart?.Invoke(this);
+            }
+            catch (Exception e)
+            {
+                Log.ERROR(e);
+            }
         }
 
         protected override void InternalUpdate(float deltaTime)
         {
-            m_OnUpdate?.Invoke(this, deltaTime);
+            try
+            {
+                m_OnUpdate?.Invoke(this, deltaTime);
+            }
+            catch (Exception e)
+            {
+                Log.ERROR(e);
+            }
         }
 
         protected override void InternalClose()
         {
-            m_OnClose?.Invoke(this);
+            try
+            {
+                m_OnClose?.Invoke(this);
+            }
+            catch (Exception e)
+            {
+                Log.ERROR(e);
+            }
         }
 
         protected override void DoDestroy()

@@ -443,9 +443,9 @@ MonoBehaviour:
     deps: 130000001400000018000000
     size: 6686
     hash: 
-  - name: Bundle/1db5232f_faaae4c8c525911a7abe776a83da61f3.assets
+  - name: Bundle/1db5232f_4b1833c12427ed80440f6931774634c3.assets
     deps: 1100000007000000050000000e000000140000000a0000001700000018000000
-    size: 35266
+    size: 40226
     hash: 
   - name: Bundle/dbdfafff_6521ef5224c895a3c14e073ba63ae1c3.assets
     deps: 15000000160000001700000018000000
@@ -487,9 +487,9 @@ MonoBehaviour:
     deps: 
     size: 2960
     hash: 
-  - name: Bundle/unitybuiltindata_87c2ba4503f9f0dc9619b35d87145eba.assets
+  - name: Bundle/unitybuiltindata_61fc8fda2f25c656c181e630ef74b315.assets
     deps: 
-    size: 16051
+    size: 20465
     hash: 
   - name: Bundle/unitybuiltinshader_133f780f47fa33f1687b222cac9735b3.assets
     deps: 
@@ -499,6 +499,7 @@ MonoBehaviour:
   - luascripts
   - luascripts/UI
   - luascripts/Core
+  - tables
   customAssets:
   - name: Main.lua
     bundle: 0
@@ -518,8 +519,18 @@ MonoBehaviour:
   - name: System.lua
     bundle: 0
     dir: 2
+  - name: Language_EN.txt
+    bundle: 1
+    dir: 3
+  - name: Language_ZH.txt
+    bundle: 1
+    dir: 3
   customBundles:
-  - name: Custom/luascripts_a9f47a3365acf0f23afdab870c6f4afd
+  - name: Custom/luascripts_cdca588cb5095a56eca1b3ebcb55020a
     size: 36864
+    hash: 
+    preloadRemote: 1
+  - name: Custom/tables_a981f1b9e69dde81ef48ebc8b752910e
+    size: 12288
     hash: 
     preloadRemote: 1

@@ -11,6 +11,7 @@ namespace Tetris.UI
         public Dictionary<string, Type> Binds { get; } = new Dictionary<string, Type>
         {
             { "tmptxt_", typeof(TMP_Text) },
+            { "tmpdrop_", typeof(TMP_Dropdown) },
             { "anim_", typeof(Animator) },
         };
     }

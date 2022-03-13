@@ -40,6 +40,11 @@ namespace Saro.Lua.UI
             self.Listen(src, dst);
         }
 
+        public static void Listen(this UIBase self, UnityEvent<int> src, UnityAction<int> dst)
+        {
+            self.Listen(src, dst);
+        }
+
         public static void Close(this UIBase self)
         {
             self.Close();
