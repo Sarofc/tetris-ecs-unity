@@ -1,0 +1,12 @@
+﻿using Leopotam.Ecs;
+
+namespace #NS# {
+    sealed class #SCRIPTNAME# : IEcsRunSystem {
+        // auto-injected fields.
+        readonly EcsWorld _world = null;
+        
+        void IEcsRunSystem.Run () {
+            // add your run code here.
+        }
+    }
+}

@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78ec4202414a23e4d98461bc624a1a3f, type: 3}
+  m_Name: GameMode1_Asset
+  m_EditorClassIdentifier: 
+  tetrisViewPrefab: {fileID: 5195216750931233816, guid: e05cf1980e2ebd342915ec1a2a03473d,
+    type: 3}
+  blockPrefabs:
+  - {fileID: 2497201849960472371, guid: 9589b6d275ce04e4c89a33321a3ec143, type: 3}
+  - {fileID: 3911191374480825551, guid: 4c0149273d605a747ae87f7ad2070fc6, type: 3}
+  - {fileID: 4266390166317881271, guid: 1fb48aeb0aaafbe4ea23edd02bb451be, type: 3}
+  - {fileID: 6127767908934618292, guid: 52d6edf14648c274e96c76c9472b0e58, type: 3}
+  - {fileID: 4766945971592258467, guid: 8f7a6c2525c51174c9edfd1f2d362815, type: 3}
+  - {fileID: 6871790077741125120, guid: 569f1740bbb5f7240a537993edff7b09, type: 3}
+  - {fileID: 8884422117842273872, guid: dc688b11061ed734ca32e8a3962590bf, type: 3}
+  linePrefab: {fileID: 3599560794707484984, guid: 866f83d35eca66a4786a7f0def75b12d,
+    type: 3}

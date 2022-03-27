@@ -1,0 +1,18 @@
+{
+    "name": "com.leopotam.ecs",
+    "author": "Leopotam",
+    "displayName": "LeoECS Core",
+    "description": "LeoECS is simple lightweight C# Entity Component System framework based on structs. Performance, zero/small memory allocations/footprint - main goals of this project.",
+    "unity": "2019.1",
+    "version": "2022.2.22",
+    "keywords": [
+        "leoecs",
+        "ecs",
+        "performance"
+    ],
+    "dependencies": {},
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Leopotam/ecs.git"
+    }
+}

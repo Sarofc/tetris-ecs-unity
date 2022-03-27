@@ -1,0 +1,18 @@
+{
+    "name": "Leopotam.Ecs.UnityIntegration.Editor",
+    "references": [
+        "Leopotam.Ecs",
+        "Leopotam.Ecs.UnityIntegration"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": []
+}
