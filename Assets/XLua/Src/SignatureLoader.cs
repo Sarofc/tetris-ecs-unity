@@ -12,8 +12,8 @@ namespace XLua
     {
         private LuaEnv.CustomLoader userLoader;
 #if !UNITY_WSA || UNITY_EDITOR
-        RSACryptoServiceProvider rsa;
-        SHA1 sha;
+        private RSACryptoServiceProvider rsa;
+        private SHA1 sha;
 #else
         AsymmetricKeyAlgorithmProvider rsa;
         CryptographicKey key;
@@ -32,8 +32,7 @@ namespace XLua
             userLoader = loader;
         }
 
-
-        byte[] load_and_verify(ref string filepath)
+        private byte[] load_and_verify(ref string filepath)
         {
             byte[] data = userLoader(ref filepath);
             if (data == null)

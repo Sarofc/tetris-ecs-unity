@@ -1,9 +1,9 @@
-using UnityEngine;
-using System.Collections;
-using UnityEngine.UI;
-using System;
-using Saro.UI;
+using Cysharp.Threading.Tasks;
 using Saro.Audio;
+using Saro.Events;
+using Saro.Localization;
+using Saro.UI;
+using System;
 
 namespace Tetris.UI
 {
@@ -13,7 +13,6 @@ namespace Tetris.UI
 
         protected override void InternalStart()
         {
-            var lan = Saro.Localization.LocalizationComponent.Current.CurrentLanguage;
         }
 
         protected override void InternalUpdate(float deltaTime)
@@ -31,24 +30,23 @@ namespace Tetris.UI
             Listen(slider_bgm.onValueChanged, OnBGMChanged);
             Listen(slider_se.onValueChanged, OnSEChanged);
 
+            tmpdrop_language.value = (int)LocalizationManager.Current.CurrentLanguage;
             Listen(tmpdrop_language.onValueChanged, OnLanguageChanged);
-
-            //Listen(Binder.Get<Button>("btn_close").onClick, Close);
         }
 
         private void OnLanguageChanged(int val)
         {
-
+            LocalizationManager.Current.SetLanguageAsync((ELanguage)val).Forget();
         }
 
         private void OnBGMChanged(float val)
         {
-            SoundComponent.Current.VolumeBGM = val;
+            SoundManager.Current.VolumeBGM = val;
         }
 
         private void OnSEChanged(float val)
         {
-            SoundComponent.Current.VolumeSE = val;
+            SoundManager.Current.VolumeSE = val;
         }
 
         #endregion
@@ -65,7 +63,7 @@ namespace Tetris.UI
         private UnityEngine.UI.Slider slider_se;
         private TMPro.TMP_Dropdown tmpdrop_language;
 
-        void GetComps()
+        private void GetComps()
         {
             slider_bgm = Binder.Get<UnityEngine.UI.Slider>("slider_bgm");
             slider_se = Binder.Get<UnityEngine.UI.Slider>("slider_se");

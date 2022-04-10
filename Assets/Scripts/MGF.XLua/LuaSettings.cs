@@ -1,11 +1,10 @@
 ﻿#if UNITY_EDITOR
+using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
-using System.Linq;
-using System;
-
 using Object = UnityEngine.Object;
 
 namespace Saro.Lua

@@ -11,7 +11,7 @@ using UnityEngine.Experimental.UIElements;
 
 namespace Saro.Lua
 {
-    class LuaSettingsProvider : SettingsProvider
+    internal class LuaSettingsProvider : SettingsProvider
     {
         private const float HORIZONTAL_GAP = 5;
         private const float VERTICAL_GAP = 5;

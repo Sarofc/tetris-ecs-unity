@@ -18,7 +18,7 @@ namespace XLua.Cast
 {
     public class Any<T> : RawObject
     {
-        T mTarget;
+        private T mTarget;
 
         public Any(T i)
         {

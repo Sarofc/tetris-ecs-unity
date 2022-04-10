@@ -13,11 +13,9 @@ using LuaCSFunction = UniLua.CSharpFunctionDelegate;
 #else
 using LuaAPI = XLua.LuaDLL.Lua;
 using RealStatePtr = System.IntPtr;
-using LuaCSFunction = XLua.LuaDLL.lua_CSFunction;
 #endif
 
 using System;
-using System.Collections.Generic;
 
 namespace XLua
 {
@@ -35,16 +33,16 @@ namespace XLua
             lock (luaEnv.luaEnvLock)
             {
 #endif
-                var L = luaEnv.L;
-                var translator = luaEnv.translator;
-                int oldTop = LuaAPI.lua_gettop(L);
-                int errFunc = LuaAPI.load_error_func(L, luaEnv.errorFuncRef);
-                LuaAPI.lua_getref(L, luaReference);
-                translator.PushByType(L, a);
-                int error = LuaAPI.lua_pcall(L, 1, 0, errFunc);
-                if (error != 0)
-                    luaEnv.ThrowExceptionFromError(oldTop);
-                LuaAPI.lua_settop(L, oldTop);
+            var L = luaEnv.L;
+            var translator = luaEnv.translator;
+            int oldTop = LuaAPI.lua_gettop(L);
+            int errFunc = LuaAPI.load_error_func(L, luaEnv.errorFuncRef);
+            LuaAPI.lua_getref(L, luaReference);
+            translator.PushByType(L, a);
+            int error = LuaAPI.lua_pcall(L, 1, 0, errFunc);
+            if (error != 0)
+                luaEnv.ThrowExceptionFromError(oldTop);
+            LuaAPI.lua_settop(L, oldTop);
 #if THREAD_SAFE || HOTFIX_ENABLE
             }
 #endif
@@ -56,29 +54,29 @@ namespace XLua
             lock (luaEnv.luaEnvLock)
             {
 #endif
-                var L = luaEnv.L;
-                var translator = luaEnv.translator;
-                int oldTop = LuaAPI.lua_gettop(L);
-                int errFunc = LuaAPI.load_error_func(L, luaEnv.errorFuncRef);
-                LuaAPI.lua_getref(L, luaReference);
-                translator.PushByType(L, a);
-                int error = LuaAPI.lua_pcall(L, 1, 1, errFunc);
-                if (error != 0)
-                    luaEnv.ThrowExceptionFromError(oldTop);
-                TResult ret;
-                try
-                {
-                    translator.Get(L, -1, out ret);
-                }
-                catch (Exception e)
-                {
-                    throw e;
-                }
-                finally
-                {
-                    LuaAPI.lua_settop(L, oldTop);
-                }
-                return ret;
+            var L = luaEnv.L;
+            var translator = luaEnv.translator;
+            int oldTop = LuaAPI.lua_gettop(L);
+            int errFunc = LuaAPI.load_error_func(L, luaEnv.errorFuncRef);
+            LuaAPI.lua_getref(L, luaReference);
+            translator.PushByType(L, a);
+            int error = LuaAPI.lua_pcall(L, 1, 1, errFunc);
+            if (error != 0)
+                luaEnv.ThrowExceptionFromError(oldTop);
+            TResult ret;
+            try
+            {
+                translator.Get(L, -1, out ret);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                LuaAPI.lua_settop(L, oldTop);
+            }
+            return ret;
 #if THREAD_SAFE || HOTFIX_ENABLE
             }
 #endif
@@ -90,17 +88,17 @@ namespace XLua
             lock (luaEnv.luaEnvLock)
             {
 #endif
-                var L = luaEnv.L;
-                var translator = luaEnv.translator;
-                int oldTop = LuaAPI.lua_gettop(L);
-                int errFunc = LuaAPI.load_error_func(L, luaEnv.errorFuncRef);
-                LuaAPI.lua_getref(L, luaReference);
-                translator.PushByType(L, a1);
-                translator.PushByType(L, a2);
-                int error = LuaAPI.lua_pcall(L, 2, 0, errFunc);
-                if (error != 0)
-                    luaEnv.ThrowExceptionFromError(oldTop);
-                LuaAPI.lua_settop(L, oldTop);
+            var L = luaEnv.L;
+            var translator = luaEnv.translator;
+            int oldTop = LuaAPI.lua_gettop(L);
+            int errFunc = LuaAPI.load_error_func(L, luaEnv.errorFuncRef);
+            LuaAPI.lua_getref(L, luaReference);
+            translator.PushByType(L, a1);
+            translator.PushByType(L, a2);
+            int error = LuaAPI.lua_pcall(L, 2, 0, errFunc);
+            if (error != 0)
+                luaEnv.ThrowExceptionFromError(oldTop);
+            LuaAPI.lua_settop(L, oldTop);
 #if THREAD_SAFE || HOTFIX_ENABLE
             }
 #endif
@@ -112,30 +110,30 @@ namespace XLua
             lock (luaEnv.luaEnvLock)
             {
 #endif
-                var L = luaEnv.L;
-                var translator = luaEnv.translator;
-                int oldTop = LuaAPI.lua_gettop(L);
-                int errFunc = LuaAPI.load_error_func(L, luaEnv.errorFuncRef);
-                LuaAPI.lua_getref(L, luaReference);
-                translator.PushByType(L, a1);
-                translator.PushByType(L, a2);
-                int error = LuaAPI.lua_pcall(L, 2, 1, errFunc);
-                if (error != 0)
-                    luaEnv.ThrowExceptionFromError(oldTop);
-                TResult ret;
-                try
-                {
-                    translator.Get(L, -1, out ret);
-                }
-                catch (Exception e)
-                {
-                    throw e;
-                }
-                finally
-                {
-                    LuaAPI.lua_settop(L, oldTop);
-                }
-                return ret;
+            var L = luaEnv.L;
+            var translator = luaEnv.translator;
+            int oldTop = LuaAPI.lua_gettop(L);
+            int errFunc = LuaAPI.load_error_func(L, luaEnv.errorFuncRef);
+            LuaAPI.lua_getref(L, luaReference);
+            translator.PushByType(L, a1);
+            translator.PushByType(L, a2);
+            int error = LuaAPI.lua_pcall(L, 2, 1, errFunc);
+            if (error != 0)
+                luaEnv.ThrowExceptionFromError(oldTop);
+            TResult ret;
+            try
+            {
+                translator.Get(L, -1, out ret);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                LuaAPI.lua_settop(L, oldTop);
+            }
+            return ret;
 #if THREAD_SAFE || HOTFIX_ENABLE
             }
 #endif
@@ -148,30 +146,30 @@ namespace XLua
             lock (luaEnv.luaEnvLock)
             {
 #endif
-                int nArgs = 0;
-                var L = luaEnv.L;
-                var translator = luaEnv.translator;
-                int oldTop = LuaAPI.lua_gettop(L);
+            int nArgs = 0;
+            var L = luaEnv.L;
+            var translator = luaEnv.translator;
+            int oldTop = LuaAPI.lua_gettop(L);
 
-                int errFunc = LuaAPI.load_error_func(L, luaEnv.errorFuncRef);
-                LuaAPI.lua_getref(L, luaReference);
-                if (args != null)
+            int errFunc = LuaAPI.load_error_func(L, luaEnv.errorFuncRef);
+            LuaAPI.lua_getref(L, luaReference);
+            if (args != null)
+            {
+                nArgs = args.Length;
+                for (int i = 0; i < args.Length; i++)
                 {
-                    nArgs = args.Length;
-                    for (int i = 0; i < args.Length; i++)
-                    {
-                        translator.PushAny(L, args[i]);
-                    }
+                    translator.PushAny(L, args[i]);
                 }
-                int error = LuaAPI.lua_pcall(L, nArgs, -1, errFunc);
-                if (error != 0)
-                    luaEnv.ThrowExceptionFromError(oldTop);
+            }
+            int error = LuaAPI.lua_pcall(L, nArgs, -1, errFunc);
+            if (error != 0)
+                luaEnv.ThrowExceptionFromError(oldTop);
 
-                LuaAPI.lua_remove(L, errFunc);
-                if (returnTypes != null)
-                    return translator.popValues(L, oldTop, returnTypes);
-                else
-                    return translator.popValues(L, oldTop);
+            LuaAPI.lua_remove(L, errFunc);
+            if (returnTypes != null)
+                return translator.popValues(L, oldTop, returnTypes);
+            else
+                return translator.popValues(L, oldTop);
 #if THREAD_SAFE || HOTFIX_ENABLE
             }
 #endif
@@ -193,12 +191,12 @@ namespace XLua
             lock (luaEnv.luaEnvLock)
             {
 #endif
-                var L = luaEnv.L;
-                var translator = luaEnv.translator;
-                push(L);
-                T ret = (T)translator.GetObject(L, -1, typeof(T));
-                LuaAPI.lua_pop(luaEnv.L, 1);
-                return ret;
+            var L = luaEnv.L;
+            var translator = luaEnv.translator;
+            push(L);
+            T ret = (T)translator.GetObject(L, -1, typeof(T));
+            LuaAPI.lua_pop(luaEnv.L, 1);
+            return ret;
 #if THREAD_SAFE || HOTFIX_ENABLE
             }
 #endif
@@ -210,12 +208,12 @@ namespace XLua
             lock (luaEnv.luaEnvLock)
             {
 #endif
-                var L = luaEnv.L;
-                int oldTop = LuaAPI.lua_gettop(L);
-                push(L);
-                env.push(L);
-                LuaAPI.lua_setfenv(L, -2);
-                LuaAPI.lua_settop(L, oldTop);
+            var L = luaEnv.L;
+            int oldTop = LuaAPI.lua_gettop(L);
+            push(L);
+            env.push(L);
+            LuaAPI.lua_setfenv(L, -2);
+            LuaAPI.lua_settop(L, oldTop);
 #if THREAD_SAFE || HOTFIX_ENABLE
             }
 #endif

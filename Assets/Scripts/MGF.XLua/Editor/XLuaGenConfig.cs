@@ -6,8 +6,10 @@
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 */
 
-using System.Collections.Generic;
+using Saro.Events;
+using Saro.Lua.UI;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using XLua;
 //using System.Reflection;
@@ -52,6 +54,9 @@ public static class XLuaGenConfig
 
                 typeof(Saro.Main),
                 typeof(Saro.Log),
+                typeof(Saro.Core.IAssetHandle),
+                typeof(Saro.Core.IAssetInterface),
+                typeof(Saro.Events.GameEventArgs),
             };
 
     //C#静态调用Lua的配置（包括事件的原型），仅可以配delegate，interface
@@ -70,7 +75,10 @@ public static class XLuaGenConfig
                 typeof(UnityEngine.Events.UnityEvent<float>),
                 typeof(UnityEngine.Events.UnityEvent<int>),
                 typeof(UnityEngine.Events.UnityEvent<bool>),
+                typeof(EventHandler<GameEventArgs>),
                 typeof(System.Collections.IEnumerator),
+                typeof(Action<XLuaUI>),
+                typeof(Action<XLuaUI,float>),
             };
 
     //黑名单

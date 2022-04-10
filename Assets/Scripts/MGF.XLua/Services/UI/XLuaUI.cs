@@ -5,13 +5,19 @@ using XLua;
 namespace Saro.Lua.UI
 {
     [LuaCallCSharp]
-    public class XLuaUI : UIBase<UIBinder>
+    public class XLuaUI : BaseUI<UIBinder>
     {
         private Action<XLuaUI> m_OnStart, m_OnClose, m_OnAwake;
+
         private Action<XLuaUI, float> m_OnUpdate;
 
         private LuaTable m_ScriptEnv;
         private LuaTable m_Metatable;
+
+        public void SetUserData(string name, object userData)
+        {
+            m_Metatable.Set(name, userData);
+        }
 
         protected override void InternalAwake()
         {
@@ -92,7 +98,7 @@ namespace Saro.Lua.UI
 
         private void InitLua()
         {
-            var luaEnv = LuaComponent.Current.LuaEnv;
+            var luaEnv = LuaManager.Current.LuaEnv;
             m_ScriptEnv = luaEnv.NewTable();
 
             LuaTable meta = luaEnv.NewTable();
@@ -108,7 +114,7 @@ namespace Saro.Lua.UI
             object[] result = luaEnv.DoString(scriptText, string.Format("{0}({1})", "XLuaUI", UIName), m_ScriptEnv);
 
             if (result.Length != 1 || !(result[0] is LuaTable))
-                throw new Exception("");
+                throw new Exception("lua must return a table");
 
             m_Metatable = (LuaTable)result[0];
 

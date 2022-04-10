@@ -1,10 +1,12 @@
 require("Core/System")
 
+local GameSettings = require("Settings/GameSettings")
+
 local M = class("UISetting", target)
 
-local SoundComponent = CS.Saro.Audio.SoundComponent.Current
-local SaveComponent = CS.Tetris.Save.SaveComponent.Current
-local LocalizationComponent = CS.Saro.Localization.LocalizationComponent.Current
+-- local SaveManager = CS.Tetris.Save.SaveManager.Current
+local SoundManager = CS.Saro.Audio.SoundManager.Current
+local LocalizationManager = CS.Saro.Localization.LocalizationManager.Current
 
 function M:OnAwake()
     self:Listen(self.slider_bgm.onValueChanged, M.OnBGMChanged)
@@ -13,28 +15,31 @@ function M:OnAwake()
 end
 
 function M:OnStart()
-    self.slider_bgm.value = SoundComponent:GetVolumeBGM()
-    self.slider_se.value = SoundComponent:GetVolumeSE()
+    self.tmpdrop_language.value = LocalizationManager:GetLanguage()
+    self.slider_bgm.value = SoundManager:GetVolumeBGM()
+    self.slider_se.value = SoundManager:GetVolumeSE()
 end
 
 function M:OnClose()
-    SoundComponent:StoreSettings()
-    SaveComponent:Save()
+    GameSettings:StoreSettings()
+    -- SoundManager:StoreSettings()
+    -- LocalizationManager:StoreSettings()
+    -- SaveManager:Save()
 end
 
 M.OnSEChanged = function(val)
     -- print("OnSEChanged: " .. val)
-    SoundComponent:SetVolumeSE(val)
+    SoundManager:SetVolumeSE(val)
 end
 
 function M.OnBGMChanged(val)
     -- print("OnBGMChanged: " .. val)
-    SoundComponent:SetVolumeBGM(val)
+    SoundManager:SetVolumeBGM(val)
 end
 
 M.OnLanguageChanged = function(val)
-    print("OnLanguageChanged: " .. val)
-    LocalizationComponent:SetLanguage(val)
+    -- print("OnLanguageChanged: " .. val)
+    LocalizationManager:SetLanguageAsync(val)
 end
 
 return M

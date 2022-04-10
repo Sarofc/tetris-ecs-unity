@@ -7,5 +7,7 @@
     "slimWriteResults": true,
     "maximumCacheSize": 20,
     "useDetailedBuildLog": false,
-    "useV2Hasher": false
+    "useV2Hasher": true,
+    "fileIDHashSeed": 0,
+    "prefabPackedHeaderSize": 4
 }

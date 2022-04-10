@@ -1,10 +1,6 @@
-using UnityEngine;
-using System.Collections;
-using UnityEngine.UI;
-using System;
-using Saro.UI;
-using Saro;
 using Cysharp.Threading.Tasks;
+using Saro;
+using Saro.UI;
 
 namespace Tetris.UI
 {
@@ -39,17 +35,17 @@ namespace Tetris.UI
 
         private void OnClick_Replay()
         {
-            UIComponent.Current.AddToast("未开启");
+            UIManager.Current.AddToast("未开启");
         }
 
         private void OnClick_Setting()
         {
-            UIComponent.Current.OpenUIAsync<UISetting>().Forget();
+            UIManager.Current.OpenUIAsync<UISetting>().Forget();
         }
 
         private void OnClick_About()
         {
-            UIComponent.Current.OpenUIAsync<UIAboutPanel>().Forget();
+            UIManager.Current.OpenUIAsync<UIAboutPanel>().Forget();
         }
 
         #endregion
@@ -63,21 +59,21 @@ namespace Tetris.UI
 
     public partial class UIGameOverPanel
     {
-		private UnityEngine.UI.Button btn_replay;
-		private UnityEngine.UI.Button btn_setting;
-		private UnityEngine.UI.Button btn_about;
-		private UnityEngine.UI.Button btn_quit;
+        private UnityEngine.UI.Button btn_replay;
+        private UnityEngine.UI.Button btn_setting;
+        private UnityEngine.UI.Button btn_about;
+        private UnityEngine.UI.Button btn_quit;
 
-		void GetComps()
-		{
-			btn_replay = Binder.Get<UnityEngine.UI.Button>("btn_replay");
-			btn_setting = Binder.Get<UnityEngine.UI.Button>("btn_setting");
-			btn_about = Binder.Get<UnityEngine.UI.Button>("btn_about");
-			btn_quit = Binder.Get<UnityEngine.UI.Button>("btn_quit");
-		}
-	}
+        private void GetComps()
+        {
+            btn_replay = Binder.Get<UnityEngine.UI.Button>("btn_replay");
+            btn_setting = Binder.Get<UnityEngine.UI.Button>("btn_setting");
+            btn_about = Binder.Get<UnityEngine.UI.Button>("btn_about");
+            btn_quit = Binder.Get<UnityEngine.UI.Button>("btn_quit");
+        }
+    }
 
-	//<<end
+    //<<end
 
     // =============================================
 }

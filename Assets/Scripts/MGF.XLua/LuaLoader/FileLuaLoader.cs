@@ -1,5 +1,4 @@
 ﻿using Saro.Utility;
-using System.IO;
 
 namespace Saro.Lua
 {

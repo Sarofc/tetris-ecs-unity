@@ -1,6 +1,6 @@
 require("Core/System")
 
-local UIComponent = CS.Saro.UI.UIComponent.Current
+local UIManager = CS.Saro.UI.UIManager.Current
 
 local M = class("UIGameOverPanel", target)
 
@@ -12,15 +12,15 @@ function M:OnAwake()
 end
 
 function M.OnClick_Replay()
-    UIComponent:AddToast("未开启")
+    UIManager:AddToast("未开启")
 end
 
 function M.OnClick_Setting()
-    UIComponent:OpenUIAsync("UISetting")
+    UIManager:OpenUIAsync("UISetting")
 end
 
 function M.OnClick_About()
-    UIComponent:OpenUIAsync("UIAboutPanel")
+    UIManager:OpenUIAsync("UIAboutPanel")
 end
 
 return M

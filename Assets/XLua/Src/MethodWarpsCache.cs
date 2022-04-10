@@ -24,33 +24,23 @@ namespace XLua
 {
     public class OverloadMethodWrap
     {
-        ObjectTranslator translator;
-        Type targetType;
-        MethodBase method;
+        private ObjectTranslator translator;
+        private Type targetType;
+        private MethodBase method;
+        private ObjectCheck[] checkArray;
+        private ObjectCast[] castArray;
+        private int[] inPosArray;
+        private int[] outPosArray;
+        private bool[] isOptionalArray;
+        private object[] defaultValueArray;
+        private bool isVoid = true;
+        private int luaStackPosStart = 1;
+        private bool targetNeeded = false;
+        private object[] args;
+        private int[] refPos;
+        private Type paramsType = null;
 
-        ObjectCheck[] checkArray;
-        ObjectCast[] castArray;
-
-        int[] inPosArray;
-        int[] outPosArray;
-
-        bool[] isOptionalArray;
-
-        object[] defaultValueArray;
-
-        bool isVoid = true;
-
-        int luaStackPosStart = 1;
-
-        bool targetNeeded = false;
-
-        object[] args;
-
-        int[] refPos;
-
-        Type paramsType = null;
-
-        public bool HasDefalutValue{ get; private set; }
+        public bool HasDefalutValue { get; private set; }
 
         public OverloadMethodWrap(ObjectTranslator translator, Type targetType, MethodBase method)
         {
@@ -83,19 +73,19 @@ namespace XLua
             List<bool> isOptionalList = new List<bool>();
             List<object> defaultValueList = new List<object>();
 
-            for(int i = 0; i < paramInfos.Length; i++)
+            for (int i = 0; i < paramInfos.Length; i++)
             {
                 refPos[i] = -1;
                 if (!paramInfos[i].IsIn && paramInfos[i].IsOut)  // out parameter
-				{
-					outPosList.Add(i);
-				}
+                {
+                    outPosList.Add(i);
+                }
                 else
                 {
-                    if(paramInfos[i].ParameterType.IsByRef)
+                    if (paramInfos[i].ParameterType.IsByRef)
                     {
                         var ttype = paramInfos[i].ParameterType.GetElementType();
-                        if(CopyByValue.IsStruct(ttype) && ttype != typeof(decimal))
+                        if (CopyByValue.IsStruct(ttype) && ttype != typeof(decimal))
                         {
                             refPos[i] = inPosList.Count;
                         }
@@ -103,17 +93,17 @@ namespace XLua
                     }
 
                     inPosList.Add(i);
-                    var paramType = paramInfos[i].IsDefined(typeof(ParamArrayAttribute), false) || (!paramInfos[i].ParameterType.IsArray && paramInfos[i].ParameterType.IsByRef ) ? 
+                    var paramType = paramInfos[i].IsDefined(typeof(ParamArrayAttribute), false) || (!paramInfos[i].ParameterType.IsArray && paramInfos[i].ParameterType.IsByRef) ?
                         paramInfos[i].ParameterType.GetElementType() : paramInfos[i].ParameterType;
-                    paramsChecks.Add (objCheckers.GetChecker(paramType));
-                    paramsCasts.Add (objCasters.GetCaster(paramType));
+                    paramsChecks.Add(objCheckers.GetChecker(paramType));
+                    paramsCasts.Add(objCasters.GetCaster(paramType));
                     isOptionalList.Add(paramInfos[i].IsOptional);
                     var defalutValue = paramInfos[i].DefaultValue;
                     if (paramInfos[i].IsOptional)
                     {
                         if (defalutValue != null && defalutValue.GetType() != paramInfos[i].ParameterType)
                         {
-                            defalutValue = defalutValue.GetType() == typeof(Missing) ? (paramInfos[i].ParameterType.IsValueType() ? Activator.CreateInstance(paramInfos[i].ParameterType) : Missing.Value) 
+                            defalutValue = defalutValue.GetType() == typeof(Missing) ? (paramInfos[i].ParameterType.IsValueType() ? Activator.CreateInstance(paramInfos[i].ParameterType) : Missing.Value)
                                 : Convert.ChangeType(defalutValue, paramInfos[i].ParameterType);
                         }
                         HasDefalutValue = true;
@@ -139,7 +129,7 @@ namespace XLua
             {
                 isVoid = (method as MethodInfo).ReturnType == typeof(void);
             }
-            else if(method is ConstructorInfo)
+            else if (method is ConstructorInfo)
             {
                 isVoid = false;
             }
@@ -150,17 +140,17 @@ namespace XLua
             int luaTop = LuaAPI.lua_gettop(L);
             int luaStackPos = luaStackPosStart;
 
-            for(int i = 0; i < checkArray.Length; i++)
+            for (int i = 0; i < checkArray.Length; i++)
             {
                 if ((i == (checkArray.Length - 1)) && (paramsType != null))
                 {
                     break;
                 }
-                if(luaStackPos > luaTop && !isOptionalArray[i])
+                if (luaStackPos > luaTop && !isOptionalArray[i])
                 {
                     return false;
                 }
-                else if(luaStackPos <= luaTop && !checkArray[i](L, luaStackPos))
+                else if (luaStackPos <= luaTop && !checkArray[i](L, luaStackPos))
                 {
                     return false;
                 }
@@ -171,7 +161,7 @@ namespace XLua
                 }
             }
 
-            return paramsType != null ? (luaStackPos < luaTop + 1 ? 
+            return paramsType != null ? (luaStackPos < luaTop + 1 ?
                 checkArray[checkArray.Length - 1](L, luaStackPos) : true) : luaStackPos == luaTop + 1;
         }
 
@@ -184,7 +174,7 @@ namespace XLua
                 {
                     ObsoleteAttribute info = Attribute.GetCustomAttribute(method, typeof(ObsoleteAttribute)) as ObsoleteAttribute;
                     UnityEngine.Debug.LogWarning("Obsolete Method [" + method.DeclaringType.ToString() + "." + method.Name + "]: " + info.Message);
-                } 
+                }
 #endif
                 object target = null;
                 MethodBase toInvoke = method;
@@ -269,7 +259,7 @@ namespace XLua
             }
             finally
             {
-                for(int i = 0; i < args.Length; i++)
+                for (int i = 0; i < args.Length; i++)
                 {
                     args[i] = null;
                 }
@@ -319,13 +309,12 @@ namespace XLua
 
     public class MethodWrapsCache
     {
-        ObjectTranslator translator;
-        ObjectCheckers objCheckers;
-        ObjectCasters objCasters;
-
-        Dictionary<Type, LuaCSFunction> constructorCache = new Dictionary<Type, LuaCSFunction>();
-        Dictionary<Type, Dictionary<string, LuaCSFunction>> methodsCache = new Dictionary<Type, Dictionary<string, LuaCSFunction>>();
-        Dictionary<Type, LuaCSFunction> delegateCache = new Dictionary<Type, LuaCSFunction>();
+        private ObjectTranslator translator;
+        private ObjectCheckers objCheckers;
+        private ObjectCasters objCasters;
+        private Dictionary<Type, LuaCSFunction> constructorCache = new Dictionary<Type, LuaCSFunction>();
+        private Dictionary<Type, Dictionary<string, LuaCSFunction>> methodsCache = new Dictionary<Type, Dictionary<string, LuaCSFunction>>();
+        private Dictionary<Type, LuaCSFunction> delegateCache = new Dictionary<Type, LuaCSFunction>();
 
         public MethodWrapsCache(ObjectTranslator translator, ObjectCheckers objCheckers, ObjectCasters objCasters)
         {
@@ -358,7 +347,7 @@ namespace XLua
                 else
                 {
                     LuaCSFunction ctor = _GenMethodWrap(type, ".ctor", constructors, true).Call;
-                    
+
                     if (type.IsValueType())
                     {
                         bool hasZeroParamsCtor = false;
@@ -533,9 +522,9 @@ namespace XLua
         }
 
         public MethodWrap _GenMethodWrap(Type type, string methodName, IEnumerable<MemberInfo> methodBases, bool forceCheck = false)
-        { 
+        {
             List<OverloadMethodWrap> overloads = new List<OverloadMethodWrap>();
-            foreach(var methodBase in methodBases)
+            foreach (var methodBase in methodBases)
             {
                 var mb = methodBase as MethodBase;
                 if (mb == null)
@@ -559,7 +548,7 @@ namespace XLua
         {
             try
             {
-                if (!(method is MethodInfo) || !Utils.IsSupportedMethod(method as MethodInfo) )
+                if (!(method is MethodInfo) || !Utils.IsSupportedMethod(method as MethodInfo))
                 {
                     return false;
                 }

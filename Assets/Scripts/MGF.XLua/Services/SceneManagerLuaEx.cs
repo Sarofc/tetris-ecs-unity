@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
+using Saro.Core;
 using XLua;
-using Cysharp.Threading.Tasks;
 
 namespace Saro
 {
@@ -13,9 +9,13 @@ namespace Saro
     {
         public static async UniTaskVoid LoadSceneAsync(string sceneName)
         {
-            var scenehandle = XAsset.XAssetComponent.Current.LoadSceneAsync(sceneName);
+            var scenehandle = Main.Resolve<IAssetInterface>().LoadSceneAsync(sceneName);
             await scenehandle;
-            scenehandle.DecreaseRefCount();
+
+            // TODO 卸载了bundle，场景bundle里的资源就都被卸载了，例如material就会missing
+            // 目前 非additive加载方式，XAssetManager内部会自动卸载
+            // 针对additive加载方式，XAssetManager里，也管理下？
+            //scenehandle.DecreaseRefCount();
         }
     }
 }

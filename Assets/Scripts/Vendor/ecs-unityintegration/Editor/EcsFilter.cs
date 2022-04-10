@@ -8,44 +8,54 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace Leopotam.Ecs.UnityIntegration.Editor {
-    [CustomEditor (typeof (EcsFilterObserver))]
-    sealed class EcsFilterObserverInspector : UnityEditor.Editor {
-        EcsFilterObserver _observer;
+namespace Leopotam.Ecs.UnityIntegration.Editor
+{
+    [CustomEditor(typeof(EcsFilterObserver))]
+    internal sealed class EcsFilterObserverInspector : UnityEditor.Editor
+    {
+        private EcsFilterObserver _observer;
 
-        public override void OnInspectorGUI () {
-            if (_observer != null) {
+        public override void OnInspectorGUI()
+        {
+            if (_observer != null)
+            {
                 var guiEnabled = GUI.enabled;
                 GUI.enabled = true;
-                DrawComponents ();
+                DrawComponents();
                 GUI.enabled = guiEnabled;
-                EditorUtility.SetDirty (target);
+                EditorUtility.SetDirty(target);
             }
         }
 
-        void OnEnable () {
+        private void OnEnable()
+        {
             _observer = target as EcsFilterObserver;
         }
 
-        void OnDisable () {
+        private void OnDisable()
+        {
             _observer = null;
         }
 
-        void DrawComponents () {
-            GUILayout.BeginVertical (GUI.skin.box);
-            var count = _observer.Filter.GetEntitiesCount ();
-            EditorGUILayout.LabelField ($"Entities: {count}", EditorStyles.boldLabel);
-            if (count > 0) {
+        private void DrawComponents()
+        {
+            GUILayout.BeginVertical(GUI.skin.box);
+            var count = _observer.Filter.GetEntitiesCount();
+            EditorGUILayout.LabelField($"Entities: {count}", EditorStyles.boldLabel);
+            if (count > 0)
+            {
                 var ego = _observer.World.EntityGameObjects;
-                foreach (var idx in _observer.Filter) {
+                foreach (var idx in _observer.Filter)
+                {
                     ref var entity = ref _observer.Filter.GetEntity(idx);
-                    if (entity.IsAlive ()) {
-                        ego.TryGetValue (entity.GetInternalId (), out var entityGo);
-                        EditorGUILayout.ObjectField (entityGo, typeof (GameObject), true);
+                    if (entity.IsAlive())
+                    {
+                        ego.TryGetValue(entity.GetInternalId(), out var entityGo);
+                        EditorGUILayout.ObjectField(entityGo, typeof(GameObject), true);
                     }
                 }
             }
-            GUILayout.EndVertical ();
+            GUILayout.EndVertical();
         }
     }
 }

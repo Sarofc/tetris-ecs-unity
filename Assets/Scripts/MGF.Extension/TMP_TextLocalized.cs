@@ -1,7 +1,9 @@
-﻿
+﻿using UnityEngine;
+
 namespace Saro.Localization
 {
-    [UnityEngine.RequireComponent(typeof(TMPro.TMP_Text))]
+    [DisallowMultipleComponent]
+    [RequireComponent(typeof(TMPro.TMP_Text))]
     public class TMP_TextLocalized : ALocalized<TMPro.TMP_Text>
     {
         protected override void OnValueChanged()

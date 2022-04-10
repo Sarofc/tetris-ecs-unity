@@ -1,7 +1,6 @@
 ﻿#define v1
 //#define v1_patch
 
-using System.Collections;
 using UnityEngine;
 
 namespace Tetris.Tests

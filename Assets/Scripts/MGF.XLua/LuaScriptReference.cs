@@ -20,6 +20,7 @@ namespace Saro.Lua
         [SerializeField]
         private Object cachedAsset;
 #endif
+
         [SerializeField]
         protected TextAsset text;
 

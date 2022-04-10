@@ -9,7 +9,7 @@ namespace IFix
     public class IFixConfig
     {
         [IFix]
-        static IEnumerable<Type> hotfix
+        private static IEnumerable<Type> hotfix
         {
             get
             {

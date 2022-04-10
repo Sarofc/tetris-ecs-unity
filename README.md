@@ -1,8 +1,17 @@
-# [Tetris](http://harddrop.com/wiki/Tetris_Wiki)
+# 现代俄罗斯方块
 
-现代俄罗斯方块
+[MGF]() demo项目，资源框架使用[Saro.XAsset]()，Gameplay使用[leo-ecs]()。
+</br>
+unity资源全异步加载，包体最小化（main场景+单manifest即可），可边玩边下。
 
-Unity 2018.4
+TODO 验证下sprite atlas打包，是否冗余，通过路径能否正确加载
+
+## 快速开始
+
+- Unity 2021.2.14f1
+- .Net Standard 2.1
+
+查看 [startup.md]()
 
 ## 超级旋转系统(Super Rotation System, SRS)
 
@@ -16,7 +25,7 @@ Unity 2018.4
 
 - 踢墙(WallKick)。
 
-    当方块被墙壁等障碍卡住不能旋转的时候，进行一组WallKick测试，若其中一项测试成功，则方块会旋转并移动到指定位置，若全部测试失败，则旋转失败，方块没有任何旋转和位移。
+    当方块被墙壁等障碍卡住不能旋转的时候，进行一组WallKick数据测试，若其中一项测试成功，则方块会旋转并移动到指定位置，若全部测试失败，则旋转失败，方块没有任何旋转和位移。
 
 ## Hold操作
 

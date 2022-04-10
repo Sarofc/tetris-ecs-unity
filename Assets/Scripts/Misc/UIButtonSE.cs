@@ -1,6 +1,4 @@
 ﻿using Saro.Audio;
-using System;
-using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -34,7 +32,7 @@ namespace Tetris.Misc
 
         private void OnPress()
         {
-            SoundComponent.Current.PlaySE(m_PressClip);
+            SoundManager.Current.PlaySE(m_PressClip);
         }
     }
 }

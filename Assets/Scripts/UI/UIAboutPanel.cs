@@ -1,7 +1,3 @@
-using UnityEngine;
-using System.Collections;
-using UnityEngine.UI;
-using System;
 using Saro.UI;
 
 
@@ -32,15 +28,15 @@ namespace Tetris.UI
 
     public partial class UIAboutPanel
     {
-		private UnityEngine.UI.Button btn_close;
+        private UnityEngine.UI.Button btn_close;
 
-		void GetComps()
-		{
-			btn_close = Binder.Get<UnityEngine.UI.Button>("btn_close");
-		}
-	}
+        private void GetComps()
+        {
+            btn_close = Binder.Get<UnityEngine.UI.Button>("btn_close");
+        }
+    }
 
-	//<<end
+    //<<end
 
     // =============================================
 }

@@ -1,12 +1,12 @@
-﻿using System;
+﻿using Saro.UI;
+using System;
 using System.Collections.Generic;
-using Saro.UI;
 using TMPro;
 using UnityEngine;
 
 namespace Tetris.UI
 {
-    class UIBinder_Addtive : IUIBindProcessor
+    internal class UIBinder_Addtive : IUIBindProcessor
     {
         public Dictionary<string, Type> Binds { get; } = new Dictionary<string, Type>
         {

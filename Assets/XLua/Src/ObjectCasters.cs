@@ -13,7 +13,6 @@ using LuaCSFunction = UniLua.CSharpFunctionDelegate;
 #else
 using LuaAPI = XLua.LuaDLL.Lua;
 using RealStatePtr = System.IntPtr;
-using LuaCSFunction = XLua.LuaDLL.lua_CSFunction;
 #endif
 
 using System.Collections;
@@ -29,8 +28,8 @@ namespace XLua
 
     public class ObjectCheckers
     {
-        Dictionary<Type, ObjectCheck> checkersMap = new Dictionary<Type, ObjectCheck>();
-        ObjectTranslator translator;
+        private Dictionary<Type, ObjectCheck> checkersMap = new Dictionary<Type, ObjectCheck>();
+        private ObjectTranslator translator;
 
         public ObjectCheckers(ObjectTranslator translator)
         {
@@ -212,8 +211,8 @@ namespace XLua
 
     public class ObjectCasters
     {
-        Dictionary<Type, ObjectCast> castersMap = new Dictionary<Type, ObjectCast>();
-        ObjectTranslator translator;
+        private Dictionary<Type, ObjectCast> castersMap = new Dictionary<Type, ObjectCast>();
+        private ObjectTranslator translator;
 
         public ObjectCasters(ObjectTranslator translator)
         {
@@ -231,7 +230,7 @@ namespace XLua
             castersMap[typeof(float)] = floatCaster;
             castersMap[typeof(decimal)] = decimalCaster;
             castersMap[typeof(bool)] = getBoolean;
-            castersMap[typeof(string)] =  getString;
+            castersMap[typeof(string)] = getString;
             castersMap[typeof(object)] = getObject;
             castersMap[typeof(byte[])] = getBytes;
             castersMap[typeof(IntPtr)] = getIntptr;
@@ -314,7 +313,7 @@ namespace XLua
 
         private object getBytes(RealStatePtr L, int idx, object target)
         {
-            if(LuaAPI.lua_type(L, idx) == LuaTypes.LUA_TSTRING)
+            if (LuaAPI.lua_type(L, idx) == LuaTypes.LUA_TSTRING)
             {
                 return LuaAPI.lua_tobytes(L, idx);
             }
@@ -339,7 +338,7 @@ namespace XLua
                         {
                             return LuaAPI.lua_toint64(L, idx);
                         }
-                        else if(LuaAPI.lua_isinteger(L, idx))
+                        else if (LuaAPI.lua_isinteger(L, idx))
                         {
                             return LuaAPI.xlua_tointeger(L, idx);
                         }
@@ -370,7 +369,7 @@ namespace XLua
                         {
                             return LuaAPI.lua_toint64(L, idx);
                         }
-                        else if(LuaAPI.lua_isuint64(L, idx))
+                        else if (LuaAPI.lua_isuint64(L, idx))
                         {
                             return LuaAPI.lua_touint64(L, idx);
                         }
@@ -430,7 +429,7 @@ namespace XLua
                     return (obj != null && type.IsAssignableFrom(obj.GetType())) ? obj : null;
                 }
                 return null;
-            }; 
+            };
 
             if (typeof(Delegate).IsAssignableFrom(type))
             {
@@ -702,7 +701,7 @@ namespace XLua
             }
         }
 
-        ObjectCast genNullableCaster(ObjectCast oc)
+        private ObjectCast genNullableCaster(ObjectCast oc)
         {
             return (RealStatePtr L, int idx, object target) =>
             {
@@ -724,7 +723,7 @@ namespace XLua
             Type underlyingType = Nullable.GetUnderlyingType(type);
             if (underlyingType != null)
             {
-                return genNullableCaster(GetCaster(underlyingType)); 
+                return genNullableCaster(GetCaster(underlyingType));
             }
             ObjectCast oc;
             if (!castersMap.TryGetValue(type, out oc))

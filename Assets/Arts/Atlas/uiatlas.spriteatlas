@@ -23,11 +23,11 @@ SpriteAtlas:
     platformSettings: []
     packingSettings:
       serializedVersion: 2
-      padding: 4
+      padding: 8
       blockOffset: 1
       allowAlphaSplitting: 0
-      enableRotation: 1
-      enableTightPacking: 1
+      enableRotation: 0
+      enableTightPacking: 0
       enableAlphaDilation: 0
     secondaryTextureSettings: {}
     variantMultiplier: 1
@@ -38,9 +38,13 @@ SpriteAtlas:
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 21300000, guid: 9ed73dd377026434cb093b9d6b226e7a, type: 3}
   - {fileID: 21300000, guid: 8c1afb9972d05ed479ea084bdcad4529, type: 3}
+  - {fileID: 21300000, guid: dd38eccbfbdc99f43b7303ccc5c8fc61, type: 3}
   m_PackedSpriteNamesToIndex:
+  - logo_unity
   - Square
+  - icon_github
   m_RenderDataMap: {}
   m_Tag: uiatlas
   m_IsVariant: 0

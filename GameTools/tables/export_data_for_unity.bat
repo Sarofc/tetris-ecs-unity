@@ -7,8 +7,8 @@ set TABLE_DATA=.\data\config\
 set TABLE_CS=.\data\table_cs\
 
 set UNITY_PROJECT=..\..\
-set UNITY_PROJECT_DATA=%unity_project%\Assets\StreamingAssets\Generate\Config\
-set UNITY_PROJECT_CS=%unity_project%\Assets\Scripts\Generate\DataTable\
+@REM set UNITY_PROJECT_DATA=%unity_project%\Assets\StreamingAssets\Gen\Config\
+set UNITY_PROJECT_CS=%unity_project%\Assets\Scripts\Gen\DataTable\
 
 ".\bin\GTable.exe" --out_client %TABLE_DATA% --out_cs %TABLE_CS% --in_excel %TABLE_EXCEL%
 

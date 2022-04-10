@@ -1,9 +1,12 @@
-﻿
-using Saro.Pool;
+﻿using Saro.Pool;
 using System.Collections.Generic;
 
 namespace Leopotam.Ecs.Extension
 {
+    /// <summary>
+    /// TODO 类似 unity dynamic buffer
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public struct ComponentArray<T> : IEcsAutoReset<ComponentArray<T>>
         where T : struct
     {
@@ -14,7 +17,6 @@ namespace Leopotam.Ecs.Extension
         }
     }
 
-    // TODO 增加 ComponentArray,
     public struct ComponentList<T> : IEcsAutoReset<ComponentList<T>>
         where T : struct
     {

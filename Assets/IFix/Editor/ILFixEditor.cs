@@ -39,14 +39,14 @@ namespace IFix.Editor
             window.Show();
         }
 
-        void OnGUI()
+        private void OnGUI()
         {
             index = EditorGUILayout.Popup("Please select a version: ", index, options);
             if (GUILayout.Button(buttonText))
                 doPatch();
         }
 
-        void doPatch()
+        private void doPatch()
         {
             if (callback != null)
             {
@@ -59,9 +59,10 @@ namespace IFix.Editor
     public partial class IFixEditor
     {
         //备份目录
-        const string BACKUP_PATH = "./IFixDllBackup";
+        private const string BACKUP_PATH = "./IFixDllBackup";
+
         //备份文件的时间戳生成格式
-        const string TIMESTAMP_FORMAT = "yyyyMMddHHmmss";
+        private const string TIMESTAMP_FORMAT = "yyyyMMddHHmmss";
 
         //注入的目标文件夹
         private static string targetAssembliesFolder = "";
@@ -172,7 +173,7 @@ namespace IFix.Editor
 
         public static bool InjectOnce = false; //AutoInjectAssemblys只调用一次，可以防止自动化打包时，很多场景导致AutoInjectAssemblys被多次调用
 
-        static bool injected = false;
+        private static bool injected = false;
 
         [UnityEditor.Callbacks.PostProcessScene]
         public static void AutoInjectAssemblys()
@@ -354,18 +355,19 @@ namespace IFix.Editor
         // TODO 提供接口，给外部使用吧
         //默认的注入及备份程序集
         //另外可以直接调用InjectAssembly对其它程序集进行注入。
-        static string[] injectAssemblys = new string[]
-        {
+        public static string[] injectAssemblys = new string[]
+         {
             "Assembly-CSharp",
             "Assembly-CSharp-firstpass",
-            "Saro.MGF"
-        };
+            "Saro.MGF",
+            "Saro.XAsset"
+         };
 
         /// <summary>
         /// 把注入后的程序集备份
         /// </summary>
         /// <param name="ts">时间戳</param>
-        static void doBackup(string ts)
+        private static void doBackup(string ts)
         {
             if (!Directory.Exists(BACKUP_PATH))
             {
@@ -401,7 +403,7 @@ namespace IFix.Editor
         /// 恢复某个选定的备份
         /// </summary>
         /// <param name="ts">时间戳</param>
-        static void doRestore(string ts)
+        private static void doRestore(string ts)
         {
             var scriptAssembliesDir = string.Format("./Library/{0}/", targetAssembliesFolder);
 
@@ -432,7 +434,7 @@ namespace IFix.Editor
         }
 
         //cecil里的类名表示和.net标准并不一样，这里做些转换
-        static string GetCecilTypeName(Type type)
+        private static string GetCecilTypeName(Type type)
         {
             if (type.IsByRef && type.GetElementType().IsGenericType)
             {
@@ -483,7 +485,7 @@ namespace IFix.Editor
 
         //对路径预处理，然后添加到StringBuilder
         //规则：如果路径含空格，则加上双引号
-        static void appendFile(StringBuilder sb, string path)
+        private static void appendFile(StringBuilder sb, string path)
         {
             if (path.IndexOf(' ') > 0)
             {
@@ -697,7 +699,7 @@ namespace IFix.Editor
 
         //把方法签名写入文件
         //由于目前不支持泛型函数的patch，所以函数签名为方法名+参数类型
-        static void writeMethods(BinaryWriter writer, List<MethodInfo> methods)
+        private static void writeMethods(BinaryWriter writer, List<MethodInfo> methods)
         {
             var methodGroups = methods.GroupBy(m => m.DeclaringType).ToList();
             writer.Write(methodGroups.Count);
@@ -719,7 +721,7 @@ namespace IFix.Editor
             }
         }
 
-        static void writeFields(BinaryWriter writer, List<FieldInfo> fields)
+        private static void writeFields(BinaryWriter writer, List<FieldInfo> fields)
         {
             var fieldGroups = fields.GroupBy(m => m.DeclaringType).ToList();
             writer.Write(fieldGroups.Count);
@@ -735,7 +737,7 @@ namespace IFix.Editor
             }
         }
 
-        static void writeProperties(BinaryWriter writer, List<PropertyInfo> properties)
+        private static void writeProperties(BinaryWriter writer, List<PropertyInfo> properties)
         {
             var PropertyGroups = properties.GroupBy(m => m.DeclaringType).ToList();
             writer.Write(PropertyGroups.Count);
@@ -751,7 +753,7 @@ namespace IFix.Editor
             }
         }
 
-        static void writeClasses(BinaryWriter writer, List<Type> classes)
+        private static void writeClasses(BinaryWriter writer, List<Type> classes)
         {
             writer.Write(classes.Count);
             foreach (var classGroup in classes)
@@ -760,7 +762,7 @@ namespace IFix.Editor
             }
         }
 
-        static bool hasGenericParameter(Type type)
+        private static bool hasGenericParameter(Type type)
         {
             if (type.IsByRef || type.IsArray)
             {
@@ -780,7 +782,7 @@ namespace IFix.Editor
             return type.IsGenericParameter;
         }
 
-        static bool hasGenericParameter(MethodBase method)
+        private static bool hasGenericParameter(MethodBase method)
         {
             if (method.IsGenericMethodDefinition || method.IsGenericMethod) return true;
             if (!method.IsConstructor && hasGenericParameter((method as MethodInfo).ReturnType)) return true;

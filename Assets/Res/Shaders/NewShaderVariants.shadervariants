@@ -20,18 +20,52 @@ ShaderVariantCollection:
       variants:
       - keywords: 
         passType: 0
-      - keywords: UNITY_HDR_ON
-        passType: 0
   - first: {fileID: 66, guid: 0000000000000000f000000000000000, type: 0}
     second:
       variants:
       - keywords: 
         passType: 0
+  - first: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+    second:
+      variants:
+      - keywords: DIRECTIONAL LIGHTPROBE_SH
+        passType: 4
+      - keywords: DIRECTIONAL LIGHTPROBE_SH _EMISSION
+        passType: 4
+      - keywords: DIRECTIONAL
+        passType: 5
+      - keywords: 
+        passType: 8
+  - first: {fileID: 6, guid: 0000000000000000f000000000000000, type: 0}
+    second:
+      variants:
+      - keywords: 
+        passType: 8
+  - first: {fileID: 7, guid: 0000000000000000f000000000000000, type: 0}
+    second:
+      variants:
+      - keywords: DIRECTIONAL LIGHTPROBE_SH
+        passType: 4
+      - keywords: DIRECTIONAL
+        passType: 5
   - first: {fileID: 207, guid: 0000000000000000f000000000000000, type: 0}
     second:
       variants:
       - keywords: 
         passType: 0
+  - first: {fileID: 211, guid: 0000000000000000f000000000000000, type: 0}
+    second:
+      variants:
+      - keywords: _ALPHABLEND_ON
+        passType: 4
+      - keywords: _ALPHABLEND_ON _COLORADDSUBDIFF_ON _FADING_ON
+        passType: 4
+      - keywords: PROCEDURAL_INSTANCING_ON _ALPHABLEND_ON
+        passType: 8
+      - keywords: PROCEDURAL_INSTANCING_ON _ALPHABLEND_ON _COLORADDSUBDIFF_ON
+        passType: 8
+      - keywords: 
+        passType: 13
   - first: {fileID: 9000, guid: 0000000000000000f000000000000000, type: 0}
     second:
       variants:
@@ -72,8 +106,6 @@ ShaderVariantCollection:
       variants:
       - keywords: 
         passType: 0
-      - keywords: UNITY_HDR_ON
-        passType: 0
   - first: {fileID: 10757, guid: 0000000000000000f000000000000000, type: 0}
     second:
       variants:
@@ -87,9 +119,14 @@ ShaderVariantCollection:
   - first: {fileID: 4800000, guid: 382151503e2a43a4ebb7366d1632731d, type: 3}
     second:
       variants:
+      - keywords: BLOOM FINALPASS
+        passType: 0
       - keywords: FINALPASS
         passType: 0
-      - keywords: BLOOM FINALPASS
+  - first: {fileID: 4800000, guid: 68e6db2ebdc24f95958faec2be5558d6, type: 3}
+    second:
+      variants:
+      - keywords: 
         passType: 0
   - first: {fileID: 4800000, guid: 4bf4cff0d0bac3d43894e2e8839feb40, type: 3}
     second:
@@ -99,5 +136,10 @@ ShaderVariantCollection:
   - first: {fileID: 4800000, guid: fe393ace9b354375a9cb14cdbbc28be4, type: 3}
     second:
       variants:
-      - keywords: OUTLINE_ON _EMISSION
+      - keywords: OUTLINE_ON
+        passType: 0
+  - first: {fileID: 4800000, guid: 0b7285fb1f736934f854dff9f70e2749, type: 3}
+    second:
+      variants:
+      - keywords: INSTANCING_ON
         passType: 0

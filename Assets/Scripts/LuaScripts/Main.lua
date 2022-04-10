@@ -1,8 +1,12 @@
+require("Core/System")
+
+local GameSettings = require("Settings/GameSettings")
+
 -- print("lua main start!")
+local UIManager = CS.Saro.UI.UIManager.Current
 
-local UIComponent = CS.Saro.UI.UIComponent.Current
+GameSettings:ApplySettings()
 
-UIComponent:OpenUIAsync("UIStartPanel")
+UIManager:OpenUIAsync("UIStartPanel")
 
--- UIComponent:OpenUIAsync("UISetting")
-
+-- UIManager:OpenUIAsync("UISetting")

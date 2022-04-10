@@ -7,16 +7,16 @@
 */
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace XLua
 {
     public class ObjectPool
     {
-        const int LIST_END = -1;
-        const int ALLOCED = -2;
-        struct Slot
+        private const int LIST_END = -1;
+        private const int ALLOCED = -2;
+
+        private struct Slot
         {
             public int next;
             public object obj;
@@ -52,7 +52,7 @@ namespace XLua
             list = new Slot[512];
         }
 
-        void extend_capacity()
+        private void extend_capacity()
         {
             Slot[] new_list = new Slot[list.Length * 2];
             for (int i = 0; i < list.Length; i++)

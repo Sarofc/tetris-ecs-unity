@@ -21,8 +21,9 @@ namespace XLua
     //如果你要生成Lua调用CSharp的代码，加这个标签
     public class LuaCallCSharpAttribute : Attribute
     {
-        GenFlag flag;
-        public GenFlag Flag {
+        private GenFlag flag;
+        public GenFlag Flag
+        {
             get
             {
                 return flag;
@@ -57,7 +58,7 @@ namespace XLua
     //如果想对struct生成免GC代码，加这个标签
     public class GCOptimizeAttribute : Attribute
     {
-        OptimizeFlag flag;
+        private OptimizeFlag flag;
         public OptimizeFlag Flag
         {
             get
@@ -81,7 +82,7 @@ namespace XLua
     //只能标注Dictionary<Type, List<string>>的field或者property
     public class DoNotGenAttribute : Attribute
     {
-        
+
     }
 
     public class AdditionalPropertiesAttribute : Attribute
@@ -107,7 +108,7 @@ namespace XLua
 
     public class HotfixAttribute : Attribute
     {
-        HotfixFlag flag;
+        private HotfixFlag flag;
         public HotfixFlag Flag
         {
             get
@@ -131,7 +132,7 @@ namespace XLua
     public static class SysGenConfig
     {
         [GCOptimize]
-        static List<Type> GCOptimize
+        private static List<Type> GCOptimize
         {
             get
             {
@@ -149,7 +150,7 @@ namespace XLua
         }
 
         [AdditionalProperties]
-        static Dictionary<Type, List<string>> AdditionalProperties
+        private static Dictionary<Type, List<string>> AdditionalProperties
         {
             get
             {

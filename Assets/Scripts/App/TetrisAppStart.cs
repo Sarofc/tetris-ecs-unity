@@ -1,31 +1,29 @@
-﻿using System;
-using System.IO;
-using System.Collections.Generic;
-using Cysharp.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
 using Saro;
 using Saro.Audio;
-using Saro.EventDef;
+using Saro.Core;
 using Saro.Events;
-using Saro.Net;
-using Saro.UI;
+using Saro.Gameplay.Effect;
+using Saro.Localization;
 using Saro.Lua;
-using Saro.Lua.UI;
-using Saro.Utility;
+using Saro.Net;
+using Saro.Table;
+using Saro.UI;
 using Saro.XAsset;
 using Saro.XAsset.Update;
-using UnityEngine;
-using Tetris.UI;
+using System;
+using System.Collections.Generic;
+using System.IO;
 using Tetris.Save;
-using Saro.Localization;
-using Saro.Table;
+using UnityEngine;
 
 namespace Tetris
 {
-    public sealed class TetrisAppStart : FEvent<AppStart>
+    public sealed class TetrisAppStart : IStartup
     {
-        protected override async UniTask Run(AppStart args)
+        public override async UniTask StartAsync()
         {
-            FGame.Register<EventComponent>();
+            Main.Register<EventManager>();
 
             SetupDownloader();
 
@@ -35,46 +33,54 @@ namespace Tetris
 
             SetupDataTable();
 
-            SetupLocalization();
+            SetupLocalization().Forget();
 
-            await FGame.Register<SoundComponent>().InitializeAsync(FGame.Resolve<XAssetComponent>(), "Assets/Res/Audios/");
-            await FGame.Register<UIComponent>().InitializeAsync(FGame.Resolve<XAssetComponent>(), "Assets/Res/Prefab/UI/");
+            // TODO 探究易用、易扩展的资源加载方式
+            //await Main.Register<UIManager>().InitializeAsync("Assets/Res/Prefab/UI/");
 
-            await UpdateAssetsAsync();
+            BDFramework.UFlux.UIManager.Instance.Init();
 
-            // incase
-            if (FGame.Scene.IsDisposed) return;
+            await Main.Register<SoundManager>().InitializeAsync("Assets/Res/Audios/");
+            Main.Register<EffectManager>().SetAssetInterface(Main.Resolve<IAssetInterface>(), "Assets/Res/Prefab/Vfx/");
+
+            //await UpdateAssetsAsync();
 
             LoadGameSave();
 
-            SetupLuaEnv();
+            //SetupLuaEnv();
 
             Main.Instance.gameObject.AddComponent<Saro.Profiler.ProfilerDisplay>();
 
-            //await UIComponent.Current.OpenUIAsync<UIStartPanel>();
+            //await UIManager.Current.OpenUIAsync<UIStartPanel>();
+
+            BDFramework.UFlux.UIManager.Instance.LoadWindow(BDFramework.UI.WinEnum.Win_UFlux);
+            BDFramework.UFlux.UIManager.Instance.ShowWindow(BDFramework.UI.WinEnum.Win_UFlux);
         }
 
         private void LoadGameSave()
         {
-            FGame.Register<SaveComponent>();
+            Main.Register<SaveManager>();
 
-            SaveComponent.Current.Load();
+            //SaveManager.Current.Load();
 
-            SoundComponent.Current.ApplySettings();
+            //SoundManager.Current.ApplySettings();
+            //LocalizationManager.Current.ApplySettings();
         }
 
         private void SetupAssetManager()
         {
-            var xassetComponent = FGame.Register<XAssetComponent>();
+            var xassetManager = new XAssetManager();
+            xassetManager.SetDefaultLocator();
+            xassetManager.Policy.AutoUnloadAsset = true;
 
-            xassetComponent.SetDefaultLocator();
-
-            xassetComponent.Initialize();
+            Main.Register<IAssetInterface>(xassetManager);
         }
 
         private void SetupDownloader()
         {
-            FGame.Register<DownloaderComponent>();
+            Main.Register<DownloaderManager>();
+
+            Downloader.s_SpeedLimit = 128;
 
             Downloader.s_GlobalCompleted += (download) =>
             {
@@ -94,12 +100,13 @@ namespace Tetris
             };
         }
 
-        private void LoadIFixPatch()
+        // TODO 需要改为vfs加载
+        private void TestLoadIFixPatch()
         {
 #if UNITY_EDITOR
             IFix.IFixManager.Patch("./ExtraAssets/Patch/patch.json");
 #else
-            IFix.IFixManager.Patch($"{XAssetPath.k_DlcPath}/Patch/patch.json");
+            IFix.IFixManager.Patch($"{XAssetConfig.k_DlcPath}/Patch/patch.json");
 #endif
 
             // Test
@@ -108,11 +115,11 @@ namespace Tetris
 
         private void SetupDataTable()
         {
-            TableCfg.s_BytesLoader = tableName =>
+            TableLoader.s_BytesLoader = tableName =>
             {
 #if UNITY_EDITOR
-                var mode = XAssetComponent.s_Mode;
-                if (mode == XAssetComponent.EMode.Editor)
+                var mode = XAssetManager.s_Mode;
+                if (mode == XAssetManager.EMode.Editor)
                 {
                     using (var fs = new FileStream($"GameTools/tables/data/config/{tableName}", FileMode.Open, FileAccess.Read))
                     {
@@ -123,25 +130,47 @@ namespace Tetris
                 }
 #endif
 
-                return XAssetComponent.Current.LoadCustomAsset("tables/" + tableName);
+                return Main.Resolve<IAssetInterface>().LoadCustomAsset("tables/" + tableName);
+            };
+
+            TableLoader.s_BytesLoaderAsync = async tableName =>
+            {
+#if UNITY_EDITOR
+                var mode = XAssetManager.s_Mode;
+                if (mode == XAssetManager.EMode.Editor)
+                {
+                    using (var fs = new FileStream($"GameTools/tables/data/config/{tableName}", FileMode.Open, FileAccess.Read))
+                    {
+                        //var buffer = new byte[fs.Length];
+                        //fs.Read(buffer, 0, buffer.Length);
+                        //return buffer;
+
+                        Memory<byte> buffer = new Memory<byte>(new byte[fs.Length]);
+                        var count = await fs.ReadAsync(buffer);
+                        return buffer.ToArray();
+                    }
+                }
+#endif
+
+                return await Main.Resolve<IAssetInterface>().LoadCustomAssetAsync("tables/" + tableName);
             };
         }
 
-        private void SetupLocalization()
+        private async UniTask SetupLocalization()
         {
-            FGame.Register<LocalizationComponent>()
-                .SetProvider(new LocalizationDataProvider_Excel())
-                .SetLanguage(ELanguage.ZH);
+            await Main.Register<LocalizationManager>()
+                  .SetProvider(new LocalizationDataProvider_Excel())
+                  .SetLanguageAsync(ELanguage.ZH);
         }
 
         private void SetupLuaEnv()
         {
-            FGame.Register<LuaComponent>();
+            Main.Register<LuaManager>();
 
-            var luaEnv = LuaComponent.Current.LuaEnv;
+            var luaEnv = LuaManager.Current.LuaEnv;
 
 #if UNITY_EDITOR && true
-            if (XAssetComponent.s_Mode == XAssetComponent.EMode.Editor)
+            if (XAssetManager.s_Mode == XAssetManager.EMode.Editor)
             {
                 var dirs = Directory.GetDirectories(Application.dataPath, "LuaScripts", SearchOption.AllDirectories);
                 foreach (var dir in dirs)
@@ -152,7 +181,7 @@ namespace Tetris
             }
             else
             {
-                luaEnv.AddLoader(new FileLuaLoader(XAssetPath.k_Editor_DlcOutputPath + "/" + XAssetPath.k_CustomFolder + "/luascripts", ".lua"));
+                luaEnv.AddLoader(new FileLuaLoader(XAssetConfig.k_Editor_DlcOutputPath + "/" + XAssetConfig.k_CustomFolder + "/luascripts", ".lua"));
                 luaEnv.AddLoader(new CustomBundleLuaLoader("luascripts", ".lua"));
             }
 #else
@@ -163,8 +192,8 @@ namespace Tetris
             try
             {
                 luaEnv.DoString("require (\"Main\")");
-                //await UIComponent.Current.OpenUIAsync("UIStartPanel");
-                //await UIComponent.Current.OpenLuaUIAsync("UISetting");
+                //await UIManager.Current.OpenUIAsync("UIStartPanel");
+                //await UIManager.Current.OpenLuaUIAsync("UISetting");
             }
             catch (Exception e)
             {
@@ -178,22 +207,45 @@ namespace Tetris
         /// <returns></returns>
         private async UniTask UpdateAssetsAsync()
         {
-            var assetUpdaterComponent = FGame.Register<AssetUpdaterComponent>();
+            // TODO 这种ui，应该放到母包里
+            var uiwait = await UIManager.Current.ShowNetworkWaitingUIAsync();
+            uiwait.Close();
+
+            var uiCounter = 0;
+            var xassetManager = Main.Resolve<IAssetInterface>() as XAssetManager;
+            xassetManager.OnLoadRemoteAsset = async (assetName, state) =>
+            {
+                if (!state)
+                {
+                    uiCounter++;
+
+                    //Log.ERROR($"open uiwait start: {Time.frameCount}");
+                    // 临时解决方，外部先异步加载好bundle，委托内部就同步加载好了
+                    var uiwait = UIManager.Current.ShowNetworkWaitingUI();
+                    //Log.ERROR($"open uiwait end: {Time.frameCount}");
+                    uiwait.SetEntry(assetName);
+                }
+                else
+                {
+                    uiCounter--;
+
+                    if (uiCounter == 0)
+                    {
+                        UIManager.Current.CloseNetworkWaitingUI();
+                    }
+                }
+            };
+
+            var assetUpdaterComponent = Main.Register<AssetUpdaterManager>();
             assetUpdaterComponent.RequestDownloadOperationFunc = RequestDownloadOperation;
 
-            //var uiloading = await UIComponent.Current.OpenUIAsync("UILoading");
+            //var uiloading = await UIManager.Current.OpenUIAsync("UILoading");
 
             assetUpdaterComponent.StartUpdate().Forget();
 
             while (!assetUpdaterComponent.IsComplete)
             {
                 await UniTask.Yield();
-            }
-
-            bool result = await XAssetComponent.Current.PreloadRemoteAssets();
-            if (!result)
-            {
-                Log.ERROR("PreloadRemoteAssets failed");
             }
 
             //uiloading.Close();
@@ -233,7 +285,7 @@ namespace Tetris
                     }
                 };
 
-                UIComponent.Current.AddMessageBox(info);
+                UIManager.Current.AddMessageBox(info);
             }
 
             return cts.Task;

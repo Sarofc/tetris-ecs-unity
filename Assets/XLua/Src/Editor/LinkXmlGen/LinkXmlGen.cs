@@ -1,10 +1,10 @@
-﻿using UnityEngine;
+﻿using CSObjectWrapEditor;
 using System.Collections.Generic;
-using XLua;
 using System.IO;
-using System.Text;
 using System.Linq;
-using CSObjectWrapEditor;
+using System.Text;
+using UnityEngine;
+using XLua;
 
 public class LinkXmlGen : ScriptableObject
 {
@@ -15,7 +15,7 @@ public class LinkXmlGen : ScriptableObject
         LuaTable data = lua_env.NewTable();
         var assembly_infos = (from type in (user_cfg.ReflectionUse.Concat(user_cfg.LuaCallCSharp))
                               group type by type.Assembly.GetName().Name into assembly_info
-                              select new { FullName = assembly_info.Key, Types = assembly_info.ToList()}).ToList();
+                              select new { FullName = assembly_info.Key, Types = assembly_info.ToList() }).ToList();
         data.Set("assembly_infos", assembly_infos);
 
         yield return new CustomGenTask

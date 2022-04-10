@@ -1,10 +1,4 @@
-﻿using Cysharp.Threading.Tasks;
-using Saro.IO;
-using Saro.Utility;
-using Saro.XAsset;
-using System;
-using System.IO;
-using UnityEngine;
+﻿using Saro.Core;
 
 namespace Saro.Lua
 {
@@ -23,7 +17,7 @@ namespace Saro.Lua
 
             Log.INFO($"CustomBundleLuaLoader load {fileName} at {path}");
 
-            var data = XAssetComponent.Current.LoadCustomAsset(path);
+            var data = Main.Resolve<IAssetInterface>().LoadCustomAsset(path);
 
             if (HasBOMFlag(data))
             {
