@@ -1,0 +1,809 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb438c0f9d6961b40aed4b83e39c775a, type: 3}
+  m_Name: Manifest
+  m_EditorClassIdentifier: 
+  version: 1
+  appVersion: 0.1
+  resVersion: 159
+  remoteVersionUrl: 
+  remoteAssetUrl: http://localhost:8080
+  dirs:
+  - Assets/Arts/Atlas
+  - Assets/Arts/Fonts
+  - Assets/Arts/Materials
+  - Assets/Arts/Materials/Vfx
+  - Assets/Arts/Textures/UI
+  - Assets/Arts/Textures/VFX
+  - Assets/Res/Audios/BGM
+  - Assets/Res/Audios
+  - Assets/Res/Audios/SE
+  - Assets/Res/Audios/UI
+  - Assets/Res/Prefab
+  - Assets/Res/Prefab/UI/Default
+  - Assets/Res/Prefab/UI
+  - Assets/Res/Prefab/Vfx
+  - Assets/Res/Scenes
+  - Assets/Res/ScriptableObjects
+  - Assets/Res/Shaders
+  - Assets/TextMesh Pro/Resources/Fonts & Materials
+  - Assets/TextMesh Pro/Resources/Shaders
+  - Packages/com.unity.render-pipelines.universal/Runtime/Materials
+  - Packages/com.unity.render-pipelines.universal/Shaders/2D
+  - Packages/com.unity.render-pipelines.universal/Shaders/Particles
+  - Packages/com.unity.render-pipelines.universal/Shaders
+  - Packages/com.unity.textmeshpro/Editor Resources/Gizmos
+  assets:
+  - name: uiatlas.spriteatlas
+    bundle: 101
+    dir: 0
+  - name: Consolas SDF.asset
+    bundle: 94
+    dir: 1
+  - name: Consolas.ttf
+    bundle: 95
+    dir: 1
+  - name: Line.mat
+    bundle: 100
+    dir: 2
+  - name: Mat_VFX_FireSpark.mat
+    bundle: 96
+    dir: 3
+  - name: Square.png
+    bundle: 101
+    dir: 4
+  - name: icon_github.png
+    bundle: 101
+    dir: 4
+  - name: logo_unity.png
+    bundle: 101
+    dir: 4
+  - name: fire_spark.psd
+    bundle: 97
+    dir: 5
+  - name: bgm_t02_swap_t.wav
+    bundle: 1
+    dir: 6
+  - name: GameMixer.mixer
+    bundle: 0
+    dir: 7
+  - name: me_game_clear.wav
+    bundle: 2
+    dir: 8
+  - name: me_game_gameover.wav
+    bundle: 3
+    dir: 8
+  - name: me_game_iget.wav
+    bundle: 4
+    dir: 8
+  - name: me_game_ko_gong.wav
+    bundle: 5
+    dir: 8
+  - name: me_game_ko_vo.wav
+    bundle: 6
+    dir: 8
+  - name: me_game_ko_vo_de.wav
+    bundle: 7
+    dir: 8
+  - name: me_game_ko_vo_es.wav
+    bundle: 8
+    dir: 8
+  - name: me_game_ko_vo_fr.wav
+    bundle: 9
+    dir: 8
+  - name: me_game_ko_vo_it.wav
+    bundle: 10
+    dir: 8
+  - name: me_game_ko_vo_nl.wav
+    bundle: 11
+    dir: 8
+  - name: me_game_ko_vo_ru.wav
+    bundle: 12
+    dir: 8
+  - name: me_game_plvup.wav
+    bundle: 13
+    dir: 8
+  - name: me_game_remain_1.wav
+    bundle: 14
+    dir: 8
+  - name: me_game_remain_2.wav
+    bundle: 15
+    dir: 8
+  - name: me_game_start1.wav
+    bundle: 16
+    dir: 8
+  - name: me_game_start1_de.wav
+    bundle: 17
+    dir: 8
+  - name: me_game_start1_es.wav
+    bundle: 18
+    dir: 8
+  - name: me_game_start1_fr.wav
+    bundle: 19
+    dir: 8
+  - name: me_game_start1_it.wav
+    bundle: 20
+    dir: 8
+  - name: me_game_start1_nl.wav
+    bundle: 21
+    dir: 8
+  - name: me_game_start1_ru.wav
+    bundle: 22
+    dir: 8
+  - name: me_game_start2.wav
+    bundle: 23
+    dir: 8
+  - name: me_game_start2_vo.wav
+    bundle: 24
+    dir: 8
+  - name: me_game_start2_vo_de.wav
+    bundle: 25
+    dir: 8
+  - name: me_game_start2_vo_es.wav
+    bundle: 26
+    dir: 8
+  - name: me_game_start2_vo_fr.wav
+    bundle: 27
+    dir: 8
+  - name: me_game_start2_vo_it.wav
+    bundle: 28
+    dir: 8
+  - name: me_game_start2_vo_nl.wav
+    bundle: 29
+    dir: 8
+  - name: me_game_start2_vo_ru.wav
+    bundle: 30
+    dir: 8
+  - name: se_game_attack1.wav
+    bundle: 31
+    dir: 8
+  - name: se_game_attack2.wav
+    bundle: 32
+    dir: 8
+  - name: se_game_bfall.wav
+    bundle: 33
+    dir: 8
+  - name: se_game_caution.wav
+    bundle: 34
+    dir: 8
+  - name: se_game_change1.wav
+    bundle: 35
+    dir: 8
+  - name: se_game_change2.wav
+    bundle: 36
+    dir: 8
+  - name: se_game_count.wav
+    bundle: 37
+    dir: 8
+  - name: se_game_double.wav
+    bundle: 38
+    dir: 8
+  - name: se_game_emblemget.wav
+    bundle: 39
+    dir: 8
+  - name: se_game_fixa.wav
+    bundle: 40
+    dir: 8
+  - name: se_game_harddrop.wav
+    bundle: 41
+    dir: 8
+  - name: se_game_hold.wav
+    bundle: 42
+    dir: 8
+  - name: se_game_kbcomp.wav
+    bundle: 43
+    dir: 8
+  - name: se_game_kbget.wav
+    bundle: 44
+    dir: 8
+  - name: se_game_ko2.wav
+    bundle: 45
+    dir: 8
+  - name: se_game_landing.wav
+    bundle: 46
+    dir: 8
+  - name: se_game_match.wav
+    bundle: 47
+    dir: 8
+  - name: se_game_move.wav
+    bundle: 48
+    dir: 8
+  - name: se_game_msg.wav
+    bundle: 49
+    dir: 8
+  - name: se_game_offset1.wav
+    bundle: 50
+    dir: 8
+  - name: se_game_offset2.wav
+    bundle: 51
+    dir: 8
+  - name: se_game_pause.wav
+    bundle: 52
+    dir: 8
+  - name: se_game_perfect.wav
+    bundle: 53
+    dir: 8
+  - name: se_game_pinch.wav
+    bundle: 54
+    dir: 8
+  - name: se_game_pinput.wav
+    bundle: 55
+    dir: 8
+  - name: se_game_rotate.wav
+    bundle: 56
+    dir: 8
+  - name: se_game_single.wav
+    bundle: 57
+    dir: 8
+  - name: se_game_softdrop.wav
+    bundle: 58
+    dir: 8
+  - name: se_game_special.wav
+    bundle: 59
+    dir: 8
+  - name: se_game_tactics.wav
+    bundle: 60
+    dir: 8
+  - name: se_game_target.wav
+    bundle: 61
+    dir: 8
+  - name: se_game_tetris.wav
+    bundle: 62
+    dir: 8
+  - name: se_game_triple.wav
+    bundle: 63
+    dir: 8
+  - name: se_sys_alert.wav
+    bundle: 65
+    dir: 9
+  - name: se_sys_cancel.wav
+    bundle: 66
+    dir: 9
+  - name: se_sys_cursor1.wav
+    bundle: 67
+    dir: 9
+  - name: se_sys_cursor2.wav
+    bundle: 68
+    dir: 9
+  - name: se_sys_dialog.wav
+    bundle: 69
+    dir: 9
+  - name: se_sys_ok.wav
+    bundle: 70
+    dir: 9
+  - name: se_sys_select.wav
+    bundle: 71
+    dir: 9
+  - name: ses_sys_save.wav
+    bundle: 64
+    dir: 9
+  - name: Line.prefab
+    bundle: 73
+    dir: 10
+  - name: TetrisBoard.prefab
+    bundle: 74
+    dir: 10
+  - name: Toast.prefab
+    bundle: 84
+    dir: 11
+  - name: UIAlertDialog.prefab
+    bundle: 85
+    dir: 11
+  - name: UIWaiting.prefab
+    bundle: 86
+    dir: 11
+  - name: '[UIRoot].prefab'
+    bundle: 87
+    dir: 11
+  - name: UIAboutPanel.prefab
+    bundle: 75
+    dir: 12
+  - name: UICountdown.prefab
+    bundle: 76
+    dir: 12
+  - name: UIGameHUD.prefab
+    bundle: 77
+    dir: 12
+  - name: UIGameOverPanel.prefab
+    bundle: 78
+    dir: 12
+  - name: UISetting.prefab
+    bundle: 79
+    dir: 12
+  - name: UIStartPanel.prefab
+    bundle: 80
+    dir: 12
+  - name: vfx_board.prefab
+    bundle: 81
+    dir: 13
+  - name: vfx_clear_line.prefab
+    bundle: 82
+    dir: 13
+  - name: vfx_hard_drop.prefab
+    bundle: 83
+    dir: 13
+  - name: button.prefab
+    bundle: 72
+    dir: 10
+  - name: EcsGaming.unity
+    bundle: 88
+    dir: 14
+  - name: GameMode1_Asset.asset
+    bundle: 90
+    dir: 15
+  - name: InstancedSprite.shader
+    bundle: 89
+    dir: 16
+  - name: NewShaderVariants.shadervariants
+    bundle: 89
+    dir: 16
+  - name: LiberationSans SDF.asset
+    bundle: 93
+    dir: 17
+  - name: TMP_SDF-Mobile.shader
+    bundle: 89
+    dir: 18
+  - name: TMP_SDF.shader
+    bundle: 89
+    dir: 18
+  - name: ParticlesUnlit.mat
+    bundle: 98
+    dir: 19
+  - name: Sprite-Unlit-Default.mat
+    bundle: 99
+    dir: 19
+  - name: Sprite-Unlit-Default.shader
+    bundle: 89
+    dir: 20
+  - name: ParticlesUnlit.shader
+    bundle: 89
+    dir: 21
+  - name: Unlit.shader
+    bundle: 89
+    dir: 22
+  - name: TMP - Font Asset Icon.psd
+    bundle: 91
+    dir: 23
+  - name: TMP - Text Component Icon.psd
+    bundle: 92
+    dir: 23
+  bundles:
+  - name: Bundle/d6c021e84c4919fdb10d60b96f0b5c0c_accfa20733f2e8b48c47622a924564c6.assets
+    deps: 
+    size: 3074
+    hash: accfa20733f2e8b48c47622a924564c6
+  - name: Bundle/5e78d2110dfcca813c738f6385317dfa_dafb5267759d013cec9f8fbed1846579.assets
+    deps: 
+    size: 4903767
+    hash: dafb5267759d013cec9f8fbed1846579
+  - name: Bundle/9d46d4dd90e4fe92e7eb8732891ff4c5_43996b998f3b87ae5377cc95a26260c0.assets
+    deps: 
+    size: 506232
+    hash: 43996b998f3b87ae5377cc95a26260c0
+  - name: Bundle/77e000adda2469aa74fbdc349a345ce5_80d1f029b4ea4ed6f39859afa7441b35.assets
+    deps: 
+    size: 427418
+    hash: 80d1f029b4ea4ed6f39859afa7441b35
+  - name: Bundle/19091ea5a90277dddd9f4e54e2c7f23b_44bb62d4a394c50814601adf7cf7b00c.assets
+    deps: 
+    size: 263962
+    hash: 44bb62d4a394c50814601adf7cf7b00c
+  - name: Bundle/943bafaaae5f11b8764d16b7cdf572cc_3f969a5de0edeb2a134463a10f38dc83.assets
+    deps: 
+    size: 123986
+    hash: 3f969a5de0edeb2a134463a10f38dc83
+  - name: Bundle/91b8a277fac9bc76305aab8a1cf6a65a_310a78d0b1fa3001053bd78aab7122f6.assets
+    deps: 
+    size: 81050
+    hash: 310a78d0b1fa3001053bd78aab7122f6
+  - name: Bundle/26cbfdf4ee0c359b30a6eb17ba8e6fa8_5181eedb41761b15b0aa4891c0d813b8.assets
+    deps: 
+    size: 81835
+    hash: 5181eedb41761b15b0aa4891c0d813b8
+  - name: Bundle/d59d69b9147e3c529969ceb8522ee7dc_df13373905f79a48362f028fb9c6a022.assets
+    deps: 
+    size: 80912
+    hash: df13373905f79a48362f028fb9c6a022
+  - name: Bundle/599b5ccabadee977e756b697d77a093f_f9b96198481090e3c4c525b047bebf4c.assets
+    deps: 
+    size: 80099
+    hash: f9b96198481090e3c4c525b047bebf4c
+  - name: Bundle/88f60542bc8cce6e158e26dc3287011d_ee5855a69ddcc6c32ef3c2e8a6f32ac5.assets
+    deps: 
+    size: 81855
+    hash: ee5855a69ddcc6c32ef3c2e8a6f32ac5
+  - name: Bundle/dfd84f25bbfc03c8ec89129b8ea05421_ad0b217c6cd770c4e8a9ccfad43eae60.assets
+    deps: 
+    size: 85181
+    hash: ad0b217c6cd770c4e8a9ccfad43eae60
+  - name: Bundle/5f085ed760b9444392b9aef94334ae5b_c260625925902e894d8ff7de864d2bb6.assets
+    deps: 
+    size: 84253
+    hash: c260625925902e894d8ff7de864d2bb6
+  - name: Bundle/2a256113e738c6b81e85c51a71da63dd_d7eaad8f463fbbfdf02133a73bfb0681.assets
+    deps: 
+    size: 230310
+    hash: d7eaad8f463fbbfdf02133a73bfb0681
+  - name: Bundle/7b8df25b38c2831af4431d6f3a9951de_71d04c6afa380be40a1e858564589360.assets
+    deps: 
+    size: 131517
+    hash: 71d04c6afa380be40a1e858564589360
+  - name: Bundle/6609e6b7b7afe0d98e6dcff5e319c7b0_8356bca90a9465100ea51b605ca99e07.assets
+    deps: 
+    size: 124748
+    hash: 8356bca90a9465100ea51b605ca99e07
+  - name: Bundle/c33576a40c7cc0434b71673636d7cf82_a50f32a30f024fc2c519409ef370b668.assets
+    deps: 
+    size: 72136
+    hash: a50f32a30f024fc2c519409ef370b668
+  - name: Bundle/a37329cef5b5a03d6487243857eef0f6_9aae280df3d1a39e4066b0f4738f5331.assets
+    deps: 
+    size: 76427
+    hash: 9aae280df3d1a39e4066b0f4738f5331
+  - name: Bundle/ad2efa319b8c1bd97037d493790bd71f_f73d048340dd79f55b99089023039721.assets
+    deps: 
+    size: 76642
+    hash: f73d048340dd79f55b99089023039721
+  - name: Bundle/2e1ba693a2b48b5e4cd88dda51537ca4_c95a621b7ea1ed8f9efbbd6aa6ea52fa.assets
+    deps: 
+    size: 68539
+    hash: c95a621b7ea1ed8f9efbbd6aa6ea52fa
+  - name: Bundle/fb53f39f0ac7884f7ba54f4db98ff86a_50e9622985a714f3ff4c4370c8ae95b6.assets
+    deps: 
+    size: 78685
+    hash: 50e9622985a714f3ff4c4370c8ae95b6
+  - name: Bundle/deaa6afbb10405bf97163c308a996e24_ae8aac3af38824bd29e2420a43237fdd.assets
+    deps: 
+    size: 82514
+    hash: ae8aac3af38824bd29e2420a43237fdd
+  - name: Bundle/4bf655e113e2484a1988733eb922ff4a_b3a2e2c40f616cfe51afc416d3c6a635.assets
+    deps: 
+    size: 112429
+    hash: b3a2e2c40f616cfe51afc416d3c6a635
+  - name: Bundle/da3152276749445d491cb07cd9af29b7_82567e81a19d19bce427fcaa61614770.assets
+    deps: 
+    size: 91898
+    hash: 82567e81a19d19bce427fcaa61614770
+  - name: Bundle/166c727ce8e64420d4eac2111c7530bf_ccb8431ff2d0b29b478746ca2140ca7d.assets
+    deps: 
+    size: 61455
+    hash: ccb8431ff2d0b29b478746ca2140ca7d
+  - name: Bundle/be3ef7ccd775b5995815c1477c194278_91566ea7bd78de5e5235f7f705828da4.assets
+    deps: 
+    size: 64841
+    hash: 91566ea7bd78de5e5235f7f705828da4
+  - name: Bundle/d11a956a390f5e60bda0116cee50b314_d74a08020920a7c3fb115185d2a683c2.assets
+    deps: 
+    size: 62233
+    hash: d74a08020920a7c3fb115185d2a683c2
+  - name: Bundle/4514d4718feafd4b1af79f846259482d_989aa6d57368fea537731c6adb55115b.assets
+    deps: 
+    size: 78517
+    hash: 989aa6d57368fea537731c6adb55115b
+  - name: Bundle/e9cb2edb22c896c1269cecaf6f1f7d31_cf9a1e43a1ea9df702ab500c71fd7f64.assets
+    deps: 
+    size: 63251
+    hash: cf9a1e43a1ea9df702ab500c71fd7f64
+  - name: Bundle/56f3c98f52dc8389de673fb0e06f6b18_f341f3b3523d26978b0090516149c805.assets
+    deps: 
+    size: 72980
+    hash: f341f3b3523d26978b0090516149c805
+  - name: Bundle/dc588b240420dd353fe42ba8a7047700_dbbc484573a00c097372f2178dcd9dfa.assets
+    deps: 
+    size: 75160
+    hash: dbbc484573a00c097372f2178dcd9dfa
+  - name: Bundle/49e36b585fb8808791b3c752df28d433_484b42338938ca5f33cee119f0c01d38.assets
+    deps: 
+    size: 68684
+    hash: 484b42338938ca5f33cee119f0c01d38
+  - name: Bundle/a05a1c66d94f688d57577b6eb0474d35_586f230ced9a996ebb73615d26337a27.assets
+    deps: 
+    size: 150373
+    hash: 586f230ced9a996ebb73615d26337a27
+  - name: Bundle/859a71416e78cdaef634a7a8c30f8efd_f9518d5a668d2f57851e91c8f43efa9e.assets
+    deps: 
+    size: 53392
+    hash: f9518d5a668d2f57851e91c8f43efa9e
+  - name: Bundle/f3349f5e1c3c06e5df72c3dfce9edc55_348e2cec72ae91191fef56ca9c3314b1.assets
+    deps: 
+    size: 14064
+    hash: 348e2cec72ae91191fef56ca9c3314b1
+  - name: Bundle/709eccd3e4070f69317fa4ed920bc4fd_cdf52a87d52238df761603c089c90b8a.assets
+    deps: 
+    size: 35628
+    hash: cdf52a87d52238df761603c089c90b8a
+  - name: Bundle/df73dc14ac6d4ef2322971a347db8140_393f62761164afb7793e1bb01792190d.assets
+    deps: 
+    size: 50656
+    hash: 393f62761164afb7793e1bb01792190d
+  - name: Bundle/c86a3ff22ed6899d8e8cee38bf43cf6f_e90b5689c06fd664609942db8a2a5913.assets
+    deps: 
+    size: 50439
+    hash: e90b5689c06fd664609942db8a2a5913
+  - name: Bundle/e324c55b6eae66be92be01e985b346f9_68edaea71c0961386e42dd792abd05ce.assets
+    deps: 
+    size: 60123
+    hash: 68edaea71c0961386e42dd792abd05ce
+  - name: Bundle/4419a487d8fba947e2d88cca3f664935_d2982221ffa3aa03bb8b87f29ef7b04b.assets
+    deps: 
+    size: 80756
+    hash: d2982221ffa3aa03bb8b87f29ef7b04b
+  - name: Bundle/e8fe7a1c80aff10474ec9f85cfca3a3b_75fd91411f3cdb5a6774fe84b2856243.assets
+    deps: 
+    size: 32204
+    hash: 75fd91411f3cdb5a6774fe84b2856243
+  - name: Bundle/e5f629586b409900072aad5517cfae0b_d39efe6415415979e9585aea8a78de8b.assets
+    deps: 
+    size: 7862
+    hash: d39efe6415415979e9585aea8a78de8b
+  - name: Bundle/54b66ec96043a71ccca5563bc45a9306_7e73ece1d3be2fe7656e816c2fab21d1.assets
+    deps: 
+    size: 5545
+    hash: 7e73ece1d3be2fe7656e816c2fab21d1
+  - name: Bundle/4c0afd22c1125a26024c27137f77511d_c717b4087cac4840a6108e877d53763f.assets
+    deps: 
+    size: 102580
+    hash: c717b4087cac4840a6108e877d53763f
+  - name: Bundle/31b20b4409297edc54ec998807618c44_61158f788400ea6e52ec45ec051acb5f.assets
+    deps: 
+    size: 60072
+    hash: 61158f788400ea6e52ec45ec051acb5f
+  - name: Bundle/6aaab4239dec94fa141237e3eb98a68b_e2e38a8a72d93cf903d32a7b5ac84783.assets
+    deps: 
+    size: 66043
+    hash: e2e38a8a72d93cf903d32a7b5ac84783
+  - name: Bundle/af7e181d3457b805738f11609275321a_2c5ec83476f70a539b6ffa8cc885af7e.assets
+    deps: 
+    size: 4274
+    hash: 2c5ec83476f70a539b6ffa8cc885af7e
+  - name: Bundle/55919f9cb39bf9328a26780b085e7d05_133fce9e1c5d3d02473833f32d66d16b.assets
+    deps: 
+    size: 6203
+    hash: 133fce9e1c5d3d02473833f32d66d16b
+  - name: Bundle/c258ef198fc16fe5edc21794c1250f8a_fdd12a6642b1f761318540215fa17b82.assets
+    deps: 
+    size: 3038
+    hash: fdd12a6642b1f761318540215fa17b82
+  - name: Bundle/44631dd017f8050c0f9aeec546e009e5_a3b724d0e28247680585e61d1f42aeea.assets
+    deps: 
+    size: 5751
+    hash: a3b724d0e28247680585e61d1f42aeea
+  - name: Bundle/4eec59f1badf8b52e00edbc238437fe6_25de7652c230ca0da4fa0ee779a3675c.assets
+    deps: 
+    size: 83047
+    hash: 25de7652c230ca0da4fa0ee779a3675c
+  - name: Bundle/15562270352a18cf39d61021effc4168_a4bb969e6704a15269f6682c2a1ae5fc.assets
+    deps: 
+    size: 48650
+    hash: a4bb969e6704a15269f6682c2a1ae5fc
+  - name: Bundle/2a63540eb0c1b7b4434b9eac943d3af2_f5c3c00e9e0bb8d300e2d4ed8b915b62.assets
+    deps: 
+    size: 143656
+    hash: f5c3c00e9e0bb8d300e2d4ed8b915b62
+  - name: Bundle/d1c45cb3d43b967b8cb92c4469d7f1f8_ebdf559280374d582aeae76c5f4322e4.assets
+    deps: 
+    size: 241328
+    hash: ebdf559280374d582aeae76c5f4322e4
+  - name: Bundle/a2e8d43aa95eb92d677374bd28517b79_c765f69905f6021346ffbcf2b8290492.assets
+    deps: 
+    size: 25050
+    hash: c765f69905f6021346ffbcf2b8290492
+  - name: Bundle/8a72ebf34973311410769a727824d17b_aa86ffaba4db3e8f5d9c4124da534670.assets
+    deps: 
+    size: 3986
+    hash: aa86ffaba4db3e8f5d9c4124da534670
+  - name: Bundle/1d34be5a236628bb948dbe2b736a0bb5_850ed645590819715ed9b9e0b069e134.assets
+    deps: 
+    size: 4389
+    hash: 850ed645590819715ed9b9e0b069e134
+  - name: Bundle/90f87209df237521403e266deef19a2d_5e9c211c26b5241034decd21ef9cb533.assets
+    deps: 
+    size: 53518
+    hash: 5e9c211c26b5241034decd21ef9cb533
+  - name: Bundle/7aba49b519cba6c3e31eb689757f6068_e2aee478dcac1569d187c4a160420b14.assets
+    deps: 
+    size: 2613
+    hash: e2aee478dcac1569d187c4a160420b14
+  - name: Bundle/2fc48dbd71b0773f64ac81932e8b9052_60b951a22a222e0e3dfee3a84f626953.assets
+    deps: 
+    size: 48228
+    hash: 60b951a22a222e0e3dfee3a84f626953
+  - name: Bundle/ddde6298f978c34211dd927ee4a867f0_06e1e74f29525606f832dcd67d27a2fb.assets
+    deps: 
+    size: 22670
+    hash: 06e1e74f29525606f832dcd67d27a2fb
+  - name: Bundle/54531cad24d3677a326340fdff77fd05_d2fac72bb0e77c5ff8978145f5d46328.assets
+    deps: 
+    size: 24926
+    hash: d2fac72bb0e77c5ff8978145f5d46328
+  - name: Bundle/2056904433c13b94325643ad1450f8ef_a66523c121dea5ed9c3f10d12bdd0805.assets
+    deps: 
+    size: 97682
+    hash: a66523c121dea5ed9c3f10d12bdd0805
+  - name: Bundle/0935c1f1a108182ab548b3ed1ad6c455_f3ef517cb16fa579509c47d26e9d1302.assets
+    deps: 
+    size: 67338
+    hash: f3ef517cb16fa579509c47d26e9d1302
+  - name: Bundle/fffa1af41959cd331f448456b4154537_64e3e48581337b6a5be2eb4a91b40147.assets
+    deps: 
+    size: 109360
+    hash: 64e3e48581337b6a5be2eb4a91b40147
+  - name: Bundle/e05c21b025c09c04fee2b4e8d4750e67_8ca330494429d6df5cfb4af50f3239e9.assets
+    deps: 
+    size: 5462
+    hash: 8ca330494429d6df5cfb4af50f3239e9
+  - name: Bundle/bc4d8f01b55f79fa1d2d78e3870837ab_2feeac9c9a12aba2bd7e04fe80f843fb.assets
+    deps: 
+    size: 3901
+    hash: 2feeac9c9a12aba2bd7e04fe80f843fb
+  - name: Bundle/613a4724c1068795ad55a4ea4c88071d_69bf83007dbf02c4e94330d1a53cca8c.assets
+    deps: 
+    size: 42194
+    hash: 69bf83007dbf02c4e94330d1a53cca8c
+  - name: Bundle/ab904cb78a61fb334666a581afefb721_757807daf01722956ebf6ce65ec8e330.assets
+    deps: 
+    size: 3513
+    hash: 757807daf01722956ebf6ce65ec8e330
+  - name: Bundle/b683cecb127074552d11963169ca4197_5607d6eaf4580a92b6b3605671df24cf.assets
+    deps: 
+    size: 5220
+    hash: 5607d6eaf4580a92b6b3605671df24cf
+  - name: Bundle/336ade1964ea06e1f78a83fc2aed1dcc_b5a8370aff7456a04965afa0ff1c78cc.assets
+    deps: 
+    size: 114337
+    hash: b5a8370aff7456a04965afa0ff1c78cc
+  - name: Bundle/3baa44c882a90fe0f9906537ec90c433_c20e0da3b05447d4d559aeab9ee26bd1.assets
+    deps: 
+    size: 50020
+    hash: c20e0da3b05447d4d559aeab9ee26bd1
+  - name: Bundle/c857cda7abf2b87ba6a6859c0303963a_08b23ea24438002d9d94067e861ebbbd.assets
+    deps: 59000000670000005d000000
+    size: 7666
+    hash: 08b23ea24438002d9d94067e861ebbbd
+  - name: Bundle/169c38b682ece40e08b9415606592b33_cd6f3eed5bfcfc0d4efe84ced30cce89.assets
+    deps: 590000006400000067000000
+    size: 3807
+    hash: cd6f3eed5bfcfc0d4efe84ced30cce89
+  - name: Bundle/051eab65330684221890d37707639ce7_9e599024dbb78cfbffbde5fee5912c48.assets
+    deps: 5900000061000000600000006500000063000000670000005d000000
+    size: 35034
+    hash: 9e599024dbb78cfbffbde5fee5912c48
+  - name: Bundle/532df80c1386edaa92c7ae5a554c808f_94983d16bc4c976981deed8a151174c8.assets
+    deps: 590000005e0000006500000067000000
+    size: 16659
+    hash: 94983d16bc4c976981deed8a151174c8
+  - name: Bundle/803542ee8766b91437ae0a007233e8e9_41e5b0acd424f10b25d6de95b06cd337.assets
+    deps: 59000000670000005d000000
+    size: 14392
+    hash: 41e5b0acd424f10b25d6de95b06cd337
+  - name: Bundle/062d2987c8ae023d74a70d9e283ca1cb_719e74f50baeaa8446fbc0b11b030c54.assets
+    deps: 59000000670000005d000000
+    size: 20259
+    hash: 719e74f50baeaa8446fbc0b11b030c54
+  - name: Bundle/5b45ba697edd57cfc4ab52dd2736835a_406e6744106f3cb944338fa8e315d539.assets
+    deps: 59000000470000005e00000067000000
+    size: 10534
+    hash: 406e6744106f3cb944338fa8e315d539
+  - name: Bundle/5105a40f29cd6b7083f234d749988737_86b1003783cc75221fded3f16da7f67a.assets
+    deps: 590000005e0000006600000067000000
+    size: 14328
+    hash: 86b1003783cc75221fded3f16da7f67a
+  - name: Bundle/6ce5d81beda259f393e8ef61f857cf8a_793290dc5b0ee28562a2970bd5bc131f.assets
+    deps: 59000000470000005e000000670000005d000000
+    size: 10801
+    hash: 793290dc5b0ee28562a2970bd5bc131f
+  - name: Bundle/b9e22bd3b5011e48d1f9cd2acfebfc3c_a8dcdf0faffb83696d33570a6efbe732.assets
+    deps: 59000000610000006000000067000000
+    size: 28028
+    hash: a8dcdf0faffb83696d33570a6efbe732
+  - name: Bundle/3dc46dea26fe9a4a3ce88b8a4177b1cf_be32cec21e510d1f86c6bc79ac516bde.assets
+    deps: 59000000620000006600000067000000
+    size: 30976
+    hash: be32cec21e510d1f86c6bc79ac516bde
+  - name: Bundle/a2f3f6d6a118f2341c7fddbb2fcde842_a195105cf914d0283b3244fd568c033c.assets
+    deps: 59000000620000006600000067000000
+    size: 28845
+    hash: a195105cf914d0283b3244fd568c033c
+  - name: Bundle/6f92d48375d162db6d1442fddff7643c_bc12ecb02e30791756d2b2416c944376.assets
+    deps: 
+    size: 4770
+    hash: bc12ecb02e30791756d2b2416c944376
+  - name: Bundle/1b55d7896c2faafa7a221ef7c72b0cf6_30a0acb13453e4043f5a33c0fcab2821.assets
+    deps: 
+    size: 7546
+    hash: 30a0acb13453e4043f5a33c0fcab2821
+  - name: Bundle/851dc0bbc1e412e1b013cfbc2c0c1862_dfb79e154358228fbcb694bafbafca8c.assets
+    deps: 4700000066000000
+    size: 9400
+    hash: dfb79e154358228fbcb694bafbafca8c
+  - name: Bundle/0437a5a12da025640eac39b1ac6d1001_3c100604306cdafe51ff9810890af705.assets
+    deps: 
+    size: 7341
+    hash: 3c100604306cdafe51ff9810890af705
+  - name: Bundle/bab4f8bd5adea5d6044b0f25fbb259b7_7d412fc8fee13a9e3670651d91761a7f.assets
+    deps: 4a000000490000005900000064000000610000005a000000600000006500000063000000670000005d000000
+    size: 9115
+    hash: 7d412fc8fee13a9e3670651d91761a7f
+  - name: Bundle/1aa355706e1767666124331a716c7890_73f18bbf2d3fce301595869468bf0f98.assets
+    deps: 67000000
+    size: 38640
+    hash: 73f18bbf2d3fce301595869468bf0f98
+  - name: Bundle/5324f345de28c64f0fda4adfade8bd59_570ac9a1193df66e0be82308ba6fd588.assets
+    deps: 4a00000049000000590000006400000061000000600000006500000063000000670000005d000000
+    size: 2037
+    hash: 570ac9a1193df66e0be82308ba6fd588
+  - name: Bundle/8ea5a65e3b1436859472be2db1c7021b_9dc9f97864c1831d4d6f331121b3d137.assets
+    deps: 
+    size: 3914
+    hash: 9dc9f97864c1831d4d6f331121b3d137
+  - name: Bundle/562974cbc3f8790107f6a4300830ae87_b24b0c87a0038a576f025a86c12d9a1f.assets
+    deps: 
+    size: 3707
+    hash: b24b0c87a0038a576f025a86c12d9a1f
+  - name: Bundle/f16de81a2946d9fc789b5cc6833b5a2c_e2cb691f11c7a6f7b75a6fed9ec97f8d.assets
+    deps: 5900000067000000
+    size: 413965
+    hash: e2cb691f11c7a6f7b75a6fed9ec97f8d
+  - name: Bundle/85b15f8c8df778881e64b45346930838_39cfdd3eb98e2ab63116211c32f38e9f.assets
+    deps: 5900000067000000
+    size: 7513701
+    hash: 39cfdd3eb98e2ab63116211c32f38e9f
+  - name: Bundle/ead905fbc2f78a8c8c2293bbb7ce5911_1de517b333ae1ac047eeb628432201f1.assets
+    deps: 
+    size: 10069039
+    hash: 1de517b333ae1ac047eeb628432201f1
+  - name: Bundle/80bc1ee013d340ed5110b3d20f153b03_4770da2b4f6614267c8eb9813a231d1c.assets
+    deps: 590000006100000067000000
+    size: 3165
+    hash: 4770da2b4f6614267c8eb9813a231d1c
+  - name: Bundle/368283101e9413accfd057adb2306563_7445b6f8930a3b6984c8631b7591bed4.assets
+    deps: 
+    size: 2985
+    hash: 7445b6f8930a3b6984c8631b7591bed4
+  - name: Bundle/a2a4fc13bb6444c0e36703054d4f29c1_0637bf760cc7dda7256a982d6c285214.assets
+    deps: 590000006600000067000000
+    size: 3104
+    hash: 0637bf760cc7dda7256a982d6c285214
+  - name: Bundle/a33462554deae1126fdf3b50097f3f2e_21fd3bfab96c0a8d86a606836491c6d2.assets
+    deps: 5900000067000000
+    size: 2448
+    hash: 21fd3bfab96c0a8d86a606836491c6d2
+  - name: Bundle/2e279549e554d267402323f3f0d02c17_86fe457a4f5632a701dfcb62546c724a.assets
+    deps: 5900000067000000
+    size: 2961
+    hash: 86fe457a4f5632a701dfcb62546c724a
+  - name: Bundle/9fee933a12e8f2b4e387565289c59e95_b0524c36f32d0fde15af0f0a800e1ecf.assets
+    deps: 
+    size: 62458
+    hash: b0524c36f32d0fde15af0f0a800e1ecf
+  - name: Bundle/builtindata_bccac4d2c589751a2971c1d9dd080394.assets
+    deps: 
+    size: 22727
+    hash: bccac4d2c589751a2971c1d9dd080394
+  - name: Bundle/builtinshader_96659b08051d8eca17fe2a869118ae0c.assets
+    deps: 
+    size: 88118
+    hash: 96659b08051d8eca17fe2a869118ae0c
+  rawDirs:
+  - tables
+  rawAssets:
+  - name: Language_EN.txt
+    bundle: 0
+    dir: 0
+  - name: Language_ZH.txt
+    bundle: 0
+    dir: 0
+  rawBundles:
+  - name: Raw/tables_3163bca181917bada05e33ed52f15eef
+    size: 12288
+    compressSize: 0
+    hash: 3163bca181917bada05e33ed52f15eef
