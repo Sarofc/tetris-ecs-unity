@@ -1,10 +1,8 @@
 # 现代俄罗斯方块
 
-[MGF](https://github.com/Sarofc/com.saro.mgf) demo项目，资源框架使用[Saro.MoonAsset](https://github.com/Sarofc/com.saro.moonasset)，Gameplay使用[ecslite](https://github.com/Sarofc/ecslite)。
+[MGF](https://github.com/Sarofc/com.saro.mgf) demo项目，资源框架使用[MoonAsset](https://github.com/Sarofc/com.saro.moonasset)，Gameplay使用[ecslite](https://github.com/Sarofc/ecslite)。
 </br>
 unity资源全异步加载，包体最小化（main场景+单manifest即可），可边玩边下。
-
-TODO 验证下sprite atlas打包，是否冗余，通过路径能否正确加载
 
 ## 快速开始
 
