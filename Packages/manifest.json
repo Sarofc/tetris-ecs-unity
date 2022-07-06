@@ -1,7 +1,7 @@
 {
     "dependencies": {
-        "com.saro.mgf": "https://github.com/Sarofc/com.saro.mgf.git#v0.1.0",
-        "com.saro.moonasset": "https://github.com/Sarofc/com.saro.moonasset.git#v0.1.1",
+        "com.saro.mgf": "https://github.com/Sarofc/com.saro.mgf.git#v0.2.1",
+        "com.saro.moonasset": "https://github.com/Sarofc/com.saro.moonasset.git#v0.2.0",
         "com.leopotam.ecslite": "https://github.com/Sarofc/ecslite.git?path=/ecslite#v0.1.0",
         "com.leopotam.ecslite.extension": "https://github.com/Sarofc/ecslite.git?path=/ecslite-extension#v0.1.0",
         "com.leopotam.ecslite.unityeditor": "https://github.com/Sarofc/ecslite.git?path=/ecslite-unityeditor#v0.1.0",

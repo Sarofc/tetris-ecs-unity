@@ -22,11 +22,17 @@ MonoBehaviour:
   - .boo
   - .giparams
   - lightingdata.asset
-  resVersion: 159
-  resVersionBuildAsset: 158
+  resVersion: 163
+  resVersionBuildAsset: 162
   scenesInBuild:
   - {fileID: 102900000, guid: 8943688c1103d8c46b982d0a1a9e2310, type: 3}
   bundleGroups:
+  - searchPath: Assets/Res/Atlas
+    searchPattern: '*'
+    nameBy: 2
+    builtIn: 0
+    assets:
+    - Assets/Res/Atlas/uiatlas.spriteatlas
   - searchPath: Assets/Res/Audios
     searchPattern: '*'
     nameBy: 1
@@ -145,8 +151,6 @@ MonoBehaviour:
     assets:
     - Assets/Res/ScriptableObjects/GameMode1_Asset.asset
   ruleAssets:
-  - asset: Assets/Arts/Atlas/uiatlas.spriteatlas
-    bundle: 9fee933a12e8f2b4e387565289c59e95.assets
   - asset: Assets/Arts/Fonts/Consolas SDF.asset
     bundle: 85b15f8c8df778881e64b45346930838.assets
   - asset: Assets/Arts/Fonts/Consolas.ttf
@@ -155,14 +159,10 @@ MonoBehaviour:
     bundle: 2e279549e554d267402323f3f0d02c17.assets
   - asset: Assets/Arts/Materials/Vfx/Mat_VFX_FireSpark.mat
     bundle: 80bc1ee013d340ed5110b3d20f153b03.assets
-  - asset: Assets/Arts/Textures/UI/Square.png
-    bundle: 9fee933a12e8f2b4e387565289c59e95.assets
-  - asset: Assets/Arts/Textures/UI/icon_github.png
-    bundle: 9fee933a12e8f2b4e387565289c59e95.assets
-  - asset: Assets/Arts/Textures/UI/logo_unity.png
-    bundle: 9fee933a12e8f2b4e387565289c59e95.assets
   - asset: Assets/Arts/Textures/VFX/fire_spark.psd
     bundle: 368283101e9413accfd057adb2306563.assets
+  - asset: Assets/Res/Atlas/uiatlas.spriteatlas
+    bundle: fa5f175a25f41ea98efdfc253daeb312.assets
   - asset: Assets/Res/Audios/BGM/bgm_t02_swap_t.wav
     bundle: 5e78d2110dfcca813c738f6385317dfa.assets
   - asset: Assets/Res/Audios/GameMixer.mixer
@@ -370,6 +370,9 @@ MonoBehaviour:
       Icon.psd
     bundle: 562974cbc3f8790107f6a4300830ae87.assets
   ruleBundles:
+  - bundle: fa5f175a25f41ea98efdfc253daeb312.assets
+    assets:
+    - Assets/Res/Atlas/uiatlas.spriteatlas
   - bundle: d6c021e84c4919fdb10d60b96f0b5c0c.assets
     assets:
     - Assets/Res/Audios/GameMixer.mixer
@@ -680,12 +683,13 @@ MonoBehaviour:
   - bundle: 2e279549e554d267402323f3f0d02c17.assets
     assets:
     - Assets/Arts/Materials/Line.mat
-  - bundle: 9fee933a12e8f2b4e387565289c59e95.assets
-    assets:
-    - Assets/Arts/Textures/UI/Square.png
-    - Assets/Arts/Atlas/uiatlas.spriteatlas
-    - Assets/Arts/Textures/UI/icon_github.png
-    - Assets/Arts/Textures/UI/logo_unity.png
+  ruleSprites:
+  - spritePath: Assets/Arts/Textures/UI/icon_github.png
+    atlasPath: Assets/Res/Atlas/uiatlas.spriteatlas
+  - spritePath: Assets/Arts/Textures/UI/logo_unity.png
+    atlasPath: Assets/Res/Atlas/uiatlas.spriteatlas
+  - spritePath: Assets/Arts/Textures/UI/Square.png
+    atlasPath: Assets/Res/Atlas/uiatlas.spriteatlas
   rawGroups:
   - groupName: tables
     tip: 

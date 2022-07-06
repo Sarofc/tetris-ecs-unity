@@ -89,13 +89,13 @@ namespace Tetris
 
         private void DrawTile(Vector3 pos, float scale)
         {
-            GLDebugHelper.DebugBox(pos, Vector3.one * 0.45f * scale, Color.red, Quaternion.identity, Time.deltaTime,
+            GLDebug.DebugBox(pos, Vector3.one * 0.45f * scale, Color.red, Quaternion.identity, Time.deltaTime,
                 EGLDebug.Game);
         }
 
         private void DrawPivot(Vector3 pos)
         {
-            GLDebugHelper.DebugCircle(pos, Vector3.forward, Color.red, 0.1f, Time.deltaTime, EGLDebug.Game);
+            GLDebug.DebugCircle(pos, Vector3.forward, Color.red, 0.1f, Time.deltaTime, EGLDebug.Game);
         }
     }
 }

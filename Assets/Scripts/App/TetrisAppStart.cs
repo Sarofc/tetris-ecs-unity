@@ -114,7 +114,7 @@ namespace Tetris
             {
 #if UNITY_EDITOR
                 var mode = MoonAsset.s_Mode;
-                if (mode == MoonAsset.EMode.Editor)
+                if (mode == MoonAsset.EMode.AssetDatabase)
                 {
                     using (var fs = new FileStream($"GameTools/tables/data/config/{tableName}", FileMode.Open,
                                FileAccess.Read))
@@ -133,7 +133,7 @@ namespace Tetris
             {
 #if UNITY_EDITOR
                 var mode = MoonAsset.s_Mode;
-                if (mode == MoonAsset.EMode.Editor)
+                if (mode == MoonAsset.EMode.AssetDatabase)
                 {
                     using (var fs = new FileStream($"GameTools/tables/data/config/{tableName}", FileMode.Open,
                                FileAccess.Read))
