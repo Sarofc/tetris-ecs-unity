@@ -1,0 +1,9 @@
+﻿using Leopotam.EcsLite;
+
+namespace #NS# {
+    sealed class #SCRIPTNAME# : IEcsInitSystem {
+        public void Init (EcsSystems systems) {
+            // add your initialize code here.
+        }
+    }
+}

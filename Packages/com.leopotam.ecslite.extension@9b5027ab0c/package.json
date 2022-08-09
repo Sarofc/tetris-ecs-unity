@@ -1,0 +1,13 @@
+{
+    "name": "com.leopotam.ecslite.extension",
+    "author": "Leopotam",
+    "displayName": "LeoECS Lite Unity Extension",
+    "description": "LeoECS Lite - Интеграция в редактор юнити содержит шаблоны кода, а так же предоставляет мониторинг состояния мира.",
+    "unity": "2020.3",
+    "version": "2022.3.22",
+    "keywords": [
+        "leoecs",
+        "ecs"
+    ],
+    "dependencies": {}
+}

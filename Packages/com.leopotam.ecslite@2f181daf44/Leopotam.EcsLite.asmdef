@@ -1,0 +1,16 @@
+{
+    "name": "Leopotam.EcsLite",
+    "rootNamespace": "Leopotam.EcsLite",
+    "references": [
+        "GUID:c2c64ac720dc15a4995edc5ccba2f281"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

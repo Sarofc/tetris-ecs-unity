@@ -1,0 +1,20 @@
+{
+    "name": "Leopotam.EcsLite.UnityEditor",
+    "rootNamespace": "Leopotam.EcsLite.UnityEditor",
+    "references": [
+        "Leopotam.EcsLite",
+        "Leopotam.EcsLite.UnityEditor.Runtime",
+        "Saro.MGF"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,42 +1,37 @@
 {
   "dependencies": {
     "com.leopotam.ecslite": {
-      "version": "https://github.com/Sarofc/ecslite.git?path=/ecslite#v0.1.0",
+      "version": "file:com.leopotam.ecslite@2f181daf44",
       "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "2f181daf444984f04fe3e4a1926f95470b28f67a"
+      "source": "embedded",
+      "dependencies": {}
     },
     "com.leopotam.ecslite.extension": {
-      "version": "https://github.com/Sarofc/ecslite.git?path=/ecslite-extension#v0.1.0",
+      "version": "file:com.leopotam.ecslite.extension@9b5027ab0c",
       "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "9b5027ab0ca6b7ed64bd3590621c7b7382ce863b"
+      "source": "embedded",
+      "dependencies": {}
     },
     "com.leopotam.ecslite.unityeditor": {
-      "version": "https://github.com/Sarofc/ecslite.git?path=/ecslite-unityeditor#v0.1.0",
+      "version": "file:com.leopotam.ecslite.unityeditor@2f181daf44",
       "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "2f181daf444984f04fe3e4a1926f95470b28f67a"
+      "source": "embedded",
+      "dependencies": {}
     },
     "com.saro.mgf": {
-      "version": "https://github.com/Sarofc/com.saro.mgf.git#v0.2.1",
+      "version": "file:C:/Users/sarof/Projects/Git/com.saro.mgf",
       "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "4c7cb022a61828461431643dab913598a641a3d7"
+      "source": "local",
+      "dependencies": {}
     },
     "com.saro.moonasset": {
-      "version": "https://github.com/Sarofc/com.saro.moonasset.git#v0.2.0",
+      "version": "file:C:/Users/sarof/Projects/Git/com.saro.moonasset",
       "depth": 0,
-      "source": "git",
+      "source": "local",
       "dependencies": {
         "com.unity.scriptablebuildpipeline": "1.19.6",
         "com.saro.mgf": "https://github.com/Sarofc/com.saro.mgf.git#v0.1.0"
-      },
-      "hash": "f9a4d2897239c3d44688df5b6686c231bc5b805b"
+      }
     },
     "com.unity.2d.sprite": {
       "version": "1.0.0",

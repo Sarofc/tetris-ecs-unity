@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7077d28682b6aef428769d86f5db1b08, type: 3}
   m_Name: Settings
   m_EditorClassIdentifier: 
-  runtimeMode: 2
+  runtimeMode: 0
   buildAssetBundleOptions: 272
   detailBuildReport: 0
-  buildMethodFlag: 254
+  buildMethodFlag: 126
   overrideSymbols: 0
   scriptingDefineSymbols: []

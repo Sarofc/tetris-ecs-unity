@@ -1,0 +1,17 @@
+{
+    "name": "Leopotam.EcsLite.Extension.Runtime",
+    "rootNamespace": "Leopotam.EcsLite.Extension",
+    "references": [
+        "GUID:e59bf9fc7d5a44b18a819a92edd46163",
+        "GUID:c2c64ac720dc15a4995edc5ccba2f281"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

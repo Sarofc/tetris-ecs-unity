@@ -1,0 +1,19 @@
+﻿<linker>
+
+	<assembly fullname="Leopotam.EcsLite">
+		<namespace fullname="Leopotam.EcsLite" preserve="all"/>
+	</assembly>
+
+	<assembly fullname="Leopotam.EcsLite.Extension.Runtime">
+		<namespace fullname="Leopotam.EcsLite" preserve="all"/>
+	</assembly>
+
+	<assembly fullname="UnityEngine">
+		<type fullname="UnityEngine.LineRenderer" preserve="all"/>
+		<type fullname="UnityEngine.SceneManagement.SceneManager" preserve="all"/>
+		<type fullname="UnityEngine.Debug" preserve="all"/>
+		<type fullname="UnityEngine.Color" preserve="all"/>
+	</assembly>
+
+</linker>
+
