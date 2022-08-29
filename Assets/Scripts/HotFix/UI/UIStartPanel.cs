@@ -25,7 +25,7 @@ namespace Tetris.UI
             Listen(BtnQuit.onClick, OnClick_Quit);
 
             var iasset = IAssetManager.Current;
-            TmptxtVersion.text = "v." + iasset.GetAppVersion() + "." + iasset.GetResVersion();
+            TmptxtVersion.text = "v." + iasset.GetAppVersion() + "." + iasset.GetResVersion() + " hotfix";
         }
 
         private async UniTaskVoid OnClick_Start()

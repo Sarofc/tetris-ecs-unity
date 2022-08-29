@@ -37,7 +37,7 @@ namespace Tetris
 
             var world = new EcsWorld();
 
-            {
+            { // test
                 Debug.LogError("Start 1.1");
 
                 int a = 10;

@@ -19,10 +19,27 @@ namespace HotFix
     {
         public static void Start()
         {
+            if (HybridCLR.HybridCLRUtil.IsHotFix)
+            {
 #if !UNITY_EDITOR
-            HybridCLR.AotUtil.LoadMetadataForAOTAssembly();
+                HybridCLR.HybridCLRUtil.LoadMetadataForAOTAssembly();
 #endif
+
+                // 反射需要重新加载一下
+                ReCacheAssemblies();
+            }
+
             HotFixAppInternal.Start().Forget();
+        }
+
+        private static void ReCacheAssemblies()
+        {
+            ReflectionUtility.ClearCacheAssemblies();
+            ReflectionUtility.CacheAssemblies();
+
+#if ENABLE_LOG
+            Debug.LogError("ReCacheAssemblies:\n" + string.Join(", ", ReflectionUtility.AssemblyMap.Values.Select(asm => asm.GetName().Name)));
+#endif
         }
     }
 
@@ -30,9 +47,6 @@ namespace HotFix
     {
         public static async UniTask Start()
         {
-            // 反射需要重新加载一下
-            ReCacheAssemblies();
-
             // 测试补充元数据后使用 AOT泛型
             TestAOTGeneric();
 
@@ -75,16 +89,6 @@ namespace HotFix
             }
 
             Debug.Log("=======看到此条日志代表你成功运行了示例项目的热更新代码=======");
-        }
-
-        private static void ReCacheAssemblies()
-        {
-            ReflectionUtility.ClearCacheAssemblies();
-            ReflectionUtility.CacheAssemblies();
-
-#if ENABLE_LOG
-            Debug.LogError("ReCacheAssemblies:\n" + string.Join(", ", ReflectionUtility.AssemblyMap.Values.Select(asm => asm.GetName().Name)));
-#endif
         }
 
         private static async UniTask SetupLocalization()

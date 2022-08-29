@@ -47,8 +47,11 @@ namespace Tetris
         {
             Assembly hotfix = null;
 
-            if(MoonAsset.s_Mode == MoonAsset.EMode.AssetDatabase)
+            Debug.LogError($"HybridCLR enable: {HybridCLR.HybridCLRUtil.IsHotFix}");
+
+            if (!HybridCLR.HybridCLRUtil.IsHotFix || MoonAsset.s_Mode == MoonAsset.EMode.AssetDatabase)
             {
+                //hotfix = Assembly.GetAssembly(Type.GetType("HotFix.HotFixApp"));
                 hotfix = AppDomain.CurrentDomain.GetAssemblies().First(assembly => assembly.GetName().Name == Path.GetFileNameWithoutExtension(k_HotFixDLL));
             }
             else
@@ -73,7 +76,6 @@ namespace Tetris
             {
                 Debug.LogError("HotFixApp::Start Exception: " + e);
             }
-
         }
 
         private void SetupAssetManager()
