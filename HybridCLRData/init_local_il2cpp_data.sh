@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 设置默认分支为2020.3.33，避免很多人忘了切分支
-IL2CPP_BRANCH=2021.3.1
+IL2CPP_BRANCH=$1
 
 rm -rf hybridclr_repo
 # clone hybridclr仓库,国内推荐用 gitee
@@ -14,10 +14,10 @@ git clone --depth=1 -b $IL2CPP_BRANCH https://gitee.com/focus-creative-games/il2
 
 
 # 请修改为你所用Unity的il2cpp目录
-# 一般像这样
+# 一般像这样 
 # C:\Program Files\Unity\Hub\Editor\2020.3.33f1c2\Editor\Data\il2cpp
 # /Applications/Unity/Hub/Editor/2020.3.33f1/Unity.app/Contents/il2cpp
-IL2CPP_PATH='C:\Program Files\Unity\Unity2021.3.0f1\Editor\Data\il2cpp'
+IL2CPP_PATH=$2
 
 if [ ! -d "$IL2CPP_PATH" ] ; then
     echo "你未指定正确的il2cpp路径"
@@ -36,16 +36,15 @@ fi
 
 # 拷贝 MonoBleedingEdge 目录
 MBE=$LOCAL_IL2CPP_DATA/MonoBleedingEdge
-if [ ! -d "$MBE" ]; then
-    cp -r "$IL2CPP_PATH/../MonoBleedingEdge" $MBE
-fi
+rm -rf "$MBE"
+cp -r "$IL2CPP_PATH/../MonoBleedingEdge" $MBE
 
 
 # 拷贝il2cpp目录
 IL2CPP=$LOCAL_IL2CPP_DATA/il2cpp
-if [ ! -d "$IL2CPP" ]; then
-    cp -r "$IL2CPP_PATH" "$IL2CPP"
-fi
+rm -rf "$IL2CPP"
+cp -r "$IL2CPP_PATH" "$IL2CPP"
+
 
 # 接下来替换 il2cpp目录下的libil2cpp为 hybridclr修改后的版本
 # 需要使用 {https://gitee.com/focus-creative-games/il2cpp_plus}/libil2cpp 替换 il2cpp/libil2cpp目录
@@ -67,3 +66,5 @@ echo 清除 Library/Il2cppBuildCache 缓存目录
 rm -rf ../Library/Il2cppBuildCache
 
 echo 初始化成功
+
+read -p "Press enter to continue" -t 10
