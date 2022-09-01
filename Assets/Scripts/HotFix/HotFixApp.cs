@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using Saro;
 using Saro.Audio;
@@ -15,10 +14,12 @@ using System.Linq;
 
 namespace HotFix
 {
-    public class HotFixApp
+    public static class HotFixApp
     {
         public static void Start()
         {
+            // TODO 这部分没必要 在hotfix里调用，流程上应该不会更改？
+            // 主要是性能差距，看看耗时高不高再说
             if (HybridCLR.HybridCLRUtil.IsHotFix)
             {
 #if !UNITY_EDITOR
@@ -29,6 +30,7 @@ namespace HotFix
                 ReCacheAssemblies();
             }
 
+            // 启动游戏
             HotFixAppInternal.Start().Forget();
         }
 
@@ -38,38 +40,29 @@ namespace HotFix
             ReflectionUtility.CacheAssemblies();
 
 #if ENABLE_LOG
-            Debug.LogError("ReCacheAssemblies:\n" + string.Join(", ", ReflectionUtility.AssemblyMap.Values.Select(asm => asm.GetName().Name)));
+            Debug.Log("ReCacheAssemblies:\n" + string.Join(", ", ReflectionUtility.AssemblyMap.Values.Select(asm => asm.GetName().Name)));
 #endif
         }
     }
 
-    internal class HotFixAppInternal
+    internal static class HotFixAppInternal
     {
         public static async UniTask Start()
         {
-            // 测试补充元数据后使用 AOT泛型
-            TestAOTGeneric();
-
-            Debug.LogError("hello, HybridCLR 1");
-            //var go = new GameObject("HotFixApp");
-            //go.AddComponent<CreateByCode>();
-
             await SetupLocalization();
-            Debug.LogError("SetupLocalization");
 
             LoadGameSave();
-            Debug.LogError("LoadGameSave");
 
 #if DEBUG
             Main.Instance.gameObject.AddComponent<ProfilerDisplay>();
-            Debug.Log("Add ProfilerDisplay");
 #endif
 
-            UIManager.Current.CacheUIAttributes();
-
-            Debug.LogError("Start Load StartWindow");
-            await UIManager.Current.LoadAndShowWindowAsync(ETetrisUI.StartWindow);
-            Debug.LogError("Load StartWindow");
+            Main.Register<SceneController>();
+            UIManager.Current.CacheUIAttributes(); // ui反射需要重新缓存一下
+            var uiLoading = UIManager.Current.LoadAndShowWindowAsync(EGameUI.StartWindow);
+            var sceneLoading = SceneController.Current.ChangeScene(SceneController.ESceneType.Title);
+            await uiLoading; // ui可以先加载
+            await sceneLoading;
 
             {
                 //Saro.UI.UIManager.Current.QueueAsync(Tetris.UI.ETetrisUI.AboutPanel, 1);
@@ -87,8 +80,6 @@ namespace HotFix
                 //    }
                 //});
             }
-
-            Debug.Log("=======看到此条日志代表你成功运行了示例项目的热更新代码=======");
         }
 
         private static async UniTask SetupLocalization()
@@ -107,21 +98,5 @@ namespace HotFix
             AudioManager.Current.ApplySettings();
             LocalizationManager.Current.ApplySettings();
         }
-
-        /// <summary>
-        /// 测试 aot泛型
-        /// </summary>
-        public static void TestAOTGeneric()
-        {
-            var arr = new List<MyValue>();
-            arr.Add(new MyValue() { x = 1, y = 10, s = "abc" });
-            Debug.Log("AOT泛型补充元数据机制测试正常");
-        }
-    }
-
-    public struct MyValue
-    {
-        public int x, y;
-        public string s;
     }
 }

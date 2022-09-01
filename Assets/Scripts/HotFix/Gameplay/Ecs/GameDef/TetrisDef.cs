@@ -5,6 +5,7 @@
         public const int Height = 20;
         public const int Width = 10;
         public const int ExtraHeight = 2;
+
         public const float DeltaNormal = 1f;
         public const float DeltaSoft = 0.03f;
 

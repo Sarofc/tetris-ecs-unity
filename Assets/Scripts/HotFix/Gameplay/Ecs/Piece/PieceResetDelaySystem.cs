@@ -1,9 +1,10 @@
-using Leopotam.EcsLite;
+using Saro.Entities;
 
 namespace Tetris
 {
     internal sealed class PieceResetDelaySystem : IEcsRunSystem
     {
+        public bool Enable { get; set; } = true;
         void IEcsRunSystem.Run(EcsSystems systems)
         {
             var world = systems.GetWorld();
@@ -15,27 +16,27 @@ namespace Tetris
 
             foreach (var i in delay)
             {
-                var ePiece = world.PackEntity(i);
+                var ePiece = world.Pack(i);
 
                 foreach (var i3 in holdRequest)
                 {
                     //cDelay.delay = TetrisDef.k_AddToGridDelay;
-                    ePiece.Del<AddToGridComponent>(world);
-                    ePiece.Del<DelayComponent>(world);
+                    ePiece.Del<AddToGridComponent>();
+                    ePiece.Del<DelayComponent>();
                 }
 
                 foreach (var item in moveSuccess)
                 {
                     //cDelay.delay = TetrisDef.k_AddToGridDelay;
-                    ePiece.Del<AddToGridComponent>(world);
-                    ePiece.Del<DelayComponent>(world);
+                    ePiece.Del<AddToGridComponent>();
+                    ePiece.Del<DelayComponent>();
                 }
 
                 foreach (var i2 in rotationSuccess)
                 {
                     //cDelay.delay = TetrisDef.k_AddToGridDelay;
-                    ePiece.Del<AddToGridComponent>(world);
-                    ePiece.Del<DelayComponent>(world);
+                    ePiece.Del<AddToGridComponent>();
+                    ePiece.Del<DelayComponent>();
                 }
             }
         }

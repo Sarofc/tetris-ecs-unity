@@ -1,10 +1,10 @@
-﻿using Leopotam.EcsLite;
+﻿using Saro.Entities;
 
 namespace Tetris
 {
     public struct ParentComponent : IEcsComponent
     {
-        public EcsPackedEntity parent;
+        public EcsEntity parent;
 
         public override string ToString()
         {

@@ -41,28 +41,26 @@ namespace Tetris
             await LoadHybirdCLR();
         }
 
-        private const string k_HotFixDLL = "HotFix.dll";
-
         private async UniTask LoadHybirdCLR()
         {
             Assembly hotfix = null;
 
-            Debug.LogError($"HybridCLR enable: {HybridCLR.HybridCLRUtil.IsHotFix}");
+            Log.ERROR("HybridCLR", $"hotfix enable: {HybridCLR.HybridCLRUtil.IsHotFix}");
 
             if (!HybridCLR.HybridCLRUtil.IsHotFix || MoonAsset.s_Mode == MoonAsset.EMode.AssetDatabase)
             {
                 //hotfix = Assembly.GetAssembly(Type.GetType("HotFix.HotFixApp"));
-                hotfix = AppDomain.CurrentDomain.GetAssemblies().First(assembly => assembly.GetName().Name == Path.GetFileNameWithoutExtension(k_HotFixDLL));
+                hotfix = AppDomain.CurrentDomain.GetAssemblies().First(assembly => assembly.GetName().Name == Path.GetFileNameWithoutExtension(HybridCLR.HybridCLRUtil.s_HotFixDLL));
             }
             else
             {
-                var hotfixBytes = await Main.Resolve<IAssetManager>().LoadRawAssetAsync("hotfix/" + k_HotFixDLL);
+                var hotfixBytes = await Main.Resolve<IAssetManager>().LoadRawAssetAsync("hotfix/" + HybridCLR.HybridCLRUtil.s_HotFixDLL);
                 hotfix = Assembly.Load(hotfixBytes);
             }
 
             if (hotfix == null)
             {
-                UnityEngine.Debug.LogError("dll未加载");
+                Log.ERROR("HybridCLR", "dll未加载");
                 return;
             }
 
@@ -74,7 +72,7 @@ namespace Tetris
             }
             catch (Exception e)
             {
-                Debug.LogError("HotFixApp::Start Exception: " + e);
+                Log.ERROR("HybridCLR", "HotFixApp::Start Exception: " + e);
             }
         }
 

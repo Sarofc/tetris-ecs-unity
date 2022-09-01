@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using Leopotam.EcsLite;
-using Leopotam.EcsLite.Extension;
+using Saro.Entities;
+using Saro.Entities.Extension;
+using Saro.Entities;
 using UnityEngine;
 
 namespace Tetris
@@ -14,7 +15,7 @@ namespace Tetris
         private static readonly int s_Distance = 2;
         private static float s_SizeScale = .5f;
 
-        public static void UpdateNextChainSlot(EcsWorld world, List<EcsPackedEntity> queue, int count = 5)
+        public static void UpdateNextChainSlot(EcsWorld world, List<EcsEntity> queue, int count = 5)
         {
             if (count > queue.Count) throw new ArgumentOutOfRangeException();
 
@@ -22,8 +23,8 @@ namespace Tetris
             for (; i < count; i++)
             {
                 var ePiece = queue[i];
-                ref var cPiece = ref ePiece.Get<PieceComponent>(world);
-                ref var cPos = ref ePiece.Get<PositionComponent>(world);
+                ref var cPiece = ref ePiece.Get<PieceComponent>();
+                ref var cPos = ref ePiece.Get<PositionComponent>();
                 var pieceID = cPiece.pieceID;
 
                 if (pieceID == EPieceID.O || pieceID == EPieceID.I)
@@ -38,34 +39,37 @@ namespace Tetris
             {
                 var ePiece = queue[i];
 
-                var tileList = ePiece.Get<ComponentList<EcsPackedEntity>>(world).Value;
+                var tileList = ePiece.Get<ComponentList<EcsEntity>>().Value;
                 for (var k = 0; k < tileList.Count; k++)
                 {
                     var tile = tileList[k];
-                    tile.Del<TileRendererComponent>(world);
+                    tile.Del<TileRendererComponent>();
                 }
             }
         }
 
-        public static void ChangePieceColor(EcsWorld world, ref EcsPackedEntity ePiece, Color color)
+        public static void ChangePieceColor(EcsWorld world, ref EcsEntity ePiece, Color color)
         {
-            var tileList = ePiece.Add<ComponentList<EcsPackedEntity>>(world).Value;
+            var tileList = ePiece.Add<ComponentList<EcsEntity>>().Value;
             for (var k = 0; k < tileList.Count; k++)
             {
                 var tile = tileList[k];
-                tile.Add<TileRendererComponent>(world).color = color;
+                tile.Add<TileRendererComponent>().color = color;
                 ;
             }
         }
 
-        public static (bool isTSpin, bool isMini) IsTSpin(EcsWorld world, EcsPackedEntity[][] grid,
-            in EcsPackedEntity ePiece)
+        public static (bool isTSpin, bool isMini) IsTSpin(EcsWorld world, EcsEntity[][] grid, in EcsEntity ePiece)
         {
-            ref var cPiece = ref ePiece.Get<PieceComponent>(world);
+
+            ref var cPiece = ref ePiece.Get<PieceComponent>();
             if (cPiece.pieceID != EPieceID.T) return (false, false);
 
-            var rootPos = ePiece.Get<PositionComponent>(world).position;
+            var rootPos = ePiece.Get<PositionComponent>().position;
 
+            // TODO bug?
+            // 1. 没有aot，补充元数据，不支持
+            // 2. aot了，就支持了
             Span<Vector2Int> points = stackalloc Vector2Int[4];
             points[0] = Vector2Int.RoundToInt(rootPos + new Vector3(1, 1));
             points[1] = Vector2Int.RoundToInt(rootPos + new Vector3(1, -1));
@@ -92,10 +96,9 @@ namespace Tetris
             return (isSpin, isSpin && c2 >= 2);
         }
 
-        public static bool MovePiece(EcsWorld world, EcsPackedEntity[][] grid, in EcsPackedEntity ePiece,
-            in Vector2 moveDelta)
+        public static bool MovePiece(EcsWorld world, EcsEntity[][] grid, in EcsEntity ePiece, in Vector2 moveDelta)
         {
-            ref var cPiecePos = ref ePiece.Get<PositionComponent>(world);
+            ref var cPiecePos = ref ePiece.Get<PositionComponent>();
 
             ref var x = ref cPiecePos.position.x;
             ref var y = ref cPiecePos.position.y;
@@ -113,11 +116,11 @@ namespace Tetris
             return true;
         }
 
-        public static void RotateBlockWithoutCheck(EcsWorld world, in EcsPackedEntity ePiece, bool clockwise)
+        public static void RotateBlockWithoutCheck(EcsWorld world, in EcsEntity ePiece, bool clockwise)
         {
-            var tileList = ePiece.Get<ComponentList<EcsPackedEntity>>(world).Value;
-            ref var cPiece = ref ePiece.Get<PieceComponent>(world);
-            ref var cPiecePos = ref ePiece.Get<PositionComponent>(world);
+            var tileList = ePiece.Get<ComponentList<EcsEntity>>().Value;
+            ref var cPiece = ref ePiece.Get<PieceComponent>();
+            ref var cPiecePos = ref ePiece.Get<PositionComponent>();
 
             var angle = clockwise ? -90 : 90;
 
@@ -126,7 +129,7 @@ namespace Tetris
             for (var k = 0; k < tileList.Count; k++)
             {
                 var eTile = tileList[k];
-                ref var cPos = ref eTile.Get<PositionComponent>(world);
+                ref var cPos = ref eTile.Get<PositionComponent>();
 
                 var tilePos = cPos.position + root;
                 var pos = RotateAt(tilePos, pivot, angle);
@@ -142,9 +145,9 @@ namespace Tetris
             return newDir + pivot;
         }
 
-        public static void ResetPieceRotation(EcsWorld world, ref EcsPackedEntity ePiece)
+        public static void ResetPieceRotation(EcsWorld world, ref EcsEntity ePiece)
         {
-            ref var cPiece = ref ePiece.Get<PieceComponent>(world);
+            ref var cPiece = ref ePiece.Get<PieceComponent>();
             if (cPiece.state == 2)
             {
                 RotateBlockWithoutCheck(world, ePiece, true);
@@ -163,55 +166,55 @@ namespace Tetris
             }
         }
 
-        public static EcsPackedEntity CreatePiece(EcsWorld world, EPieceID pieceID, Vector3 spawnPosition)
+        public static EcsEntity CreatePiece(EcsWorld world, EPieceID pieceID, Vector3 spawnPosition)
         {
-            var ePiece = world.PackEntity(world.NewEntity());
-            ref var cPiece = ref ePiece.Add<PieceComponent>(world);
+            var ePiece = world.Pack(world.NewEntity());
+            ref var cPiece = ref ePiece.Add<PieceComponent>();
             cPiece.pieceID = pieceID;
             cPiece.scale = 1f;
-            ePiece.Add<PieceMoveComponent>(world);
-            ePiece.Add<PositionComponent>(world).position = spawnPosition;
+            ePiece.Add<PieceMoveComponent>();
+            ePiece.Add<PositionComponent>().position = spawnPosition;
 
-            var tileList = ePiece.Add<ComponentList<EcsPackedEntity>>(world).Value;
+            var tileList = ePiece.Add<ComponentList<EcsEntity>>().Value;
 
             CreateTileList(world, ePiece, tileList);
             if (pieceID != EPieceID.O)
-                ePiece.Add<PieceRotateFlag>(world);
+                ePiece.Add<PieceRotateFlag>();
 
             return ePiece;
         }
 
-        public static EcsPackedEntity CreatePieceForBagView(EcsWorld world, EPieceID pieceID, Vector3 spawnPosition)
+        public static EcsEntity CreatePieceForBagView(EcsWorld world, EPieceID pieceID, Vector3 spawnPosition)
         {
-            var ePiece = world.PackEntity(world.NewEntity());
-            ref var cPiece = ref ePiece.Add<PieceComponent>(world);
+            var ePiece = world.Pack(world.NewEntity());
+            ref var cPiece = ref ePiece.Add<PieceComponent>();
             cPiece.pieceID = pieceID;
             cPiece.scale = 0.6f;
-            ePiece.Add<PositionComponent>(world).position = spawnPosition;
+            ePiece.Add<PositionComponent>().position = spawnPosition;
 
-            var tileList = ePiece.Add<ComponentList<EcsPackedEntity>>(world).Value;
+            var tileList = ePiece.Add<ComponentList<EcsEntity>>().Value;
 
             CreateTileList(world, ePiece, tileList);
 
             return ePiece;
         }
 
-        public static EcsPackedEntity CreatePieceForGhost(EcsWorld world, EPieceID pieceID, Vector3 spawnPosition)
+        public static EcsEntity CreatePieceForGhost(EcsWorld world, EPieceID pieceID, Vector3 spawnPosition)
         {
-            var ePiece = world.PackEntity(world.NewEntity());
-            ref var cPiece = ref ePiece.Add<PieceComponent>(world);
+            var ePiece = world.Pack(world.NewEntity());
+            ref var cPiece = ref ePiece.Add<PieceComponent>();
             cPiece.pieceID = pieceID;
             cPiece.scale = 1f;
-            ePiece.Add<PositionComponent>(world).position = spawnPosition;
-            ePiece.Add<PieceGhostComponent>(world);
+            ePiece.Add<PositionComponent>().position = spawnPosition;
+            ePiece.Add<PieceGhostComponent>();
 
-            var tileList = ePiece.Add<ComponentList<EcsPackedEntity>>(world).Value;
+            var tileList = ePiece.Add<ComponentList<EcsEntity>>().Value;
             CreateTileList(world, ePiece, tileList);
 
             for (var i = 0; i < tileList.Count; i++)
             {
                 var tile = tileList[i];
-                ref var tileRenderer = ref tile.Add<TileRendererComponent>(world);
+                ref var tileRenderer = ref tile.Add<TileRendererComponent>();
                 tileRenderer.color = new Color(1, 1, 1, 0.5f);
             }
 
@@ -241,87 +244,87 @@ namespace Tetris
             return Color.white;
         }
 
-        private static void CreateTileList(EcsWorld world, in EcsPackedEntity ePiece, List<EcsPackedEntity> tileList)
+        private static void CreateTileList(EcsWorld world, in EcsEntity ePiece, List<EcsEntity> tileList)
         {
-            ref var cPiece = ref ePiece.Add<PieceComponent>(world);
+            ref var cPiece = ref ePiece.Add<PieceComponent>();
             var pieceID = cPiece.pieceID;
 
             var color = GetTileColor(pieceID);
             switch (pieceID)
             {
                 case EPieceID.J:
-                {
-                    tileList.Add(CreateTile(world, ePiece, new Vector3(-1, 0, 0), color));
-                    tileList.Add(CreateTile(world, ePiece, new Vector3(0, 0, 0), color));
-                    tileList.Add(CreateTile(world, ePiece, new Vector3(-1, 1, 0), color));
-                    tileList.Add(CreateTile(world, ePiece, new Vector3(1, 0, 0), color));
-                }
+                    {
+                        tileList.Add(CreateTile(world, ePiece, new Vector3(-1, 0, 0), color));
+                        tileList.Add(CreateTile(world, ePiece, new Vector3(0, 0, 0), color));
+                        tileList.Add(CreateTile(world, ePiece, new Vector3(-1, 1, 0), color));
+                        tileList.Add(CreateTile(world, ePiece, new Vector3(1, 0, 0), color));
+                    }
                     break;
                 case EPieceID.I:
-                {
-                    cPiece.pivot = new Vector3(0.5f, -0.5f, 0);
+                    {
+                        cPiece.pivot = new Vector3(0.5f, -0.5f, 0);
 
-                    tileList.Add(CreateTile(world, ePiece, new Vector3(2, 0, 0), color));
-                    tileList.Add(CreateTile(world, ePiece, new Vector3(1, 0, 0), color));
-                    tileList.Add(CreateTile(world, ePiece, new Vector3(-1, 0, 0), color));
-                    tileList.Add(CreateTile(world, ePiece, new Vector3(0, 0, 0), color));
-                }
+                        tileList.Add(CreateTile(world, ePiece, new Vector3(2, 0, 0), color));
+                        tileList.Add(CreateTile(world, ePiece, new Vector3(1, 0, 0), color));
+                        tileList.Add(CreateTile(world, ePiece, new Vector3(-1, 0, 0), color));
+                        tileList.Add(CreateTile(world, ePiece, new Vector3(0, 0, 0), color));
+                    }
                     break;
                 case EPieceID.L:
-                {
-                    tileList.Add(CreateTile(world, ePiece, new Vector3(-1, 0, 0), color));
-                    tileList.Add(CreateTile(world, ePiece, new Vector3(0, 0, 0), color));
-                    tileList.Add(CreateTile(world, ePiece, new Vector3(1, 1, 0), color));
-                    tileList.Add(CreateTile(world, ePiece, new Vector3(1, 0, 0), color));
-                }
+                    {
+                        tileList.Add(CreateTile(world, ePiece, new Vector3(-1, 0, 0), color));
+                        tileList.Add(CreateTile(world, ePiece, new Vector3(0, 0, 0), color));
+                        tileList.Add(CreateTile(world, ePiece, new Vector3(1, 1, 0), color));
+                        tileList.Add(CreateTile(world, ePiece, new Vector3(1, 0, 0), color));
+                    }
                     break;
                 case EPieceID.O:
-                {
-                    tileList.Add(CreateTile(world, ePiece, new Vector3(0, 0, 0), color));
-                    tileList.Add(CreateTile(world, ePiece, new Vector3(1, 0, 0), color));
-                    tileList.Add(CreateTile(world, ePiece, new Vector3(0, 1, 0), color));
-                    tileList.Add(CreateTile(world, ePiece, new Vector3(1, 1, 0), color));
-                }
+                    {
+                        tileList.Add(CreateTile(world, ePiece, new Vector3(0, 0, 0), color));
+                        tileList.Add(CreateTile(world, ePiece, new Vector3(1, 0, 0), color));
+                        tileList.Add(CreateTile(world, ePiece, new Vector3(0, 1, 0), color));
+                        tileList.Add(CreateTile(world, ePiece, new Vector3(1, 1, 0), color));
+                    }
                     break;
                 case EPieceID.S:
-                {
-                    tileList.Add(CreateTile(world, ePiece, new Vector3(-1, 0, 0), color));
-                    tileList.Add(CreateTile(world, ePiece, new Vector3(0, 0, 0), color));
-                    tileList.Add(CreateTile(world, ePiece, new Vector3(1, 1, 0), color));
-                    tileList.Add(CreateTile(world, ePiece, new Vector3(0, 1, 0), color));
-                }
+                    {
+                        tileList.Add(CreateTile(world, ePiece, new Vector3(-1, 0, 0), color));
+                        tileList.Add(CreateTile(world, ePiece, new Vector3(0, 0, 0), color));
+                        tileList.Add(CreateTile(world, ePiece, new Vector3(1, 1, 0), color));
+                        tileList.Add(CreateTile(world, ePiece, new Vector3(0, 1, 0), color));
+                    }
                     break;
                 case EPieceID.T:
-                {
-                    tileList.Add(CreateTile(world, ePiece, new Vector3(-1, 0, 0), color));
-                    tileList.Add(CreateTile(world, ePiece, new Vector3(0, 1, 0), color));
-                    tileList.Add(CreateTile(world, ePiece, new Vector3(1, 0, 0), color));
-                    tileList.Add(CreateTile(world, ePiece, new Vector3(0, 0, 0), color));
-                }
+                    {
+                        tileList.Add(CreateTile(world, ePiece, new Vector3(-1, 0, 0), color));
+                        tileList.Add(CreateTile(world, ePiece, new Vector3(0, 1, 0), color));
+                        tileList.Add(CreateTile(world, ePiece, new Vector3(1, 0, 0), color));
+                        tileList.Add(CreateTile(world, ePiece, new Vector3(0, 0, 0), color));
+                    }
                     break;
                 case EPieceID.Z:
-                {
-                    tileList.Add(CreateTile(world, ePiece, new Vector3(-1, 1, 0), color));
-                    tileList.Add(CreateTile(world, ePiece, new Vector3(0, 1, 0), color));
-                    tileList.Add(CreateTile(world, ePiece, new Vector3(0, 0, 0), color));
-                    tileList.Add(CreateTile(world, ePiece, new Vector3(1, 0, 0), color));
-                }
+                    {
+                        tileList.Add(CreateTile(world, ePiece, new Vector3(-1, 1, 0), color));
+                        tileList.Add(CreateTile(world, ePiece, new Vector3(0, 1, 0), color));
+                        tileList.Add(CreateTile(world, ePiece, new Vector3(0, 0, 0), color));
+                        tileList.Add(CreateTile(world, ePiece, new Vector3(1, 0, 0), color));
+                    }
                     break;
             }
         }
 
-        public static EcsPackedEntity CreateTile(EcsWorld world, in EcsPackedEntity parent, Vector3 pos, Color color)
+        public static EcsEntity CreateTile(EcsWorld world, in EcsEntity parent, Vector3 pos, Color color)
         {
-            var eTile = world.PackEntity(world.NewEntity());
-            eTile.Add<PositionComponent>(world).position = pos;
-            eTile.Add<TileRendererComponent>(world).color = color;
-            eTile.Add<ParentComponent>(world).parent = parent;
+            var eTile = world.Pack(world.NewEntity());
+            eTile.Add<PositionComponent>().position = pos;
+            eTile.Add<TileRendererComponent>().color = color;
+            eTile.Add<ParentComponent>().parent = parent;
             return eTile;
         }
 
         private static Vector2Int[] GetWallKickData(EPieceID blockID, int state, int next)
         {
-            var datas = NewWallKickData.GetWallKickData(blockID);
+            var datas = WallKickData.GetWallKickData(blockID);
 
             switch (state)
             {
@@ -346,10 +349,10 @@ namespace Tetris
             return null;
         }
 
-        public static bool WallKickTest(EcsWorld world, EcsPackedEntity[][] grid, in EcsPackedEntity ePiece, int next,
+        public static bool WallKickTest(EcsWorld world, EcsEntity[][] grid, in EcsEntity ePiece, int next,
             out Vector2Int result)
         {
-            ref var cPiece = ref ePiece.Get<PieceComponent>(world);
+            ref var cPiece = ref ePiece.Get<PieceComponent>();
             var data = GetWallKickData(cPiece.pieceID, cPiece.state, next);
 
             for (var i = 0; i < data.Length; i++)
@@ -366,15 +369,15 @@ namespace Tetris
             return false;
         }
 
-        public static bool IsValidBlock(EcsWorld world, EcsPackedEntity[][] grid, in EcsPackedEntity ePiece)
+        public static bool IsValidBlock(EcsWorld world, EcsEntity[][] grid, in EcsEntity ePiece)
         {
-            var cPiecePos = ePiece.Get<PositionComponent>(world);
-            var tileList = ePiece.Get<ComponentList<EcsPackedEntity>>(world).Value;
+            var cPiecePos = ePiece.Get<PositionComponent>();
+            var tileList = ePiece.Get<ComponentList<EcsEntity>>().Value;
 
             var rootPos = cPiecePos.position;
             for (var i = 0; i < tileList.Count; i++)
             {
-                ref var tilePos = ref tileList[i].Get<PositionComponent>(world);
+                ref var tilePos = ref tileList[i].Get<PositionComponent>();
                 var childPos = tilePos.position + rootPos;
                 var x = Mathf.RoundToInt(childPos.x);
                 var y = Mathf.RoundToInt(childPos.y);
@@ -383,16 +386,16 @@ namespace Tetris
             return true;
         }
 
-        public static bool IsValidBlock(EcsWorld world, EcsPackedEntity[][] grid, in EcsPackedEntity ePiece,
+        public static bool IsValidBlock(EcsWorld world, EcsEntity[][] grid, in EcsEntity ePiece,
             Vector2 move)
         {
-            var cPiecePos = ePiece.Get<PositionComponent>(world);
-            var tileList = ePiece.Get<ComponentList<EcsPackedEntity>>(world).Value;
+            var cPiecePos = ePiece.Get<PositionComponent>();
+            var tileList = ePiece.Get<ComponentList<EcsEntity>>().Value;
 
             var rootPos = cPiecePos.position;
             for (var i = 0; i < tileList.Count; i++)
             {
-                ref var tilePos = ref tileList[i].Get<PositionComponent>(world);
+                ref var tilePos = ref tileList[i].Get<PositionComponent>();
                 var childPos = tilePos.position + rootPos;
                 var x = Mathf.RoundToInt(childPos.x + move.x);
                 var y = Mathf.RoundToInt(childPos.y + move.y);
@@ -401,11 +404,11 @@ namespace Tetris
             return true;
         }
 
-        public static bool IsValid(EcsWorld world, EcsPackedEntity[][] grid, int x, int y)
+        public static bool IsValid(EcsWorld world, EcsEntity[][] grid, int x, int y)
         {
             if (x >= TetrisDef.Width || x < 0 || y >= TetrisDef.Height + TetrisDef.ExtraHeight || y < 0)
                 return false;
-            if (grid[y][x].IsAlive(world)) return false;
+            if (grid[y][x].IsAlive()) return false;
 
             return true;
         }

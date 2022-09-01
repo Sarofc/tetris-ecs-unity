@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Leopotam.EcsLite;
+using Saro.Entities;
 using Saro.Diagnostics;
 using UnityEngine;
 
@@ -13,7 +13,7 @@ namespace Tetris
         private List<Vector4[]> m_SpriteOffsetBatches;
 
         private List<Matrix4x4[]> m_TransfromMatrixBatches;
-
+        public bool Enable { get; set; } = true;
         void IEcsDestroySystem.Destroy(EcsSystems systems)
         {
             m_GameContext.batchRenderer.Destroy();
@@ -32,8 +32,6 @@ namespace Tetris
             m_GameContext.batchRenderer.SpriteOffsetBatches = m_GameContext.SpriteOffsetBatches;
 
             m_GameContext.batchRenderer.SetRenderingCamera(Camera.main);
-
-            Debug.LogError("TileRendererSystem init done");
         }
 
         void IEcsRunSystem.Run(EcsSystems systems)
@@ -47,8 +45,8 @@ namespace Tetris
                 ref var cPos = ref i.Get<PositionComponent>(world);
                 ref var cParent = ref i.Get<ParentComponent>(world);
 
-                var scale = cParent.parent.Get<PieceComponent>(world).scale;
-                var pos = cPos.position * scale + cParent.parent.Get<PositionComponent>(world).position;
+                var scale = cParent.parent.Get<PieceComponent>().scale;
+                var pos = cPos.position * scale + cParent.parent.Get<PositionComponent>().position;
                 //DrawTile(cPos.position * scale + cParent.parent.Get<PositionComponent>().position, scale);
 
                 var batchIndex = index / MaxBatchCount;

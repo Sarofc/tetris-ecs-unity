@@ -1,8 +1,8 @@
-﻿using Leopotam.EcsLite;
+﻿using Saro.Entities;
 
 namespace Tetris
 {
-    public struct GameInputComponent : IEcsComponent
+    public struct GameInputComponent : IEcsComponentSingleton
     {
         public float lastInputTime;
         public float lastStartTime;

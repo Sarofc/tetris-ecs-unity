@@ -1,9 +1,10 @@
-using Leopotam.EcsLite;
+using Saro.Entities;
 
 namespace Tetris
 {
     public sealed class DelSystem<T> : IEcsRunSystem where T : struct, IEcsComponent
     {
+        public bool Enable { get; set; } = true;
         void IEcsRunSystem.Run(EcsSystems systems)
         {
             var world = systems.GetWorld();

@@ -1,3 +1,4 @@
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -5,10 +6,9 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Scripting;
-using Cysharp.Threading.Tasks;
-using Cysharp.Threading.Tasks.CompilerServices;
 
 [assembly: Preserve]
+
 enum IntEnum : int
 {
     A,
@@ -56,15 +56,33 @@ public partial class RefTypes : MonoBehaviour
         Instantiate<GameObject>(null, new Vector3(), new Quaternion(), null);
     }
 
-    public void RefNumerics()
+    void RefNumerics()
     {
         var a = new System.Numerics.BigInteger();
         a.ToString();
     }
 
-
-    void RefMisc()
+    void RefDelegate()
     {
+        // action
+        { Action a = () => { }; }
+        { Action<int> a = (s) => { }; }
+        { Action<uint> a = (s) => { }; }
+        { Action<byte> a = (s) => { }; }
+        { Action<sbyte> a = (s) => { }; }
+        { Action<long> a = (s) => { }; }
+        { Action<float> a = (s) => { }; }
+        { Action<double> a = (s) => { }; }
+
+        { Action<object> a = (s) => { }; }
+        { Action<object, object> a = (s1, s2) => { }; }
+        { Action<object, object, object> a = (s1, s2, s3) => { }; }
+
+        // func
+        { Func<object> a = () => new object(); }
+        { Func<object, object> a = (s) => new object(); }
+        { Func<object, object, object> a = (s1, s2) => new object(); }
+        { Func<object, object, object, object> a = (s1, s2, s3) => new object(); }
     }
 
     void RefComparers()
@@ -90,7 +108,6 @@ public partial class RefTypes : MonoBehaviour
         b = EqualityComparer<double>.Default;
         b = EqualityComparer<object>.Default;
     }
-
 
     void RefNullable()
     {
@@ -118,6 +135,28 @@ public partial class RefTypes : MonoBehaviour
         {
 
         };
+    }
+
+    void RefSpan()
+    {
+        { Span<decimal> s = stackalloc decimal[10]; }
+        { Span<int> s = stackalloc int[10]; }
+        { Span<uint> s = stackalloc uint[10]; }
+        { Span<float> s = stackalloc float[10]; }
+        { Span<double> s = stackalloc double[10]; }
+        { Span<long> s = stackalloc long[10]; }
+        { Span<ulong> s = stackalloc ulong[10]; }
+        { Span<short> s = stackalloc short[10]; }
+        { Span<ushort> s = stackalloc ushort[10]; }
+        { Span<byte> s = stackalloc byte[10]; }
+        { Span<sbyte> s = stackalloc sbyte[10]; }
+
+        { Span<Vector3> s = stackalloc Vector3[10]; }
+        { Span<Vector3Int> s = stackalloc Vector3Int[10]; }
+        { Span<Vector2> s = stackalloc Vector2[10]; }
+        { Span<Vector2Int> s = stackalloc Vector2Int[10]; }
+        { Span<Matrix4x4> s = stackalloc Matrix4x4[10]; }
+        { Span<Rect> s = stackalloc Rect[10]; }
     }
 
     void RefAsyncMethod_Task()
@@ -257,121 +296,11 @@ public partial class RefTypes : MonoBehaviour
         Debug.Log(b);
     }
 
-    void RefAsyncMethod_UniTask()
-    {
-        IAsyncStateMachine stateMachine = new MyStateMachine();
-
-        UniTask.Awaiter aw0 = default;
-        var c0 = new AsyncUniTaskMethodBuilder();
-        c0.Start(ref stateMachine);
-        c0.AwaitUnsafeOnCompleted(ref aw0, ref stateMachine);
-        c0.SetException(null);
-        c0.SetResult();
-
-        var c1 = new AsyncUniTaskMethodBuilder();
-        c1.Start(ref stateMachine);
-        c1.AwaitUnsafeOnCompleted(ref aw0, ref stateMachine);
-        c1.SetException(null);
-        c1.SetResult();
-
-        UniTask<bool>.Awaiter aw2 = default;
-        var c2 = new AsyncUniTaskMethodBuilder<bool>();
-        c2.Start(ref stateMachine);
-        c2.AwaitUnsafeOnCompleted(ref aw2, ref stateMachine);
-        c2.SetException(null);
-        c2.SetResult(default);
-
-        UniTask<int>.Awaiter aw3 = default;
-        var c3 = new AsyncUniTaskMethodBuilder<int>();
-        c3.Start(ref stateMachine);
-        c3.AwaitUnsafeOnCompleted(ref aw3, ref stateMachine);
-        c3.SetException(null);
-        c3.SetResult(default);
-
-        UniTask<long>.Awaiter aw4 = default;
-        var c4 = new AsyncUniTaskMethodBuilder<long>();
-        c4.Start(ref stateMachine);
-        c4.AwaitUnsafeOnCompleted(ref aw4, ref stateMachine);
-        c4.SetException(null);
-
-        UniTask<float>.Awaiter aw5 = default;
-        var c5 = new AsyncUniTaskMethodBuilder<float>();
-        c5.Start(ref stateMachine);
-        c5.AwaitUnsafeOnCompleted(ref aw5, ref stateMachine);
-        c5.SetException(null);
-        c5.SetResult(default);
-
-        UniTask<double>.Awaiter aw6 = default;
-        var c6 = new AsyncUniTaskMethodBuilder<double>();
-        c6.Start(ref stateMachine);
-        c6.AwaitUnsafeOnCompleted(ref aw6, ref stateMachine);
-        c6.SetException(null);
-        c6.SetResult(default);
-
-        UniTask<object>.Awaiter aw7 = default;
-        var c7 = new AsyncUniTaskMethodBuilder<object>();
-        //var c7 = AsyncUniTaskMethodBuilder<object>.Create();
-        c7.Start(ref stateMachine);
-        c7.AwaitUnsafeOnCompleted(ref aw7, ref stateMachine);
-        c7.SetException(null);
-        c7.SetResult(default);
-
-        UniTask<IntEnum>.Awaiter aw8 = default;
-        var c8 = new AsyncUniTaskMethodBuilder<IntEnum>();
-        c8.Start(ref stateMachine);
-        c8.AwaitUnsafeOnCompleted(ref aw8, ref stateMachine);
-        c8.SetException(null);
-        c8.SetResult(default);
-
-        var c9 = new AsyncUniTaskMethodBuilder();
-        var b = AsyncUniTaskMethodBuilder.Create();
-        c9.Start(ref stateMachine);
-        c9.AwaitUnsafeOnCompleted(ref aw0, ref stateMachine);
-        c9.SetException(null);
-        c9.SetResult();
-        Debug.Log(b);
-
-        //UniTask<Saro.UI.IWindow>.Awaiter aw10 = default;
-        //var c10 = new AsyncUniTaskMethodBuilder<Saro.UI.IWindow>();
-        //c10.Start(ref stateMachine);
-        //c10.AwaitUnsafeOnCompleted(ref aw10, ref stateMachine);
-        //c10.SetException(null);
-        //c10.SetResult(default);
-
-        var builder = new AsyncUniTaskMethodBuilder();
-        IAsyncStateMachine asm = default;
-        builder.Start(ref asm);
-    }
-
-    void RefNewtonsoftJson()
-    {
-        //AotHelper.EnsureList<int>();
-        //AotHelper.EnsureList<long>();
-        //AotHelper.EnsureList<float>();
-        //AotHelper.EnsureList<double>();
-        //AotHelper.EnsureList<string>();
-        //AotHelper.EnsureDictionary<int, int>();
-        //AotHelper.EnsureDictionary<int, string>();
-    }
-
-    public void RefProtobufNet()
-    {
-
-    }
-
-    public void RefGoogleProtobuf()
-    {
-    }
-
     class TestTable
     {
         public int Id { get; set; }
 
         public string Name { get; set; }
-    }
-
-    public void RefSQLite()
-    {
     }
 
     public static async void TestAsync3()

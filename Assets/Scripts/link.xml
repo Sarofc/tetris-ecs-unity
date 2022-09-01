@@ -1,0 +1,12 @@
+﻿<linker>
+
+	<assembly fullname="Saro.Entities">
+		<namespace fullname="Saro.Entities" preserve="all"/>
+	</assembly>
+
+	<assembly fullname="Saro.Entities.Extension">
+		<namespace fullname="Saro.Entities" preserve="all"/>
+	</assembly>
+	
+</linker>
+

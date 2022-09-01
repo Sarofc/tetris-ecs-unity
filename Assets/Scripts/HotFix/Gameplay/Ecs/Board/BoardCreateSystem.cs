@@ -1,5 +1,5 @@
-using Leopotam.EcsLite;
-using Leopotam.EcsLite.Extension;
+using Saro.Entities;
+using Saro.Entities.Extension;
 using UnityEngine;
 
 namespace Tetris
@@ -10,19 +10,11 @@ namespace Tetris
 
         public void Init(EcsSystems systems)
         {
-            Debug.LogError("BoardCreateSystem 1");
-
             m_GameCtx = systems.GetShared<GameContext>();
-
-            Debug.LogError("BoardCreateSystem 2");
 
             CreateView();
 
-            Debug.LogError("BoardCreateSystem 3");
-
             systems.GetWorld().SendMessage(new GameStartRequest { gameMode = 1 });
-
-            Debug.LogError("BoardCreateSystem init done");
         }
 
         private void CreateView()

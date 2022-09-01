@@ -266,7 +266,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Datas:
-  - key: btn_replay
+  - key: btn_back
     obj: {fileID: 621359914396548961}
   - key: btn_setting
     obj: {fileID: 6837717156123264304}
@@ -798,7 +798,7 @@ GameObject:
   - component: {fileID: 621359914396548972}
   - component: {fileID: 5302311002392980113}
   m_Layer: 5
-  m_Name: btn_replay
+  m_Name: btn_back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

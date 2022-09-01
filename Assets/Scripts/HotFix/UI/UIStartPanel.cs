@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 namespace Tetris.UI
 {
-    [UIWindow((int)ETetrisUI.StartWindow, "Assets/Res/Prefab/UI/UIStartPanel.prefab")]
+    [UIWindow((int)EGameUI.StartWindow, "Assets/Res/Prefab/UI/UIStartPanel.prefab")]
     public sealed partial class UIStartPanel : UIWindow
     {
         public UIStartPanel(string path) : base(path)
@@ -25,26 +25,24 @@ namespace Tetris.UI
             Listen(BtnQuit.onClick, OnClick_Quit);
 
             var iasset = IAssetManager.Current;
-            TmptxtVersion.text = "v." + iasset.GetAppVersion() + "." + iasset.GetResVersion() + " hotfix";
+            TmptxtVersion.text = "v." + iasset.GetAppVersion() + "." + iasset.GetResVersion();
         }
 
         private async UniTaskVoid OnClick_Start()
         {
-            var sceneHandle = IAssetManager.Current.LoadSceneAsync("Assets/Res/Scenes/EcsGaming.unity"); 
-            await sceneHandle;
-            //sceenHandle.DecreaseRefCount();
+            await SceneController.Current.ChangeScene(SceneController.ESceneType.Game);
 
-            UIManager.Current.UnLoadWindow(ETetrisUI.StartWindow);
+            UIManager.Current.UnLoadWindow(EGameUI.StartWindow);
         }
 
         private void OnClick_Setting()
         {
-            UIManager.Current.LoadAndShowWindowAsync(ETetrisUI.SettingPanel).Forget();
+            UIManager.Current.LoadAndShowWindowAsync(EGameUI.SettingPanel).Forget();
         }
 
         private void OnClick_About()
         {
-            UIManager.Current.LoadAndShowWindowAsync(ETetrisUI.AboutPanel).Forget();
+            UIManager.Current.LoadAndShowWindowAsync(EGameUI.AboutPanel).Forget();
         }
 
         private void OnClick_Quit()

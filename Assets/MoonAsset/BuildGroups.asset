@@ -22,8 +22,8 @@ MonoBehaviour:
   - .boo
   - .giparams
   - lightingdata.asset
-  resVersion: 274
-  resVersionBuildAsset: 273
+  resVersion: 326
+  resVersionBuildAsset: 325
   scenesInBuild:
   - {fileID: 102900000, guid: 8943688c1103d8c46b982d0a1a9e2310, type: 3}
   bundleGroups:
@@ -137,7 +137,7 @@ MonoBehaviour:
     builtIn: 0
     assets:
     - Assets/Res/Scenes/EcsGaming.unity
-    - Assets/Res/Scenes/TestScene.unity
+    - Assets/Res/Scenes/Title.unity
   - searchPath: Assets/Res/Shaders
     searchPattern: '*'
     nameBy: 2
@@ -342,7 +342,7 @@ MonoBehaviour:
     bundle: c857cda7abf2b87ba6a6859c0303963a.assets
   - asset: Assets/Res/Scenes/EcsGaming.unity
     bundle: bab4f8bd5adea5d6044b0f25fbb259b7.assets
-  - asset: Assets/Res/Scenes/TestScene.unity
+  - asset: Assets/Res/Scenes/Title.unity
     bundle: bab4f8bd5adea5d6044b0f25fbb259b7.assets
   - asset: Assets/Res/ScriptableObjects/GameMode1_Asset.asset
     bundle: 5324f345de28c64f0fda4adfade8bd59.assets
@@ -361,8 +361,6 @@ MonoBehaviour:
   - asset: Packages/com.unity.render-pipelines.universal/Runtime/Materials/Sprite-Unlit-Default.mat
     bundle: a33462554deae1126fdf3b50097f3f2e.assets
   - asset: Packages/com.unity.render-pipelines.universal/Shaders/2D/Sprite-Unlit-Default.shader
-    bundle: 1aa355706e1767666124331a716c7890.assets
-  - asset: Packages/com.unity.render-pipelines.universal/Shaders/Lit.shader
     bundle: 1aa355706e1767666124331a716c7890.assets
   - asset: Packages/com.unity.render-pipelines.universal/Shaders/Particles/ParticlesUnlit.shader
     bundle: 1aa355706e1767666124331a716c7890.assets
@@ -645,7 +643,7 @@ MonoBehaviour:
   - bundle: bab4f8bd5adea5d6044b0f25fbb259b7.assets
     assets:
     - Assets/Res/Scenes/EcsGaming.unity
-    - Assets/Res/Scenes/TestScene.unity
+    - Assets/Res/Scenes/Title.unity
   - bundle: 1aa355706e1767666124331a716c7890.assets
     assets:
     - Assets/Res/Shaders/InstancedSprite.shader
@@ -655,7 +653,6 @@ MonoBehaviour:
     - Packages/com.unity.render-pipelines.universal/Shaders/2D/Sprite-Unlit-Default.shader
     - Packages/com.unity.render-pipelines.universal/Shaders/Particles/ParticlesUnlit.shader
     - Assets/TextMesh Pro/Resources/Shaders/TMP_SDF.shader
-    - Packages/com.unity.render-pipelines.universal/Shaders/Lit.shader
   - bundle: 5324f345de28c64f0fda4adfade8bd59.assets
     assets:
     - Assets/Res/ScriptableObjects/GameMode1_Asset.asset
@@ -724,11 +721,13 @@ MonoBehaviour:
       dir: 0
     - name: HotFix.dll
       dir: 0
-    - name: Leopotam.EcsLite.dll
-      dir: 0
-    - name: Leopotam.EcsLite.Extension.Runtime.dll
-      dir: 0
     - name: mscorlib.dll
+      dir: 0
+    - name: Newtonsoft.Json.dll
+      dir: 0
+    - name: Saro.Entities.dll
+      dir: 0
+    - name: Saro.Entities.Extension.dll
       dir: 0
     - name: Saro.MGF.dll
       dir: 0

@@ -1,17 +1,16 @@
-using Leopotam.EcsLite;
-using Leopotam.EcsLite.Extension;
+using Saro.Entities;
+using Saro.Entities.Extension;
 using UnityEngine;
 
 namespace Tetris
 {
     internal sealed class GameInputSystem : IEcsRunSystem, IEcsInitSystem
     {
+        public bool Enable { get; set; } = true;
         void IEcsInitSystem.Init(EcsSystems systems)
         {
             var world = systems.GetWorld();
             world.GetSingleton<GameInputComponent>();
-
-            Debug.LogError("GameInputSystem init done");
         }
 
         void IEcsRunSystem.Run(EcsSystems systems)

@@ -15,8 +15,8 @@ EditorBuildSettings:
     path: Assets/Res/Scenes/EcsGaming.unity
     guid: e455a88e3f81b1842aa75ea1a667ace3
   - enabled: 1
-    path: Assets/Res/Scenes/TestScene.unity
-    guid: d423fd2bbcb0f6047bea13ef9b03cb44
+    path: Assets/Res/Scenes/Title.unity
+    guid: 35232d7b2b72d7448851bc84a26ad08f
   - enabled: 1
     path: Packages/com.unity.render-pipelines.universal/Editor/SceneTemplates/Basic.unity
     guid: e026d555eae824f65922633f37a14385

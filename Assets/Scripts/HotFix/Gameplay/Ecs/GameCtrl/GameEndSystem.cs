@@ -1,5 +1,5 @@
 using Cysharp.Threading.Tasks;
-using Leopotam.EcsLite;
+using Saro.Entities;
 using Saro.UI;
 using Tetris.UI;
 
@@ -7,6 +7,7 @@ namespace Tetris
 {
     internal sealed class GameEndSystem : IEcsRunSystem
     {
+        public bool Enable { get; set; } = true;
         void IEcsRunSystem.Run(EcsSystems systems)
         {
             var world = systems.GetWorld();
@@ -18,10 +19,10 @@ namespace Tetris
 
                 gameCtx.gamming = false;
 
+                gameCtx.SendMessage(new BGMAudioEvent { audioAsset = null });
                 gameCtx.SendMessage(new SeAudioEvent { audioAsset = "SE/me_game_gameover.wav" });
 
-                UIManager.Instance.LoadAndShowWindowAsync(ETetrisUI.GameOverPanel).Forget();
-                //UIManager.Current.OpenUIAsync<UIGameOverPanel>().Forget();
+                UIManager.Current.LoadAndShowWindowAsync(EGameUI.GameOverPanel).Forget();
             }
         }
     }

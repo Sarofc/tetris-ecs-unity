@@ -1,5 +1,5 @@
-using Leopotam.EcsLite;
-using Leopotam.EcsLite.Extension;
+using Saro.Entities;
+using Saro.Entities.Extension;
 using Saro;
 using UnityEngine;
 
@@ -8,15 +8,16 @@ namespace Tetris
     internal sealed class AddToGridSystem : IEcsRunSystem
     {
         private GameContext m_GameCtx;
-        private EcsPackedEntity[][] Grid => m_GameCtx.grid;
+        private EcsEntity[][] Grid => m_GameCtx.grid;
 
+        public bool Enable { get; set; } = true;
         void IEcsRunSystem.Run(EcsSystems systems)
         {
             m_GameCtx = systems.GetShared<GameContext>();
 
             var world = systems.GetWorld();
 
-            var pieces = world.Filter().Inc<PieceMoveComponent, ComponentList<EcsPackedEntity>, AddToGridComponent>()
+            var pieces = world.Filter().Inc<PieceMoveComponent, ComponentList<EcsEntity>, AddToGridComponent>()
                 .Exc<DelayComponent>()
                 .End();
 
@@ -25,7 +26,7 @@ namespace Tetris
                 foreach (var ePiece in pieces)
                 {
                     ref var cPiecePosition = ref ePiece.Get<PositionComponent>(world);
-                    var tileList = ePiece.Get<ComponentList<EcsPackedEntity>>(world).Value;
+                    var tileList = ePiece.Get<ComponentList<EcsEntity>>(world).Value;
 
                     var isGameOver = true;
 
@@ -35,7 +36,7 @@ namespace Tetris
                     for (var i = 0; i < tileList.Count; i++)
                     {
                         var eTile = tileList[i];
-                        ref var cTilePos = ref eTile.Get<PositionComponent>(world);
+                        ref var cTilePos = ref eTile.Get<PositionComponent>();
                         var pos = cTilePos.position + cPiecePosition.position;
                         var x = Mathf.RoundToInt(pos.x);
                         var y = Mathf.RoundToInt(pos.y);
@@ -70,7 +71,7 @@ namespace Tetris
                     {
                         m_GameCtx.SendMessage(
                             new LineClearRequest
-                                { ePiece = world.PackEntity(ePiece), startLine = yMin, endLine = yMax });
+                                { ePiece = world.Pack(ePiece), startLine = yMin, endLine = yMax });
                     }
                 }
             }

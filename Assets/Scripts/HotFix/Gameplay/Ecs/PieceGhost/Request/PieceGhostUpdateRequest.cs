@@ -1,9 +1,9 @@
-﻿using Leopotam.EcsLite;
+﻿using Saro.Entities;
 
 namespace Tetris
 {
     public struct PieceGhostUpdateRequest : IEcsComponent
     {
-        public EcsPackedEntity ePiece;
+        public EcsEntity ePiece;
     }
 }

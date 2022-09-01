@@ -46,9 +46,9 @@ namespace Tetris.Save
 
         public void Save()
         {
-            m_SaveFile.Save();
-
             Log.INFO("Save", "SaveManager::Save");
+
+            m_SaveFile.Save();
         }
 
         public void Load()

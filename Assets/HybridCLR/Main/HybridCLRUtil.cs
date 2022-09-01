@@ -9,27 +9,30 @@ namespace HybridCLR
     public static class HybridCLRUtil
     {
         public static bool IsHotFix { get; } =
-#if HYBRIDCLR_ENABLE
+#if ENABLE_HOTFIX
             true
 #else
             false
 #endif
         ;
 
+        public static string s_HotFixDLL = "HotFix.dll";
+
         public static List<string> AOTMetaAssemblies { get; } = new List<string>()
         {
             "mscorlib.dll",
             "System.dll",
             "System.Core.dll", // 如果使用了Linq，需要这个
-            "GameMain.dll",
+            "Newtonsoft.Json.dll",
             "UniTask.dll",
+            "GameMain.dll",
             "Saro.MGF.dll",
             "Saro.MoonAsset.dll",
-            "Leopotam.EcsLite.dll",
-            "Leopotam.EcsLite.Extension.Runtime.dll",
+            "Saro.Entities.dll",
+            "Saro.Entities.Extension.dll",
             //"Saro.MGF.HybirdCLR.dll",
             // add more
-        }; // TODO 使用委托，方便打包后抽换
+        }; // TODO 使用委托，方便打包后抽换，需要优化掉这个工作流，考虑用个json编辑保存？
 
         /// <summary>
         /// 为aot assembly加载原始metadata， 这个代码放aot或者热更新都行。

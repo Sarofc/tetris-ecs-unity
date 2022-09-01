@@ -1,10 +1,10 @@
-﻿using Leopotam.EcsLite;
+﻿using Saro.Entities;
 
 namespace Tetris
 {
     public struct LineClearRequest : IEcsComponent
     {
-        public EcsPackedEntity ePiece;
+        public EcsEntity ePiece;
         public int startLine;
         public int endLine;
 

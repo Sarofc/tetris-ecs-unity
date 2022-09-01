@@ -1,11 +1,12 @@
 using Cysharp.Threading.Tasks;
 using Saro;
+using Saro.Core;
 using Saro.UI;
 using UnityEngine.UI;
 
 namespace Tetris.UI
 {
-    [UIWindow((int)ETetrisUI.GameOverPanel, "Assets/Res/Prefab/UI/UIGameOverPanel.prefab")]
+    [UIWindow((int)EGameUI.GameOverPanel, "Assets/Res/Prefab/UI/UIGameOverPanel.prefab")]
     public sealed partial class UIGameOverPanel : UIWindow
     {
         public UIGameOverPanel(string resPath) : base(resPath)
@@ -16,25 +17,30 @@ namespace Tetris.UI
         {
             base.Awake();
 
-            Listen(BtnReplay.onClick, OnClick_Replay);
-            Listen(BtnSetting.onClick, OnClick_Setting);
-            Listen(BtnAbout.onClick, OnClick_About);
-            Listen(BtnQuit.onClick, Main.Quit);
+            Listen(btn_back.onClick, () => { OnClick_Back().Forget(); });
+            Listen(btn_setting.onClick, OnClick_Setting);
+            Listen(btn_about.onClick, OnClick_About);
+            Listen(btn_quit.onClick, Main.Quit);
         }
 
-        private void OnClick_Replay()
+        private async UniTaskVoid OnClick_Back()
         {
-            Toast.AddToast("TODO 未实现");
+            await SceneController.Current.ChangeScene(SceneController.ESceneType.Title);
+
+            UIManager.Current.UnLoadWindow(EGameUI.GameOverPanel);
+            UIManager.Current.UnLoadWindow(EGameUI.GameHUD);
+
+            UIManager.Current.LoadAndShowWindowAsync(EGameUI.StartWindow).Forget();
         }
 
         private void OnClick_Setting()
         {
-            UIManager.Instance.LoadAndShowWindowAsync(ETetrisUI.SettingPanel).Forget();
+            UIManager.Current.LoadAndShowWindowAsync(EGameUI.SettingPanel).Forget();
         }
 
         private void OnClick_About()
         {
-            UIManager.Instance.LoadAndShowWindowAsync(ETetrisUI.AboutPanel).Forget();
+            UIManager.Current.LoadAndShowWindowAsync(EGameUI.AboutPanel).Forget();
         }
     }
 
@@ -45,10 +51,10 @@ namespace Tetris.UI
         // don't modify this scope
 
         //>>begin
-        public Button BtnReplay => Binder.GetRef<Button>("btn_replay");
-        public Button BtnSetting => Binder.GetRef<Button>("btn_setting");
-        public Button BtnAbout => Binder.GetRef<Button>("btn_about");
-        public Button BtnQuit => Binder.GetRef<Button>("btn_quit");
+        public UnityEngine.UI.Button btn_back => Binder.GetRef<UnityEngine.UI.Button>("btn_back");
+        public UnityEngine.UI.Button btn_setting => Binder.GetRef<UnityEngine.UI.Button>("btn_setting");
+        public UnityEngine.UI.Button btn_about => Binder.GetRef<UnityEngine.UI.Button>("btn_about");
+        public UnityEngine.UI.Button btn_quit => Binder.GetRef<UnityEngine.UI.Button>("btn_quit");
 
         //<<end
 

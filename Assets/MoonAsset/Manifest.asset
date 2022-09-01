@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   appVersion: 0.1
-  resVersion: 274
+  resVersion: 326
   remoteVersionUrl: 
   remoteAssetUrl: http://localhost:8080
   dirs:
@@ -38,8 +38,8 @@ MonoBehaviour:
   - Assets/TextMesh Pro/Resources/Shaders
   - Packages/com.unity.render-pipelines.universal/Runtime/Materials
   - Packages/com.unity.render-pipelines.universal/Shaders/2D
-  - Packages/com.unity.render-pipelines.universal/Shaders
   - Packages/com.unity.render-pipelines.universal/Shaders/Particles
+  - Packages/com.unity.render-pipelines.universal/Shaders
   - Packages/com.unity.textmeshpro/Editor Resources/Gizmos
   - Assets/Arts/Textures/UI
   assets:
@@ -328,7 +328,7 @@ MonoBehaviour:
   - name: EcsGaming.unity
     bundle: 89
     dir: 13
-  - name: TestScene.unity
+  - name: Title.unity
     bundle: 89
     dir: 13
   - name: GameMode1_Asset.asset
@@ -358,15 +358,12 @@ MonoBehaviour:
   - name: Sprite-Unlit-Default.shader
     bundle: 90
     dir: 19
-  - name: Lit.shader
-    bundle: 90
-    dir: 20
   - name: ParticlesUnlit.shader
     bundle: 90
-    dir: 21
+    dir: 20
   - name: Unlit.shader
     bundle: 90
-    dir: 20
+    dir: 21
   - name: TMP - Font Asset Icon.psd
     bundle: 92
     dir: 22
@@ -678,10 +675,10 @@ MonoBehaviour:
     deps: 5a000000620000006100000064000000670000005e00000000000000
     size: 35035
     hash: dcc095609f3cbae271e8b2a4be79e5a0
-  - name: Bundle/532df80c1386edaa92c7ae5a554c808f_7104665c6061d99b3bee3e2752cadfe2.assets
+  - name: Bundle/532df80c1386edaa92c7ae5a554c808f_931691487ed12ec8fe8166fa30f51ff1.assets
     deps: 5a0000005f0000006700000000000000
     size: 16657
-    hash: 7104665c6061d99b3bee3e2752cadfe2
+    hash: 931691487ed12ec8fe8166fa30f51ff1
   - name: Bundle/803542ee8766b91437ae0a007233e8e9_41e5b0acd424f10b25d6de95b06cd337.assets
     deps: 5a000000670000005e000000
     size: 14392
@@ -690,10 +687,10 @@ MonoBehaviour:
     deps: 5a000000670000005e000000
     size: 20259
     hash: 719e74f50baeaa8446fbc0b11b030c54
-  - name: Bundle/5b45ba697edd57cfc4ab52dd2736835a_1d8c6c001569f12b7c4b5b495fb1623c.assets
+  - name: Bundle/5b45ba697edd57cfc4ab52dd2736835a_7deff25fb958d43810066ccd50da6014.assets
     deps: 5a000000480000005f00000067000000
-    size: 10526
-    hash: 1d8c6c001569f12b7c4b5b495fb1623c
+    size: 10517
+    hash: 7deff25fb958d43810066ccd50da6014
   - name: Bundle/5105a40f29cd6b7083f234d749988737_369c777b53e6a456fe83f74d81bcc165.assets
     deps: 5a0000005f0000006600000067000000
     size: 14323
@@ -730,14 +727,14 @@ MonoBehaviour:
     deps: 
     size: 7341
     hash: c0cf4c0e26f56c2138e5956333d6e587
-  - name: Bundle/bab4f8bd5adea5d6044b0f25fbb259b7_8839cf2f1ea16b6a62e5d4394d561585.assets
+  - name: Bundle/bab4f8bd5adea5d6044b0f25fbb259b7_fbd11a9768e0464b17fd20392ffb15da.assets
     deps: 4b0000004a0000005a00000065000000620000005b0000006100000064000000670000005e00000000000000
-    size: 12579
-    hash: 8839cf2f1ea16b6a62e5d4394d561585
-  - name: Bundle/1aa355706e1767666124331a716c7890_fac8198c1a35a6a69a078c8c1045ee7a.assets
+    size: 9375
+    hash: fbd11a9768e0464b17fd20392ffb15da
+  - name: Bundle/1aa355706e1767666124331a716c7890_22c28e3871cb987df8beb97c7faf60a9.assets
     deps: 67000000
-    size: 49066
-    hash: fac8198c1a35a6a69a078c8c1045ee7a
+    size: 38641
+    hash: 22c28e3871cb987df8beb97c7faf60a9
   - name: Bundle/5324f345de28c64f0fda4adfade8bd59_aa2c8495eb16061b9c4713dcd0027883.assets
     deps: 4b0000004a0000005a00000065000000620000006100000064000000670000005e00000000000000
     size: 2034
@@ -806,13 +803,16 @@ MonoBehaviour:
   - name: HotFix.dll
     bundle: 1
     dir: 1
-  - name: Leopotam.EcsLite.dll
-    bundle: 1
-    dir: 1
-  - name: Leopotam.EcsLite.Extension.Runtime.dll
-    bundle: 1
-    dir: 1
   - name: mscorlib.dll
+    bundle: 1
+    dir: 1
+  - name: Newtonsoft.Json.dll
+    bundle: 1
+    dir: 1
+  - name: Saro.Entities.dll
+    bundle: 1
+    dir: 1
+  - name: Saro.Entities.Extension.dll
     bundle: 1
     dir: 1
   - name: Saro.MGF.dll
@@ -831,14 +831,14 @@ MonoBehaviour:
     bundle: 1
     dir: 1
   rawBundles:
-  - name: Raw/tables_3163bca181917bada05e33ed52f15eef
+  - name: Raw/tables_cc2c8a7dcff3a09d9dcc6a18a0223a23
     size: 12288
     compressSize: 0
-    hash: 3163bca181917bada05e33ed52f15eef
-  - name: Raw/hotfix_c29e9114f785ecd0f23a140c9f5f7aff
-    size: 4440064
+    hash: cc2c8a7dcff3a09d9dcc6a18a0223a23
+  - name: Raw/hotfix_bb9ed81b1fba92a09ce003a5cd34a158
+    size: 5144576
     compressSize: 0
-    hash: c29e9114f785ecd0f23a140c9f5f7aff
+    hash: bb9ed81b1fba92a09ce003a5cd34a158
   atlases:
   - sprite: icon_github.png
     dirSprite: 23

@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Tetris.UI
 {
-    [UIWindow((int)ETetrisUI.GameHUD, "Assets/Res/Prefab/UI/UIGameHUD.prefab")]
+    [UIWindow((int)EGameUI.GameHUD, "Assets/Res/Prefab/UI/UIGameHUD.prefab")]
     public sealed partial class UIGameHUD : UIWindow
     {
         public UIGameHUD(string resPath) : base(resPath)
@@ -25,16 +25,16 @@ namespace Tetris.UI
         protected override void OnUpdate(float dt)
         {
             if (GameCtx != null)
-                TmptxtTime.text = string.Format("{0:0.00}", GameCtx.gameTime);
+                tmptxt_time.text = string.Format("{0:0.00}", GameCtx.gameTime);
         }
 
         private void UpdateUI(object sender, GameEventArgs args)
         {
             if (args is TetrisScoreEventArgs _args)
             {
-                TmptxtLevel.text = _args.level.ToString();
-                TmptxtScore.text = _args.score.ToString();
-                TmptxtLine.text = _args.line.ToString();
+                tmptxt_level.text = _args.level.ToString();
+                tmptxt_score.text = _args.score.ToString();
+                tmptxt_line.text = _args.line.ToString();
             }
         }
 
@@ -47,44 +47,44 @@ namespace Tetris.UI
             var isB2B = args.isB2B;
             var ren = args.ren;
 
-            if (line == 4) ProcessAnimation(GoTetris);
+            if (line == 4) ProcessAnimation(go_Tetris);
 
             if (isTSpin)
             {
                 if (line > 0)
-                    ProcessAnimation(GoTSpin);
+                    ProcessAnimation(go_TSpin);
 
                 if (isMini)
-                    ProcessAnimation(GoMini);
+                    ProcessAnimation(go_Mini);
             }
 
-            if (line == 1) ProcessAnimation(GoSingle);
+            if (line == 1) ProcessAnimation(go_Single);
 
-            if (line == 2) ProcessAnimation(GoDouble);
+            if (line == 2) ProcessAnimation(go_Double);
 
-            if (line == 3) ProcessAnimation(GoTriple);
+            if (line == 3) ProcessAnimation(go_Triple);
 
-            if (isB2B) ProcessAnimation(GoB2B);
+            if (isB2B) ProcessAnimation(go_B2B);
 
             if (ren <= 0)
             {
-                if (TmptxtRen.gameObject.activeSelf)
-                    TmptxtRen.gameObject.SetActive(false);
+                if (tmptxt_Ren.gameObject.activeSelf)
+                    tmptxt_Ren.gameObject.SetActive(false);
             }
             else
             {
-                if (TmptxtRen.gameObject.activeSelf == false)
+                if (tmptxt_Ren.gameObject.activeSelf == false)
                 {
-                    TmptxtRen.gameObject.SetActive(true);
+                    tmptxt_Ren.gameObject.SetActive(true);
                 }
                 else
                 {
-                    TmptxtRen.gameObject.SetActive(false);
-                    TmptxtRen.gameObject.SetActive(true);
+                    tmptxt_Ren.gameObject.SetActive(false);
+                    tmptxt_Ren.gameObject.SetActive(true);
                 }
             }
 
-            TmptxtRen.text = "Ren " + ren;
+            tmptxt_Ren.text = "Ren " + ren;
         }
 
         private void ProcessAnimation(GameObject go)
@@ -101,18 +101,18 @@ namespace Tetris.UI
         // don't modify this scope
 
         //>>begin
-        public TextMeshProUGUI TmptxtRen => Binder.GetRef<TextMeshProUGUI>("tmptxt_Ren");
-        public GameObject GoB2B => Binder.GetRef<GameObject>("go_B2B");
-        public GameObject GoTetris => Binder.GetRef<GameObject>("go_Tetris");
-        public GameObject GoTSpin => Binder.GetRef<GameObject>("go_TSpin");
-        public GameObject GoSingle => Binder.GetRef<GameObject>("go_Single");
-        public GameObject GoDouble => Binder.GetRef<GameObject>("go_Double");
-        public GameObject GoTriple => Binder.GetRef<GameObject>("go_Triple");
-        public GameObject GoMini => Binder.GetRef<GameObject>("go_Mini");
-        public TextMeshProUGUI TmptxtLevel => Binder.GetRef<TextMeshProUGUI>("tmptxt_level");
-        public TextMeshProUGUI TmptxtLine => Binder.GetRef<TextMeshProUGUI>("tmptxt_line");
-        public TextMeshProUGUI TmptxtScore => Binder.GetRef<TextMeshProUGUI>("tmptxt_score");
-        public TextMeshProUGUI TmptxtTime => Binder.GetRef<TextMeshProUGUI>("tmptxt_time");
+        public TextMeshProUGUI tmptxt_Ren => Binder.GetRef<TextMeshProUGUI>("tmptxt_Ren");
+        public GameObject go_B2B => Binder.GetRef<GameObject>("go_B2B");
+        public GameObject go_Tetris => Binder.GetRef<GameObject>("go_Tetris");
+        public GameObject go_TSpin => Binder.GetRef<GameObject>("go_TSpin");
+        public GameObject go_Single => Binder.GetRef<GameObject>("go_Single");
+        public GameObject go_Double => Binder.GetRef<GameObject>("go_Double");
+        public GameObject go_Triple => Binder.GetRef<GameObject>("go_Triple");
+        public GameObject go_Mini => Binder.GetRef<GameObject>("go_Mini");
+        public TextMeshProUGUI tmptxt_level => Binder.GetRef<TextMeshProUGUI>("tmptxt_level");
+        public TextMeshProUGUI tmptxt_line => Binder.GetRef<TextMeshProUGUI>("tmptxt_line");
+        public TextMeshProUGUI tmptxt_score => Binder.GetRef<TextMeshProUGUI>("tmptxt_score");
+        public TextMeshProUGUI tmptxt_time => Binder.GetRef<TextMeshProUGUI>("tmptxt_time");
 
         //<<end
 

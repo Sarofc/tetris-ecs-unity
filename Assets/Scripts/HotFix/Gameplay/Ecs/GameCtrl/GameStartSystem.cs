@@ -1,4 +1,4 @@
-using Leopotam.EcsLite;
+using Saro.Entities;
 using Saro.UI;
 using Tetris.UI;
 
@@ -7,7 +7,7 @@ namespace Tetris
     internal sealed class GameStartSystem : IEcsRunSystem
     {
         private GameContext m_GameCtx;
-
+        public bool Enable { get; set; } = true;
         void IEcsRunSystem.Run(EcsSystems systems)
         {
             var world = systems.GetWorld();
@@ -30,7 +30,7 @@ namespace Tetris
 
         private async void OpenUI()
         {
-            await UIManager.Instance.LoadAndShowWindowAsync(ETetrisUI.GameHUD, m_GameCtx);
+            await UIManager.Instance.LoadAndShowWindowAsync(EGameUI.GameHUD, m_GameCtx);
         }
     }
 }

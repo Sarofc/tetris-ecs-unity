@@ -1,4 +1,4 @@
-using Leopotam.EcsLite;
+using Saro.Entities;
 using Saro;
 using Saro.Events;
 using UnityEngine;
@@ -7,6 +7,7 @@ namespace Tetris
 {
     internal sealed class LineClearSystem : IEcsRunSystem
     {
+        public bool Enable { get; set; } = true;
         void IEcsRunSystem.Run(EcsSystems systems)
         {
             var world = systems.GetWorld();
@@ -25,7 +26,7 @@ namespace Tetris
                 {
                     var clear = true;
                     for (var k = 0; k < TetrisDef.Width; k++)
-                        if (!gameCtx.grid[j][k].IsAlive(world))
+                        if (!gameCtx.grid[j][k].IsAlive())
                         {
                             clear = false;
                             break;
@@ -45,7 +46,7 @@ namespace Tetris
                 {
                     gameCtx.SendMessage(new LineClearDelayRequest { lineToClear = lineToClear },
                         new DelayComponent { delay = TetrisDef.LineClearDelay });
-                    gameCtx.SendMessage(new PieceGhostUpdateRequest { ePiece = EcsPackedEntity.k_Null });
+                    gameCtx.SendMessage(new PieceGhostUpdateRequest { ePiece = EcsEntity.k_Null });
                 }
                 else
                 {
@@ -202,8 +203,8 @@ namespace Tetris
                 for (var k = 0; k < grid[k].Length; k++)
                 {
                     ref var eTile = ref grid[i][k];
-                    if (!eTile.IsAlive(world)) continue;
-                    ref var cPos = ref eTile.Get<PositionComponent>(world);
+                    if (!eTile.IsAlive()) continue;
+                    ref var cPos = ref eTile.Get<PositionComponent>();
                     ref var posY = ref cPos.position.y;
                     posY--;
                 }

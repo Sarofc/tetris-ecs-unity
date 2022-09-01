@@ -1,5 +1,5 @@
-using Leopotam.EcsLite;
-using Leopotam.EcsLite.Extension;
+using Saro.Entities;
+using Saro.Entities.Extension;
 using UnityEngine;
 
 namespace Tetris
@@ -7,7 +7,7 @@ namespace Tetris
     internal sealed class PieceMoveSystem : IEcsRunSystem
     {
         public const float DeltaNormal = 1f;
-
+        public bool Enable { get; set; } = true;
         void IEcsRunSystem.Run(EcsSystems systems)
         {
             var gameCtx = systems.GetShared<GameContext>();
@@ -17,14 +17,14 @@ namespace Tetris
 
             var dropRequests = world.Filter().Inc<PieceDropRequest>().End();
             var moveRequests = world.Filter().Inc<PieceMoveRequest>().End();
-            var moves = world.Filter().Inc<PieceMoveComponent, ComponentList<EcsPackedEntity>, PositionComponent>()
+            var moves = world.Filter().Inc<PieceMoveComponent, ComponentList<EcsEntity>, PositionComponent>()
                 .End();
 
             var deltaTime = Time.deltaTime;
 
             foreach (var i in moves)
             {
-                var ePiece = world.PackEntity(i);
+                var ePiece = world.Pack(i);
                 ref var cMove = ref i.Get<PieceMoveComponent>(world);
 
                 foreach (var i2 in dropRequests)
@@ -59,10 +59,10 @@ namespace Tetris
             }
         }
 
-        private void AutoDrop(EcsWorld world, EcsPackedEntity[][] grid, in EcsPackedEntity ePiece, float deltaTime,
+        private void AutoDrop(EcsWorld world, EcsEntity[][] grid, in EcsEntity ePiece, float deltaTime,
             in Vector2 moveDelta)
         {
-            ref var cMove = ref ePiece.Get<PieceMoveComponent>(world);
+            ref var cMove = ref ePiece.Get<PieceMoveComponent>();
 
             ref var lastFallTime = ref cMove.lastFallTime;
 
@@ -88,11 +88,11 @@ namespace Tetris
                 lastFallTime -= dropDeltaTime;
                 if (!TetrisUtil.MovePiece(world, grid, ePiece, moveDelta))
                 {
-                    if (ePiece.Has<AddToGridComponent>(world) == false) ePiece.Add<AddToGridComponent>(world);
+                    if (ePiece.Has<AddToGridComponent>() == false) ePiece.Add<AddToGridComponent>();
                     if (cMove.dropType != EDropType.Hard)
-                        if (ePiece.Has<DelayComponent>(world) == false)
+                        if (ePiece.Has<DelayComponent>() == false)
                         {
-                            ref var delay = ref ePiece.Add<DelayComponent>(world);
+                            ref var delay = ref ePiece.Add<DelayComponent>();
                             delay.delay = TetrisDef.AddToGridDelay;
                         }
 

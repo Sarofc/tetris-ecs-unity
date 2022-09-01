@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using Leopotam.EcsLite;
-using Leopotam.EcsLite.Extension;
+using Saro.Entities;
+using Saro.Entities.Extension;
 using UnityEngine;
 
 namespace Tetris
@@ -20,8 +20,8 @@ namespace Tetris
         public bool gamming;
 
         // board grid
-        public EcsPackedEntity[][] grid;
-        public EcsPackedEntity heldPiece;
+        public EcsEntity[][] grid;
+        public EcsEntity heldPiece;
         public bool lastClearIsSpecial; // tspin 或者 消4
         public bool lastOpIsRotate; // 上一个生效操作为旋转
 
@@ -44,8 +44,8 @@ namespace Tetris
 
             var width = TetrisDef.Width;
             const int k_Height = TetrisDef.Height + TetrisDef.ExtraHeight;
-            grid = new EcsPackedEntity[k_Height][];
-            for (var i = 0; i < k_Height; i++) grid[i] = new EcsPackedEntity[width];
+            grid = new EcsEntity[k_Height][];
+            for (var i = 0; i < k_Height; i++) grid[i] = new EcsEntity[width];
         }
 
         public List<Matrix4x4[]> TransfromMatrixBatches { get; set; }

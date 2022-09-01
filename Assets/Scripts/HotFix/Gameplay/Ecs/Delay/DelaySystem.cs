@@ -1,10 +1,11 @@
-using Leopotam.EcsLite;
+using Saro.Entities;
 using UnityEngine;
 
 namespace Tetris
 {
     internal sealed class DelaySystem : IEcsRunSystem
     {
+        public bool Enable { get; set; } = true;
         void IEcsRunSystem.Run(EcsSystems systems)
         {
             var world = systems.GetWorld();

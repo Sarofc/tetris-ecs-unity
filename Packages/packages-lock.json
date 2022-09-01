@@ -1,37 +1,42 @@
 {
   "dependencies": {
-    "com.leopotam.ecslite": {
-      "version": "file:com.leopotam.ecslite@2f181daf44",
+    "com.saro.entities": {
+      "version": "https://github.com/Sarofc/ecslite.git?path=/ecslite#v0.2.0",
       "depth": 0,
-      "source": "embedded",
-      "dependencies": {}
+      "source": "git",
+      "dependencies": {},
+      "hash": "42234a8f457d2d96e20e3cf5f761636a4cf7a707"
     },
-    "com.leopotam.ecslite.extension": {
-      "version": "file:com.leopotam.ecslite.extension@9b5027ab0c",
+    "com.saro.entities.extension": {
+      "version": "https://github.com/Sarofc/ecslite.git?path=/ecslite-extension#v0.2.0",
       "depth": 0,
-      "source": "embedded",
-      "dependencies": {}
+      "source": "git",
+      "dependencies": {},
+      "hash": "42234a8f457d2d96e20e3cf5f761636a4cf7a707"
     },
-    "com.leopotam.ecslite.unityeditor": {
-      "version": "file:com.leopotam.ecslite.unityeditor@2f181daf44",
+    "com.saro.entities.unityeditor": {
+      "version": "https://github.com/Sarofc/ecslite.git?path=/ecslite-unityeditor#v0.2.0",
       "depth": 0,
-      "source": "embedded",
-      "dependencies": {}
+      "source": "git",
+      "dependencies": {},
+      "hash": "42234a8f457d2d96e20e3cf5f761636a4cf7a707"
     },
     "com.saro.mgf": {
-      "version": "file:C:/Users/sarof/Projects/Git/com.saro.mgf",
+      "version": "https://github.com/Sarofc/com.saro.mgf.git#v0.2.3",
       "depth": 0,
-      "source": "local",
-      "dependencies": {}
+      "source": "git",
+      "dependencies": {},
+      "hash": "549a622604d2da2e7c0a5eb3694967f2e2d1bb6b"
     },
     "com.saro.moonasset": {
-      "version": "file:C:/Users/sarof/Projects/Git/com.saro.moonasset",
+      "version": "https://github.com/Sarofc/com.saro.moonasset.git#v0.2.2",
       "depth": 0,
-      "source": "local",
+      "source": "git",
       "dependencies": {
         "com.unity.scriptablebuildpipeline": "1.19.6",
         "com.saro.mgf": "https://github.com/Sarofc/com.saro.mgf.git#v0.1.0"
-      }
+      },
+      "hash": "7eab494fe2dcd865089244e63d755252bf8eaff9"
     },
     "com.unity.2d.sprite": {
       "version": "1.0.0",

@@ -1,4 +1,4 @@
-using Leopotam.EcsLite;
+using Saro.Entities;
 using UnityEngine;
 
 namespace Tetris
@@ -7,7 +7,7 @@ namespace Tetris
     {
         private readonly float m_HoldedViewPosX = -2.4f;
         private readonly float m_HoldedViewPosY = 16;
-
+        public bool Enable { get; set; } = true;
         void IEcsRunSystem.Run(EcsSystems systems)
         {
             var world = systems.GetWorld();
@@ -27,19 +27,19 @@ namespace Tetris
                 {
                     if (!gameCtx.canHold) return;
 
-                    var ePiece = world.PackEntity(i2);
+                    var ePiece = world.Pack(i2);
 
                     gameCtx.canHold = false;
 
                     //if (heldPiece == ePiece)
                     //    return;
 
-                    ePiece.Del<PieceMoveComponent>(world);
-                    ePiece.Del<PieceRotateFlag>(world);
-                    ePiece.Del<AddToGridComponent>(world);
-                    ePiece.Del<DelayComponent>(world);
+                    ePiece.Del<PieceMoveComponent>();
+                    ePiece.Del<PieceRotateFlag>();
+                    ePiece.Del<AddToGridComponent>();
+                    ePiece.Del<DelayComponent>();
 
-                    if (!heldPiece.IsAlive(world))
+                    if (!heldPiece.IsAlive())
                     {
                         heldPiece = ePiece;
 
@@ -52,18 +52,18 @@ namespace Tetris
                     else
                     {
                         var tmpPiece = heldPiece;
-                        tmpPiece.Add<PieceMoveComponent>(world);
+                        tmpPiece.Add<PieceMoveComponent>();
 
-                        var pieceID = tmpPiece.Add<PieceComponent>(world).pieceID;
+                        var pieceID = tmpPiece.Add<PieceComponent>().pieceID;
                         if (pieceID != EPieceID.O)
-                            tmpPiece.Add<PieceRotateFlag>(world);
+                            tmpPiece.Add<PieceRotateFlag>();
 
                         heldPiece = ePiece;
                         ePiece = tmpPiece;
 
-                        ePiece.Add<PositionComponent>(world).position =
+                        ePiece.Add<PositionComponent>().position =
                             new Vector3(TetrisDef.Width / 2, TetrisDef.Height);
-                        ePiece.Add<PieceComponent>(world).scale = 1f;
+                        ePiece.Add<PieceComponent>().scale = 1f;
 
                         TetrisUtil.ChangePieceColor(world, ref heldPiece, Color.gray);
                         TetrisUtil.ChangePieceColor(world, ref ePiece, TetrisUtil.GetTileColor(pieceID));
@@ -73,8 +73,8 @@ namespace Tetris
 
                     TetrisUtil.ResetPieceRotation(world, ref heldPiece);
 
-                    heldPiece.Add<PieceComponent>(world).scale = 0.6f;
-                    heldPiece.Add<PositionComponent>(world).position = new Vector3(m_HoldedViewPosX, m_HoldedViewPosY);
+                    heldPiece.Add<PieceComponent>().scale = 0.6f;
+                    heldPiece.Add<PositionComponent>().position = new Vector3(m_HoldedViewPosX, m_HoldedViewPosY);
 
                     gameCtx.SendMessage(new SeAudioEvent { audioAsset = "SE/se_game_hold.wav" });
                 }

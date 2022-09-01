@@ -1,11 +1,12 @@
 using Cysharp.Threading.Tasks;
-using Leopotam.EcsLite;
+using Saro.Entities;
 using Saro.Gameplay.Effect;
 
 namespace Tetris
 {
     internal sealed class EffectSystem : IEcsRunSystem
     {
+        public bool Enable { get; set; } = true;
         void IEcsRunSystem.Run(EcsSystems systems)
         {
             var world = systems.GetWorld();

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace Tetris.UI
 {
-    [UIWindow((int)ETetrisUI.AboutPanel, "Assets/Res/Prefab/UI/UIAboutPanel.prefab")]
+    [UIWindow((int)EGameUI.AboutPanel, "Assets/Res/Prefab/UI/UIAboutPanel.prefab")]
     public sealed partial class UIAboutPanel : UIWindow
     {
         public UIAboutPanel(string path) : base(path)
@@ -16,12 +16,13 @@ namespace Tetris.UI
         {
             base.Awake();
 
-            Listen(BtnMask.onClick, OnClick_Close);
-            Listen(BtnIcon.onClick, OnClick_OpenURL);
+            Listen(btn_Mask.onClick, OnClick_Close);
+            Listen(btn_icon.onClick, OnClick_OpenURL);
 
-            BtnIcon.GetComponent<Image>().sprite =
+            btn_icon.GetComponent<Image>().sprite =
                  await AssetLoader.LoadAssetRefAsync<Sprite>("Assets/Arts/Textures/UI/icon_github.png");
 
+            // TODO 大图，可以封装成工具类，加载时转圈，加载完成后再附上去
             //AssetLoader.LoadAssetRefAsync<Sprite>("Assets/Arts/Textures/UI/icon_github.png").ContinueWith((sprite) =>
             //{
             //    BtnIcon.GetComponent<Image>().sprite = sprite;
@@ -35,7 +36,7 @@ namespace Tetris.UI
 
         private void OnClick_Close()
         {
-            UIManager.Current.HideWindow(ETetrisUI.AboutPanel);
+            UIManager.Current.HideWindow(EGameUI.AboutPanel);
         }
     }
 
@@ -46,8 +47,8 @@ namespace Tetris.UI
         // code generate between >>begin and <<end
         // don't modify this scope
         //>>begin
-        public Button BtnMask => Binder.GetRef<Button>("btn_Mask");
-        public Button BtnIcon => Binder.GetRef<Button>("btn_icon");
+        public Button btn_Mask => Binder.GetRef<Button>("btn_Mask");
+        public Button btn_icon => Binder.GetRef<Button>("btn_icon");
 
         //<<end
         // =============================================

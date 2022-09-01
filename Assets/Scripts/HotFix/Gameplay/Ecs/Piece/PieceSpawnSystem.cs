@@ -1,10 +1,11 @@
-using Leopotam.EcsLite;
+using Saro.Entities;
 using Saro;
 
 namespace Tetris
 {
     internal sealed class PieceSpawnSystem : IEcsRunSystem
     {
+        public bool Enable { get; set; } = true;
         void IEcsRunSystem.Run(EcsSystems systems)
         {
             var gameCtx = systems.GetShared<GameContext>();
@@ -21,8 +22,8 @@ namespace Tetris
 
                 if (!TetrisUtil.IsValidBlock(world, gameCtx.grid, ePiece))
                 {
-                    ePiece.Del<PieceMoveComponent>(world);
-                    ePiece.Del<PieceRotateFlag>(world);
+                    ePiece.Del<PieceMoveComponent>();
+                    ePiece.Del<PieceRotateFlag>();
                     gameCtx.SendMessage(new GameEndComponent(), new DelayComponent { delay = 1f });
 
                     Log.ERROR("GameOver");
@@ -46,7 +47,7 @@ namespace Tetris
                             ref var heldPiece = ref gameCtx.heldPiece;
                             if (!heldPiece.IsNull())
                                 TetrisUtil.ChangePieceColor(world, ref heldPiece,
-                                    TetrisUtil.GetTileColor(heldPiece.Get<PieceComponent>(world).pieceID));
+                                    TetrisUtil.GetTileColor(heldPiece.Add<PieceComponent>().pieceID));
                         }
                     }
                 }

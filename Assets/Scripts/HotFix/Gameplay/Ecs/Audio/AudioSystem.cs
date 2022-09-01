@@ -1,11 +1,13 @@
 using Cysharp.Threading.Tasks;
-using Leopotam.EcsLite;
+using Saro.Entities;
 using Saro.Audio;
 
 namespace Tetris
 {
     internal sealed class AudioSystem : IEcsRunSystem
     {
+        public bool Enable { get; set; } = true;
+
         void IEcsRunSystem.Run(EcsSystems systems)
         {
             var world = systems.GetWorld();
@@ -23,7 +25,14 @@ namespace Tetris
             {
                 ref var evt = ref ent.Get<BGMAudioEvent>(world);
 
-                AudioManager.Current.PlayBGMAsync(evt.audioAsset).Forget();
+                if (string.IsNullOrEmpty(evt.audioAsset))
+                {
+                    AudioManager.Current.StopBGM();
+                }
+                else
+                {
+                    AudioManager.Current.PlayBGMAsync(evt.audioAsset).Forget();
+                }
             }
         }
     }

@@ -1,5 +1,0 @@
-﻿namespace #NS# {
-    struct #SCRIPTNAME# {
-        // add your data here.
-    }
-}

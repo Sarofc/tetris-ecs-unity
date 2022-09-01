@@ -10,7 +10,7 @@ using UnityEngine.UI;
 
 namespace Tetris.UI
 {
-    [UIWindow((int)ETetrisUI.SettingPanel, "Assets/Res/Prefab/UI/UISetting.prefab")]
+    [UIWindow((int)EGameUI.SettingPanel, "Assets/Res/Prefab/UI/UISetting.prefab")]
     public sealed partial class UISetting : UIWindow
     {
         public UISetting(string path) : base(path)
@@ -21,20 +21,32 @@ namespace Tetris.UI
         {
             base.Awake();
 
-            SliderBGM.value = AudioManager.Current.VolumeBGM;
-            SliderSe.value = AudioManager.Current.VolumeSE;
-            TmpdropLanguage.value = (int)LocalizationManager.Current.CurrentLanguage;
+            slider_bgm.value = AudioManager.Current.VolumeBGM;
+            slider_se.value = AudioManager.Current.VolumeSE;
+            tmpdrop_language.value = (int)LocalizationManager.Current.CurrentLanguage;
 
-            Listen(BtnMask.onClick, OnClick_Close);
-            Listen(SliderBGM.onValueChanged, OnBGMChanged);
-            Listen(SliderSe.onValueChanged, OnSEChanged);
-            Listen(TmpdropLanguage.onValueChanged, OnLanguageChanged);
+            Listen(btn_Mask.onClick, OnClick_Close);
+            Listen(slider_bgm.onValueChanged, OnBGMChanged);
+            Listen(slider_se.onValueChanged, OnSEChanged);
+            Listen(tmpdrop_language.onValueChanged, OnLanguageChanged);
         }
 
         protected override void OnHide()
         {
             base.OnHide();
 
+            Save();
+        }
+
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+
+            Save();
+        }
+
+        private void Save()
+        {
             AudioManager.Current.StoreSettings();
             LocalizationManager.Current.StoreSettings();
 
@@ -65,7 +77,7 @@ namespace Tetris.UI
 
         private void OnClick_Close()
         {
-            UIManager.Instance.UnLoadWindow(ETetrisUI.SettingPanel);
+            UIManager.Current.UnLoadWindow(EGameUI.SettingPanel);
         }
     }
 
@@ -76,10 +88,10 @@ namespace Tetris.UI
         // code generate between >>begin and <<end
         // don't modify this scope
         //>>begin
-        public Button BtnMask => Binder.GetRef<Button>("btn_Mask");
-        public Slider SliderBGM => Binder.GetRef<Slider>("slider_bgm");
-        public Slider SliderSe => Binder.GetRef<Slider>("slider_se");
-        public TMP_Dropdown TmpdropLanguage => Binder.GetRef<TMP_Dropdown>("tmpdrop_language");
+        public Button btn_Mask => Binder.GetRef<Button>("btn_Mask");
+        public Slider slider_bgm => Binder.GetRef<Slider>("slider_bgm");
+        public Slider slider_se => Binder.GetRef<Slider>("slider_se");
+        public TMP_Dropdown tmpdrop_language => Binder.GetRef<TMP_Dropdown>("tmpdrop_language");
 
         //<<end
         // =============================================

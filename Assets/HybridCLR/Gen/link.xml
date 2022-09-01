@@ -1,0 +1,50 @@
+<linker>
+	<assembly fullname="UnityEngine.CoreModule">
+		<type fullname="UnityEngine.Matrix4x4" preserve="all"/>
+		<type fullname="UnityEngine.Transform" preserve="all"/>
+		<type fullname="UnityEngine.GameObject" preserve="all"/>
+		<type fullname="UnityEngine.Component" preserve="all"/>
+		<type fullname="UnityEngine.HideFlags" preserve="all"/>
+		<type fullname="UnityEngine.Coroutine" preserve="all"/>
+		<type fullname="UnityEngine.SendMessageOptions" preserve="all"/>
+		<type fullname="UnityEngine.Object" preserve="all"/>
+		<type fullname="UnityEngine.LineRenderer" preserve="all"/>
+		<type fullname="UnityEngine.Vector3" preserve="all"/>
+		<type fullname="UnityEngine.Vector4" preserve="all"/>
+		<type fullname="UnityEngine.Vector2Int" preserve="all"/>
+		<type fullname="UnityEngine.Vector2" preserve="all"/>
+		<type fullname="UnityEngine.Material" preserve="all"/>
+		<type fullname="UnityEngine.LayerMask" preserve="all"/>
+		<type fullname="UnityEngine.Camera" preserve="all"/>
+		<type fullname="UnityEngine.Mesh" preserve="all"/>
+		<type fullname="UnityEngine.MaterialPropertyBlock" preserve="all"/>
+		<type fullname="UnityEngine.Rect" preserve="all"/>
+		<type fullname="UnityEngine.Color" preserve="all"/>
+		<type fullname="UnityEngine.Events.UnityEvent" preserve="all"/>
+		<type fullname="UnityEngine.Events.UnityAction" preserve="all"/>
+		<type fullname="UnityEngine.Application" preserve="all"/>
+		<type fullname="UnityEngine.Debug" preserve="all"/>
+		<type fullname="UnityEngine.SceneManagement.SceneManager" preserve="all"/>
+		<type fullname="UnityEngine.AnimationCurve" preserve="all"/>
+		<type fullname="UnityEngine.Graphics" preserve="all"/>
+		<type fullname="UnityEngine.RectInt" preserve="all"/>
+		<type fullname="UnityEngine.Vector3Int" preserve="all"/>
+	</assembly>
+	<assembly fullname="UnityEngine.UI">
+		<type fullname="UnityEngine.UI.Button" preserve="all"/>
+		<type fullname="UnityEngine.UI.Slider" preserve="all"/>
+	</assembly>
+	<assembly fullname="UnityEngine.UIModule">
+		<type fullname="UnityEngine.Canvas" preserve="all"/>
+		<type fullname="UnityEngine.CanvasGroup" preserve="all"/>
+	</assembly>
+	<assembly fullname="UnityEngine.AudioModule">
+		<type fullname="UnityEngine.AudioClip" preserve="all"/>
+	</assembly>
+	<assembly fullname="UnityEngine.AnimationModule">
+		<type fullname="UnityEngine.Animator" preserve="all"/>
+	</assembly>
+	<assembly fullname="UnityEngine.ParticleSystemModule">
+		<type fullname="UnityEngine.ParticleSystem" preserve="all"/>
+	</assembly>
+</linker>

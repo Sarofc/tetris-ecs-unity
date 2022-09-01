@@ -1,6 +1,6 @@
 using System.Collections.Generic;
-using Leopotam.EcsLite;
-using Leopotam.EcsLite.Extension;
+using Saro.Entities;
+using Saro.Entities.Extension;
 using Saro.Utility;
 using UnityEngine;
 
@@ -12,7 +12,7 @@ namespace Tetris
         {
             var world = systems.GetWorld();
             var ent = world.NewEntity();
-            var bagList = ent.Add<ComponentList<EcsPackedEntity>>(world).Value;
+            var bagList = ent.Add<ComponentList<EcsEntity>>(world).Value;
             ent.Add<PieceBagComponent>(world);
 
             FillBag(world, bagList, new EPieceID[7]
@@ -25,11 +25,9 @@ namespace Tetris
                 EPieceID.T,
                 EPieceID.Z
             });
-
-            Debug.LogError("PieceBagInitSystem init done");
         }
 
-        private void FillBag(EcsWorld world, List<EcsPackedEntity> queue, EPieceID[] blocks)
+        private void FillBag(EcsWorld world, List<EcsEntity> queue, EPieceID[] blocks)
         {
             for (var i = 0; i < blocks.Length; i++)
                 queue.Add(TetrisUtil.CreatePieceForBagView(world, blocks[i], new Vector3()));
@@ -42,12 +40,12 @@ namespace Tetris
             TetrisUtil.UpdateNextChainSlot(world, queue);
         }
 
-        private static void RandomLeft(List<EcsPackedEntity> queue)
+        private static void RandomLeft(List<EcsEntity> queue)
         {
             RandomUtility.Shuffle(queue, 0, 7);
         }
 
-        private static void RandomRight(List<EcsPackedEntity> queue)
+        private static void RandomRight(List<EcsEntity> queue)
         {
             RandomUtility.Shuffle(queue, 7, 7);
         }

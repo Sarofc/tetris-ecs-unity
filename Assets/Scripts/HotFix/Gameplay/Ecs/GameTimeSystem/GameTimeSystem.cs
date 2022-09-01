@@ -1,4 +1,4 @@
-using Leopotam.EcsLite;
+using Saro.Entities;
 using UnityEngine;
 
 namespace Tetris
@@ -6,7 +6,7 @@ namespace Tetris
     internal sealed class GameTimeSystem : IEcsRunSystem
     {
         private readonly GameContext m_GameCtx;
-
+        public bool Enable { get; set; } = true;
         void IEcsRunSystem.Run(EcsSystems systems)
         {
             // var world = systems.GetWorld();

@@ -7,7 +7,7 @@ namespace Tetris
     // 1(R) - rotate right
     // 2 - 2 successive rotations in either direction form spawn(rotate left/right twice)
     // 3(L) - rotate left
-    public class NewWallKickData
+    public class WallKickData
     {
         private static readonly List<Vector2Int[]> s_ = new(8)
         {

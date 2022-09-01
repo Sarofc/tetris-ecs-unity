@@ -1,17 +1,18 @@
-using Leopotam.EcsLite;
-using Leopotam.EcsLite.Extension;
+using Saro.Entities;
+using Saro.Entities.Extension;
 using Saro;
 
 namespace Tetris
 {
     internal sealed class PieceRotateSystem : IEcsRunSystem
     {
+        public bool Enable { get; set; } = true;
         void IEcsRunSystem.Run(EcsSystems systems)
         {
             var gameCtx = systems.GetShared<GameContext>();
             var world = systems.GetWorld();
             var requests = world.Filter().Inc<PieceRotationRequest>().End();
-            var pieces = world.Filter().Inc<PieceRotateFlag, ComponentList<EcsPackedEntity>>().End();
+            var pieces = world.Filter().Inc<PieceRotateFlag, ComponentList<EcsEntity>>().End();
 
             foreach (var i1 in requests)
             {
@@ -19,18 +20,18 @@ namespace Tetris
 
                 foreach (var i2 in pieces)
                 {
-                    var ePiece = world.PackEntity(i2);
+                    var ePiece = world.Pack(i2);
 
                     RotateBlock(world, gameCtx, ePiece, request.clockwise);
                 }
             }
         }
 
-        private void RotateBlock(EcsWorld world, GameContext ctx, in EcsPackedEntity ePiece, bool clockwise)
+        private void RotateBlock(EcsWorld world, GameContext ctx, in EcsEntity ePiece, bool clockwise)
         {
             TetrisUtil.RotateBlockWithoutCheck(world, ePiece, clockwise);
 
-            ref var cPiece = ref ePiece.Get<PieceComponent>(world);
+            ref var cPiece = ref ePiece.Get<PieceComponent>();
             ref var state = ref cPiece.state;
             var next = clockwise ? state + 1 : state - 1;
             if (next < 0) next = 3;
