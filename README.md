@@ -1,6 +1,6 @@
 # 现代俄罗斯方块
 
-[MGF](https://github.com/Sarofc/com.saro.mgf) demo项目，资源框架使用[MoonAsset](https://github.com/Sarofc/com.saro.moonasset)，Gameplay使用[ecslite](https://github.com/Sarofc/ecslite)。
+[MGF](https://github.com/Sarofc/com.saro.mgf) demo项目，资源框架使用[MoonAsset](https://github.com/Sarofc/com.saro.moonasset)，Gameplay使用[ecslite](https://github.com/Sarofc/ecslite)，接入[HybridCLR](https://github.com/focus-creative-games/hybridclr)代码热更新。
 </br>
 unity资源全异步加载，包体最小化（main场景+单manifest即可），可边玩边下。
 
