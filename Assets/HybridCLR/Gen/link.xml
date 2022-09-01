@@ -1,6 +1,5 @@
 <linker>
 	<assembly fullname="UnityEngine.CoreModule">
-		<type fullname="UnityEngine.Matrix4x4" preserve="all"/>
 		<type fullname="UnityEngine.Transform" preserve="all"/>
 		<type fullname="UnityEngine.GameObject" preserve="all"/>
 		<type fullname="UnityEngine.Component" preserve="all"/>
@@ -10,6 +9,7 @@
 		<type fullname="UnityEngine.Object" preserve="all"/>
 		<type fullname="UnityEngine.LineRenderer" preserve="all"/>
 		<type fullname="UnityEngine.Vector3" preserve="all"/>
+		<type fullname="UnityEngine.Matrix4x4" preserve="all"/>
 		<type fullname="UnityEngine.Vector4" preserve="all"/>
 		<type fullname="UnityEngine.Vector2Int" preserve="all"/>
 		<type fullname="UnityEngine.Vector2" preserve="all"/>

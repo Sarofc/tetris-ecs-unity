@@ -18,13 +18,17 @@ namespace HotFix
     {
         public static void Start()
         {
-            // TODO 这部分没必要 在hotfix里调用，流程上应该不会更改？
-            // 主要是性能差距，看看耗时高不高再说
             if (HybridCLR.HybridCLRUtil.IsHotFix)
             {
-#if !UNITY_EDITOR
-                HybridCLR.HybridCLRUtil.LoadMetadataForAOTAssembly();
-#endif
+                var aotList = HybridCLR.HybridCLRUtil.AOTMetaAssemblies;
+                // 如果 发包后，此列表修改了，那就得同步一下
+                //aotList = new List<string>
+                //{
+                //    // add more
+                //};
+
+                // aot元数据补充
+                HybridCLR.HybridCLRUtil.LoadMetadataForAOTAssembly(aotList);
 
                 // 反射需要重新加载一下
                 ReCacheAssemblies();

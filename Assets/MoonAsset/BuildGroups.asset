@@ -22,8 +22,8 @@ MonoBehaviour:
   - .boo
   - .giparams
   - lightingdata.asset
-  resVersion: 326
-  resVersionBuildAsset: 325
+  resVersion: 329
+  resVersionBuildAsset: 328
   scenesInBuild:
   - {fileID: 102900000, guid: 8943688c1103d8c46b982d0a1a9e2310, type: 3}
   bundleGroups:
@@ -713,7 +713,7 @@ MonoBehaviour:
     searchPattern: '*.dll'
     searchPaths:
     - HybridCLRData\mgf_hotfix
-    builtIn: 1
+    builtIn: 0
     compress: 0
     disableAssetName: 0
     assets:

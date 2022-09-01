@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   appVersion: 0.1
-  resVersion: 326
+  resVersion: 329
   remoteVersionUrl: 
   remoteAssetUrl: http://localhost:8080
   dirs:
@@ -835,10 +835,10 @@ MonoBehaviour:
     size: 12288
     compressSize: 0
     hash: cc2c8a7dcff3a09d9dcc6a18a0223a23
-  - name: Raw/hotfix_bb9ed81b1fba92a09ce003a5cd34a158
+  - name: Raw/hotfix_07c94c698e59b8cae658e257958691b1
     size: 5144576
     compressSize: 0
-    hash: bb9ed81b1fba92a09ce003a5cd34a158
+    hash: 07c94c698e59b8cae658e257958691b1
   atlases:
   - sprite: icon_github.png
     dirSprite: 23

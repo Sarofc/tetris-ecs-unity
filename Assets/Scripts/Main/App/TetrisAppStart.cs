@@ -54,7 +54,7 @@ namespace Tetris
             }
             else
             {
-                var hotfixBytes = await Main.Resolve<IAssetManager>().LoadRawAssetAsync("hotfix/" + HybridCLR.HybridCLRUtil.s_HotFixDLL);
+                var hotfixBytes = await IAssetManager.Current.LoadRawAssetAsync("hotfix/" + HybridCLR.HybridCLRUtil.s_HotFixDLL);
                 hotfix = Assembly.Load(hotfixBytes);
             }
 

@@ -7,7 +7,7 @@ using Saro.MoonAsset.Build;
 
 namespace HybridCLR.Editor
 {
-    internal class BuildProcessor : IBuildProcessor
+    internal class BuildMethods : IBuildProcessor
     {
         [MoonAssetBuildMethod(-1, "<color=red>[HotFix]</color> Complie DLL")]
         public static void CompileDLL()
