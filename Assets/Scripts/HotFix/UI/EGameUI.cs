@@ -2,10 +2,11 @@
 {
     public enum EGameUI
     {
-        StartWindow = 1001,
-        AboutPanel = 1002,
-        SettingPanel = 1003,
-        GameOverPanel = 1004,
-        GameHUD = 1005
+        UIStartWindow = 1001,
+        UIAboutPanel = 1002,
+        UISettingPanel = 1003,
+        UIGameOverPanel = 1004,
+        UIGameHUD = 1005,
+        UICheckAssets = 1006
     }
 }

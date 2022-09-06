@@ -31,10 +31,11 @@ namespace Tetris
             SetupAssetManager();
             SetupDataTable();
 
+            //await TMP_Registers.LoadSettings(); // 加载tmp的配置
             Main.Register<UIManager>();
             // TODO 探究易用、易扩展的资源加载方式
             await Main.Register<AudioManager>().InitializeAsync("Assets/Res/Audios/");
-            Main.Register<EffectManager>().SetAssetInterface(Main.Resolve<IAssetManager>(), "Assets/Res/Prefab/Vfx/");
+            Main.Register<EffectManager>().SetAssetInterface(Main.Resolve<IAssetManager>(), "Assets/Res/Prefabs/Vfx/");
 
             await UpdateAssetsAsync();
 
@@ -47,14 +48,20 @@ namespace Tetris
 
             Log.ERROR("HybridCLR", $"hotfix enable: {HybridCLR.HybridCLRUtil.IsHotFix}");
 
-            if (!HybridCLR.HybridCLRUtil.IsHotFix || MoonAsset.s_Mode == MoonAsset.EMode.AssetDatabase)
+            // hybridclr只有打包后才能生效
+#if UNITY_EDITOR
+            bool editor = true;
+            if (!HybridCLR.HybridCLRUtil.IsHotFix || editor)
+#else
+            if (!HybridCLR.HybridCLRUtil.IsHotFix)
+#endif
             {
-                //hotfix = Assembly.GetAssembly(Type.GetType("HotFix.HotFixApp"));
                 hotfix = AppDomain.CurrentDomain.GetAssemblies().First(assembly => assembly.GetName().Name == Path.GetFileNameWithoutExtension(HybridCLR.HybridCLRUtil.s_HotFixDLL));
             }
             else
             {
-                var hotfixBytes = await IAssetManager.Current.LoadRawAssetAsync("hotfix/" + HybridCLR.HybridCLRUtil.s_HotFixDLL);
+                using var vfile = await IAssetManager.Current.OpenVFileAsync("Assets/ResRaw/hotfix");
+                var hotfixBytes = vfile.ReadFile(HybridCLR.HybridCLRUtil.s_HotFixDLL);
                 hotfix = Assembly.Load(hotfixBytes);
             }
 
@@ -64,21 +71,15 @@ namespace Tetris
                 return;
             }
 
-            try
-            {
-                var appType = hotfix.GetType("HotFix.HotFixApp");
-                var mainMethod = appType.GetMethod("Start");
-                mainMethod.Invoke(null, null);
-            }
-            catch (Exception e)
-            {
-                Log.ERROR("HybridCLR", "HotFixApp::Start Exception: " + e);
-            }
+            var appType = hotfix.GetType("HotFix.HotFixApp");
+            var mainMethod = appType.GetMethod("Start");
+            mainMethod.Invoke(null, null);
         }
 
         private void SetupAssetManager()
         {
             var moonAsset = new MoonAsset();
+            moonAsset.SetDefaultLocators();
             moonAsset.Policy.AutoUnloadAsset = true;
 
             Main.Register<IAssetManager>(moonAsset);
@@ -86,9 +87,13 @@ namespace Tetris
 
         private void SetupDownloader()
         {
-            Main.Register<DownloaderManager>();
+            Downloader.Initialize();
 
-            Downloader.s_SpeedLimit = 128;
+#if ENABLE_DOWNLODER_GUI || true
+            DownloaderDebuggerGUI.Create();
+#endif
+
+            Downloader.s_SpeedLimit = 256;
 
             Downloader.s_GlobalCompleted += download =>
             {
@@ -103,7 +108,25 @@ namespace Tetris
 
         private void SetupDataTable()
         {
-            TableLoader.bytesLoader = tableName =>
+            TableLoader.s_BytesLoader = tableName =>
+            {
+#if UNITY_EDITOR
+                var mode = MoonAsset.s_Mode;
+                if (mode == MoonAsset.EMode.AssetDatabase)
+                {
+                    using (var fs = new FileStream($"GameTools/tables/data/config/{tableName}", FileMode.Open,
+                               FileAccess.Read))
+                    {
+                        var buffer = new byte[fs.Length];
+                        fs.Read(buffer, 0, buffer.Length);
+                        return buffer;
+                    }
+                }
+#endif
+                return IAssetManager.Current.ReadVFile("Assets/ResRaw/tables", tableName);
+            };
+
+            TableLoader.s_BytesLoaderAsync = async tableName =>
             {
 #if UNITY_EDITOR
                 var mode = MoonAsset.s_Mode;
@@ -119,30 +142,7 @@ namespace Tetris
                 }
 #endif
 
-                return Main.Resolve<IAssetManager>().LoadRawAsset("tables/" + tableName);
-            };
-
-            TableLoader.bytesLoaderAsync = async tableName =>
-            {
-#if UNITY_EDITOR
-                var mode = MoonAsset.s_Mode;
-                if (mode == MoonAsset.EMode.AssetDatabase)
-                {
-                    using (var fs = new FileStream($"GameTools/tables/data/config/{tableName}", FileMode.Open,
-                               FileAccess.Read))
-                    {
-                        //var buffer = new byte[fs.Length];
-                        //fs.Read(buffer, 0, buffer.Length);
-                        //return buffer;
-
-                        var buffer = new Memory<byte>(new byte[fs.Length]);
-                        var count = await fs.ReadAsync(buffer);
-                        return buffer.ToArray();
-                    }
-                }
-#endif
-
-                return await Main.Resolve<IAssetManager>().LoadRawAssetAsync("tables/" + tableName);
+                return await IAssetManager.Current.ReadVFileAsync("Assets/ResRaw/tables", tableName);
             };
         }
 
@@ -152,12 +152,12 @@ namespace Tetris
         /// <returns></returns>
         private async UniTask UpdateAssetsAsync()
         {
-            // TODO 这种ui，应该放到母包里
+            // 提前加载 此ui资源
             await UIManager.Current.LoadWindowAsync(EDefaultUI.UIWaiting);
 
             var uiCounter = 0;
-            var moonAsset = Main.Resolve<IAssetManager>() as MoonAsset;
-            moonAsset.OnLoadRemoteAsset = (assetName, state) =>
+            var assetManager = IAssetManager.Current;
+            assetManager.OnLoadRemoteAsset = (assetName, state) =>
             {
                 if (!state)
                 {

@@ -10,7 +10,7 @@ using UnityEngine.UI;
 
 namespace Tetris.UI
 {
-    [UIWindow((int)EGameUI.SettingPanel, "Assets/Res/Prefab/UI/UISetting.prefab")]
+    [UIWindow((int)EGameUI.UISettingPanel, "Assets/Res/Prefabs/UI/UISetting.prefab")]
     public sealed partial class UISetting : UIWindow
     {
         public UISetting(string path) : base(path)
@@ -77,7 +77,7 @@ namespace Tetris.UI
 
         private void OnClick_Close()
         {
-            UIManager.Current.UnLoadWindow(EGameUI.SettingPanel);
+            UIManager.Current.UnLoadWindow(EGameUI.UISettingPanel);
         }
     }
 

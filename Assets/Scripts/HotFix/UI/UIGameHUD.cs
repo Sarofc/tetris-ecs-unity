@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Tetris.UI
 {
-    [UIWindow((int)EGameUI.GameHUD, "Assets/Res/Prefab/UI/UIGameHUD.prefab")]
+    [UIWindow((int)EGameUI.UIGameHUD, "Assets/Res/Prefabs/UI/UIGameHUD.prefab")]
     public sealed partial class UIGameHUD : UIWindow
     {
         public UIGameHUD(string resPath) : base(resPath)

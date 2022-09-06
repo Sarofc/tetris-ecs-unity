@@ -22,7 +22,7 @@ namespace Tetris
                 gameCtx.SendMessage(new BGMAudioEvent { audioAsset = null });
                 gameCtx.SendMessage(new SeAudioEvent { audioAsset = "SE/me_game_gameover.wav" });
 
-                UIManager.Current.LoadAndShowWindowAsync(EGameUI.GameOverPanel).Forget();
+                UIManager.Current.LoadAndShowWindowAsync(EGameUI.UIGameOverPanel).Forget();
             }
         }
     }

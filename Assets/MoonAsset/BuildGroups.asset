@@ -22,20 +22,19 @@ MonoBehaviour:
   - .boo
   - .giparams
   - lightingdata.asset
-  resVersion: 329
-  resVersionBuildAsset: 328
+  resVersion: 360
   scenesInBuild:
   - {fileID: 102900000, guid: 8943688c1103d8c46b982d0a1a9e2310, type: 3}
   bundleGroups:
   - searchPath: Assets/Res/Atlas
     searchPattern: '*'
-    nameBy: 2
+    packedBy: 2
     builtIn: 0
     assets:
     - Assets/Res/Atlas/uiatlas.spriteatlas
   - searchPath: Assets/Res/Audios
     searchPattern: '*'
-    nameBy: 1
+    packedBy: 1
     builtIn: 0
     assets:
     - Assets/Res/Audios/GameMixer.mixer
@@ -110,583 +109,720 @@ MonoBehaviour:
     - Assets/Res/Audios/UI/se_sys_dialog.wav
     - Assets/Res/Audios/UI/se_sys_ok.wav
     - Assets/Res/Audios/UI/se_sys_select.wav
-  - searchPath: Assets/Res/Prefab
+  - searchPath: Assets/Res/Prefabs
     searchPattern: '*'
-    nameBy: 1
+    packedBy: 1
     builtIn: 0
     assets:
-    - Assets/Res/Prefab/button.prefab
-    - Assets/Res/Prefab/Line.prefab
-    - Assets/Res/Prefab/TetrisBoard.prefab
-    - Assets/Res/Prefab/UI/UIAboutPanel.prefab
-    - Assets/Res/Prefab/UI/UICountdown.prefab
-    - Assets/Res/Prefab/UI/UIGameHUD.prefab
-    - Assets/Res/Prefab/UI/UIGameOverPanel.prefab
-    - Assets/Res/Prefab/UI/UISetting.prefab
-    - Assets/Res/Prefab/UI/UIStartPanel.prefab
-    - Assets/Res/Prefab/Vfx/vfx_board.prefab
-    - Assets/Res/Prefab/Vfx/vfx_clear_line.prefab
-    - Assets/Res/Prefab/Vfx/vfx_hard_drop.prefab
-    - Assets/Res/Prefab/UI/Default/Toast.prefab
-    - Assets/Res/Prefab/UI/Default/UIAlertDialog.prefab
-    - Assets/Res/Prefab/UI/Default/UIWaiting.prefab
-    - Assets/Res/Prefab/UI/Default/[UIRoot].prefab
+    - Assets/Res/Prefabs/button.prefab
+    - Assets/Res/Prefabs/Line.prefab
+    - Assets/Res/Prefabs/TetrisBoard.prefab
+    - Assets/Res/Prefabs/UI/UIAboutPanel.prefab
+    - Assets/Res/Prefabs/UI/UICheckAssets.prefab
+    - Assets/Res/Prefabs/UI/UICountdown.prefab
+    - Assets/Res/Prefabs/UI/UIGameHUD.prefab
+    - Assets/Res/Prefabs/UI/UIGameOverPanel.prefab
+    - Assets/Res/Prefabs/UI/UISetting.prefab
+    - Assets/Res/Prefabs/UI/UIStartPanel.prefab
+    - Assets/Res/Prefabs/Vfx/vfx_board.prefab
+    - Assets/Res/Prefabs/Vfx/vfx_clear_line.prefab
+    - Assets/Res/Prefabs/Vfx/vfx_hard_drop.prefab
+    - Assets/Res/Prefabs/UI/Default/Toast.prefab
+    - Assets/Res/Prefabs/UI/Default/UIAlertDialog.prefab
+    - Assets/Res/Prefabs/UI/Default/UIWaiting.prefab
+    - Assets/Res/Prefabs/UI/Default/[UIRoot].prefab
   - searchPath: Assets/Res/Scenes
     searchPattern: '*'
-    nameBy: 2
+    packedBy: 2
     builtIn: 0
     assets:
     - Assets/Res/Scenes/EcsGaming.unity
     - Assets/Res/Scenes/Title.unity
   - searchPath: Assets/Res/Shaders
     searchPattern: '*'
-    nameBy: 2
+    packedBy: 2
     builtIn: 0
     assets:
     - Assets/Res/Shaders/InstancedSprite.shader
     - Assets/Res/Shaders/NewShaderVariants.shadervariants
   - searchPath: Assets/Res/ScriptableObjects
     searchPattern: '*'
-    nameBy: 2
+    packedBy: 2
     builtIn: 0
     assets:
     - Assets/Res/ScriptableObjects/GameMode1_Asset.asset
+  - searchPath: Assets/ResRaw
+    searchPattern: '*'
+    packedBy: 3
+    builtIn: 0
+    assets:
+    - Assets/ResRaw/hotfix
+    - Assets/ResRaw/tables
   ruleAssets:
   - asset: Assets/Arts/Fonts/Consolas SDF.asset
-    bundle: 85b15f8c8df778881e64b45346930838.assets
+    bundle: 5f270c69.assets
   - asset: Assets/Arts/Fonts/Consolas.ttf
-    bundle: ead905fbc2f78a8c8c2293bbb7ce5911.assets
+    bundle: 93a8bef0.assets
   - asset: Assets/Arts/Materials/Line.mat
-    bundle: 2e279549e554d267402323f3f0d02c17.assets
+    bundle: 644235e4.assets
   - asset: Assets/Arts/Materials/Vfx/Mat_VFX_FireSpark.mat
-    bundle: 80bc1ee013d340ed5110b3d20f153b03.assets
+    bundle: 6d3856a9.assets
   - asset: Assets/Arts/Textures/VFX/fire_spark.psd
-    bundle: 368283101e9413accfd057adb2306563.assets
+    bundle: c130d635.assets
   - asset: Assets/Res/Atlas/uiatlas.spriteatlas
-    bundle: fa5f175a25f41ea98efdfc253daeb312.assets
+    bundle: 7001b89a.assets
   - asset: Assets/Res/Audios/BGM/bgm_t02_swap_t.wav
-    bundle: 5e78d2110dfcca813c738f6385317dfa.assets
+    bundle: 3ffdab1d.assets
   - asset: Assets/Res/Audios/GameMixer.mixer
-    bundle: d6c021e84c4919fdb10d60b96f0b5c0c.assets
+    bundle: c7c98b29.assets
   - asset: Assets/Res/Audios/SE/me_game_clear.wav
-    bundle: 9d46d4dd90e4fe92e7eb8732891ff4c5.assets
+    bundle: fbf5ab25.assets
   - asset: Assets/Res/Audios/SE/me_game_gameover.wav
-    bundle: 77e000adda2469aa74fbdc349a345ce5.assets
+    bundle: 8157ebec.assets
   - asset: Assets/Res/Audios/SE/me_game_iget.wav
-    bundle: 19091ea5a90277dddd9f4e54e2c7f23b.assets
+    bundle: 17ee778d.assets
   - asset: Assets/Res/Audios/SE/me_game_ko_gong.wav
-    bundle: 943bafaaae5f11b8764d16b7cdf572cc.assets
+    bundle: 6fdc4639.assets
   - asset: Assets/Res/Audios/SE/me_game_ko_vo.wav
-    bundle: 91b8a277fac9bc76305aab8a1cf6a65a.assets
+    bundle: 0ccb4c9a.assets
   - asset: Assets/Res/Audios/SE/me_game_ko_vo_de.wav
-    bundle: 26cbfdf4ee0c359b30a6eb17ba8e6fa8.assets
+    bundle: cff96501.assets
   - asset: Assets/Res/Audios/SE/me_game_ko_vo_es.wav
-    bundle: d59d69b9147e3c529969ceb8522ee7dc.assets
+    bundle: 48489925.assets
   - asset: Assets/Res/Audios/SE/me_game_ko_vo_fr.wav
-    bundle: 599b5ccabadee977e756b697d77a093f.assets
+    bundle: 56136d9e.assets
   - asset: Assets/Res/Audios/SE/me_game_ko_vo_it.wav
-    bundle: 88f60542bc8cce6e158e26dc3287011d.assets
+    bundle: 23547be0.assets
   - asset: Assets/Res/Audios/SE/me_game_ko_vo_nl.wav
-    bundle: dfd84f25bbfc03c8ec89129b8ea05421.assets
+    bundle: d8b8eead.assets
   - asset: Assets/Res/Audios/SE/me_game_ko_vo_ru.wav
-    bundle: 5f085ed760b9444392b9aef94334ae5b.assets
+    bundle: cb8f0ab4.assets
   - asset: Assets/Res/Audios/SE/me_game_plvup.wav
-    bundle: 2a256113e738c6b81e85c51a71da63dd.assets
+    bundle: f11e5704.assets
   - asset: Assets/Res/Audios/SE/me_game_remain_1.wav
-    bundle: 7b8df25b38c2831af4431d6f3a9951de.assets
+    bundle: 9f3289bd.assets
   - asset: Assets/Res/Audios/SE/me_game_remain_2.wav
-    bundle: 6609e6b7b7afe0d98e6dcff5e319c7b0.assets
+    bundle: 4f4829fa.assets
   - asset: Assets/Res/Audios/SE/me_game_start1.wav
-    bundle: c33576a40c7cc0434b71673636d7cf82.assets
+    bundle: ffaa203c.assets
   - asset: Assets/Res/Audios/SE/me_game_start1_de.wav
-    bundle: a37329cef5b5a03d6487243857eef0f6.assets
+    bundle: 7543058e.assets
   - asset: Assets/Res/Audios/SE/me_game_start1_es.wav
-    bundle: ad2efa319b8c1bd97037d493790bd71f.assets
+    bundle: f2f2f9aa.assets
   - asset: Assets/Res/Audios/SE/me_game_start1_fr.wav
-    bundle: 2e1ba693a2b48b5e4cd88dda51537ca4.assets
+    bundle: eca90d11.assets
   - asset: Assets/Res/Audios/SE/me_game_start1_it.wav
-    bundle: fb53f39f0ac7884f7ba54f4db98ff86a.assets
+    bundle: 99ee1b6f.assets
   - asset: Assets/Res/Audios/SE/me_game_start1_nl.wav
-    bundle: deaa6afbb10405bf97163c308a996e24.assets
+    bundle: 62028e22.assets
   - asset: Assets/Res/Audios/SE/me_game_start1_ru.wav
-    bundle: 4bf655e113e2484a1988733eb922ff4a.assets
+    bundle: 71356a3b.assets
   - asset: Assets/Res/Audios/SE/me_game_start2.wav
-    bundle: da3152276749445d491cb07cd9af29b7.assets
+    bundle: 2fd0807b.assets
   - asset: Assets/Res/Audios/SE/me_game_start2_vo.wav
-    bundle: 166c727ce8e64420d4eac2111c7530bf.assets
+    bundle: a7ff2404.assets
   - asset: Assets/Res/Audios/SE/me_game_start2_vo_de.wav
-    bundle: be3ef7ccd775b5995815c1477c194278.assets
+    bundle: 4d510b2c.assets
   - asset: Assets/Res/Audios/SE/me_game_start2_vo_es.wav
-    bundle: d11a956a390f5e60bda0116cee50b314.assets
+    bundle: cae0f708.assets
   - asset: Assets/Res/Audios/SE/me_game_start2_vo_fr.wav
-    bundle: 4514d4718feafd4b1af79f846259482d.assets
+    bundle: d4bb03b3.assets
   - asset: Assets/Res/Audios/SE/me_game_start2_vo_it.wav
-    bundle: e9cb2edb22c896c1269cecaf6f1f7d31.assets
+    bundle: a1fc15cd.assets
   - asset: Assets/Res/Audios/SE/me_game_start2_vo_nl.wav
-    bundle: 56f3c98f52dc8389de673fb0e06f6b18.assets
+    bundle: 5a108080.assets
   - asset: Assets/Res/Audios/SE/me_game_start2_vo_ru.wav
-    bundle: dc588b240420dd353fe42ba8a7047700.assets
+    bundle: 49276499.assets
   - asset: Assets/Res/Audios/SE/se_game_attack1.wav
-    bundle: 49e36b585fb8808791b3c752df28d433.assets
+    bundle: 3d076d65.assets
   - asset: Assets/Res/Audios/SE/se_game_attack2.wav
-    bundle: a05a1c66d94f688d57577b6eb0474d35.assets
+    bundle: ed7dcd22.assets
   - asset: Assets/Res/Audios/SE/se_game_bfall.wav
-    bundle: 859a71416e78cdaef634a7a8c30f8efd.assets
+    bundle: b5826462.assets
   - asset: Assets/Res/Audios/SE/se_game_caution.wav
-    bundle: f3349f5e1c3c06e5df72c3dfce9edc55.assets
+    bundle: 1e9a045a.assets
   - asset: Assets/Res/Audios/SE/se_game_change1.wav
-    bundle: 709eccd3e4070f69317fa4ed920bc4fd.assets
+    bundle: 6b8fa1f1.assets
   - asset: Assets/Res/Audios/SE/se_game_change2.wav
-    bundle: df73dc14ac6d4ef2322971a347db8140.assets
+    bundle: bbf501b6.assets
   - asset: Assets/Res/Audios/SE/se_game_count.wav
-    bundle: c86a3ff22ed6899d8e8cee38bf43cf6f.assets
+    bundle: 484899e4.assets
   - asset: Assets/Res/Audios/SE/se_game_double.wav
-    bundle: e324c55b6eae66be92be01e985b346f9.assets
+    bundle: b1e8705d.assets
   - asset: Assets/Res/Audios/SE/se_game_emblemget.wav
-    bundle: 4419a487d8fba947e2d88cca3f664935.assets
+    bundle: 00129a87.assets
   - asset: Assets/Res/Audios/SE/se_game_fixa.wav
-    bundle: e8fe7a1c80aff10474ec9f85cfca3a3b.assets
+    bundle: 644685d5.assets
   - asset: Assets/Res/Audios/SE/se_game_harddrop.wav
-    bundle: e5f629586b409900072aad5517cfae0b.assets
+    bundle: d7aee1d4.assets
   - asset: Assets/Res/Audios/SE/se_game_hold.wav
-    bundle: 54b66ec96043a71ccca5563bc45a9306.assets
+    bundle: 91ae78f3.assets
   - asset: Assets/Res/Audios/SE/se_game_kbcomp.wav
-    bundle: 4c0afd22c1125a26024c27137f77511d.assets
+    bundle: 50c66be5.assets
   - asset: Assets/Res/Audios/SE/se_game_kbget.wav
-    bundle: 31b20b4409297edc54ec998807618c44.assets
+    bundle: a582c25e.assets
   - asset: Assets/Res/Audios/SE/se_game_ko2.wav
-    bundle: 6aaab4239dec94fa141237e3eb98a68b.assets
+    bundle: 035ff170.assets
   - asset: Assets/Res/Audios/SE/se_game_landing.wav
-    bundle: af7e181d3457b805738f11609275321a.assets
+    bundle: 8b329e5d.assets
   - asset: Assets/Res/Audios/SE/se_game_match.wav
-    bundle: 55919f9cb39bf9328a26780b085e7d05.assets
+    bundle: 01e32886.assets
   - asset: Assets/Res/Audios/SE/se_game_move.wav
-    bundle: c258ef198fc16fe5edc21794c1250f8a.assets
+    bundle: b8a8b524.assets
   - asset: Assets/Res/Audios/SE/se_game_msg.wav
-    bundle: 44631dd017f8050c0f9aeec546e009e5.assets
+    bundle: 62e8c697.assets
   - asset: Assets/Res/Audios/SE/se_game_offset1.wav
-    bundle: 4eec59f1badf8b52e00edbc238437fe6.assets
+    bundle: 3ba4b839.assets
   - asset: Assets/Res/Audios/SE/se_game_offset2.wav
-    bundle: 15562270352a18cf39d61021effc4168.assets
+    bundle: ebde187e.assets
   - asset: Assets/Res/Audios/SE/se_game_pause.wav
-    bundle: 2a63540eb0c1b7b4434b9eac943d3af2.assets
+    bundle: b98b9686.assets
   - asset: Assets/Res/Audios/SE/se_game_perfect.wav
-    bundle: d1c45cb3d43b967b8cb92c4469d7f1f8.assets
+    bundle: 1de636a4.assets
   - asset: Assets/Res/Audios/SE/se_game_pinch.wav
-    bundle: a2e8d43aa95eb92d677374bd28517b79.assets
+    bundle: 129eeccb.assets
   - asset: Assets/Res/Audios/SE/se_game_pinput.wav
-    bundle: 8a72ebf34973311410769a727824d17b.assets
+    bundle: 52fde6a8.assets
   - asset: Assets/Res/Audios/SE/se_game_rotate.wav
-    bundle: 1d34be5a236628bb948dbe2b736a0bb5.assets
+    bundle: eb830765.assets
   - asset: Assets/Res/Audios/SE/se_game_single.wav
-    bundle: 90f87209df237521403e266deef19a2d.assets
+    bundle: 7009f198.assets
   - asset: Assets/Res/Audios/SE/se_game_softdrop.wav
-    bundle: 7aba49b519cba6c3e31eb689757f6068.assets
+    bundle: c0af9879.assets
   - asset: Assets/Res/Audios/SE/se_game_special.wav
-    bundle: 2fc48dbd71b0773f64ac81932e8b9052.assets
+    bundle: 50fceaa6.assets
   - asset: Assets/Res/Audios/SE/se_game_tactics.wav
-    bundle: ddde6298f978c34211dd927ee4a867f0.assets
+    bundle: e5e3a1ed.assets
   - asset: Assets/Res/Audios/SE/se_game_target.wav
-    bundle: 54531cad24d3677a326340fdff77fd05.assets
+    bundle: 8f7b6e90.assets
   - asset: Assets/Res/Audios/SE/se_game_tetris.wav
-    bundle: 2056904433c13b94325643ad1450f8ef.assets
+    bundle: 068ce9fb.assets
   - asset: Assets/Res/Audios/SE/se_game_triple.wav
-    bundle: 0935c1f1a108182ab548b3ed1ad6c455.assets
+    bundle: fc6504fc.assets
   - asset: Assets/Res/Audios/UI/se_sys_alert.wav
-    bundle: e05c21b025c09c04fee2b4e8d4750e67.assets
+    bundle: 67c85310.assets
   - asset: Assets/Res/Audios/UI/se_sys_cancel.wav
-    bundle: bc4d8f01b55f79fa1d2d78e3870837ab.assets
+    bundle: 9ae14f90.assets
   - asset: Assets/Res/Audios/UI/se_sys_cursor1.wav
-    bundle: 613a4724c1068795ad55a4ea4c88071d.assets
+    bundle: 698815b7.assets
   - asset: Assets/Res/Audios/UI/se_sys_cursor2.wav
-    bundle: ab904cb78a61fb334666a581afefb721.assets
+    bundle: b9f2b5f0.assets
   - asset: Assets/Res/Audios/UI/se_sys_dialog.wav
-    bundle: b683cecb127074552d11963169ca4197.assets
+    bundle: c9286830.assets
   - asset: Assets/Res/Audios/UI/se_sys_ok.wav
-    bundle: 336ade1964ea06e1f78a83fc2aed1dcc.assets
+    bundle: b26dd3b1.assets
   - asset: Assets/Res/Audios/UI/se_sys_select.wav
-    bundle: 3baa44c882a90fe0f9906537ec90c433.assets
+    bundle: 673c314d.assets
   - asset: Assets/Res/Audios/UI/ses_sys_save.wav
-    bundle: fffa1af41959cd331f448456b4154537.assets
-  - asset: Assets/Res/Prefab/Line.prefab
-    bundle: 169c38b682ece40e08b9415606592b33.assets
-  - asset: Assets/Res/Prefab/TetrisBoard.prefab
-    bundle: 051eab65330684221890d37707639ce7.assets
-  - asset: Assets/Res/Prefab/UI/Default/Toast.prefab
-    bundle: 6f92d48375d162db6d1442fddff7643c.assets
-  - asset: Assets/Res/Prefab/UI/Default/UIAlertDialog.prefab
-    bundle: 1b55d7896c2faafa7a221ef7c72b0cf6.assets
-  - asset: Assets/Res/Prefab/UI/Default/UIWaiting.prefab
-    bundle: 851dc0bbc1e412e1b013cfbc2c0c1862.assets
-  - asset: Assets/Res/Prefab/UI/Default/[UIRoot].prefab
-    bundle: 0437a5a12da025640eac39b1ac6d1001.assets
-  - asset: Assets/Res/Prefab/UI/UIAboutPanel.prefab
-    bundle: 532df80c1386edaa92c7ae5a554c808f.assets
-  - asset: Assets/Res/Prefab/UI/UICountdown.prefab
-    bundle: 803542ee8766b91437ae0a007233e8e9.assets
-  - asset: Assets/Res/Prefab/UI/UIGameHUD.prefab
-    bundle: 062d2987c8ae023d74a70d9e283ca1cb.assets
-  - asset: Assets/Res/Prefab/UI/UIGameOverPanel.prefab
-    bundle: 5b45ba697edd57cfc4ab52dd2736835a.assets
-  - asset: Assets/Res/Prefab/UI/UISetting.prefab
-    bundle: 5105a40f29cd6b7083f234d749988737.assets
-  - asset: Assets/Res/Prefab/UI/UIStartPanel.prefab
-    bundle: 6ce5d81beda259f393e8ef61f857cf8a.assets
-  - asset: Assets/Res/Prefab/Vfx/vfx_board.prefab
-    bundle: b9e22bd3b5011e48d1f9cd2acfebfc3c.assets
-  - asset: Assets/Res/Prefab/Vfx/vfx_clear_line.prefab
-    bundle: 3dc46dea26fe9a4a3ce88b8a4177b1cf.assets
-  - asset: Assets/Res/Prefab/Vfx/vfx_hard_drop.prefab
-    bundle: a2f3f6d6a118f2341c7fddbb2fcde842.assets
-  - asset: Assets/Res/Prefab/button.prefab
-    bundle: c857cda7abf2b87ba6a6859c0303963a.assets
+    bundle: d760c9f2.assets
+  - asset: Assets/Res/Prefabs/Line.prefab
+    bundle: ce990760.assets
+  - asset: Assets/Res/Prefabs/TetrisBoard.prefab
+    bundle: 39fcb085.assets
+  - asset: Assets/Res/Prefabs/UI/Default/Toast.prefab
+    bundle: 292f5b69.assets
+  - asset: Assets/Res/Prefabs/UI/Default/UIAlertDialog.prefab
+    bundle: 5982d85d.assets
+  - asset: Assets/Res/Prefabs/UI/Default/UIWaiting.prefab
+    bundle: 63e6ecba.assets
+  - asset: Assets/Res/Prefabs/UI/Default/[UIRoot].prefab
+    bundle: b1b0f95a.assets
+  - asset: Assets/Res/Prefabs/UI/UIAboutPanel.prefab
+    bundle: fb7c9fd1.assets
+  - asset: Assets/Res/Prefabs/UI/UICheckAssets.prefab
+    bundle: 95872b2b.assets
+  - asset: Assets/Res/Prefabs/UI/UICountdown.prefab
+    bundle: e57af7ea.assets
+  - asset: Assets/Res/Prefabs/UI/UIGameHUD.prefab
+    bundle: 2b2a5412.assets
+  - asset: Assets/Res/Prefabs/UI/UIGameOverPanel.prefab
+    bundle: 2dd7214a.assets
+  - asset: Assets/Res/Prefabs/UI/UISetting.prefab
+    bundle: f86c3828.assets
+  - asset: Assets/Res/Prefabs/UI/UIStartPanel.prefab
+    bundle: 8e90fa2f.assets
+  - asset: Assets/Res/Prefabs/Vfx/vfx_board.prefab
+    bundle: 6d20535a.assets
+  - asset: Assets/Res/Prefabs/Vfx/vfx_clear_line.prefab
+    bundle: a2331f2b.assets
+  - asset: Assets/Res/Prefabs/Vfx/vfx_hard_drop.prefab
+    bundle: 10cc97a1.assets
+  - asset: Assets/Res/Prefabs/button.prefab
+    bundle: 94422b8c.assets
   - asset: Assets/Res/Scenes/EcsGaming.unity
-    bundle: bab4f8bd5adea5d6044b0f25fbb259b7.assets
+    bundle: 545383bd.assets
   - asset: Assets/Res/Scenes/Title.unity
-    bundle: bab4f8bd5adea5d6044b0f25fbb259b7.assets
+    bundle: 545383bd.assets
   - asset: Assets/Res/ScriptableObjects/GameMode1_Asset.asset
-    bundle: 5324f345de28c64f0fda4adfade8bd59.assets
+    bundle: e5702902.assets
   - asset: Assets/Res/Shaders/InstancedSprite.shader
-    bundle: 1aa355706e1767666124331a716c7890.assets
+    bundle: 6f94442e.assets
   - asset: Assets/Res/Shaders/NewShaderVariants.shadervariants
-    bundle: 1aa355706e1767666124331a716c7890.assets
+    bundle: 6f94442e.assets
+  - asset: Assets/ResRaw/hotfix
+    bundle: 232daccd.raw
+  - asset: Assets/ResRaw/tables
+    bundle: b34a0a45.raw
+  - asset: Assets/TextMesh Pro/Fonts/LiberationSans.ttf
+    bundle: 4b733519.assets
+  - asset: Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset
+    bundle: dfc5be2a.assets
   - asset: Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF.asset
-    bundle: f16de81a2946d9fc789b5cc6833b5a2c.assets
-  - asset: Assets/TextMesh Pro/Resources/Shaders/TMP_SDF-Mobile.shader
-    bundle: 1aa355706e1767666124331a716c7890.assets
-  - asset: Assets/TextMesh Pro/Resources/Shaders/TMP_SDF.shader
-    bundle: 1aa355706e1767666124331a716c7890.assets
-  - asset: Packages/com.unity.render-pipelines.universal/Runtime/Materials/ParticlesUnlit.mat
-    bundle: a2a4fc13bb6444c0e36703054d4f29c1.assets
+    bundle: 00689e0f.assets
+  - asset: Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader
+    bundle: 6f94442e.assets
+  - asset: Assets/TextMesh Pro/Shaders/TMP_SDF.shader
+    bundle: 6f94442e.assets
   - asset: Packages/com.unity.render-pipelines.universal/Runtime/Materials/Sprite-Unlit-Default.mat
-    bundle: a33462554deae1126fdf3b50097f3f2e.assets
+    bundle: eee9cda0.assets
   - asset: Packages/com.unity.render-pipelines.universal/Shaders/2D/Sprite-Unlit-Default.shader
-    bundle: 1aa355706e1767666124331a716c7890.assets
+    bundle: 6f94442e.assets
+  - asset: Packages/com.unity.render-pipelines.universal/Shaders/Particles/ParticlesSimpleLit.shader
+    bundle: 6f94442e.assets
   - asset: Packages/com.unity.render-pipelines.universal/Shaders/Particles/ParticlesUnlit.shader
-    bundle: 1aa355706e1767666124331a716c7890.assets
+    bundle: 6f94442e.assets
   - asset: Packages/com.unity.render-pipelines.universal/Shaders/Unlit.shader
-    bundle: 1aa355706e1767666124331a716c7890.assets
+    bundle: 6f94442e.assets
   - asset: Packages/com.unity.textmeshpro/Editor Resources/Gizmos/TMP - Font Asset
       Icon.psd
-    bundle: 8ea5a65e3b1436859472be2db1c7021b.assets
+    bundle: c772f009.assets
   - asset: Packages/com.unity.textmeshpro/Editor Resources/Gizmos/TMP - Text Component
       Icon.psd
-    bundle: 562974cbc3f8790107f6a4300830ae87.assets
+    bundle: 221b0599.assets
   ruleBundles:
-  - bundle: fa5f175a25f41ea98efdfc253daeb312.assets
+  - bundle: 7001b89a.assets
     assets:
     - Assets/Res/Atlas/uiatlas.spriteatlas
-  - bundle: d6c021e84c4919fdb10d60b96f0b5c0c.assets
+    isRawFile: 0
+  - bundle: c7c98b29.assets
     assets:
     - Assets/Res/Audios/GameMixer.mixer
-  - bundle: 5e78d2110dfcca813c738f6385317dfa.assets
+    isRawFile: 0
+  - bundle: 3ffdab1d.assets
     assets:
     - Assets/Res/Audios/BGM/bgm_t02_swap_t.wav
-  - bundle: 9d46d4dd90e4fe92e7eb8732891ff4c5.assets
+    isRawFile: 0
+  - bundle: fbf5ab25.assets
     assets:
     - Assets/Res/Audios/SE/me_game_clear.wav
-  - bundle: 77e000adda2469aa74fbdc349a345ce5.assets
+    isRawFile: 0
+  - bundle: 8157ebec.assets
     assets:
     - Assets/Res/Audios/SE/me_game_gameover.wav
-  - bundle: 19091ea5a90277dddd9f4e54e2c7f23b.assets
+    isRawFile: 0
+  - bundle: 17ee778d.assets
     assets:
     - Assets/Res/Audios/SE/me_game_iget.wav
-  - bundle: 943bafaaae5f11b8764d16b7cdf572cc.assets
+    isRawFile: 0
+  - bundle: 6fdc4639.assets
     assets:
     - Assets/Res/Audios/SE/me_game_ko_gong.wav
-  - bundle: 91b8a277fac9bc76305aab8a1cf6a65a.assets
+    isRawFile: 0
+  - bundle: 0ccb4c9a.assets
     assets:
     - Assets/Res/Audios/SE/me_game_ko_vo.wav
-  - bundle: 26cbfdf4ee0c359b30a6eb17ba8e6fa8.assets
+    isRawFile: 0
+  - bundle: cff96501.assets
     assets:
     - Assets/Res/Audios/SE/me_game_ko_vo_de.wav
-  - bundle: d59d69b9147e3c529969ceb8522ee7dc.assets
+    isRawFile: 0
+  - bundle: 48489925.assets
     assets:
     - Assets/Res/Audios/SE/me_game_ko_vo_es.wav
-  - bundle: 599b5ccabadee977e756b697d77a093f.assets
+    isRawFile: 0
+  - bundle: 56136d9e.assets
     assets:
     - Assets/Res/Audios/SE/me_game_ko_vo_fr.wav
-  - bundle: 88f60542bc8cce6e158e26dc3287011d.assets
+    isRawFile: 0
+  - bundle: 23547be0.assets
     assets:
     - Assets/Res/Audios/SE/me_game_ko_vo_it.wav
-  - bundle: dfd84f25bbfc03c8ec89129b8ea05421.assets
+    isRawFile: 0
+  - bundle: d8b8eead.assets
     assets:
     - Assets/Res/Audios/SE/me_game_ko_vo_nl.wav
-  - bundle: 5f085ed760b9444392b9aef94334ae5b.assets
+    isRawFile: 0
+  - bundle: cb8f0ab4.assets
     assets:
     - Assets/Res/Audios/SE/me_game_ko_vo_ru.wav
-  - bundle: 2a256113e738c6b81e85c51a71da63dd.assets
+    isRawFile: 0
+  - bundle: f11e5704.assets
     assets:
     - Assets/Res/Audios/SE/me_game_plvup.wav
-  - bundle: 7b8df25b38c2831af4431d6f3a9951de.assets
+    isRawFile: 0
+  - bundle: 9f3289bd.assets
     assets:
     - Assets/Res/Audios/SE/me_game_remain_1.wav
-  - bundle: 6609e6b7b7afe0d98e6dcff5e319c7b0.assets
+    isRawFile: 0
+  - bundle: 4f4829fa.assets
     assets:
     - Assets/Res/Audios/SE/me_game_remain_2.wav
-  - bundle: c33576a40c7cc0434b71673636d7cf82.assets
+    isRawFile: 0
+  - bundle: ffaa203c.assets
     assets:
     - Assets/Res/Audios/SE/me_game_start1.wav
-  - bundle: a37329cef5b5a03d6487243857eef0f6.assets
+    isRawFile: 0
+  - bundle: 7543058e.assets
     assets:
     - Assets/Res/Audios/SE/me_game_start1_de.wav
-  - bundle: ad2efa319b8c1bd97037d493790bd71f.assets
+    isRawFile: 0
+  - bundle: f2f2f9aa.assets
     assets:
     - Assets/Res/Audios/SE/me_game_start1_es.wav
-  - bundle: 2e1ba693a2b48b5e4cd88dda51537ca4.assets
+    isRawFile: 0
+  - bundle: eca90d11.assets
     assets:
     - Assets/Res/Audios/SE/me_game_start1_fr.wav
-  - bundle: fb53f39f0ac7884f7ba54f4db98ff86a.assets
+    isRawFile: 0
+  - bundle: 99ee1b6f.assets
     assets:
     - Assets/Res/Audios/SE/me_game_start1_it.wav
-  - bundle: deaa6afbb10405bf97163c308a996e24.assets
+    isRawFile: 0
+  - bundle: 62028e22.assets
     assets:
     - Assets/Res/Audios/SE/me_game_start1_nl.wav
-  - bundle: 4bf655e113e2484a1988733eb922ff4a.assets
+    isRawFile: 0
+  - bundle: 71356a3b.assets
     assets:
     - Assets/Res/Audios/SE/me_game_start1_ru.wav
-  - bundle: da3152276749445d491cb07cd9af29b7.assets
+    isRawFile: 0
+  - bundle: 2fd0807b.assets
     assets:
     - Assets/Res/Audios/SE/me_game_start2.wav
-  - bundle: 166c727ce8e64420d4eac2111c7530bf.assets
+    isRawFile: 0
+  - bundle: a7ff2404.assets
     assets:
     - Assets/Res/Audios/SE/me_game_start2_vo.wav
-  - bundle: be3ef7ccd775b5995815c1477c194278.assets
+    isRawFile: 0
+  - bundle: 4d510b2c.assets
     assets:
     - Assets/Res/Audios/SE/me_game_start2_vo_de.wav
-  - bundle: d11a956a390f5e60bda0116cee50b314.assets
+    isRawFile: 0
+  - bundle: cae0f708.assets
     assets:
     - Assets/Res/Audios/SE/me_game_start2_vo_es.wav
-  - bundle: 4514d4718feafd4b1af79f846259482d.assets
+    isRawFile: 0
+  - bundle: d4bb03b3.assets
     assets:
     - Assets/Res/Audios/SE/me_game_start2_vo_fr.wav
-  - bundle: e9cb2edb22c896c1269cecaf6f1f7d31.assets
+    isRawFile: 0
+  - bundle: a1fc15cd.assets
     assets:
     - Assets/Res/Audios/SE/me_game_start2_vo_it.wav
-  - bundle: 56f3c98f52dc8389de673fb0e06f6b18.assets
+    isRawFile: 0
+  - bundle: 5a108080.assets
     assets:
     - Assets/Res/Audios/SE/me_game_start2_vo_nl.wav
-  - bundle: dc588b240420dd353fe42ba8a7047700.assets
+    isRawFile: 0
+  - bundle: 49276499.assets
     assets:
     - Assets/Res/Audios/SE/me_game_start2_vo_ru.wav
-  - bundle: 49e36b585fb8808791b3c752df28d433.assets
+    isRawFile: 0
+  - bundle: 3d076d65.assets
     assets:
     - Assets/Res/Audios/SE/se_game_attack1.wav
-  - bundle: a05a1c66d94f688d57577b6eb0474d35.assets
+    isRawFile: 0
+  - bundle: ed7dcd22.assets
     assets:
     - Assets/Res/Audios/SE/se_game_attack2.wav
-  - bundle: 859a71416e78cdaef634a7a8c30f8efd.assets
+    isRawFile: 0
+  - bundle: b5826462.assets
     assets:
     - Assets/Res/Audios/SE/se_game_bfall.wav
-  - bundle: f3349f5e1c3c06e5df72c3dfce9edc55.assets
+    isRawFile: 0
+  - bundle: 1e9a045a.assets
     assets:
     - Assets/Res/Audios/SE/se_game_caution.wav
-  - bundle: 709eccd3e4070f69317fa4ed920bc4fd.assets
+    isRawFile: 0
+  - bundle: 6b8fa1f1.assets
     assets:
     - Assets/Res/Audios/SE/se_game_change1.wav
-  - bundle: df73dc14ac6d4ef2322971a347db8140.assets
+    isRawFile: 0
+  - bundle: bbf501b6.assets
     assets:
     - Assets/Res/Audios/SE/se_game_change2.wav
-  - bundle: c86a3ff22ed6899d8e8cee38bf43cf6f.assets
+    isRawFile: 0
+  - bundle: 484899e4.assets
     assets:
     - Assets/Res/Audios/SE/se_game_count.wav
-  - bundle: e324c55b6eae66be92be01e985b346f9.assets
+    isRawFile: 0
+  - bundle: b1e8705d.assets
     assets:
     - Assets/Res/Audios/SE/se_game_double.wav
-  - bundle: 4419a487d8fba947e2d88cca3f664935.assets
+    isRawFile: 0
+  - bundle: 00129a87.assets
     assets:
     - Assets/Res/Audios/SE/se_game_emblemget.wav
-  - bundle: e8fe7a1c80aff10474ec9f85cfca3a3b.assets
+    isRawFile: 0
+  - bundle: 644685d5.assets
     assets:
     - Assets/Res/Audios/SE/se_game_fixa.wav
-  - bundle: e5f629586b409900072aad5517cfae0b.assets
+    isRawFile: 0
+  - bundle: d7aee1d4.assets
     assets:
     - Assets/Res/Audios/SE/se_game_harddrop.wav
-  - bundle: 54b66ec96043a71ccca5563bc45a9306.assets
+    isRawFile: 0
+  - bundle: 91ae78f3.assets
     assets:
     - Assets/Res/Audios/SE/se_game_hold.wav
-  - bundle: 4c0afd22c1125a26024c27137f77511d.assets
+    isRawFile: 0
+  - bundle: 50c66be5.assets
     assets:
     - Assets/Res/Audios/SE/se_game_kbcomp.wav
-  - bundle: 31b20b4409297edc54ec998807618c44.assets
+    isRawFile: 0
+  - bundle: a582c25e.assets
     assets:
     - Assets/Res/Audios/SE/se_game_kbget.wav
-  - bundle: 6aaab4239dec94fa141237e3eb98a68b.assets
+    isRawFile: 0
+  - bundle: 035ff170.assets
     assets:
     - Assets/Res/Audios/SE/se_game_ko2.wav
-  - bundle: af7e181d3457b805738f11609275321a.assets
+    isRawFile: 0
+  - bundle: 8b329e5d.assets
     assets:
     - Assets/Res/Audios/SE/se_game_landing.wav
-  - bundle: 55919f9cb39bf9328a26780b085e7d05.assets
+    isRawFile: 0
+  - bundle: 01e32886.assets
     assets:
     - Assets/Res/Audios/SE/se_game_match.wav
-  - bundle: c258ef198fc16fe5edc21794c1250f8a.assets
+    isRawFile: 0
+  - bundle: b8a8b524.assets
     assets:
     - Assets/Res/Audios/SE/se_game_move.wav
-  - bundle: 44631dd017f8050c0f9aeec546e009e5.assets
+    isRawFile: 0
+  - bundle: 62e8c697.assets
     assets:
     - Assets/Res/Audios/SE/se_game_msg.wav
-  - bundle: 4eec59f1badf8b52e00edbc238437fe6.assets
+    isRawFile: 0
+  - bundle: 3ba4b839.assets
     assets:
     - Assets/Res/Audios/SE/se_game_offset1.wav
-  - bundle: 15562270352a18cf39d61021effc4168.assets
+    isRawFile: 0
+  - bundle: ebde187e.assets
     assets:
     - Assets/Res/Audios/SE/se_game_offset2.wav
-  - bundle: 2a63540eb0c1b7b4434b9eac943d3af2.assets
+    isRawFile: 0
+  - bundle: b98b9686.assets
     assets:
     - Assets/Res/Audios/SE/se_game_pause.wav
-  - bundle: d1c45cb3d43b967b8cb92c4469d7f1f8.assets
+    isRawFile: 0
+  - bundle: 1de636a4.assets
     assets:
     - Assets/Res/Audios/SE/se_game_perfect.wav
-  - bundle: a2e8d43aa95eb92d677374bd28517b79.assets
+    isRawFile: 0
+  - bundle: 129eeccb.assets
     assets:
     - Assets/Res/Audios/SE/se_game_pinch.wav
-  - bundle: 8a72ebf34973311410769a727824d17b.assets
+    isRawFile: 0
+  - bundle: 52fde6a8.assets
     assets:
     - Assets/Res/Audios/SE/se_game_pinput.wav
-  - bundle: 1d34be5a236628bb948dbe2b736a0bb5.assets
+    isRawFile: 0
+  - bundle: eb830765.assets
     assets:
     - Assets/Res/Audios/SE/se_game_rotate.wav
-  - bundle: 90f87209df237521403e266deef19a2d.assets
+    isRawFile: 0
+  - bundle: 7009f198.assets
     assets:
     - Assets/Res/Audios/SE/se_game_single.wav
-  - bundle: 7aba49b519cba6c3e31eb689757f6068.assets
+    isRawFile: 0
+  - bundle: c0af9879.assets
     assets:
     - Assets/Res/Audios/SE/se_game_softdrop.wav
-  - bundle: 2fc48dbd71b0773f64ac81932e8b9052.assets
+    isRawFile: 0
+  - bundle: 50fceaa6.assets
     assets:
     - Assets/Res/Audios/SE/se_game_special.wav
-  - bundle: ddde6298f978c34211dd927ee4a867f0.assets
+    isRawFile: 0
+  - bundle: e5e3a1ed.assets
     assets:
     - Assets/Res/Audios/SE/se_game_tactics.wav
-  - bundle: 54531cad24d3677a326340fdff77fd05.assets
+    isRawFile: 0
+  - bundle: 8f7b6e90.assets
     assets:
     - Assets/Res/Audios/SE/se_game_target.wav
-  - bundle: 2056904433c13b94325643ad1450f8ef.assets
+    isRawFile: 0
+  - bundle: 068ce9fb.assets
     assets:
     - Assets/Res/Audios/SE/se_game_tetris.wav
-  - bundle: 0935c1f1a108182ab548b3ed1ad6c455.assets
+    isRawFile: 0
+  - bundle: fc6504fc.assets
     assets:
     - Assets/Res/Audios/SE/se_game_triple.wav
-  - bundle: fffa1af41959cd331f448456b4154537.assets
+    isRawFile: 0
+  - bundle: d760c9f2.assets
     assets:
     - Assets/Res/Audios/UI/ses_sys_save.wav
-  - bundle: e05c21b025c09c04fee2b4e8d4750e67.assets
+    isRawFile: 0
+  - bundle: 67c85310.assets
     assets:
     - Assets/Res/Audios/UI/se_sys_alert.wav
-  - bundle: bc4d8f01b55f79fa1d2d78e3870837ab.assets
+    isRawFile: 0
+  - bundle: 9ae14f90.assets
     assets:
     - Assets/Res/Audios/UI/se_sys_cancel.wav
-  - bundle: 613a4724c1068795ad55a4ea4c88071d.assets
+    isRawFile: 0
+  - bundle: 698815b7.assets
     assets:
     - Assets/Res/Audios/UI/se_sys_cursor1.wav
-  - bundle: ab904cb78a61fb334666a581afefb721.assets
+    isRawFile: 0
+  - bundle: b9f2b5f0.assets
     assets:
     - Assets/Res/Audios/UI/se_sys_cursor2.wav
-  - bundle: b683cecb127074552d11963169ca4197.assets
+    isRawFile: 0
+  - bundle: c9286830.assets
     assets:
     - Assets/Res/Audios/UI/se_sys_dialog.wav
-  - bundle: 336ade1964ea06e1f78a83fc2aed1dcc.assets
+    isRawFile: 0
+  - bundle: b26dd3b1.assets
     assets:
     - Assets/Res/Audios/UI/se_sys_ok.wav
-  - bundle: 3baa44c882a90fe0f9906537ec90c433.assets
+    isRawFile: 0
+  - bundle: 673c314d.assets
     assets:
     - Assets/Res/Audios/UI/se_sys_select.wav
-  - bundle: c857cda7abf2b87ba6a6859c0303963a.assets
+    isRawFile: 0
+  - bundle: 94422b8c.assets
     assets:
-    - Assets/Res/Prefab/button.prefab
-  - bundle: 169c38b682ece40e08b9415606592b33.assets
+    - Assets/Res/Prefabs/button.prefab
+    isRawFile: 0
+  - bundle: ce990760.assets
     assets:
-    - Assets/Res/Prefab/Line.prefab
-  - bundle: 051eab65330684221890d37707639ce7.assets
+    - Assets/Res/Prefabs/Line.prefab
+    isRawFile: 0
+  - bundle: 39fcb085.assets
     assets:
-    - Assets/Res/Prefab/TetrisBoard.prefab
-  - bundle: 532df80c1386edaa92c7ae5a554c808f.assets
+    - Assets/Res/Prefabs/TetrisBoard.prefab
+    isRawFile: 0
+  - bundle: fb7c9fd1.assets
     assets:
-    - Assets/Res/Prefab/UI/UIAboutPanel.prefab
-  - bundle: 803542ee8766b91437ae0a007233e8e9.assets
+    - Assets/Res/Prefabs/UI/UIAboutPanel.prefab
+    isRawFile: 0
+  - bundle: 95872b2b.assets
     assets:
-    - Assets/Res/Prefab/UI/UICountdown.prefab
-  - bundle: 062d2987c8ae023d74a70d9e283ca1cb.assets
+    - Assets/Res/Prefabs/UI/UICheckAssets.prefab
+    isRawFile: 0
+  - bundle: e57af7ea.assets
     assets:
-    - Assets/Res/Prefab/UI/UIGameHUD.prefab
-  - bundle: 5b45ba697edd57cfc4ab52dd2736835a.assets
+    - Assets/Res/Prefabs/UI/UICountdown.prefab
+    isRawFile: 0
+  - bundle: 2b2a5412.assets
     assets:
-    - Assets/Res/Prefab/UI/UIGameOverPanel.prefab
-  - bundle: 5105a40f29cd6b7083f234d749988737.assets
+    - Assets/Res/Prefabs/UI/UIGameHUD.prefab
+    isRawFile: 0
+  - bundle: 2dd7214a.assets
     assets:
-    - Assets/Res/Prefab/UI/UISetting.prefab
-  - bundle: 6ce5d81beda259f393e8ef61f857cf8a.assets
+    - Assets/Res/Prefabs/UI/UIGameOverPanel.prefab
+    isRawFile: 0
+  - bundle: f86c3828.assets
     assets:
-    - Assets/Res/Prefab/UI/UIStartPanel.prefab
-  - bundle: b9e22bd3b5011e48d1f9cd2acfebfc3c.assets
+    - Assets/Res/Prefabs/UI/UISetting.prefab
+    isRawFile: 0
+  - bundle: 8e90fa2f.assets
     assets:
-    - Assets/Res/Prefab/Vfx/vfx_board.prefab
-  - bundle: 3dc46dea26fe9a4a3ce88b8a4177b1cf.assets
+    - Assets/Res/Prefabs/UI/UIStartPanel.prefab
+    isRawFile: 0
+  - bundle: 6d20535a.assets
     assets:
-    - Assets/Res/Prefab/Vfx/vfx_clear_line.prefab
-  - bundle: a2f3f6d6a118f2341c7fddbb2fcde842.assets
+    - Assets/Res/Prefabs/Vfx/vfx_board.prefab
+    isRawFile: 0
+  - bundle: a2331f2b.assets
     assets:
-    - Assets/Res/Prefab/Vfx/vfx_hard_drop.prefab
-  - bundle: 6f92d48375d162db6d1442fddff7643c.assets
+    - Assets/Res/Prefabs/Vfx/vfx_clear_line.prefab
+    isRawFile: 0
+  - bundle: 10cc97a1.assets
     assets:
-    - Assets/Res/Prefab/UI/Default/Toast.prefab
-  - bundle: 1b55d7896c2faafa7a221ef7c72b0cf6.assets
+    - Assets/Res/Prefabs/Vfx/vfx_hard_drop.prefab
+    isRawFile: 0
+  - bundle: 292f5b69.assets
     assets:
-    - Assets/Res/Prefab/UI/Default/UIAlertDialog.prefab
-  - bundle: 851dc0bbc1e412e1b013cfbc2c0c1862.assets
+    - Assets/Res/Prefabs/UI/Default/Toast.prefab
+    isRawFile: 0
+  - bundle: 5982d85d.assets
     assets:
-    - Assets/Res/Prefab/UI/Default/UIWaiting.prefab
-  - bundle: 0437a5a12da025640eac39b1ac6d1001.assets
+    - Assets/Res/Prefabs/UI/Default/UIAlertDialog.prefab
+    isRawFile: 0
+  - bundle: 63e6ecba.assets
     assets:
-    - Assets/Res/Prefab/UI/Default/[UIRoot].prefab
-  - bundle: bab4f8bd5adea5d6044b0f25fbb259b7.assets
+    - Assets/Res/Prefabs/UI/Default/UIWaiting.prefab
+    isRawFile: 0
+  - bundle: b1b0f95a.assets
+    assets:
+    - Assets/Res/Prefabs/UI/Default/[UIRoot].prefab
+    isRawFile: 0
+  - bundle: 545383bd.assets
     assets:
     - Assets/Res/Scenes/EcsGaming.unity
     - Assets/Res/Scenes/Title.unity
-  - bundle: 1aa355706e1767666124331a716c7890.assets
+    isRawFile: 0
+  - bundle: 6f94442e.assets
     assets:
     - Assets/Res/Shaders/InstancedSprite.shader
     - Assets/Res/Shaders/NewShaderVariants.shadervariants
-    - Assets/TextMesh Pro/Resources/Shaders/TMP_SDF-Mobile.shader
+    - Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader
     - Packages/com.unity.render-pipelines.universal/Shaders/Unlit.shader
+    - Packages/com.unity.render-pipelines.universal/Shaders/Particles/ParticlesSimpleLit.shader
     - Packages/com.unity.render-pipelines.universal/Shaders/2D/Sprite-Unlit-Default.shader
+    - Assets/TextMesh Pro/Shaders/TMP_SDF.shader
     - Packages/com.unity.render-pipelines.universal/Shaders/Particles/ParticlesUnlit.shader
-    - Assets/TextMesh Pro/Resources/Shaders/TMP_SDF.shader
-  - bundle: 5324f345de28c64f0fda4adfade8bd59.assets
+    isRawFile: 0
+  - bundle: e5702902.assets
     assets:
     - Assets/Res/ScriptableObjects/GameMode1_Asset.asset
-  - bundle: 8ea5a65e3b1436859472be2db1c7021b.assets
+    isRawFile: 0
+  - bundle: 232daccd.raw
+    assets:
+    - Assets/ResRaw/hotfix
+    isRawFile: 1
+  - bundle: b34a0a45.raw
+    assets:
+    - Assets/ResRaw/tables
+    isRawFile: 1
+  - bundle: c772f009.assets
     assets:
     - Packages/com.unity.textmeshpro/Editor Resources/Gizmos/TMP - Font Asset Icon.psd
-  - bundle: 562974cbc3f8790107f6a4300830ae87.assets
+    isRawFile: 0
+  - bundle: 221b0599.assets
     assets:
     - Packages/com.unity.textmeshpro/Editor Resources/Gizmos/TMP - Text Component
       Icon.psd
-  - bundle: f16de81a2946d9fc789b5cc6833b5a2c.assets
+    isRawFile: 0
+  - bundle: dfc5be2a.assets
+    assets:
+    - Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset
+    isRawFile: 0
+  - bundle: 00689e0f.assets
     assets:
     - Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF.asset
-  - bundle: 85b15f8c8df778881e64b45346930838.assets
+    isRawFile: 0
+  - bundle: 4b733519.assets
+    assets:
+    - Assets/TextMesh Pro/Fonts/LiberationSans.ttf
+    isRawFile: 0
+  - bundle: 5f270c69.assets
     assets:
     - Assets/Arts/Fonts/Consolas SDF.asset
-  - bundle: ead905fbc2f78a8c8c2293bbb7ce5911.assets
+    isRawFile: 0
+  - bundle: 93a8bef0.assets
     assets:
     - Assets/Arts/Fonts/Consolas.ttf
-  - bundle: 80bc1ee013d340ed5110b3d20f153b03.assets
+    isRawFile: 0
+  - bundle: 6d3856a9.assets
     assets:
     - Assets/Arts/Materials/Vfx/Mat_VFX_FireSpark.mat
-  - bundle: 368283101e9413accfd057adb2306563.assets
+    isRawFile: 0
+  - bundle: c130d635.assets
     assets:
     - Assets/Arts/Textures/VFX/fire_spark.psd
-  - bundle: a2a4fc13bb6444c0e36703054d4f29c1.assets
-    assets:
-    - Packages/com.unity.render-pipelines.universal/Runtime/Materials/ParticlesUnlit.mat
-  - bundle: a33462554deae1126fdf3b50097f3f2e.assets
+    isRawFile: 0
+  - bundle: eee9cda0.assets
     assets:
     - Packages/com.unity.render-pipelines.universal/Runtime/Materials/Sprite-Unlit-Default.mat
-  - bundle: 2e279549e554d267402323f3f0d02c17.assets
+    isRawFile: 0
+  - bundle: 644235e4.assets
     assets:
     - Assets/Arts/Materials/Line.mat
+    isRawFile: 0
   ruleSprites:
   - spritePath: Assets/Arts/Textures/UI/icon_github.png
     atlasPath: Assets/Res/Atlas/uiatlas.spriteatlas
@@ -694,48 +830,3 @@ MonoBehaviour:
     atlasPath: Assets/Res/Atlas/uiatlas.spriteatlas
   - spritePath: Assets/Arts/Textures/UI/Square.png
     atlasPath: Assets/Res/Atlas/uiatlas.spriteatlas
-  rawGroups:
-  - groupName: tables
-    tip: 
-    searchPattern: '*.txt'
-    searchPaths:
-    - GameTools\tables\data\config
-    builtIn: 0
-    compress: 0
-    disableAssetName: 0
-    assets:
-    - name: Language_EN.txt
-      dir: 0
-    - name: Language_ZH.txt
-      dir: 0
-  - groupName: hotfix
-    tip: 
-    searchPattern: '*.dll'
-    searchPaths:
-    - HybridCLRData\mgf_hotfix
-    builtIn: 0
-    compress: 0
-    disableAssetName: 0
-    assets:
-    - name: GameMain.dll
-      dir: 0
-    - name: HotFix.dll
-      dir: 0
-    - name: mscorlib.dll
-      dir: 0
-    - name: Newtonsoft.Json.dll
-      dir: 0
-    - name: Saro.Entities.dll
-      dir: 0
-    - name: Saro.Entities.Extension.dll
-      dir: 0
-    - name: Saro.MGF.dll
-      dir: 0
-    - name: Saro.MoonAsset.dll
-      dir: 0
-    - name: System.Core.dll
-      dir: 0
-    - name: System.dll
-      dir: 0
-    - name: UniTask.dll
-      dir: 0

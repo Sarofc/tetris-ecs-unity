@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace Tetris.UI
 {
-    [UIWindow((int)EGameUI.AboutPanel, "Assets/Res/Prefab/UI/UIAboutPanel.prefab")]
+    [UIWindow((int)EGameUI.UIAboutPanel, "Assets/Res/Prefabs/UI/UIAboutPanel.prefab")]
     public sealed partial class UIAboutPanel : UIWindow
     {
         public UIAboutPanel(string path) : base(path)
@@ -36,7 +36,7 @@ namespace Tetris.UI
 
         private void OnClick_Close()
         {
-            UIManager.Current.HideWindow(EGameUI.AboutPanel);
+            UIManager.Current.HideWindow(EGameUI.UIAboutPanel);
         }
     }
 

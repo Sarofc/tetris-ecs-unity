@@ -44,7 +44,7 @@ namespace HybridCLR
 #endif
         }
 
-        private static void LoadMetadataForAOTAssembly_Internal(List<string> aotDllList)
+        private static async void LoadMetadataForAOTAssembly_Internal(List<string> aotDllList)
         {
             // 可以加载任意aot assembly的对应的dll。但要求dll必须与unity build过程中生成的裁剪后的dll一致，而不能直接使用原始dll。
             // 我们在BuildProcessor_xxx里添加了处理代码，这些裁剪后的dll在打包时自动被复制到 {项目目录}/HybridCLRData/AssembliesPostIl2CppStrip/{Target} 目录。
@@ -59,24 +59,27 @@ namespace HybridCLR
             sb.AppendLine("LoadMetadataForAOTAssembly:");
 #endif
 
-            foreach (var aotDllName in aotDllList)
+            using (var vfile = await assetManager.OpenVFileAsync("Assets/ResRaw/hotfix"))
             {
-                byte[] dllBytes = assetManager.LoadRawAsset("hotfix/" + aotDllName);
-                if (dllBytes == null)
+                foreach (var aotDllName in aotDllList)
                 {
-                    Debug.LogError($"LoadMetadataForAOTAssembly failed. file not found: {aotDllName}.");
-                    continue;
-                }
-
-                unsafe
-                {
-                    fixed (byte* ptr = dllBytes)
+                    byte[] dllBytes = vfile.ReadFile(aotDllName);
+                    if (dllBytes == null)
                     {
-                        // 加载assembly对应的dll，会自动为它hook。一旦aot泛型函数的native函数不存在，用解释器版本代码
-                        int err = RuntimeApi.LoadMetadataForAOTAssembly((IntPtr)ptr, dllBytes.Length);
+                        Debug.LogError($"LoadMetadataForAOTAssembly failed. file not found: {aotDllName}.");
+                        continue;
+                    }
+
+                    unsafe
+                    {
+                        fixed (byte* ptr = dllBytes)
+                        {
+                            // 加载assembly对应的dll，会自动为它hook。一旦aot泛型函数的native函数不存在，用解释器版本代码
+                            int err = RuntimeApi.LoadMetadataForAOTAssembly((IntPtr)ptr, dllBytes.Length);
 #if ENABLE_LOG
-                        sb.AppendLine($"dll : {aotDllName}. ret : {err}");
+                            sb.AppendLine($"dll : {aotDllName}. ret : {err}");
 #endif
+                        }
                     }
                 }
             }

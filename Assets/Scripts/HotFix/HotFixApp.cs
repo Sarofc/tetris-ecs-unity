@@ -63,7 +63,7 @@ namespace HotFix
 
             Main.Register<SceneController>();
             UIManager.Current.CacheUIAttributes(); // ui反射需要重新缓存一下
-            var uiLoading = UIManager.Current.LoadAndShowWindowAsync(EGameUI.StartWindow);
+            var uiLoading = UIManager.Current.LoadAndShowWindowAsync(EGameUI.UIStartWindow);
             var sceneLoading = SceneController.Current.ChangeScene(SceneController.ESceneType.Title);
             await uiLoading; // ui可以先加载
             await sceneLoading;

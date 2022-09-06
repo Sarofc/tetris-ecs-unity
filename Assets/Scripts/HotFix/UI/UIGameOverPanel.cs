@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace Tetris.UI
 {
-    [UIWindow((int)EGameUI.GameOverPanel, "Assets/Res/Prefab/UI/UIGameOverPanel.prefab")]
+    [UIWindow((int)EGameUI.UIGameOverPanel, "Assets/Res/Prefabs/UI/UIGameOverPanel.prefab")]
     public sealed partial class UIGameOverPanel : UIWindow
     {
         public UIGameOverPanel(string resPath) : base(resPath)
@@ -27,20 +27,20 @@ namespace Tetris.UI
         {
             await SceneController.Current.ChangeScene(SceneController.ESceneType.Title);
 
-            UIManager.Current.UnLoadWindow(EGameUI.GameOverPanel);
-            UIManager.Current.UnLoadWindow(EGameUI.GameHUD);
+            UIManager.Current.UnLoadWindow(EGameUI.UIGameOverPanel);
+            UIManager.Current.UnLoadWindow(EGameUI.UIGameHUD);
 
-            UIManager.Current.LoadAndShowWindowAsync(EGameUI.StartWindow).Forget();
+            UIManager.Current.LoadAndShowWindowAsync(EGameUI.UIStartWindow).Forget();
         }
 
         private void OnClick_Setting()
         {
-            UIManager.Current.LoadAndShowWindowAsync(EGameUI.SettingPanel).Forget();
+            UIManager.Current.LoadAndShowWindowAsync(EGameUI.UISettingPanel).Forget();
         }
 
         private void OnClick_About()
         {
-            UIManager.Current.LoadAndShowWindowAsync(EGameUI.AboutPanel).Forget();
+            UIManager.Current.LoadAndShowWindowAsync(EGameUI.UIAboutPanel).Forget();
         }
     }
 

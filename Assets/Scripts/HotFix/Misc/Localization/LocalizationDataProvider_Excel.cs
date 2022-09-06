@@ -15,7 +15,7 @@ namespace Saro.Localization
                     break;
                 case ELanguage.ZH:
                 {
-                    var csv = CsvLanguageZh.Get();
+                    var csv = csvLanguage_ZH.Get();
                     var result = await csv.LoadAsync();
                     if (!result) return false;
                     foreach (var item in csv.GetTable())
@@ -28,7 +28,7 @@ namespace Saro.Localization
                     break;
                 case ELanguage.EN:
                 {
-                    var csv = CsvLanguageEn.Get();
+                    var csv = csvLanguage_EN.Get();
                     var result = await csv.LoadAsync();
                     if (!result) return false;
                     foreach (var item in csv.GetTable())
@@ -54,7 +54,7 @@ namespace Saro.Localization
                     break;
                 case ELanguage.ZH:
                 {
-                    var csv = CsvLanguageZh.Get();
+                    var csv = csvLanguage_ZH.Get();
                     csv.Load();
                     foreach (var item in csv.GetTable())
                     {
@@ -66,7 +66,7 @@ namespace Saro.Localization
                     break;
                 case ELanguage.EN:
                 {
-                    var csv = CsvLanguageEn.Get();
+                    var csv = csvLanguage_EN.Get();
                     csv.Load();
                     foreach (var item in csv.GetTable())
                     {
