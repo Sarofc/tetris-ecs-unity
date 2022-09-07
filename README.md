@@ -9,7 +9,7 @@ unity资源全异步加载，包体最小化（main场景+单manifest即可）�
 - Unity 2021.3.0f1
 - .Net Standard 2.1
 
-查看 [startup.md](https://github.com/Sarofc/TetrisGame-Unity/blob/main/doc/Startup.md)
+支持pc、android打包，查看 [startup.md](https://github.com/Sarofc/TetrisGame-Unity/blob/main/doc/Startup.md)
 
 ## 游戏界面
 

@@ -22,7 +22,7 @@ MonoBehaviour:
   - .boo
   - .giparams
   - lightingdata.asset
-  resVersion: 369
+  resVersion: 370
   scenesInBuild:
   - {fileID: 102900000, guid: 8943688c1103d8c46b982d0a1a9e2310, type: 3}
   bundleGroups:

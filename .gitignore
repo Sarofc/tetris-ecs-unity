@@ -15,7 +15,6 @@ HybridCLRData/il2cpp_plus_repo/
 HybridCLRData/mgf_hotfix/
 HybridCLRData/LocalIl2CppData/
 
-
 # Visual Studio cache directory
 .vs/
 .idea/
@@ -48,6 +47,7 @@ sysinfo.txt
 *.unitypackage
 
 # extra
+ResRaw/*
 ExtraAssets/*
 Assets/XLua/Gen/*
 Assets/StreamingAssets/*
