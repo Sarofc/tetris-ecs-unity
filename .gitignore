@@ -47,7 +47,7 @@ sysinfo.txt
 *.unitypackage
 
 # extra
-ResRaw/*
+Assets/ResRaw/*
 ExtraAssets/*
 Assets/XLua/Gen/*
 Assets/StreamingAssets/*
