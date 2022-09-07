@@ -22,19 +22,21 @@
       "hash": "42234a8f457d2d96e20e3cf5f761636a4cf7a707"
     },
     "com.saro.mgf": {
-      "version": "file:C:/Users/sarof/Projects/Git/com.saro.mgf",
+      "version": "https://github.com/Sarofc/com.saro.mgf.git#v0.3.1",
       "depth": 0,
-      "source": "local",
-      "dependencies": {}
+      "source": "git",
+      "dependencies": {},
+      "hash": "f239b612f2ceaa359760946ef608957b3fdc5af1"
     },
     "com.saro.moonasset": {
-      "version": "file:C:/Users/sarof/Projects/Git/com.saro.moonasset",
+      "version": "https://github.com/Sarofc/com.saro.moonasset.git#v0.3.1",
       "depth": 0,
-      "source": "local",
+      "source": "git",
       "dependencies": {
         "com.unity.scriptablebuildpipeline": "1.19.6",
         "com.saro.mgf": "https://github.com/Sarofc/com.saro.mgf.git#v0.1.0"
-      }
+      },
+      "hash": "532d1a81405582af7b74b9a3d124ca7c0d3c45bf"
     },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
