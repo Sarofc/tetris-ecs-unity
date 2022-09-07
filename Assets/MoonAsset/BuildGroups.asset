@@ -22,7 +22,7 @@ MonoBehaviour:
   - .boo
   - .giparams
   - lightingdata.asset
-  resVersion: 360
+  resVersion: 369
   scenesInBuild:
   - {fileID: 102900000, guid: 8943688c1103d8c46b982d0a1a9e2310, type: 3}
   bundleGroups:
@@ -122,6 +122,7 @@ MonoBehaviour:
     - Assets/Res/Prefabs/UI/UICountdown.prefab
     - Assets/Res/Prefabs/UI/UIGameHUD.prefab
     - Assets/Res/Prefabs/UI/UIGameOverPanel.prefab
+    - Assets/Res/Prefabs/UI/UIInputHUD.prefab
     - Assets/Res/Prefabs/UI/UISetting.prefab
     - Assets/Res/Prefabs/UI/UIStartPanel.prefab
     - Assets/Res/Prefabs/Vfx/vfx_board.prefab
@@ -337,6 +338,8 @@ MonoBehaviour:
     bundle: 2b2a5412.assets
   - asset: Assets/Res/Prefabs/UI/UIGameOverPanel.prefab
     bundle: 2dd7214a.assets
+  - asset: Assets/Res/Prefabs/UI/UIInputHUD.prefab
+    bundle: 516e4143.assets
   - asset: Assets/Res/Prefabs/UI/UISetting.prefab
     bundle: f86c3828.assets
   - asset: Assets/Res/Prefabs/UI/UIStartPanel.prefab
@@ -713,6 +716,10 @@ MonoBehaviour:
   - bundle: 2dd7214a.assets
     assets:
     - Assets/Res/Prefabs/UI/UIGameOverPanel.prefab
+    isRawFile: 0
+  - bundle: 516e4143.assets
+    assets:
+    - Assets/Res/Prefabs/UI/UIInputHUD.prefab
     isRawFile: 0
   - bundle: f86c3828.assets
     assets:

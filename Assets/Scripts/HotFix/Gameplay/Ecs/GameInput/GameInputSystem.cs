@@ -1,16 +1,31 @@
+//#define USE_INPUT_HUD
+
 using Saro.Entities;
 using Saro.Entities.Extension;
+using Saro.UI;
+using Tetris.UI;
 using UnityEngine;
 
 namespace Tetris
 {
-    internal sealed class GameInputSystem : IEcsRunSystem, IEcsInitSystem
+    internal sealed class GameInputSystem : IEcsRunSystem, IEcsInitSystem, IEcsDestroySystem
     {
         public bool Enable { get; set; } = true;
+
+        private IInputController m_InputController;
+
         void IEcsInitSystem.Init(EcsSystems systems)
         {
             var world = systems.GetWorld();
             world.GetSingleton<GameInputComponent>();
+
+#if USE_INPUT_HUD
+            m_InputController = new Input_HUD();
+#else
+            m_InputController = new Input_Keyboard();
+#endif
+
+            m_InputController.BindInput(world);
         }
 
         void IEcsRunSystem.Run(EcsSystems systems)
@@ -23,29 +38,31 @@ namespace Tetris
 
         private void ProcessBlockInput(EcsWorld world, ref GameInputComponent input, float deltaTime)
         {
+            m_InputController.ProcessInput();
+
             // hard & soft drop
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (input.spaceDown)
             {
                 world.SendMessage(new PieceDropRequest { dropType = EDropType.Hard });
             }
-            else if (!input.downPressed && Input.GetKeyDown(KeyCode.DownArrow))
+            else if (!input.downPressed && input.downArrowDown)
             {
                 input.downPressed = true;
                 world.SendMessage(new PieceDropRequest { dropType = EDropType.Soft });
             }
-            else if (input.downPressed && Input.GetKeyUp(KeyCode.DownArrow))
+            else if (input.downPressed && input.downArrowUp)
             {
                 input.downPressed = false;
                 world.SendMessage(new PieceDropRequest { dropType = EDropType.Normal });
             }
 
             // move left
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            if (input.leftArrowDown)
             {
                 world.SendMessage(new PieceMoveRequest { moveDelta = Vector2.left });
                 input.leftPressed = true;
             }
-            if (!input.rightPressed && input.leftPressed && Input.GetKey(KeyCode.LeftArrow))
+            if (!input.rightPressed && input.leftPressed && input.leftArrowPressing)
             {
                 if (input.lastStartTime >= TetrisDef.StartTime)
                 {
@@ -64,7 +81,7 @@ namespace Tetris
                     input.lastStartTime += deltaTime;
                 }
             }
-            if (input.leftPressed && Input.GetKeyUp(KeyCode.LeftArrow))
+            if (input.leftPressed && input.leftArrowUp)
             {
                 input.leftPressed = false;
                 input.lastStartTime = 0;
@@ -72,12 +89,12 @@ namespace Tetris
             }
 
             // move right
-            if (Input.GetKeyDown(KeyCode.RightArrow))
+            if (input.rightArrowDown)
             {
                 world.SendMessage(new PieceMoveRequest { moveDelta = Vector2.right });
                 input.rightPressed = true;
             }
-            if (!input.leftPressed && input.rightPressed && Input.GetKey(KeyCode.RightArrow))
+            if (!input.leftPressed && input.rightPressed && input.rightArrowPressing)
             {
                 if (input.lastStartTime >= TetrisDef.StartTime)
                 {
@@ -97,7 +114,7 @@ namespace Tetris
                     input.lastStartTime += deltaTime;
                 }
             }
-            if (input.rightPressed && Input.GetKeyUp(KeyCode.RightArrow))
+            if (input.rightPressed && input.rightArrowUp)
             {
                 input.rightPressed = false;
                 input.lastStartTime = 0;
@@ -105,11 +122,16 @@ namespace Tetris
             }
 
             // rotate
-            if (Input.GetKeyDown(KeyCode.Z)) world.SendMessage(new PieceRotationRequest { clockwise = false });
-            if (Input.GetKeyDown(KeyCode.X)) world.SendMessage(new PieceRotationRequest { clockwise = true });
+            if (input.zDown) world.SendMessage(new PieceRotationRequest { clockwise = false });
+            if (input.xDown) world.SendMessage(new PieceRotationRequest { clockwise = true });
 
             // hold
-            if (Input.GetKeyDown(KeyCode.C)) world.SendMessage(new PieceHoldRequest());
+            if (input.cDown) world.SendMessage(new PieceHoldRequest());
+        }
+
+        void IEcsDestroySystem.Destroy(EcsSystems systems)
+        {
+            m_InputController.OnDestroy();
         }
     }
 }

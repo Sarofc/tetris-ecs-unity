@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEditor;
-using UnityEngine;
+﻿using System.Collections.Generic;
 
 namespace HybridCLR.Editor
 {
@@ -17,15 +10,8 @@ namespace HybridCLR.Editor
         public static List<string> HotUpdateAssemblies { get; } = new List<string>
         {
             "HotFix.dll",
-            //"HotFix2.dll",
         };
 
         public static List<string> AOTMetaAssemblies { get => HybridCLRUtil.AOTMetaAssemblies; }
-
-        [System.Obsolete("对此项目是无用的")]
-        public static List<string> AssetBundleFiles { get; } = new List<string>
-        {
-            "common",
-        };
     }
 }

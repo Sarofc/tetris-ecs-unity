@@ -13,6 +13,7 @@ namespace Tetris.UI
             { "tmptxt_", typeof(TMP_Text) },
             { "tmpdrop_", typeof(TMP_Dropdown) },
             { "anim_", typeof(Animator) },
+            { "xbtn_", typeof(XButton) },
         };
     }
 }

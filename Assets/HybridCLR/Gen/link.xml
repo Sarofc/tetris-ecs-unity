@@ -20,6 +20,8 @@
 		<type fullname="UnityEngine.MaterialPropertyBlock" preserve="all"/>
 		<type fullname="UnityEngine.Rect" preserve="all"/>
 		<type fullname="UnityEngine.Color" preserve="all"/>
+		<type fullname="UnityEngine.Sprite" preserve="all"/>
+		<type fullname="UnityEngine.RectTransform" preserve="all"/>
 		<type fullname="UnityEngine.Events.UnityEvent" preserve="all"/>
 		<type fullname="UnityEngine.Events.UnityAction" preserve="all"/>
 		<type fullname="UnityEngine.Application" preserve="all"/>
@@ -31,8 +33,26 @@
 		<type fullname="UnityEngine.Vector3Int" preserve="all"/>
 	</assembly>
 	<assembly fullname="UnityEngine.UI">
+		<type fullname="UnityEngine.UI.Button+ButtonClickedEvent" preserve="all"/>
+		<type fullname="UnityEngine.UI.Navigation" preserve="all"/>
+		<type fullname="UnityEngine.UI.Selectable+Transition" preserve="all"/>
+		<type fullname="UnityEngine.UI.ColorBlock" preserve="all"/>
+		<type fullname="UnityEngine.UI.SpriteState" preserve="all"/>
+		<type fullname="UnityEngine.UI.AnimationTriggers" preserve="all"/>
+		<type fullname="UnityEngine.UI.Graphic" preserve="all"/>
+		<type fullname="UnityEngine.UI.Image" preserve="all"/>
+		<type fullname="UnityEngine.UI.Selectable+SelectionState" preserve="all"/>
+		<type fullname="UnityEngine.EventSystems.PointerEventData" preserve="all"/>
+		<type fullname="UnityEngine.EventSystems.BaseEventData" preserve="all"/>
+		<type fullname="UnityEngine.UI.Selectable" preserve="all"/>
+		<type fullname="UnityEngine.EventSystems.AxisEventData" preserve="all"/>
+		<type fullname="UnityEngine.EventSystems.MoveDirection" preserve="all"/>
 		<type fullname="UnityEngine.UI.Button" preserve="all"/>
 		<type fullname="UnityEngine.UI.Slider" preserve="all"/>
+	</assembly>
+	<assembly fullname="UnityEngine.AnimationModule">
+		<type fullname="UnityEngine.Animator" preserve="all"/>
+		<type fullname="UnityEngine.AnimationClip" preserve="all"/>
 	</assembly>
 	<assembly fullname="UnityEngine.UIModule">
 		<type fullname="UnityEngine.Canvas" preserve="all"/>
@@ -40,11 +60,12 @@
 	</assembly>
 	<assembly fullname="UnityEngine.AudioModule">
 		<type fullname="UnityEngine.AudioClip" preserve="all"/>
-	</assembly>
-	<assembly fullname="UnityEngine.AnimationModule">
-		<type fullname="UnityEngine.Animator" preserve="all"/>
+		<type fullname="UnityEngine.Audio.AudioMixerSnapshot" preserve="all"/>
 	</assembly>
 	<assembly fullname="UnityEngine.ParticleSystemModule">
 		<type fullname="UnityEngine.ParticleSystem" preserve="all"/>
+	</assembly>
+	<assembly fullname="UnityEngine.SpriteMaskModule">
+		<type fullname="UnityEngine.SpriteMask" preserve="all"/>
 	</assembly>
 </linker>

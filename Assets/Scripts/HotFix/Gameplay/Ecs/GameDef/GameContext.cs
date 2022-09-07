@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using Saro.Entities;
 using Saro.Entities.Extension;
+using Saro.UI;
+using Tetris.UI;
 using UnityEngine;
 
 namespace Tetris
@@ -38,6 +41,10 @@ namespace Tetris
 
         public EcsWorld world;
 
+        public List<Matrix4x4[]> TransfromMatrixBatches { get; set; }
+        public List<Vector4[]> ColorBatches { get; set; }
+        public List<Vector4[]> SpriteOffsetBatches { get; internal set; }
+
         public GameContext(EcsWorld world)
         {
             this.world = world;
@@ -47,10 +54,6 @@ namespace Tetris
             grid = new EcsEntity[k_Height][];
             for (var i = 0; i < k_Height; i++) grid[i] = new EcsEntity[width];
         }
-
-        public List<Matrix4x4[]> TransfromMatrixBatches { get; set; }
-        public List<Vector4[]> ColorBatches { get; set; }
-        public List<Vector4[]> SpriteOffsetBatches { get; internal set; }
 
         public void SendMessage<T>(in T @event) where T : struct, IEcsComponent
         {

@@ -1,4 +1,8 @@
-﻿using UnityEngine;
+﻿using Cysharp.Threading.Tasks;
+using Saro.UI;
+using System.Collections.Generic;
+using Tetris.UI;
+using UnityEngine;
 
 namespace Tetris
 {
@@ -10,5 +14,18 @@ namespace Tetris
 
         public GameObject tetrisBoard;
         public LineRenderer linePrefab;
+
+        /// <summary>
+        /// 预载游戏资源
+        /// </summary>
+        /// <returns></returns>
+        public async UniTask PreloadAssets()
+        {
+            var tasks = new List<UniTask>();
+            tasks.Add(UIManager.Current.LoadWindowAsync(EGameUI.UIGameHUD));
+            tasks.Add(UIManager.Current.LoadWindowAsync(EGameUI.UIInputHUD));
+
+            await UniTask.WhenAll(tasks);
+        }
     }
 }

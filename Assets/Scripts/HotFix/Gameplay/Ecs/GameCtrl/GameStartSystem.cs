@@ -30,7 +30,7 @@ namespace Tetris
 
         private async void OpenUI()
         {
-            await UIManager.Instance.LoadAndShowWindowAsync(EGameUI.UIGameHUD, m_GameCtx);
+            await UIManager.Current.LoadAndShowWindowAsync(EGameUI.UIGameHUD, m_GameCtx);
         }
     }
 }

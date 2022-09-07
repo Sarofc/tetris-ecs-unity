@@ -11,6 +11,7 @@ using Tetris.Save;
 using Tetris.UI;
 using UnityEngine;
 using System.Linq;
+using Saro.Net;
 
 namespace HotFix
 {
@@ -21,7 +22,7 @@ namespace HotFix
             if (HybridCLR.HybridCLRUtil.IsHotFix)
             {
                 var aotList = HybridCLR.HybridCLRUtil.AOTMetaAssemblies;
-                // 如果 发包后，此列表修改了，那就得同步一下
+                // 如果 发包后，此列表修改了，那就得同步一下？
                 //aotList = new List<string>
                 //{
                 //    // add more
@@ -53,13 +54,22 @@ namespace HotFix
     {
         public static async UniTask Start()
         {
+            // 设置帧率
+#if UNITY_EDITOR
+            QualitySettings.vSyncCount = 0;
+#else
+            Application.targetFrameRate = 60;
+#endif
+
             await SetupLocalization();
 
             LoadGameSave();
 
-#if DEBUG
-            Main.Instance.gameObject.AddComponent<ProfilerDisplay>();
-#endif
+            // test 自由开关
+            {
+                //Main.Instance.gameObject.AddComponent<ProfilerDisplay>();
+                //Main.Instance.gameObject.AddComponent<DownloaderDebuggerGUI>();
+            }
 
             Main.Register<SceneController>();
             UIManager.Current.CacheUIAttributes(); // ui反射需要重新缓存一下
@@ -68,7 +78,7 @@ namespace HotFix
             await uiLoading; // ui可以先加载
             await sceneLoading;
 
-            {
+            { // 弹窗测试
                 //Saro.UI.UIManager.Current.QueueAsync(Tetris.UI.ETetrisUI.AboutPanel, 1);
                 //Saro.UI.UIManager.Current.QueueAsync(Tetris.UI.ETetrisUI.SettingPanel, -1);
 

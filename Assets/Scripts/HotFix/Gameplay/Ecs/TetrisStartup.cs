@@ -2,6 +2,7 @@
 #define ENABLE_DEBUG_ECS
 #endif
 
+using Saro;
 using Saro.Entities;
 using UnityEngine;
 
@@ -17,13 +18,16 @@ namespace Tetris
 #endif
         private EcsSystems m_Systems;
 
-        private void Start()
+        private async void Start()
         {
             var world = new EcsWorld("Game");
 
             var gameCtx = new GameContext(world);
             gameCtx.batchRenderer = batchRenderer;
             gameCtx.gameplayAssets = gameplayAssets;
+
+            // TODO 可能要个预载画面
+            await gameplayAssets.PreloadAssets();
 
             m_Systems = new EcsSystems("GameSystems", world, gameCtx);
 

@@ -7,6 +7,7 @@
         UISettingPanel = 1003,
         UIGameOverPanel = 1004,
         UIGameHUD = 1005,
-        UICheckAssets = 1006
+        UICheckAssets = 1006,
+        UIInputHUD = 1007
     }
 }

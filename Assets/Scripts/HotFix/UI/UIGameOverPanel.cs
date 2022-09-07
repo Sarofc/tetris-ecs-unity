@@ -29,6 +29,7 @@ namespace Tetris.UI
 
             UIManager.Current.UnLoadWindow(EGameUI.UIGameOverPanel);
             UIManager.Current.UnLoadWindow(EGameUI.UIGameHUD);
+            UIManager.Current.UnLoadWindow(EGameUI.UIInputHUD);
 
             UIManager.Current.LoadAndShowWindowAsync(EGameUI.UIStartWindow).Forget();
         }

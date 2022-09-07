@@ -24,8 +24,6 @@ namespace Tetris
     {
         public async UniTask StartAsync()
         {
-            QualitySettings.vSyncCount = 0;
-
             Main.Register<EventManager>();
             SetupDownloader();
             SetupAssetManager();
@@ -39,10 +37,10 @@ namespace Tetris
 
             await UpdateAssetsAsync();
 
-            await LoadHybirdCLR();
+            await LoadHybridCLR();
         }
 
-        private async UniTask LoadHybirdCLR()
+        private async UniTask LoadHybridCLR()
         {
             Assembly hotfix = null;
 
@@ -88,10 +86,6 @@ namespace Tetris
         private void SetupDownloader()
         {
             Downloader.Initialize();
-
-#if ENABLE_DOWNLODER_GUI || true
-            DownloaderDebuggerGUI.Create();
-#endif
 
             Downloader.s_SpeedLimit = 256;
 
@@ -179,7 +173,7 @@ namespace Tetris
             };
 
             var assetUpdaterComponent = Main.Register<AssetUpdaterManager>();
-            assetUpdaterComponent.RequestDownloadOperationFunc = RequestDownloadOperation;
+            //assetUpdaterComponent.RequestDownloadOperationFunc = RequestDownloadOperation;
 
             //var uiloading = await UIManager.Current.OpenUIAsync("UILoading");
 
@@ -190,41 +184,5 @@ namespace Tetris
             //uiloading.Close();
         }
 
-        private UniTask<bool> RequestDownloadOperation(List<DownloadInfo> infos)
-        {
-            var cts = new UniTaskCompletionSource<bool>();
-
-            var totalDownloadSize = 0L;
-
-            foreach (var info in infos) totalDownloadSize += info.Size;
-
-            if (totalDownloadSize <= 0) // 任意大小都提示
-            {
-                cts.TrySetResult(true);
-            }
-            else // 大于5m就 提示
-            {
-                var info = new AlertDialogInfo
-                {
-                    title = "下载",
-                    content = $"下载文件大小：{Downloader.FormatBytes(totalDownloadSize)}，是否要下载？",
-                    leftText = "退出",
-                    rightText = "下载",
-                    clickHandler = state =>
-                    {
-                        if (state == 0)
-                            cts.TrySetResult(false);
-                        else if (state == 1)
-                            cts.TrySetResult(true);
-                        else
-                            cts.TrySetException(new Exception("MessageBox can't handle click: " + state));
-                    }
-                };
-
-                UIManager.Current.QueueAsync(EDefaultUI.UIAlertDialog, 99, info);
-            }
-
-            return cts.Task;
-        }
     }
 }

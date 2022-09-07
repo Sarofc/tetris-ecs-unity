@@ -14,10 +14,13 @@ namespace HybridCLR.Editor
             typeof(UnityEngine.Debug),
             typeof(UnityEngine.SceneManagement.SceneManager),
             typeof(UnityEngine.Animator),
+            typeof(UnityEngine.AnimationClip),
             typeof(UnityEngine.ParticleSystem),
             typeof(UnityEngine.AnimationCurve),
             typeof(UnityEngine.Graphics),
             typeof(UnityEngine.LineRenderer),
+            typeof(UnityEngine.Audio.AudioMixerSnapshot),
+            typeof(UnityEngine.SpriteMask),
 
             typeof(UnityEngine.Color),
             typeof(UnityEngine.Rect),
