@@ -36,13 +36,13 @@
       "hash": "afdf591320b08cd52244cd809ddabafc75919953"
     },
     "com.saro.mgf": {
-      "version": "https://github.com/Sarofc/com.saro.mgf.git#v0.5.0",
+      "version": "https://github.com/Sarofc/com.saro.mgf.git#v0.5.1",
       "depth": 0,
       "source": "git",
       "dependencies": {
         "com.unity.nuget.newtonsoft-json": "3.0.2"
       },
-      "hash": "233310cc0e5d56fa938efe62c2c4ae2d4e3f7106"
+      "hash": "962610b56899c76e4f1dd76f6bc83a071bc0f71f"
     },
     "com.saro.mgf.hybridclr": {
       "version": "https://github.com/Sarofc/com.saro.mgf.hybridclr.git#v1.0.0",

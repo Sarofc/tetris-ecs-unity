@@ -1,6 +1,6 @@
 {
     "dependencies": {
-        "com.saro.mgf": "https://github.com/Sarofc/com.saro.mgf.git#v0.5.0",
+        "com.saro.mgf": "https://github.com/Sarofc/com.saro.mgf.git#v0.5.1",
         "com.saro.moonasset": "https://github.com/Sarofc/com.saro.moonasset.git#v0.4.1",
         "com.focus-creative-games.hybridclr_unity": "https://github.com/focus-creative-games/hybridclr_unity.git#v2.0.0-rc",
         "com.saro.entities": "https://github.com/Sarofc/ecslite.git?path=/ecslite#v0.2.0",
