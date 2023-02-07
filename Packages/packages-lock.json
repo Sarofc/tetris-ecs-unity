@@ -29,41 +29,38 @@
       "hash": "42234a8f457d2d96e20e3cf5f761636a4cf7a707"
     },
     "com.saro.gtable": {
-      "version": "https://github.com/Sarofc/GTable.git?path=/GTable.Core/src",
+      "version": "https://github.com/Sarofc/GTable.git?path=/GTable.Core/src#v2.0.0",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "f80d8499aba5f90105dbf4566926bf43dafdf689"
+      "hash": "5a561d0908da7a68ae84a28e1e2c6f095b6ac278"
     },
     "com.saro.mgf": {
-      "version": "file:com.saro.mgf",
+      "version": "https://github.com/Sarofc/com.saro.mgf.git#v0.5.0",
       "depth": 0,
-      "source": "embedded",
+      "source": "git",
       "dependencies": {
         "com.unity.nuget.newtonsoft-json": "3.0.2"
-      }
+      },
+      "hash": "233310cc0e5d56fa938efe62c2c4ae2d4e3f7106"
     },
     "com.saro.mgf.hybridclr": {
-      "version": "file:C:/Users/sarof/Projects/Git/com.saro.mgf.hybridclr",
+      "version": "https://github.com/Sarofc/com.saro.mgf.hybridclr.git#v1.0.0",
       "depth": 0,
-      "source": "local",
+      "source": "git",
       "dependencies": {
         "com.focus-creative-games.hybridclr_unity": "https://github.com/focus-creative-games/hybridclr_unity.git#v2.0.0-rc"
-      }
+      },
+      "hash": "6ad6bbb29e8ca4cad6aee6fbd22c8a60530a0fef"
     },
     "com.saro.moonasset": {
-      "version": "file:com.saro.moonasset",
+      "version": "https://github.com/Sarofc/com.saro.moonasset.git#v0.4.1",
       "depth": 0,
-      "source": "embedded",
+      "source": "git",
       "dependencies": {
         "com.unity.scriptablebuildpipeline": "1.19.6"
-      }
-    },
-    "com.saro.toolset": {
-      "version": "file:C:/Users/sarof/Projects/Git/com.hwaet.projectcloner",
-      "depth": 0,
-      "source": "local",
-      "dependencies": {}
+      },
+      "hash": "73aaef29fcd0c865b19ee46439f9861ababa036e"
     },
     "com.tayx.graphy": {
       "version": "https://github.com/Tayx94/graphy.git",
