@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.focus-creative-games.hybridclr_unity": {
+      "version": "https://github.com/focus-creative-games/hybridclr_unity.git#v2.0.0-rc",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "fdba92588a55810a45d963a085c142df968d5131"
+    },
     "com.saro.entities": {
       "version": "https://github.com/Sarofc/ecslite.git?path=/ecslite#v0.2.0",
       "depth": 0,
@@ -21,22 +28,49 @@
       "dependencies": {},
       "hash": "42234a8f457d2d96e20e3cf5f761636a4cf7a707"
     },
-    "com.saro.mgf": {
-      "version": "https://github.com/Sarofc/com.saro.mgf.git#v0.3.1",
+    "com.saro.gtable": {
+      "version": "https://github.com/Sarofc/GTable.git?path=/GTable.Core/src",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "f239b612f2ceaa359760946ef608957b3fdc5af1"
+      "hash": "f80d8499aba5f90105dbf4566926bf43dafdf689"
+    },
+    "com.saro.mgf": {
+      "version": "file:com.saro.mgf",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.unity.nuget.newtonsoft-json": "3.0.2"
+      }
+    },
+    "com.saro.mgf.hybridclr": {
+      "version": "file:C:/Users/sarof/Projects/Git/com.saro.mgf.hybridclr",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {
+        "com.focus-creative-games.hybridclr_unity": "https://github.com/focus-creative-games/hybridclr_unity.git#v2.0.0-rc"
+      }
     },
     "com.saro.moonasset": {
-      "version": "https://github.com/Sarofc/com.saro.moonasset.git#v0.3.1",
+      "version": "file:com.saro.moonasset",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.unity.scriptablebuildpipeline": "1.19.6"
+      }
+    },
+    "com.saro.toolset": {
+      "version": "file:C:/Users/sarof/Projects/Git/com.hwaet.projectcloner",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {}
+    },
+    "com.tayx.graphy": {
+      "version": "https://github.com/Tayx94/graphy.git",
       "depth": 0,
       "source": "git",
-      "dependencies": {
-        "com.unity.scriptablebuildpipeline": "1.19.6",
-        "com.saro.mgf": "https://github.com/Sarofc/com.saro.mgf.git#v0.1.0"
-      },
-      "hash": "532d1a81405582af7b74b9a3d124ca7c0d3c45bf"
+      "dependencies": {},
+      "hash": "b225d122912a17eb527af8604e74b34284fe7249"
     },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
@@ -98,6 +132,13 @@
     },
     "com.unity.mathematics": {
       "version": "1.2.5",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.nuget.newtonsoft-json": {
+      "version": "3.0.2",
       "depth": 1,
       "source": "registry",
       "dependencies": {},

@@ -3,7 +3,6 @@ using Saro;
 using Saro.Audio;
 using Saro.Core;
 using Saro.Localization;
-using Saro.Profiler;
 using Saro.UI;
 using Saro.Utility;
 using Tetris;
@@ -11,41 +10,52 @@ using Tetris.Save;
 using Tetris.UI;
 using UnityEngine;
 using System.Linq;
-using Saro.Net;
 
 namespace HotFix
 {
     public static class HotFixApp
     {
+        //"mscorlib.dll",
+        //"System.dll",
+        //"System.Core.dll", // 如果使用了Linq，需要这个
+        //"Newtonsoft.Json.dll",
+        //"UniTask.dll",
+        //"GameMain.dll",
+        //"Saro.MGF.dll",
+        //"Saro.MoonAsset.dll",
+        //"Saro.Entities.dll",
+        //"Saro.Entities.Extension.dll",
+
         public static void Start()
         {
             if (HybridCLR.HybridCLRUtil.IsHotFix)
             {
-                var aotList = HybridCLR.HybridCLRUtil.AOTMetaAssemblies;
-                // 如果 发包后，此列表修改了，那就得同步一下？
-                //aotList = new List<string>
-                //{
-                //    // add more
-                //};
+                try
+                {
+                    // aot元数据补充
+                    HybridCLR.HybridCLRUtil.LoadMetadataForAOTAssembly();
 
-                // aot元数据补充
-                HybridCLR.HybridCLRUtil.LoadMetadataForAOTAssembly(aotList);
-
-                // 反射需要重新加载一下
-                ReCacheAssemblies();
+                    // 反射需要重新加载一下
+                    ReCacheAssemblies();
+                }
+                catch (System.Exception e)
+                {
+                    Log.ERROR(e);
+                }
             }
 
+            // 这后面可以使用非aot泛型了
             // 启动游戏
             HotFixAppInternal.Start().Forget();
         }
 
         private static void ReCacheAssemblies()
         {
-            ReflectionUtility.ClearCacheAssemblies();
-            ReflectionUtility.CacheAssemblies();
+            TypeUtility.ClearCacheAssemblies();
+            TypeUtility.CacheAssemblies();
 
 #if ENABLE_LOG
-            Debug.Log("ReCacheAssemblies:\n" + string.Join(", ", ReflectionUtility.AssemblyMap.Values.Select(asm => asm.GetName().Name)));
+            Debug.Log("ReCacheAssemblies:\n" + string.Join(", ", TypeUtility.AssemblyMap.Values.Select(asm => asm.GetName().Name)));
 #endif
         }
     }
@@ -67,7 +77,6 @@ namespace HotFix
 
             // test 自由开关
             {
-                //Main.Instance.gameObject.AddComponent<ProfilerDisplay>();
                 //Main.Instance.gameObject.AddComponent<DownloaderDebuggerGUI>();
             }
 

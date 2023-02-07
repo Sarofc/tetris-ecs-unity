@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Saro.Entities;
 using Saro.Entities.Extension;
-using Saro.Entities;
 using UnityEngine;
 
 namespace Tetris
@@ -70,11 +69,13 @@ namespace Tetris
             // TODO bug?
             // 1. 没有aot，补充元数据，不支持
             // 2. aot了，就支持了
-            Span<Vector2Int> points = stackalloc Vector2Int[4];
-            points[0] = Vector2Int.RoundToInt(rootPos + new Vector3(1, 1));
-            points[1] = Vector2Int.RoundToInt(rootPos + new Vector3(1, -1));
-            points[2] = Vector2Int.RoundToInt(rootPos + new Vector3(-1, 1));
-            points[3] = Vector2Int.RoundToInt(rootPos + new Vector3(-1, -1));
+            ReadOnlySpan<Vector2Int> points = stackalloc Vector2Int[]
+            {
+                Vector2Int.RoundToInt(rootPos + new Vector3(1, 1)),
+                Vector2Int.RoundToInt(rootPos + new Vector3(1, -1)),
+                Vector2Int.RoundToInt(rootPos + new Vector3(-1, 1)),
+                Vector2Int.RoundToInt(rootPos + new Vector3(-1, -1)),
+            };
 
             var c1 = 0; // tspin
             var c2 = 0; // mini

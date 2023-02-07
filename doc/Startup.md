@@ -5,8 +5,10 @@
 
 可热更新hotfix程序集里的所有代码，打包流程大体上没什么大变化，新增了代码打包相关代码。
 
-1. 启动场景 Main.unity
+0. HybridCLR/Installer安装hybridclr
+1. 打开启动场景 Main.unity
 2. MGF Tools/Build 开启打包面板
+3. 确保首包StreammingAssets，存在一个manifest文件。打ab后，点击Copy to DLC folder即可
 
 ### 配置Manifest
 <img src="https://github.com/Sarofc/tetris-ecs-unity/blob/main/doc/manifest.jpg"><img>
@@ -25,5 +27,4 @@
 
 ### 注意事项
 
-1. 使用fileserver时，需要注意防火墙，server的url在GameTools的json里，要与manifest的url一样
-2. 配置AotConfig.cs，生成link.xml
+1. 使用fileserver时，需要注意防火墙，server的url在GameTools的json里，要与MoonAsset/Manifest的url一样

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Saro;
 using Saro.Entities;
 using Saro.Entities.Extension;
 using Saro.Utility;
@@ -42,12 +43,12 @@ namespace Tetris
 
         private static void RandomLeft(List<EcsEntity> queue)
         {
-            RandomUtility.Shuffle(queue, 0, 7);
+            GRandom.Shuffle(queue, 0, 7);
         }
 
         private static void RandomRight(List<EcsEntity> queue)
         {
-            RandomUtility.Shuffle(queue, 7, 7);
+            GRandom.Shuffle(queue, 7, 7);
         }
     }
 }

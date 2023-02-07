@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
-using Saro.Table;
+using Saro.GTable;
 
 namespace Saro.Localization
 {

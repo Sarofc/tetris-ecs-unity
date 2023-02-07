@@ -13,8 +13,7 @@ using Saro.Localization;
 using Saro.MoonAsset;
 using Saro.MoonAsset.Update;
 using Saro.Net;
-using Saro.Profiler;
-using Saro.Table;
+using Saro.GTable;
 using Saro.UI;
 using UnityEngine;
 
@@ -26,14 +25,15 @@ namespace Tetris
         {
             Main.Register<EventManager>();
             SetupDownloader();
-            SetupAssetManager();
+            await MoonAsset.RegisterAsync();
             SetupDataTable();
 
             //await TMP_Registers.LoadSettings(); // 加载tmp的配置
             Main.Register<UIManager>();
             // TODO 探究易用、易扩展的资源加载方式
             await Main.Register<AudioManager>().InitializeAsync("Assets/Res/Audios/");
-            Main.Register<EffectManager>().SetAssetInterface(Main.Resolve<IAssetManager>(), "Assets/Res/Prefabs/Vfx/");
+            Main.Register<EffectManager>().SetLoadPath("Assets/Res/Prefabs/Vfx/");
+            //Main.Register<EffectManager>().SetAssetInterface(Main.Resolve<IAssetManager>(), "Assets/Res/Prefabs/Vfx/");
 
             await UpdateAssetsAsync();
 
@@ -44,23 +44,20 @@ namespace Tetris
         {
             Assembly hotfix = null;
 
-            Log.ERROR("HybridCLR", $"hotfix enable: {HybridCLR.HybridCLRUtil.IsHotFix}");
-
             // hybridclr只有打包后才能生效
 #if UNITY_EDITOR
-            bool editor = true;
-            if (!HybridCLR.HybridCLRUtil.IsHotFix || editor)
+            if (false)
 #else
-            if (!HybridCLR.HybridCLRUtil.IsHotFix)
+            if (HybridCLR.HybridCLRUtil.IsHotFix)
 #endif
-            {
-                hotfix = AppDomain.CurrentDomain.GetAssemblies().First(assembly => assembly.GetName().Name == Path.GetFileNameWithoutExtension(HybridCLR.HybridCLRUtil.s_HotFixDLL));
-            }
-            else
             {
                 using var vfile = await IAssetManager.Current.OpenVFileAsync("Assets/ResRaw/hotfix");
                 var hotfixBytes = vfile.ReadFile(HybridCLR.HybridCLRUtil.s_HotFixDLL);
                 hotfix = Assembly.Load(hotfixBytes);
+            }
+            else
+            {
+                hotfix = AppDomain.CurrentDomain.GetAssemblies().First(assembly => assembly.GetName().Name == Path.GetFileNameWithoutExtension(HybridCLR.HybridCLRUtil.s_HotFixDLL));
             }
 
             if (hotfix == null)
@@ -74,20 +71,11 @@ namespace Tetris
             mainMethod.Invoke(null, null);
         }
 
-        private void SetupAssetManager()
-        {
-            var moonAsset = new MoonAsset();
-            moonAsset.SetDefaultLocators();
-            moonAsset.Policy.AutoUnloadAsset = true;
-
-            Main.Register<IAssetManager>(moonAsset);
-        }
-
         private void SetupDownloader()
         {
             Downloader.Initialize();
 
-            Downloader.s_SpeedLimit = 256;
+            Downloader.s_SpeedLimit = 256; // 限速
 
             Downloader.s_GlobalCompleted += download =>
             {
@@ -108,7 +96,7 @@ namespace Tetris
                 var mode = MoonAsset.s_Mode;
                 if (mode == MoonAsset.EMode.AssetDatabase)
                 {
-                    using (var fs = new FileStream($"GameTools/tables/data/config/{tableName}", FileMode.Open,
+                    using (var fs = new FileStream($"ExtraAssets/tables/data/{tableName}", FileMode.Open,
                                FileAccess.Read))
                     {
                         var buffer = new byte[fs.Length];
@@ -126,7 +114,7 @@ namespace Tetris
                 var mode = MoonAsset.s_Mode;
                 if (mode == MoonAsset.EMode.AssetDatabase)
                 {
-                    using (var fs = new FileStream($"GameTools/tables/data/config/{tableName}", FileMode.Open,
+                    using (var fs = new FileStream($"ExtraAssets/tables/data/{tableName}", FileMode.Open,
                                FileAccess.Read))
                     {
                         var buffer = new byte[fs.Length];
