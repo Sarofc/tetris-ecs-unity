@@ -34,7 +34,7 @@ MonoBehaviour:
   - Saro.MoonAsset.dll
   - Saro.Entities.dll
   - Saro.Entities.Extension.dll
-  collectAssetReferenceTypes: 1
+  collectAssetReferenceTypes: 0
   outputLinkFile: HybridCLRData/Generated/link.xml
   outputAOTGenericReferenceFile: HybridCLRData/Generated/AOTGenericReferences.cs
   maxGenericReferenceIteration: 10

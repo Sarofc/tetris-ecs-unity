@@ -6,7 +6,7 @@
         "com.saro.entities": "https://github.com/Sarofc/ecslite.git?path=/ecslite#v0.2.0",
         "com.saro.entities.extension": "https://github.com/Sarofc/ecslite.git?path=/ecslite-extension#v0.2.0",
         "com.saro.entities.unityeditor": "https://github.com/Sarofc/ecslite.git?path=/ecslite-unityeditor#v0.2.0",
-        "com.saro.gtable": "https://github.com/Sarofc/GTable.git?path=/GTable.Core/src#v2.0.0",
+        "com.saro.gtable": "https://github.com/Sarofc/GTable.git?path=/GTable.Core/src#v2.0.1",
         "com.saro.mgf.hybridclr": "https://github.com/Sarofc/com.saro.mgf.hybridclr.git#v1.0.0",
         "com.tayx.graphy": "https://github.com/Tayx94/graphy.git",
         "com.unity.2d.sprite": "1.0.0",

@@ -7,9 +7,6 @@ Assets/AssetStoreTools*
 Logs/
 UserSettings/
 
-# HybridCLR
-HybridCLRData
-
 # Visual Studio cache directory
 .vs/
 .idea/
@@ -47,3 +44,6 @@ ExtraAssets/*
 Assets/XLua/Gen/*
 Assets/StreamingAssets/*
 GameTools/FileServer/Content/*
+
+# HybridCLR
+HybridCLRData

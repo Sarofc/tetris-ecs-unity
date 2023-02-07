@@ -29,11 +29,11 @@
       "hash": "42234a8f457d2d96e20e3cf5f761636a4cf7a707"
     },
     "com.saro.gtable": {
-      "version": "https://github.com/Sarofc/GTable.git?path=/GTable.Core/src#v2.0.0",
+      "version": "https://github.com/Sarofc/GTable.git?path=/GTable.Core/src#v2.0.1",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "5a561d0908da7a68ae84a28e1e2c6f095b6ac278"
+      "hash": "afdf591320b08cd52244cd809ddabafc75919953"
     },
     "com.saro.mgf": {
       "version": "https://github.com/Sarofc/com.saro.mgf.git#v0.5.0",
